@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FSlint
+Comment=File System Lint
+Exec=fslint-gui
+Terminal=false
+Type=Application
+Icon=fslint_icon.png
+Encoding=UTF-8
+Categories=Application;Utility;System;GTK;

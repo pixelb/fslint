@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# findu8 - find un{used,referenced} libraries on the system
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "Find possible redundant (Unused) Libraries.
+Usage: $ProgName
+
+Note BE SURE you know a library is not needed before deleting it.
+For e.g. this tool doesn't recognise libraries that are only referenced
+at runtime (for e.g. plugins)."
+
+	exit
+}
+
+# let's use TMPDIR if it's defined...
+TMP=${TMPDIR:-/tmp}
+
+trap 'rm -f $TMP/all_libs $TMP/all_used_libs $TMP/unused_and_referenced_libs \
+> /dev/null 2>&1' 0
+trap "exit 2" 1 2 3 15
+
+for arg
+do
+	case "$arg" in
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+		Usage ;;
+	esac
+done
+
+
+# let's remove this file, just in case it's  a symlink pointing to
+# /lib/ld-linux.so.2 or something...
+rm -f "$TMP/all_libs"
+lib_dirs=`. $script_dir/supprt/getffl`
+find $lib_dirs -type f -follow -name '*.so*' -printf '%p\t%i\n' |
+sort -k2,2n |
+uniq -f1 > "$TMP/all_libs"
+
+# let's remove this file, just in case it's  a symlink pointing to
+# /lib/ld-linux.so.2 or something...
+rm -f "$TMP/all_used_libs"
+find `. $script_dir/supprt/getffp` -type f -perm +111 -xdev |
+xargs ldd |
+cut -s -f3 -d' ' |
+grep -F / |
+sort |
+uniq |
+xargs -i find {} -follow -printf '%p\t%i\n' |
+sort -k2,2n |
+uniq -f1 > "$TMP/all_used_libs"
+
+# let's remove this file, just in case it's  a symlink pointing to
+# /lib/ld-linux.so.2 or something...
+rm -f "$TMP/unused_and_referenced_libs"
+cat "$TMP/all_libs" "$TMP/all_used_libs" |
+sort -k2,2n -u > "$TMP/unused_and_referenced_libs"
+
+cat "$TMP/all_used_libs" "$TMP/unused_and_referenced_libs" |
+sort -k2,2n |
+uniq -u -f1 |
+cut -f1 |
+sort | xargs ls -lUb --color=auto --

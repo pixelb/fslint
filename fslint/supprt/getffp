@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# output $PATH in format that find requires
+
+#Note if you've a link to a dir (for e.g /usr/bin/X11), then general unix way to
+#specify the directory rather than the link is to make sure there's a trailing /
+#Therefore I append / to every dir just in case.
+
+#caveats. $PATH can't contain spaces or tabs
+
+if [ "x$1" != "x-justPATH" ]; then
+	#Note $PERMPATH defines common binary directories. Any others specific
+	#to your $PATH will be automatically picked up. If there are directories
+	#not in your $PATH you want to check, then add them to $PERMPATH
+	PERMPATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:
+	/usr/X11R6/bin:/usr/TeX/bin:/usr/tex/bin:/usr/games:/usr/local/games:"
+fi
+
+FINDDIRS=`echo $PERMPATH$PATH | tr : '\n' | sed -e '/^$/d'`
+find $FINDDIRS -type d -maxdepth 0 -follow -printf "%p\t%i\n" 2>/dev/null |
+sort -k2,2n -u | #remove duplicate dirs in $PATH (even if diff names/links)
+cut -f1 |
+tr '\n' : |
+sed 's|:|/ |g' |
+tr -s /
+echo "-maxdepth 1"

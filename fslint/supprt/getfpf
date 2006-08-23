@@ -1,0 +1,79 @@
+#!/bin/bash
+# This is not meant to be called directly!
+#
+# getfpf = get Find Path Format
+#
+# This script is used to get the correct find format for
+# ls etc. I.E. whether full path needs to be returned
+# or just the basename
+#
+# Usage: . getfpf $@
+# Also must do set -f before calling this
+# as this doesn't work correctly with filename globbing
+#
+# Returns: printf format in $FPF (Find Path format)
+#          find parameters in "$@"
+#
+# ToDo: Have option when 1 dir specified
+#       which is not . or ./ or ./././. (use basename
+#       to reduce all these to .) then %p returned
+
+num_files=0
+files=
+switches=
+onfindswitches=false
+forcefullpath=false
+
+eval set -- $*
+for arg in "$@";
+do
+   case "$arg" in
+   -r) #turn OFF recursion
+      switches="$switches -maxdepth 1" ;;
+      #don't say onfindswitches=true since want to allow -r before paths
+   -f) #force full paths even if only 1 specified
+      forcefullpath=true ;;
+   -*|\(|\)) #pass other switches onto find
+      switches="$switches '$arg'"
+      onfindswitches=true ;;
+   *)
+      if [ -z "$arg" ]; then
+	 break #can only happen if "" passed so break
+      elif [ "$onfindswitches" = "true" ]; then
+         switches="$switches $arg"
+         onfindswitches=false #not required as no files after 1st switch
+      else
+         num_files=`expr $num_files + 1`
+         if [ -z "$files" ]; then
+            files="'$arg'"
+         else
+            files="$files '$arg'"
+         fi
+      fi ;;
+   esac
+done
+
+if [ $num_files -gt 1 ]; then
+   FPF="%p"
+   findArgs="$files $switches"
+else
+   if [ $forcefullpath = "true" ]; then
+      findArgs="$files $switches"
+      FPF="%p"
+   else
+      findArgs="$switches"
+      FPF="%P"
+
+      if [ $num_files -eq 1 ]; then #only cd if path specified
+         findArgs="$files $switches"
+         eval files=$files #remove quotes
+         if [ -d "$files" ]; then
+            cd "$files"
+            findArgs="$switches"
+         else
+            FPF="%p"
+         fi
+      fi
+   fi
+fi
+eval set -- $findArgs

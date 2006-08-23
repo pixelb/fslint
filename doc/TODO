@@ -1,0 +1,17 @@
+give rename functionality
+
+New widgets to try are (grouped) GtkClist -> Gtk{TreeView,Model}
+
+Use checkboxes within package list to mark a package for deletion,
+rather than selecting the whole row. This is much easier to code for
+and will allow the user to easily sort by selection state also.
+In addition we would autosort by this selection state when packages are
+automatically selected for deletion through dependency analysis,
+so that users could easily review the updated selection.
+
+This (small) limitation is hard to fix but since $# (the number of params)
+is checked for in findsn, you can't do stuff like:
+findsn -A -name "python*"
+Would need to check no paths specified (I.E. like what getfpf does).
+
+would be good to merge hardlinked files in findns

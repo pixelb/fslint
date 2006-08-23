@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# findrs - find files that have lines with trailing whitespace
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+# Notes:
+#
+# Could have option also to flag files that have many consequtive blank lines
+#   the corresponding regexp would be? "^[ 	]*${2,}"
+# Note paths with : in names will not be processed correctly
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find Redundant whiteSpace.
+Usage: $ProgName [-c] [[-r] [-f] paths(s) ...]
+
+If -c specified then the number of lines in each
+file, with redundant whitespace is reported, in addition
+to the file names. Note this will take longer.
+
+If no path(s) specified then the currrent directory is assumed."
+	exit
+}
+
+for arg
+do
+	case "$arg" in
+	-c)
+		count="yes" ;;
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+		argsToPassOn="$argsToPassOn '$arg'" ;;
+	esac
+done
+
+. $script_dir/supprt/getfpf "$argsToPassOn"
+
+find "$@" -type f -size +0c -printf "$FPF\0" |
+xargs -r0 file |
+grep ":.* text" |
+cut -f1 -d: -s |
+tr '\n' '\0' |
+#Note in the following grep expression there's a space and tab in []
+#and the second [] contains a CR so it works for DOS files
+if [ "$count" = "yes" ]; then
+	xargs -r0 grep -Ec "[ 	]+[]*$" |
+	grep -vE "(:0$|^0$)" |
+	sort -k2,2nr -t :
+else
+	xargs -r0 grep -El "[ 	]+[]*$"
+fi
+

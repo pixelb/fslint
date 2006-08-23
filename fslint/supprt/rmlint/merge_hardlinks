@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+
+# This is a support script for the findup utility which:
+
+# Filters unique file sizes.
+# Note this can be done also with `uniq -3 -D` in findup.
+
+# Also filters groups of files with the same size
+# that _all_ have the same inode (hardlinks).
+# This optimization is the reason for this seperate script.
+# Previously we merged hardlinks to only one, but
+# this wasn't correct for the case where there were
+# multiple independent hardlinks to duplicate files.
+
+# There is commented out code below which tries
+# to filter out as many hardlinks as possible.
+# However that is only usuable in a more integrated script
+# which can select the particular inode it wants to keep.
+# Note this would save disk access as well as CPU
+# for files that are too large for cache.
+
+import sys
+
+#class counter:
+#    def __init__(self):
+#        self.dict = {}
+#    def add(self,item):
+#        count = self.dict.get(item,0)
+#        self.dict[item] = count + 1
+#    def counts(self,descending=False):
+#        """Returns list of keys, sorted by values."""
+#        result = zip(self.dict.values(),self.dict.keys())
+#        result.sort()
+#        if descending: result.reverse()
+#        return result
+
+last_size=0
+last_inode=(0,0)
+group_to_check=[]
+write_group=0
+#group_inodes_count=counter()
+
+def write_out_group():
+    sys.stdout.writelines(group_to_check)
+
+    #Keep only one of most numerous inode
+    #inode_to_keep = group_inodes_count.counts(descending=True)[0][1]
+    #inode_to_keep_not_written = 1
+    #for path, dev, inode, size in group_to_check:
+    #    if inode == inode_to_keep:
+    #        if inode_to_keep_not_written:
+    #            inode_to_keep_not_written = 0
+    #            sys.stdout.write("%s %s %s %s\n" % (path, dev, inode, size))
+    #    else:
+    #        sys.stdout.write("%s %s %s %s\n" % (path, dev, inode, size))
+
+for line in sys.stdin.xreadlines():
+    path, dev, inode, size = line.rstrip().split()
+    if last_size and size == last_size:
+        if (dev,inode) != last_inode:
+            write_group=1
+        group_to_check.append(line)
+        #group_to_check.append((path,dev,inode,size))
+        #group_inodes_count.add(inode)
+    else:
+        if write_group: write_out_group()
+        #group_to_check=[(path,dev,inode,size)]
+        #group_inodes_count.add(inode)
+        group_to_check=[line]
+        last_inode = (dev,inode)
+        last_size = size
+        write_group = 0
+else: #output last group if required
+    if write_group: write_out_group()

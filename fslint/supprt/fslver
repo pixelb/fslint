@@ -1,0 +1,20 @@
+# Exit early if there is an error
+set -e
+
+# The following is essentially to speedup sort & grep
+# (which redhat really crippled speedwise around redhat 8/9 for UTF8 locales).
+# Note since glibc 2.3.3 this causes (error) messages from
+# subordinate tools to not use the charset in LC_MESSAGES.
+# (see `info libc "Charset conversion in gettext"`).
+export LC_CTYPE=C #uncomment for speed (noting the caveats above)
+
+Version() {
+  echo "FSlint 2.16" && exit
+}
+
+check_uniq() {
+  #This uniq feature is very new (9/9/02) so check explicitly
+  echo | uniq --all-repeated=prepend > /dev/null 2>&1 || \
+  { echo "Error: uniq must have --all-repeated=prepend option. \
+  Get the latest version from GNU coreutils or textutils-2.0.21" >&2; exit 1; }
+}

@@ -1,0 +1,141 @@
+#!/bin/bash
+
+# zipdir - shrink specified directories.
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+# Notes:
+#
+# Note only directories
+# on ext[23] filesystems will be processed at present.
+# Note this is required as ext[23] does not deallocate
+# directory blocks as they are no longer required.
+# As well as taking disk space, it also makes lookups
+# in the directory take longer. It would make sense
+# to run this as root @ system startup, at the same
+# time as fsck? It would be safer to run in single user
+# mode since there is a "small" window where data is
+# not in a directory when a running process goes to
+# look for it. Hmm I guess if there are any extended
+# attributes cpio will not copy them?
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "Shrink Directories.
+Usage: $ProgName [[-r] paths(s) ...]
+
+NB make sure that you don't process directories that are
+being referenced by running processes, as this utility
+will move directories from their current locations (for
+a "small" amount of time). Run only in single user mode
+if you are not sure of the consequences.
+
+If no path(s) specified then the currrent directory is assumed."
+	exit
+}
+
+for arg
+do
+	case "$arg" in
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+		argsToPassOn="$argsToPassOn $arg" ;;
+	esac
+done
+
+if [ `id -u` != "0" ]; then #Only allow root so don't worry about permissions...
+	echo "Sorry, root permission is required." >&2; exit 1
+fi
+
+cpio --version > /dev/null 2>&1 || \
+{ echo "Sorry, cpio is required." >&2; exit 1; }
+
+ESC=`echo -ne "\e["`
+
+#check we have an adequate mv
+mvStatus=good
+rm -Rf /tmp/fslint2
+mkdir /tmp/fslint1 /tmp/fslint2 2> /dev/null
+mv -f --target-directory=/tmp/fslint2 /tmp/fslint1 2> /dev/null || mvStatus=bad
+rm -Rf /tmp/fslint2
+
+if [ $mvStatus = "bad" ]
+then
+	echo "Sorry, you need a newer GNU fileutils"
+	exit
+fi
+
+set -f #no globbing
+. $script_dir/supprt/getfpf -f "$argsToPassOn" #Force absolute path mode
+
+#Sanity checks in case user specifies any of these
+#can't process /bin as mv & rmdir here
+bin=`find /bin -maxdepth 0 -printf "%i"`
+#can't process /lib as mv & rmdir need libc here
+lin=`find /lib -maxdepth 0 -printf "%i"`
+#can't process /dev as it'll break :-)
+din=`find /dev -maxdepth 0 -printf "%i"`
+#not sure about this, better leave alone
+lfin=`find /lost+found -maxdepth 0 -printf "%i"`
+#inode of all mount points is 1, and obviously can't move mount points
+mntin="1"
+
+export totalSavedBytes=0
+
+find $findArgs -type d -size +2b -depth \( -fstype ext2 -o -fstype ext3 \) \
+-xdev \( ! -inum $bin ! -inum $lin ! -inum $din ! -inum $lfin ! -inum $mntin \) \
+-printf "$FPF\n" |
+tr ' \t' '\1\2' | #TODO: should also use sed to escape shell chars
+while read dir
+do
+	dir=`echo $dir | tr '\1\2' ' \t'`
+	find "$dir" -maxdepth 0 -printf "%7s -> "
+
+	origsize=`find "$dir" -maxdepth 0 -printf "%s"`
+
+	basedir=`basename "$dir"`
+	basepath=`dirname "$dir"`
+	tmpdir=fslint.shrink
+	tmpnewdir=$tmpdir/"$basedir"
+
+	cd "$basepath"
+	mkdir $tmpdir #make here as same device
+	echo "$basedir" | cpio -pam $tmpdir 2> /dev/null
+	find "$basedir" -maxdepth 1 -mindepth 1 -print0 |
+	xargs -r0 mv -f --target-directory="$tmpnewdir"
+	#mv -f "$basedir"/* "$tmpnewdir"
+	rmdir "$basedir"
+	mv "$tmpnewdir" "$basedir"
+	rmdir $tmpdir
+	cd -
+
+	new_size=`find "$dir" -maxdepth 0 -printf "%s"`
+	diffsize=`expr $origsize - $new_size`
+	if [ $diffsize != "0" ]
+	then
+	   find "$dir" -maxdepth 0 -printf "${ESC}31m%7s${ESC}0m (bytes) %p\n"
+	   #how to echo the following @ the end?
+	   totalSavedBytes=`expr $diffsize + $totalSavedBytes`
+	else
+	   find "$dir" -maxdepth 0 -printf "%7s (bytes) %p\n"
+	fi
+done

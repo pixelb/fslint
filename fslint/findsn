@@ -1,0 +1,166 @@
+#!/bin/bash
+
+# findsn - find duplicate names in the specified tree(s).
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+# Notes:
+#
+# It defaults to looking through the PATH as this
+# is usually what you want to check. In this mode
+# it has the same functionality as chkdupexe
+# (which also has the functionality of checking
+# for dangling links that findbl does).
+#	If you specify paths on the command line,
+# then it searches there for duplicate names.
+#
+# Note unlike the other utils, to look in the current
+# directory you must explicitly specify it (using . for
+# e.g.)
+#
+# Note it's not obvious but you don't have to specify
+# LC_COLLATE=C anywhere in this script.
+#
+# Todo: give option to include directory names & or symbolic links
+# Todo: give option to exclude links that point to same file
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find (files) with duplicate or conflicting names.
+Usage: $ProgName [-A -c -C] [[-r] [-f] paths(s) ...]
+
+If no arguments are supplied the \$PATH is searched for any redundant
+or conflicting files.
+
+-A reports all aliases (soft and hard links) to files.
+If no path(s) specified then the \$PATH is searched.
+
+If only path(s) specified then they are checked for duplicate named
+files. You can qualify this with -C to ignore case in this search.
+Qualifying with -c is more restictive as only files (or directories)
+in the same directory whose names differ only in case are reported.
+I.E. -c will flag files & directories that will conflict if transfered
+to a case insensitive file system. Note if -c or -C specified and
+no path(s) specifed the current directory is assumed."
+
+	exit
+}
+
+mode="matchFilenames"
+uniqsep=prepend
+
+topipe=no
+if [ -p /proc/self/fd/1 ]; then
+    topipe=yes
+fi
+
+if [ $# -eq "0" ]; then #Nothing on cmdline means search $PATH
+	mode="path"
+	eval set -- `. $script_dir/supprt/getffp`
+	FPF="%p"
+elif [ $# -eq "1" ] && [ "$1" = "-A" ]; then
+	mode="aliases"
+	eval set -- `. $script_dir/supprt/getffp`
+	FPF="%p"
+else
+	for arg
+	do
+		case "$arg" in
+		-h|--help|-help)
+			Usage ;;
+		-v|--version)
+			Version ;;
+		-C)
+			uniq_ignore_case="-i"
+			sort_ignore_case="-f" ;;
+		-c)
+			mode="casePortability" ;;
+		-A)
+			mode="aliases" ;;
+		*)
+			argsToPassOn="$argsToPassOn '$arg'" ;;
+		esac
+	done
+
+        if [ $topipe = yes ]; then
+	    . $script_dir/supprt/getfpf -f "$argsToPassOn"
+        else
+            . $script_dir/supprt/getfpf "$argsToPassOn"
+        fi
+fi
+
+check_uniq
+
+translate()
+{
+   case "$1" in
+   safe) #change problem chars
+      tr ' \t\n\1\0' '\2\3\4 \n' ;;
+   safe2pipe)
+      tr '\2\3\4\n' ' \t\n\0' ;;
+   safe2human)
+      tr '\2\3\4' ' \t\n' ;;
+   esac
+}
+
+case "$mode" in
+
+casePortability)
+   find "$@" \( -type d -o -type f \) -printf "%f\1$FPF\1%h\0" |
+   translate safe |
+   sort -b -k3,3 -k1,1f | #group paths (case sens), then names (case insens)
+   uniq -2 -D |
+   uniq -i --all-repeated=$uniqsep |
+   cut -f2 -d' ' ;;
+matchFilenames)
+   find "$@" -type f -printf "$FPF\1%f\0" |
+   translate safe |
+   sort $sort_ignore_case -k2,2 |
+   uniq --all-repeated=$uniqsep -1 $uniq_ignore_case ;;
+path)
+   #Note consolehelper is redhatism so ignore
+   IGNORE_in=`find /usr/bin/consolehelper -printf "%i" 2>/dev/null`
+   if [ -z "$IGNORE_in" ]; then
+      IGNORE_pred="-true"
+   else
+      IGNORE_pred="! -inum $IGNORE_in"
+   fi
+   find "$@" \( -type f -o -type l \) -follow \( $IGNORE_pred \) \
+        -printf "$FPF\1%i\1%f\0" |
+   translate safe |
+   sort -k3,3 -k2,2n |
+   uniq -D -2 |
+   uniq -1 |
+   uniq --all-repeated=$uniqsep -2 ;;
+aliases)
+   find "$@" \( -type f -o -type l \) -follow -printf "$FPF\1%i\0" |
+   translate safe |
+   sort -k2,2n |
+   uniq --all-repeated=$uniqsep -1 ;;
+esac |
+   cut -f1 -d' ' |
+   if [ $topipe = yes ]; then
+      translate safe2pipe
+   else
+      #change all this block to "translate safe2human" for grouped output
+      #Alternatively you can pipe output to "tr '\0' '\n'"
+      sed '/^ *$/d' |
+      translate safe2pipe |
+      xargs -r0 ls -lbUd --color=auto --
+   fi

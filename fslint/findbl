@@ -1,0 +1,136 @@
+#!/bin/bash
+
+# findbl - find bad symbolic links (dangling, malformed etc.)
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+# Notes:
+#
+# By default (-d) it reports dangling (stale) links. Note invalid
+# pathnames are reported as stale by this script.
+#
+# To report redundant info in symbolic links, such as multiple
+# consequtive ////'s or /./././ etc. you specify the -n option.
+# Note that fixing this won't give you back any disk space as
+# the link will take a disk block anyway, but malformed links
+# like this could cause other programs problems.
+#
+# To report all absolute links in the specified path(s), use
+# the -A option. This can help when you want to move a tree
+# around in the filesystem.
+#
+# Likewise the -l option reports all relative links in the
+# specified paths.
+#
+# The -s option reports suspect absolute links. I.E. absolute
+# links to files in the same directory as the link or below.
+# TODO: support finding suspect relative link also. For e.g.:
+# /etc/file.lnk ->../etc/file (python and abspath may be needed?)
+#
+# Note if this output passed to xargs or rm etc.
+# then filenames with spaces will cause problems
+#
+# Should insert list of filesystems that support links
+# or specify -xdev or something
+#
+# auto tidying of messy links could use tr -s / to squeeze consequtive /'s
+# and sed s//..///d to remove /../
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find \"Bad\" symbolic Links.
+Usage: $ProgName [-d] [-s] [-l] [-s] [-n] [[-r] [-f] paths(s) ...]
+
+These options are mutually exclusive (i.e. only the last one takes effect).
+-d Dangling (or stale) links. This is the default mode
+-s Suspect links (absolute links to paths within or below the link's directory)
+-l all reLative links
+-A all Absolute links
+-n reduNdant info in links (/././. ///// /../ etc.)
+
+If no path(s) specified, then the current directory is assumed.
+
+e.g. find dangling links in "library directories":
+findbl \`getffl\`"
+	exit
+}
+
+mode="dangling" #default
+
+# Note must be careful with expressions (which are currently
+# wrong I think), as the following are valid file/dir names:
+# " ...", "..." etc. Hmm the symlinks program probably doesn't
+# handle this correctly either?
+
+ASC_01=`printf "\001"`
+
+for arg
+do
+	case "$arg" in
+	-d)
+		mode="dangling" ;;
+	-s)
+		mode="suspect" ;;
+	-A)
+		mode="absolute"
+		search_expr="${ASC_01}/" ;;
+	-l)
+		mode="relative"
+		search_expr="${ASC_01}[^/]+" ;;
+	-n)
+		mode="redundant"
+search_expr="(${ASC_01}.*[/]{2,})" #finds 2 or more consequtive /'s
+search_expr="$search_expr|([${ASC_01}/]\./)" # starting with ./ or /./ anywhere
+search_expr="$search_expr|(${ASC_01}.*[^.]+/[.][.]/)" #finds x/../y
+search_expr="$search_expr|(${ASC_01}/[.][.]/)" #finds /../y
+search_expr="$search_expr|(${ASC_01}.*[.]{3,}/[.][.]/)" #finds .../../y etc
+search_expr="$search_expr|(${ASC_01}.+/$)" ;; #finds ending with /
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+		argsToPassOn="$argsToPassOn '$arg'" ;;
+	esac
+done
+
+. $script_dir/supprt/getfpf "$argsToPassOn"
+
+case "$mode" in
+dangling)
+	find "$@" -type l -printf "$FPF\n" |
+	#perl -nle '-e || print' | #this is much faster than below
+	#/usr/share/dict/words is 45424 lines which is 0.12s for
+	#perl and 3.8s for shell while read! should be OK though?
+        #Note also this doesn't distinguish EPERM and ENOENT
+	while read file; do [ -e "$file" ] || echo $file; done |
+	tr '\n' '\0' |
+	xargs -r0 ls -lUd -- |
+        sed 's/.*[0-9]\{2\} \(.*\)/\1/' ;; #only leave link -> target
+suspect)
+	find "$@" -type l -printf "$FPF ->\1%p\1%l\n" |
+	grep "${ASC_01}.*${ASC_01}/" | #get absolute links
+	sed -e "s¬${ASC_01}./¬${ASC_01}$PWD/¬g" | #change rel to abs paths
+	grep -E "${ASC_01}(.*)/[^/]+${ASC_01}\1" | #find suspect links
+	sed -e "s¬${ASC_01}.*${ASC_01}¬ ¬g" ;; #drop work column
+absolute|relative|redundant)
+	find "$@" -type l -printf "$FPF ->\1%l\n" |
+	grep -E "$search_expr" |
+	tr '\1' ' ' ;;
+esac

@@ -1,0 +1,51 @@
+Q. Is there a command line version?
+A. Yes, you can download the tarball and cd to
+   the fslint directory, and use it directly from there.
+   Note the GUI just wraps these command line programs,
+   so alternatively you can cd or add to $PATH the
+   /usr/share/fslint/fslint directory on a standard install.
+
+Q. Can I download the tarball and hack & run the GUI
+   without installing it?
+A. Yes, just run ./fslint-gui from the directory you extract
+   and it automatically notices this and uses just the
+   files in the extracted directory. Note you will need
+   to do a make in the po directory for i18n to work.
+
+Q. Where's the Makefile? How do I build/install it from source?
+A. It's python so nothing needs to be built on the target.
+   There's no Makefile to [un]install because there's no need (see previous FAQ)
+   To build an rpm just tar.gz the working directory to fslint-x.xx.tar.gz
+   and then: rpmbuild -ta fslint-x.xx.tar.gz. Alternatively
+   to build a deb just cp -a the working directory to fslint-x.xx
+   and then: cd fslint-x.xx && dpkg-buildpackage -rfakeroot -tc
+
+Q. The released RPM doesn't install on mandrake or mandriva?
+A. Mandrake in their wisdom decided to use different pygtk package
+   names to everyone else. Now there is support for automatically
+   building the correct package on the mandriva platform, I just
+   don't release the mandriva specific RPM. To build the mandriva
+   specific RPM just get the release tar.gz and as in the previous FAQ:
+       sudo rpmbuild -ta fslint-x.xx.tar.gz
+
+Q. In "Advanced Search Parameters"->"Paths to exclude",
+   how do I exclude directories &/or files matching a pattern
+   rather than a specific file or directory?
+A. To exclude all txt files add a path of /*txt
+   To exclude all CVS dirs  add a path of /*CVS
+
+Q. How do I navigate the file lists with the keyboard?
+A. FSlint uses a GtkCList in "multiple selection" mode throughout.
+
+   1. General list movement keys are, up, down, Ctrl+home and Ctrl+end
+   2. Shift + the movement keys extends a contiguous selection.
+   3. Ctrl + space, toggles the discontiguous selection mode. When in
+   this mode, one can navigate to any row using the movement keys (1)
+   and space will toggle that row's selection state.
+
+   For completeness the mouse works like:
+
+   1. Clicking an item selects it.
+   2. Ctrl+click adds toggles rows to and from a discontiguous selection.
+   3. Draging mouse over rows makes a contiguous selection.
+   4. Shift+click extends a contiguous selection to the clicked row.

@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# output $LIBRARY directories in format that find requires
+
+#Note if you've a link to a dir (for e.g /usr/bin/X11), then general unix way to
+#specify the directory rather than the link is to make sure there's a trailing /
+#Therefore I append / to every dir just in case.
+
+if [ "x$1" != "x-justPATH" ]; then
+	#Note $PERMPATH defines common lib directories.
+	PERMPATH="/lib /usr/lib /usr/local/lib"
+fi
+CURRPATH=`cat /etc/ld.so.conf`
+LIB_PATH=`echo $LD_LIBRARY_PATH | tr : '\n' | sed -e '/^$/d'`
+
+find $PERMPATH $CURRPATH $LIB_PATH -type d -maxdepth 0 -follow \
+-printf "%p\t%i\n" 2>/dev/null |
+sort -k2,2n -u | #remove duplicate dirs in $PATH (even if diff names/links)
+cut -f1 |
+tr '\n' : |
+sed 's|:|/ |g' |
+tr -s /
+echo "-maxdepth 1"

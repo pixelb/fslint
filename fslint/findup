@@ -1,0 +1,205 @@
+#!/bin/bash
+
+# findup - find duplicate files
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+# Description
+#
+#	will show duplicate files in the specified directories
+#	(and their subdirectories), in the format:
+#
+#	2 * 2048	file1 file2
+#	3 * 1024	file3 file4 file5
+#	2 * 1024	file6 file7
+#
+#	Where the number is the disk usage in bytes of each of the
+#	duplicate files on that line, and all duplicate files are
+#	shown on the same line.
+#		Output it ordered by largest disk usage first and
+#	then by the number of duplicate files.
+#
+# Caveats/Notes:
+#	I compared this to any equivalent utils I could find (as of Nov 2000)
+#	and it's (by far) the fastest, has the most functionality (thanks to
+#	find) and has no (known) bugs. In my opinion fdupes is the next best but
+#	is slower (even though written in C), and has a bug where hard links
+#	in different directories are reported as duplicates sometimes.
+#
+#	This script requires uniq > V2.0.21 (part of GNU textutils|coreutils)
+#	undefined operation if any dir/file names contain \n or \\
+#	sparse files are not treated differently.
+#	Don't specify params to find that affect output etc. (e.g -printf etc.)
+#	zero length files are ignored.
+#	symbolic links are ignored.
+#	path1 & path2 can be files &/or directories
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find dUPlicate files.
+Usage: $ProgName [[-t [-m|-d]] [-r] [-f] paths(s) ...]
+
+If no path(s) specified then the currrent directory is assumed.
+
+When -m is specified any found duplicates will be merged (using hardlinks).
+When -d is specified any found duplicates will be deleted (only 1 left).
+When -t is specfied, only report what -m or -d would do.
+
+You can also pipe output to $script_dir/fstool/dupwaste to
+get a total of the wastage due to duplicates.
+
+Examples:
+
+search for duplicates in current directory and below
+	findup or findup .
+search for duplicates in all linux source directories and merge using hardlinks
+	findup -m /usr/src/linux*
+same as above but don't look in subdirectories
+	findup -r .
+search for duplicates in /usr/bin
+	findup /usr/bin
+search in multiple directories but not their subdirectories
+	findup -r /usr/bin /bin /usr/sbin /sbin
+search for duplicates in \$PATH
+	findup \`$script_dir/supprt/getffp\`
+search system for duplicate files over 100K in size
+	findup / -size +100k
+search only my files (that I own and are in my home dir)
+	findup ~ -user \`id -u\`
+search system for duplicate files belonging to roger
+	findup / -user \`id -u roger\`"
+	exit
+}
+
+for arg
+do
+	case "$arg" in
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	--gui)
+		mode="gui" ;;
+	-m)
+		mode="merge" ;;
+	-d)
+		mode="del" ;;
+	-t)
+		t="t" ;;
+	*)
+                argsToPassOn="$argsToPassOn '$arg'"
+	esac
+done
+[ "$mode" = "merge" ] && argsToPassOn="$argsToPassOn -xdev"
+
+if [ ! -z "$mode" ]; then
+    forceFullPath="-f"
+    sep_mode="prepend"
+else
+    sep_mode="none"
+fi
+
+if [ "$mode" = "gui" ] || [ "$mode" = "merge" ] || [ "$mode" = "del" ]; then
+    merge_early=""    #process hardlinks
+else
+    merge_early="-u"  #ignore hardlinks
+fi
+
+. $script_dir/supprt/getfpf $forceFullPath "$argsToPassOn"
+
+check_uniq
+
+if [ `find . -maxdepth 0 -printf "%D" 2> /dev/null` = "D" ]
+then
+    devFmt="\060" #0
+else
+    devFmt=%D #This is new and will help find more duplicate files
+fi
+                     #print name, inode & size.
+find "$@" -size +0c -type f -printf "$FPF\0$devFmt\0%i\0%s\n" |
+tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
+sort -k2,2n -k4,4nr -k3,3 $merge_early |#group [and merge] dev,size & inodes
+if [ -z "$merge_early" ]; then
+    $script_dir/supprt/rmlint/merge_hardlinks
+else
+    uniq -3 -D       #pick just duplicate filesizes
+fi |
+sort -k3,3n |        #NB sort inodes so md5sum does less seeking all over disk
+cut -f1 -d' ' -s |   #get filenames to work on
+tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
+xargs -r0 md5sum -- |#calculate md5sums for possible duplicates
+sort |               #group duplicate files together
+tr ' \t' '\1\2' |    #remove spaces & tabs again (sed can't match \0)
+sed -e 's/\(^.\{32\}\)..\(.*\)/\2 \1/' | #switch sums and filenames
+
+# The following optional block, checks duplicates again using sha1
+# Note for data sets that don't totally fit in cache this will
+# probably read duplicate files off the disk again.
+uniq --all-repeated -1 | #pick just duplicates
+cut -d' ' -f1 |          #get filenames
+sort |                   #sort by paths to try to minimise disk seeks
+tr '\1\2\n' ' \t\0' |    #reset any space & tabs etc and delimit names with \0
+xargs -r0 sha1sum -- |   #to be sure to be sure
+sort |                   #group duplicate files together
+tr ' \t' '\1\2' |        #remove spaces & tabs again (sed can't match \0)
+sed -e 's/\(^.\{40\}\)..\(.*\)/\2 \1/' | #switch sums and filenames
+
+uniq --all-repeated=$sep_mode -1 | #pick just duplicates
+sed -e 's/\(^.*\) \(.*\)/\2 \1/' | #switch sums and filenames back
+tr '\1\2' ' \t' |    #put spaces & tabs back
+
+if [ ! -z "$mode" ]; then
+  cut -d' ' -f2- |
+  if [ ! $mode = "gui" ]; then # external call to python as this is faster
+    if [ -f $script_dir/supprt/rmlint/fixdup.py ]; then
+        $script_dir/supprt/rmlint/fixdup.py $t$mode
+    elif [ -f $script_dir/supprt/rmlint/fixdup.sh ]; then
+        $script_dir/supprt/rmlint/fixdup.sh $t$mode
+    else
+        echo "Error, couldn't find merge util" >&2
+        exit 1
+    fi
+  else
+    cat
+  fi
+else
+(
+psum='no match'
+line=''
+declare -i counter
+while read sum file; do           #sum is delimited by first space
+  if [ "$sum" != "$psum" ]; then
+    if [ ! -z "$line" ]; then
+       echo "$counter * $line"
+    fi
+    counter=1
+    line="`du -b "$file"`"
+    psum="$sum"
+  else
+    counter=counter+1             #Use bash arithmetic, not expr (for speed)
+    line="$line $file"
+  fi
+done
+
+if [ ! -z "$line" ]; then
+  echo "$counter * $line"
+fi
+) |
+sort -k3,3 -k1,1 -brn
+fi

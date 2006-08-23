@@ -1,0 +1,40 @@
+.TH fslint-gui "1" "June 2006" "fslint" "User Commands"
+.SH NAME
+fslint-gui \- A GUI wrapper for the individual fslint command line tools
+.SH SYNOPSIS
+.B fslint-gui
+[\fIOPTIONS\fR] [\fIPATHS\fR]
+.SH DESCRIPTION
+.PP
+fslint is a toolset to find various problems with filesystems,
+including duplicate files and problematic filenames etc.
+.PP
+To access the command line tools one can cd to, or add to $PATH the
+/usr/share/fslint/fslint directory on a standard install.
+.SH PARAMETERS
+If [PATHS] are specified, they become the default search path,
+otherwise the current directory becomes the default.
+.TP
+\fB\-\-version\fR
+Display the fslint version and exit
+.TP
+\fB\-\-help\fR
+Display help for tool specific options
+.SH AUTHOR
+Written by Padraig Brady
+.SH "REPORTING BUGS"
+Report bugs to <P@draigBrady.com>.
+.SH COPYRIGHT
+Copyright \(co 2000-2006 Padraig Brady <P@draigBrady.com>.
+.br
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details,
+which is available at www.gnu.org

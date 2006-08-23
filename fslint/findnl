@@ -1,0 +1,161 @@
+#!/bin/bash
+
+# findnl - find problematic filenames
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+
+#Notes:
+#note if files have names with ascii char 1 in them will have this converted
+#to \n, ls will say file not found in this case and hence the real filename
+#can be inferred.
+#
+#Note expressions are evaluated left to right and as soon as
+#one is matched the rest aren't evaluated (makes sense as doing
+#or operation not and. Anyway this implies that should check things
+#like filename length before actual valid character combinations tests
+#
+#Don't need to handle ^~ | ^- etc as always get fully qualified path from find
+#
+#Even if -n1 specified for xargs there will be no ls processes run
+#to display output until the end as the pipe is line buffered and
+#there is only 1 line passed to xargs. This is required so paths
+#with linefeeds are supported.
+#
+#How do you add expression to only include filenames with @ most
+#1 consequtive character (for e.g. :) I was trying: ":{1,1}"
+#but the second 1 was ignored? I know grep -Ev ":{2,}" works but
+#I need the expression as part of the large expression for obvious
+#reasons. For now I'm allowing any filenames with :, but this could
+#interoperability problems with NTFS for e.g. which uses this char
+#to indicate a seperate stream in the file.
+#
+#man ascii was useful when writing this.
+#
+#Hmm just noticed the GNU pathchk utility, which
+#should probably be integrated in some way?
+#
+#Note theoretically the only char UNIX doesn't allow in file/dir names
+#is /. This can make things very awkward, especially for future extensions
+#like streams etc.
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find Name (directory or file) Lint.
+Usage: $ProgName [-1] [-2] [-3] [-p] [[-r] [-f] paths(s) ...]
+
+These options are mutually exclusive (i.e. only the last one takes effect).
+-1 is least checking, -3 is most. The default is 2.
+
+-p is most stringent and applies POSIX.1 filename portability testing.
+I.E. characters are limited to [A-Za-z0-9_.-] and max name length = 14 and
+max path length = 255.
+
+If no path(s) specified then the currrent directory is assumed."
+	exit
+}
+
+#default settings
+level=2
+MaxNameLen=129
+MaxPathLen=2049
+
+for arg
+do
+	case "$arg" in
+	-1)
+		level="1"
+		MaxNameLen=256
+		MaxPathLen=4097 ;;
+	-2)
+		: ;; #defaults set above
+	-3)
+		level="3"
+		MaxNameLen=65
+		MaxPathLen=1025 ;;
+	-p)
+		level="p"
+		MaxNameLen=15
+		MaxPathLen=256 ;;
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+                if [ -e "$arg" ] && ! echo "$arg" | grep -qF /; then
+                    arg="./$arg" #make sure / before name (see below)
+                fi
+		argsToPassOn="$argsToPassOn '$arg'" ;;
+	esac
+done
+
+if [ "$level" != "p" ]; then
+    # Note LC_CTYPE=C in fslver causes grep below to report
+    # valid UTF8 [:alnum:] chars as problematic, so unset here
+    unset LC_CTYPE
+    # Note this slows grep down 320% on V2.5.1 at least.
+    # Hence the minimum fslint-gui run time will be about 6 times larger
+    # due to the polling mechanism it uses.
+#else
+    #I'm trusting grep to process [:alnum:] appropriately
+    #for the users locale.
+fi
+
+#-p = POSIX.1 checking (names <= 14 chars) etc.
+expressionsp="(.*/[^/]{$MaxNameLen,}$)"		#name length >= MaxNameLen
+
+#-1 = min checking(most still only require shell quoting, but very bad practice)
+expressions1="$expressionsp|( +$)"		#spaces @ end of name
+expressions1="$expressions1|(.*/ [^/]*$)"	#spaces @ start of name
+expressions1="$expressions1|(.*/[^/]*[ ]{2,}[^/]*$)" #2 or more adjacent spaces
+expressions1="$expressions1|(.*/-[^/]*$)"	#- @ start of name
+expressions1="$expressions1|(.*/[^/]* -[^/]*$)"	#- after space in name
+
+#-2 = default checking (characters requiring shell quoting etc)
+expressions2="$expressions1|(.*/[^/]*\{[^/]*,[^/]*\}[^/]*$)" #name with {,} pat
+expressions2="$expressions2|(.*/[^/]*\[[^/]+\][^/]*$)"	#name with [.+] pattern
+expressions2="$expressions2|(.*/~[^/]*$)"	#~ @ start of name
+
+#-3 = max checking
+expressions3="$expressions2|(.*/[^/]*[.]{2,}[^/]*$)" #2 or more adjacent .'s
+expressions3="$expressions3|(.+[.]$)" #trailing .(s)
+
+charactersp="[:alnum:]_./" #/ included as can't be in name and simpler exprs
+characters3="$charactersp,~+"
+characters2="$characters3@#!=[{}:;'<>%& "
+characters1="$characters2()\"$|\\"
+#any other characters are never OK and that includes \t*? etc.
+#Note characters ]- are included in expresssions below.
+
+eval expressions=\$expressions$level
+eval characters=\$characters$level
+
+. $script_dir/supprt/getfpf -f "$argsToPassOn"
+#forcing -f as expressions assume / before name
+#Note could run through basename after if required?
+
+find "$@" -printf "$FPF\0" |
+tr '\n\0' '\1\n' | #convert \n to \1 so grep works
+grep -E "$expressions|(.*/[^/]*[^]$characters-]+[^/]*$)" | #note ] 1st & - last
+tr '\n\1' '\0\n' | #convert back from \1 to \n
+
+if [ ! -p /proc/self/fd/1 ]; then
+    xargs -r0 ls -b1Ud --color=auto --
+else
+    cat
+fi

@@ -1,0 +1,363 @@
+2.16 02/07/06
+
+	* Fix bug introduced in 2.15 where no paths would ever be
+	  reported in "Invalid UTF8 mode".
+	* Fix bug where we always reported 0 space wasted by temp files.
+	* Fix bug where we left processes running if we exited the GUI
+	  while a search was running. This was reported by Christoph Haas.
+	* Support building mandriva specific RPMs from the tarball.
+	* Added a man page for fslint and fslint-gui.
+	* Some debian package fixups suggested by lintian.
+	* Some rpm package changes to align with the debian package.
+
+2.15 20/04/06
+
+	* General cleanups suggested by Justin Pryzby,
+	  particularly in relation to debian packaging.
+	* Fixed a bug where if one specified a directory containing
+	  a space in the name then none of the tools could handle it.
+	  This was reported by Chris Tasma.
+	* Fixed a bug where duplicates with independent hardlinks
+	  were not merged correctly. This was reported by Gersom van de Bunt.
+	* Fixed a bug where the -m option to findup could only be
+	  the last parameter. This was reported by Gersom van de Bunt.
+	* Fixed a bug where all scripts were broken if started with a
+	  relative path and a single directory was passed as a parameter.
+	  This was reported by Gersom van de Bunt.
+
+2.14 20/02/06
+
+	* Added transations: Malay, Chinese (simplified).
+	* Added package management functionality for deb and rpm distros.
+	  One can list/sort all packages, and delete selected packages with
+	  full dependency analysis.
+	* Support calling the command line tools from any directory,
+	  so for example adding /usr/share/fslint/fslint to the $PATH now works.
+	  Note the GUI is now invoked with the `fslint-gui` command and
+	  the command line version with the `fslint` command.
+	* Changed the complexity of saving results from O((n/2)*(n+1)) to O(n).
+	  This was caused by GtkCList inefficiencies and reported by
+	  Stefan Westerfeld.
+	* Created a debian package, which hopefully should work on,
+	  debian, ubuntu, xandros, ... I only tested on ubuntu breezy.
+	* Fixed bug in the GUI where one couldn't cancel a find operation with
+	  the keyboard, if the caps lock or num lock were enabled.
+	* Fixed bug in findnl where it would always flag non ascii alphanumeric
+	  chars as problematic.
+	* Fixed bug in GUI where multiline errors were displayed on one line.
+	* Change default GUI size from 640x480 to 800x600.
+	* Correctly remove references to deprecated gtk.{TRUE,FALSE} while
+	  staying compatible with python versions prior to 2.2.1.
+
+2.12 31/08/05
+
+	* Make disk usage calculation more efficient/robust.
+	* Add findu8 util (exposed in "Bad names" tab in GUI),
+	  which reports file or directory names with an invalid UTF8 encoding.
+	* Don't fall back to Latin-1 for character representations.
+	  Instead display replacement char for non ascii.
+	* Convert control characters to their corresponding
+	  unicode control pictures for display.
+	* Change from deprecated gtk.FALSE to False.
+	* Make disk head seeks even more efficient by sorting by inodes rather
+	  than by path name when finding duplicates and non stripped binaries.
+	* Double check (with sha1) md5 duplicates found, to make
+	  sure we don't get any false positives.
+
+2.11 18/03/05
+
+	* Fix for internally generated error messages not being displayed.
+	  This bug was introduced in 2.10.
+
+2.10 15/03/05
+
+	* Added translations: Vietnamese, Swedish.
+	* Now handle non utf8 file and directory names in GUI.
+	* Removed colouring of buttons and error text,
+	  as colours mean different things to different cultures.
+	* Now doesn't remember selected directory if the dialog is canceled.
+	* Changed status and list widgets to entry and textview respectively,
+	  so that one can copy and paste, status and error output.
+	* Changed deprecated funtions as reported by pygtk2-2.4.0.
+	* Implemented a findnl portability improvement suggested by Paul Eggert.
+	* Updated docs with input from Helge Hielscher and Fab Mueller.
+
+2.08 17/06/04
+
+	* Added translation: Brazilian Portuguese.
+	* Fixed major bug where the GUI was grossly inefficient
+	  when reading data from the subordinate text tools.
+	* Fixed all text tools when if one file specified it would be ignored.
+	* Tiny update to french translation.
+
+2.06 23/04/04
+
+	* Added translations: French, Serbian (cyrillic).
+
+2.04 19/11/03
+
+	* Added translations: Dutch, Irish.
+	* Fixed a few missing translations in the code.
+	* Incorporated some of the packaging changes from Ville Skyttä
+	  <ville.skytta at iki.fi> that he did while creating the fedora rpm.
+	* Gave all result lists a border for consistency.
+	* Tidied search abort code, so confusing status/error not given,
+	  also Return key can now abort.
+
+2.02 28/07/03
+
+	* Added language translation support (and translations for
+	  German, Romanian).
+	* Handle keypresses while search is running so that user can
+	  abort using the keyboard {space,Ctrl-C,Esc}, and also other
+	  parts of the gui can't be activated.
+	* Allow user to select files to exclude from merging of duplicates.
+	* Some small code optimizations and cleanups.
+	* Fix crash bug on startup for invalid locales.
+	* Tried to make the GUI a little more obvious by seperating
+	  the "find/stop" button from the other "action" buttons.
+
+2.01 26/03/03
+
+	* Added stop button, yay!
+	* Handled case where program would deadlock if backend scripts
+	  wrote more than 1 buffer size to stderr (4K on Linux).
+	* Optimized the cleaning of redundant whitespace and fixed buglet
+	  where space was counted as saved even if the file was unwriteable.
+	* Fixed bug in findtf where core files wouldn't have been found on
+	  some (newer) systems.
+	* Made the dialog boxes clearer/prettier.
+	* Handle invalid search paths given on command line appropriately.
+
+2.00 20/01/03
+
+	* Upgraded to gtk2 & python2 (hence the version jump).
+	  N.B. This is not backwards compatabile with python1.5 or gtk1.
+	* python2 allowed fixing a bug where the size (in blocks used)
+	  of some duplicate files was underestimated by 1 block.
+	* Now use explicit LC_CTYPE=C in all tools as I noticed huge
+	  performance degradation in sort (with redhat 8 patches) when UTF8
+	  was in LANG or LC_CTYPE.
+	* Revert bug introduced in findrs in V1.20 regarding : in filenames.
+	* Changed all usage of sort of form -k5n to -k5,5n which is better.
+	* Change error pane so it does not resize and main output pane does.
+	* GUI now takes search paths as an option on the command line.
+	* Tidied summary of duplicate groups in GUI.
+	* Updated the docs.
+
+1.22 27/03/03
+
+	* support python 2
+
+1.21 06/01/03
+
+	* Allow to exclude paths that match a (glob) pattern,
+	  in addition to specific paths.
+	* Fix bug where you weren't able to delete (empty) directories.
+	* Fix version reported by GUI to 1.21 (from 2.00).
+	* Reformat all lines to < 80 chars.
+	* Added a FAQ.
+
+1.20 16/12/02
+
+	* A GUI AT LAST! Implemented in python (>1.5), libglade and gtk (1.2).
+	* A standard install procedure (rpm).
+	* All tools now support piping to stdout in easily parseable format.
+	* Reverted to previous implementation of findid, as the built-in
+	  -no{user,group} in find is much slower. This really shows the power
+	  of small cohesive utils over monolithic architectures.
+	* Cleaned up fstool/dupwaste.
+	* Cleaned up fixdup.{sh,py} (mostly to mirror GUI).
+	* findsn and findbl now take -A param instead of -a
+	  (so there is no overlap with find).
+	* findsn now outputs in grouped mode (newline between each group)
+	  by default. This puts a requirement on the new uniq which is
+	  part of textutils-2.0.21 or any coreutils. When piping output
+	  \0 is used to delimit rather than \n.
+	* findtf has a new --age=x parameter. Previously you could only
+	  specify the age in core file mode, and also it used atime (in an
+	  incorrect way). Now it uses mtime correctly.
+	* zipdir now works on ext3 and also checks for presence of cpio before
+	  preceeding. Both enhancements were suggested by Jan (Honza) Fikar.
+	* findrs can now handle filenames with : in them.
+
+1.14 27/09/02
+
+	* In the new findid tool there were 3 bugs (pointed out by
+	  tido at hushmail.com). 1. The regular expression was missing
+	  a trailing colon. 2. ls was missing a -b option (to escape
+	  non printable chars. 3. find actually has -no{user,group}
+	  options which would be better to use (making a lesser but
+	  still valid requirement for the findid script).
+	* Added -b option to ls in findul and findns in case libraries
+	  or executables have non printable characters in their names.
+	* Small performance enhancement to findnl (too many tr's started).
+	* Spell checked this file for some reason :-).
+
+1.13 25/09/02
+
+	* Enhanced the fslint script so findsn and findns print more
+	  useful information when you analyse the whole system (/).
+	* Added new tool (findid) to report files that have invalid uid or gid.
+	* Added -d option to findup which is like -m except it deletes
+	  all but one duplicate file rather than merging using hard-links.
+	* Added -t option to findup so that it only reports changes
+	  that would result from -d or -m.
+	* small comment update to findsn and whitespace cleanup to this file.
+
+1.12 27/02/02
+
+	* Feck, forgot to update the version reported since V1.08!
+	* Greatly reduce possible /tmp races in findul.
+	  Patch from Anthony D. Urso.
+	* Added suspect link checking to main fslint script.
+	* Documented fixdup more, and made it explicit/consistent in
+	  how it handles blank lines as input.
+	* Changed default mode of findrs to only report file names,
+	  which is quicker. Added a new parameter (-c) to count the
+	  number of lines with redundant whitespace as was done previously.
+	* Some small comment and test updates.
+
+1.11 11/02/02
+
+	* Added a new mode to findup, which merges (using hard-links)
+	  any found duplicate files (-m).
+	* Finally added suspect link checking to findbl (-s).
+	* Added a "number of days old a core file has to be" option
+	  to findtf (-c[days]).
+	* Usual small comments and cleanups.
+
+1.10 08/01/02
+
+	* Added a new tool (findul) to report possible unused libraries,
+	  on the system.
+	* Changed the field specifiers to sort in the various tools, to
+	  use the -kx.. option instead of the deprecated +x.. style.
+	* The argument handling "fixes" applied in the previous version
+	  had problems where findnl & zipdir ignored all passed parameters,
+	  all tools had to have the global parameters (-r & -f at present)
+	  specified before any others, and there were various issues when
+	  no parameters were passed. This should all be fixed now.
+	* Removed the bash dependency (declare) from getfpf. Marc A.
+	  Lehmann reported this.
+	* Got rid of spurious 0 output by findrs when it had no files to report.
+	* The usual extra comments and code cleanups.
+
+1.09 25/08/01
+
+	* Added better core file checking to findtf (-c). It now does
+	  more thorough checking and prints more information about
+	  the core files it finds.
+	* Removed the perl dependency (1 line from findbl!). I rewrote
+	  it in shell (again 1 line).
+	* I cleaned up the argument handling of the various tools as
+	  it was quite silly really. Eivind Kjørstad prompted me to fix it.
+	* Handled the special case of the redhatism /usr/bin/consolehelper
+	  which gave "false" positives for conflicting binaries (reported
+	  by the default mode of findsn).
+	* Added an extra (albeit esoteric) check to "findbl -n".
+	* Updated/fixed a few comments.
+
+1.08 16/08/01
+
+	* Enhanced getffp so that duplicate entries in a users $PATH
+	  are handled correctly, and also common binary directories
+	  are always searched. This enhances findsn and findns.
+	* Updated zipdir so that it doesn't process ext2 mount points.
+	* Cleaned up all files so that they are <= 80 chars wide.
+	* Handled case in findsn where files with \n's in the name
+	  would cause erroneous output.
+	* Fixed (removed) silly argument handling in fslint script.
+
+1.07 17/07/01
+
+	* Fixed default mode of findsn which reports redundant or
+	  conflicting files in the $PATH. Previously it was reporting
+	  hard-linked files with the same name as problematic which
+	  was wrong. Also it now handles symlinks and is therefore
+	  much more powerful.
+	* Added aliases check to findsn (-a).
+	* Added a new zipdir utility that reclaims wasted blocks in
+	  ext2 directories (ext2 doesn't auto shrink directories).
+	* Updated the help text for findsn as it was confusing.
+	* Removed the 2 binaries from the findns test directory as
+	  they were just a waste of space really.
+	* Fixed a bug in findrs where it would miss some text files.
+	* Slight update to findbl help text.
+	* Fixed bug in getffp where it specified file types and also
+	  tidied it's documentation a little.
+	* Removed the silly find version checking stuff from findup.
+	* Added --version option to all utilities.
+	* General documentation cleanups.
+
+1.06 05/02/01
+
+	* Added new name case portability check to findsn (-c).
+	* Updated the fslint script with the code above and also
+	  made a couple of cosmetic changes.
+	* Added POSIX.1 filename portability checks to findnl (-p).
+	* Added ignore case option (-C) to findsn.
+	* Fixed $PATH handling bugs in findns (same as I done for findsn
+	  in the previous release). I created a script (getffp) that
+	  is called by both. Note this script can be called by any of
+	  the utilities, for e.g. findup `getffp`.
+	* Changed output from findns (find Non Stripped executables) to
+	  order the found executables by size.
+	* Removed device file from test directory as this caused
+	  problems when extracting.
+	* changed all usage of source to include scripts to use
+	  the . syntax, to remove the dependency on bash.
+	* Tidied tar archive so that no users/group info is included.
+
+1.05 28/01/01
+
+	* Updated the fslint script with the new tools released
+	  in V1.02 and 1.04.
+	* Added new check to redundant links for checking for links (to
+	  directories) with trailing /'s
+	* Fixed $PATH handling bugs in findsn where links and invalid entries
+	  would cause problems.
+	* Tidied tstlnt directories a little.
+	* Updated documentation a little.
+
+1.04 12/12/00
+
+	* Corrected errors in the documentation of the 1.03 changes below.
+	* Added check for uniq -D support to findsn.
+	* Changed findsl (stale links) to findbl (bad links), and added
+	  more options to find different forms of lint in symbolic links.
+	* Added --help (or -h) to all scripts.
+	* Renamed the test directories to something more sensible.
+	* Renamed findts to findrs.
+	* Added a check to findnl for names with trailing .'s.
+	* Added a check to findtf for .pure files (purify remains).
+
+1.03 09/12/00
+
+	* Changed findns (non stripped binaries) so it defaults
+	  to looking in the $PATH if no dirs/files specified.
+	* Changed findsl to run output through ls so the broken
+	  target of the stale links is shown.
+	* Tidied up the tstlnt directories so findup can be run from
+	  the base installation directory without finding loads of
+	  duplicates in various places. This also saved disk space.
+	* Changed this log format so it can be correctly processed
+	  by txt2html.
+
+1.02 04/12/00
+
+	* Documentation changes.
+	* New tool (findsn (find duplicate names)).
+	* New test in findnl to report files/dirs with more that 2
+	  adjacent spaces in the name.
+	* Fixed ambiguities in ls parameters in various scripts.
+
+1.01 16/11/00
+
+	* Doug quale reported buglet in findup where it broke
+	  for files starting with -. His suggested fix was to add
+	  a -- option to the md5sum command.
+
+1.00 14/11/00
+
+	* Initial release.

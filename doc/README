@@ -1,0 +1,107 @@
+OVERVIEW:
+
+ FSlint - A utility to find File System lint.
+ This includes duplicate files, empty directories,
+ problematic filenames, etc.
+
+LICENCE:
+
+ Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details,
+ which is available at www.gnu.org
+
+CONTACT INFO:
+
+Any bugs/patches/suggestions/flames should be directed to:
+P@draigBrady.com
+
+INSTALLATION:
+
+RPM or DEB. Note since FSlint does not need to be compiled
+one can run it directly from the extracted source directory.
+Please see the FAQ for details on building installation packages.
+
+REQUIREMENTS:
+
+The 1.1 branch requires textutils >= 2.0.21 or coreutils.
+In addition for the gui versions:
+
+For the 2.0 branch (redhat 8.x or higher)
+    gtk2     >= 2.0 (ftp://ftp.gtk.org/pub/gtk/)
+    python   >= 2.0 (http://www.python.org/download/)
+    libglade >= 2.0 (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
+    pygtk2   >= 2.0 (ftp://ftp.gtk.org/pub/gtk/python/)
+    Note the required pygtk2-libglade rpm is also made from pygtk2 source
+
+For the 1.2 branch (redhat 7.x or higher)
+    gtk      >= 1.2 (ftp://ftp.gtk.org/pub/gtk/)
+    python   >= 1.5 (http://www.python.org/download/)
+    libglade >= 0.x (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
+    pygtk    >= 1.2 (ftp://ftp.gtk.org/pub/gtk/python/)
+
+Note installation order is important if installing from source.
+
+DESCRIPTION:
+
+FSlint is a toolkit to find redundant/questionable disk usage.
+The fslint-gui command invokes the GUI interface. There is also
+a command line interface to each tool which can be accessed
+from the /usr/share/fslint/fslint directory usually.
+The command fslint is a wrapper for the various
+tools which can be called individually. All the tools
+(including fslint) have the same interface, which is
+basically:
+
+command [-r] [-f] [path1 [path2]...]
+
+where the paths are files &/or directories
+If no paths are specified then the current
+directory is assumed.
+
+-r means do NOT recurse the specified director{y,ies}
+-f means output full paths even if only 1 path specified
+
+some tools have their own options. To get help on
+each tool do:
+
+command --help
+
+Any extra commands are passed to find, so any of
+filtering commands will work, for e.g the following
+means process the whole system but do not traverse
+onto any other mounted filesystems:
+
+fslint / -xdev
+
+More examples:
+
+	search for duplicates in current directory and below
+		findup or findup .
+	same as above but don't look in subdirectories
+		findup -r .
+	search for duplicate names in /usr/bin
+		findsn /usr/bin
+	search in multiple directories but not their subdirectories
+		findsn -r /usr/bin /bin /usr/sbin /sbin
+	search system for duplicate files over 100K in size
+		findup / -size +100k
+	search only my files (that I own and are in my home dir)
+		findsn ~ -user `id -u`
+	search system for duplicate files names belonging to roger
+		findsn / -user `id -u roger`
+
+Note the fslint tools do a lot of inode access and to speed them
+up you can use the following method to not update access times
+on disk while gathering inode information:
+mount -o remount,noatime mountpoint
+fslint
+mount -o atime,remount mountpoint

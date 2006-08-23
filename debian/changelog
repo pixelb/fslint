@@ -1,0 +1,18 @@
+fslint (2.16-1) unstable; urgency=low
+
+  * Cleanups suggested by lintian
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 01 Jun 2006 09:09:13 +0000
+
+fslint (2.15-1) unstable; urgency=low
+
+  * Cleanups suggested by Justin Pryzsb
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 09 Mar 2006 08:50:03 +0000
+
+fslint (2.14-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 16 Feb 2006 18:52:06 +0000
+

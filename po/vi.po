@@ -1,0 +1,429 @@
+# Vietnamese Translation for fslint-2.03.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fslint 2.03\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-15 19:36+0000\n"
+"PO-Revision-Date: 2005-01-19 18:25+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net> \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: fslint.c:7
+msgid "FSlint"
+msgstr "FSlint"
+
+#: fslint.c:8 fslint.c:13
+msgid "Add"
+msgstr "Thêm"
+
+#: fslint.c:9 fslint.c:14
+msgid "Remove"
+msgstr "Bỏ"
+
+#: fslint.c:10
+msgid "Directories to search"
+msgstr "Thư mục để tìm kiếm"
+
+#: fslint.c:11
+msgid "recurse?"
+msgstr "đệ qui?"
+
+#: fslint.c:12
+msgid "Search path"
+msgstr "Dường dẫn tìm kiếm"
+
+#: fslint.c:15
+msgid "Paths to exclude"
+msgstr "Đường dẫn để loại trừ"
+
+#: fslint.c:16
+msgid "Extra find parameters"
+msgstr "Tham số tìm thêm nữa"
+
+#: fslint.c:17
+msgid "extra find filtering parameters"
+msgstr "tham số lọc việc tìm thêm nữa"
+
+#: fslint.c:18 fslint.c:100
+msgid "*"
+msgstr "*"
+
+#: fslint.c:19
+msgid "Advanced search parameters"
+msgstr "Tham số tìm kiếm nâng cấp"
+
+#: fslint.c:20 fslint.c:24 fslint.c:30 fslint.c:42 fslint.c:50 fslint.c:62
+#: fslint.c:66 fslint.c:73 fslint.c:78 fslint.c:83
+msgid "Name"
+msgstr "Tên"
+
+#: fslint.c:21 fslint.c:31 fslint.c:43 fslint.c:51 fslint.c:63 fslint.c:67
+#: fslint.c:74 fslint.c:79 fslint.c:84
+msgid "Directory"
+msgstr "Thư mục"
+
+#: fslint.c:22 fslint.c:53 fslint.c:71 fslint.c:75 fslint.c:81 fslint.c:86
+msgid "Date"
+msgstr "Ngày"
+
+#: fslint.c:23
+msgid "Duplicates"
+msgstr "Bản sao"
+
+#: fslint.c:25 fslint.c:44 fslint.c:52 fslint.c:70 fslint.c:80 fslint.c:85
+msgid "Size"
+msgstr "Cỡ"
+
+#: fslint.c:26
+msgid "Size_for_Sort"
+msgstr ""
+
+#: fslint.c:27
+msgid "Installed packages"
+msgstr ""
+
+#: fslint.c:28
+msgid "Sensitivity="
+msgstr "Độ nhạy"
+
+#: fslint.c:29
+msgid "invalid UTF8 mode?"
+msgstr ""
+
+#: fslint.c:32
+msgid "Bad names"
+msgstr "Tên sai"
+
+#: fslint.c:33
+msgid "Search ("
+msgstr "Tìm kiếm ("
+
+#: fslint.c:34
+msgid "$PATH"
+msgstr "$PATH"
+
+#: fslint.c:35
+msgid ") for"
+msgstr ") có"
+
+#: fslint.c:36 ../fslint-gui:756
+msgid "Conflicting files"
+msgstr "Tập tin không khớp"
+
+#: fslint.c:37 fslint.c:41 ../fslint-gui:754 ../fslint-gui:763
+msgid "Aliases"
+msgstr "Bí danh"
+
+#: fslint.c:38 ../fslint-gui:769
+msgid "Case conflicts"
+msgstr "Hoa/thường không khớp"
+
+#: fslint.c:39 ../fslint-gui:765
+msgid "Same names"
+msgstr "Cùng một tên"
+
+#: fslint.c:40 ../fslint-gui:767
+msgid "Same names(ignore case)"
+msgstr "Cùng một tên (lời hoa/thường đi)"
+
+#: fslint.c:45
+msgid "Name clashes"
+msgstr "Tên không khớp"
+
+#: fslint.c:46
+msgid "More restrictive search for core files"
+msgstr "Việc tìm kiếm hạn chế hơn có tập tin lõi"
+
+#: fslint.c:47
+msgid "core file mode?"
+msgstr "chế độ tập tin lõi?"
+
+#: fslint.c:48
+msgid "days"
+msgstr "ngày"
+
+#: fslint.c:49
+msgid "minimum age"
+msgstr "cũ tối thiểu"
+
+#: fslint.c:54
+msgid "Temp files"
+msgstr "Tập tin tạm"
+
+#: fslint.c:55
+msgid "Dangling"
+msgstr "Không hướng về gì"
+
+#: fslint.c:56
+msgid "Absolute links to paths within or below the link's directory"
+msgstr ""
+"Liên kết tuyệt đối\t đến dường dẫn trong hay dưới thư mục của liên kết ấy"
+
+#: fslint.c:57
+msgid "Suspect"
+msgstr "Đáng ngờ"
+
+#: fslint.c:58
+msgid "Relative"
+msgstr "Liên quan"
+
+#: fslint.c:59
+msgid "Absolute"
+msgstr "Tuyệt đối"
+
+#: fslint.c:60
+msgid "/././. ///// /../ etc."
+msgstr "/././. ///// /../ v.v."
+
+#: fslint.c:61
+msgid "Redundant naming"
+msgstr "Đặt tên thừa"
+
+#: fslint.c:64
+msgid "Target"
+msgstr "Đích"
+
+#: fslint.c:65
+msgid "Bad symlinks"
+msgstr "Liên kết tượng trưng sai"
+
+#: fslint.c:68
+msgid "UID"
+msgstr "Dấu hiệu nhận diện độc nhất"
+
+#: fslint.c:69
+msgid "GID"
+msgstr "Dấu hiệu nhận diện nhớm"
+
+#: fslint.c:72
+msgid "Bad IDs"
+msgstr "Dấu hiệu nhận điện sai"
+
+#: fslint.c:76
+msgid "Empty directories"
+msgstr "Thư mục trống"
+
+#: fslint.c:77
+msgid "Search $PATH"
+msgstr "Tìm kiếm $PATH"
+
+#: fslint.c:82
+msgid "Non stripped binaries"
+msgstr "Tập tin nhị phân có bảng ký tự"
+
+#: fslint.c:87
+msgid "Redundant whitespace"
+msgstr "Dấu cách thừa"
+
+#: fslint.c:88
+msgid "Find"
+msgstr "Tìm"
+
+#: fslint.c:89
+msgid "Stop"
+msgstr "Ngừng"
+
+#: fslint.c:90
+msgid "selection"
+msgstr "điều chọn"
+
+#: fslint.c:91
+msgid "Toggle"
+msgstr "Bập bênh"
+
+#: fslint.c:92
+msgid "list to file"
+msgstr "ghi danh sách vào tập tin"
+
+#: fslint.c:93
+msgid "Save"
+msgstr "Lưu"
+
+#: fslint.c:94 fslint.c:98
+msgid "selected"
+msgstr "đã chọn"
+
+#: fslint.c:95
+msgid "Delete"
+msgstr "Xóa bỏ"
+
+#: fslint.c:96
+msgid "All (except selected) using hardlinks"
+msgstr "Tất cả (trừ đã chọn) bằng liên kết cứng"
+
+#: fslint.c:97
+msgid "Merge"
+msgstr "Trộn"
+
+#: fslint.c:99
+msgid "Clean"
+msgstr "Gột"
+
+#: fslint.c:101
+msgid "Select Path"
+msgstr "Chọn đường dẫn"
+
+#: ../fslint-gui:124
+#, python-format
+msgid "Usage: %s [OPTION] [PATHS]"
+msgstr "Cách sử dụng: %s [TÙY CHỌN] [ĐƯỜNG DẪN]"
+
+#: ../fslint-gui:125
+msgid "    --version       display version"
+msgstr "    --version       hiển thị phiên bản nào"
+
+#: ../fslint-gui:126
+msgid "    --help          display help"
+msgstr "    --help          hiển thị trợ giúp"
+
+#: ../fslint-gui:313
+#, python-format
+msgid "%s of %s is used leaving %sB available"
+msgstr ""
+
+#: ../fslint-gui:400
+msgid "Do you want to overwrite?\n"
+msgstr "Bạn có muốn ghi đè không?\n"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "Yes"
+msgstr "Có"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "No"
+msgstr "Không"
+
+#: ../fslint-gui:408
+msgid "You can't overwrite "
+msgstr "Bạn không ghi đè được"
+
+#: ../fslint-gui:445
+msgid "Invalid path ["
+msgstr ""
+
+#: ../fslint-gui:497
+msgid "No search paths specified"
+msgstr "Chưa ghi rõ đường dẫn tìm kiếm nào"
+
+#: ../fslint-gui:641
+msgid ""
+"Sorry, FSlint does not support this functionality on your system at present."
+msgstr ""
+
+#: ../fslint-gui:657
+msgid " packages, "
+msgstr ""
+
+#: ../fslint-gui:658
+#, python-format
+msgid "consuming %sB. "
+msgstr ""
+
+#: ../fslint-gui:659
+#, python-format
+msgid "Note %s."
+msgstr ""
+
+#: ../fslint-gui:670 ../fslint-gui:711 ../fslint-gui:748 ../fslint-gui:809
+msgid " files"
+msgstr " tập tin"
+
+#: ../fslint-gui:690
+msgid " unstripped binaries"
+msgstr " tập tin nhị phân có bảng ký tự"
+
+#: ../fslint-gui:700
+msgid " empty directories"
+msgstr " thư mục trống"
+
+#: ../fslint-gui:732
+msgid " links"
+msgstr " liên kết"
+
+#: ../fslint-gui:747 ../fslint-gui:855
+msgid " bytes wasted in "
+msgstr " byte bị phí trong "
+
+#: ../fslint-gui:791 ../fslint-gui:856
+msgid " files (in "
+msgstr " tập tin (trong "
+
+#: ../fslint-gui:792 ../fslint-gui:857
+msgid " groups)"
+msgstr " nhóm)"
+
+#: ../fslint-gui:842
+msgid "bytes wasted"
+msgstr "byte bị phí"
+
+#: ../fslint-gui:884
+msgid "None selected"
+msgstr "Chưa có điều nào được chọn"
+
+#: ../fslint-gui:890
+msgid " this item?\n"
+msgstr " mục không?\n"
+
+#: ../fslint-gui:892
+#, python-format
+msgid " these %d items?\n"
+msgstr " %d mục không?\n"
+
+#: ../fslint-gui:985
+msgid "User aborted"
+msgstr "Người dùng đã hủy bỏ việc"
+
+#: ../fslint-gui:1053
+msgid "Sorry, you must be root to delete system packages."
+msgstr ""
+
+#: ../fslint-gui:1057
+msgid "Are you sure you want to delete"
+msgstr "Bạn chắc muốn xóa bỏ những"
+
+#: ../fslint-gui:1070
+msgid "Calculating dependencies..."
+msgstr ""
+
+#: ../fslint-gui:1086
+#, python-format
+msgid "%d extra packages need to be deleted.\n"
+msgstr ""
+
+#: ../fslint-gui:1087
+msgid "Please review the updated selection."
+msgstr ""
+
+#: ../fslint-gui:1096
+msgid "Removing packages..."
+msgstr ""
+
+#: ../fslint-gui:1136
+msgid " items deleted"
+msgstr " mục bị xóa bỏ"
+
+#: ../fslint-gui:1212
+msgid "Are you sure you want to merge ALL files?\n"
+msgstr "Bạn chắc muốn phối TẤT CẢ tập tin với nhau không?\n"
+
+#: ../fslint-gui:1216
+msgid "(Ignoring those selected)\n"
+msgstr "(Trừ những điều được chọn)\n"
+
+#: ../fslint-gui:1247
+msgid "Are you sure you want to clean"
+msgstr "Bạn chắc muốn gột những"
+
+#: ../fslint-gui:1281
+msgid " items cleaned ("
+msgstr " mục được gột ("
+
+#: ../fslint-gui:1282
+msgid " bytes saved)"
+msgstr " byte được giữ)"

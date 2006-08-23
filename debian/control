@@ -1,0 +1,15 @@
+Source: fslint
+Section: admin
+Priority: optional
+Maintainer: Pádraig Brady <P@draigBrady.com>
+Build-Depends: debhelper (>= 4.0.0)
+Build-Depends-Indep: gettext
+Standards-Version: 3.7.2
+
+Package: fslint
+Architecture: all
+Depends: python (>= 2.0), python-gtk2, python-glade2
+Description: A toolkit to fix various problems with filesystems' data.
+ FSlint is a toolkit to clean filesystem lint, like duplicate files,
+ badly named paths, and broken symlinks for example.
+ It includes a GUI as well as a command line interface.

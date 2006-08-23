@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# finded - find empty directories
+# Copyright © 2000-2006 by Pádraig Brady <P@draigBrady.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details,
+# which is available at www.gnu.org
+
+script_dir=`dirname $0`                #directory of this script
+script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+
+. $script_dir/supprt/fslver
+
+Usage() {
+	ProgName=`basename "$0"`
+	echo "find Empty Directories.
+Usage: $ProgName [[-r] [-f] paths(s) ...]
+
+If no path(s) specified then the currrent directory is assumed."
+	exit
+}
+
+for arg
+do
+	case "$arg" in
+	-h|--help|-help)
+		Usage ;;
+	-v|--version)
+		Version ;;
+	*)
+		argsToPassOn="$argsToPassOn '$arg'" ;;
+	esac
+done
+
+. $script_dir/supprt/getfpf "$argsToPassOn"
+
+find "$@" -empty -type d -printf "$FPF\n"

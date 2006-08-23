@@ -1,0 +1,429 @@
+# Chinese (Simplified) Translation for fslint-2.14.
+# Copyright (C) 2006 Free Software Foundation, Inc.
+# Seann Liu <Seann.Liu@gmail.com>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fslint 2.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-15 19:36+0000\n"
+"PO-Revision-Date: 2006-01-16 08:25+0000\n"
+"Last-Translator: Seann Liu <Seann.Liu@gmail.com>\n"
+"Language-Team: Seann Liu <Seann.Liu@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: fslint.c:7
+msgid "FSlint"
+msgstr "FSlint"
+
+#: fslint.c:8 fslint.c:13
+msgid "Add"
+msgstr "相加"
+
+#: fslint.c:9 fslint.c:14
+msgid "Remove"
+msgstr "移除"
+
+#: fslint.c:10
+msgid "Directories to search"
+msgstr "文件夹搜索"
+
+#: fslint.c:11
+msgid "recurse?"
+msgstr "重复？"
+
+#: fslint.c:12
+msgid "Search path"
+msgstr "搜寻路径"
+
+#: fslint.c:15
+msgid "Paths to exclude"
+msgstr "路径排除"
+
+#: fslint.c:16
+msgid "Extra find parameters"
+msgstr "额外寻找参数"
+
+#: fslint.c:17
+msgid "extra find filtering parameters"
+msgstr "额外寻找过滤参数"
+
+#: fslint.c:18 fslint.c:100
+msgid "*"
+msgstr "*"
+
+#: fslint.c:19
+msgid "Advanced search parameters"
+msgstr "高级搜寻参数"
+
+#: fslint.c:20 fslint.c:24 fslint.c:30 fslint.c:42 fslint.c:50 fslint.c:62
+#: fslint.c:66 fslint.c:73 fslint.c:78 fslint.c:83
+msgid "Name"
+msgstr "名称"
+
+#: fslint.c:21 fslint.c:31 fslint.c:43 fslint.c:51 fslint.c:63 fslint.c:67
+#: fslint.c:74 fslint.c:79 fslint.c:84
+msgid "Directory"
+msgstr "文件夹"
+
+#: fslint.c:22 fslint.c:53 fslint.c:71 fslint.c:75 fslint.c:81 fslint.c:86
+msgid "Date"
+msgstr "日期"
+
+#: fslint.c:23
+msgid "Duplicates"
+msgstr "重复"
+
+#: fslint.c:25 fslint.c:44 fslint.c:52 fslint.c:70 fslint.c:80 fslint.c:85
+msgid "Size"
+msgstr "大小"
+
+#: fslint.c:26
+msgid "Size_for_Sort"
+msgstr ""
+
+#: fslint.c:27
+msgid "Installed packages"
+msgstr "已安装的包"
+
+#: fslint.c:28
+msgid "Sensitivity="
+msgstr "敏感性＝"
+
+#: fslint.c:29
+msgid "invalid UTF8 mode?"
+msgstr "非法的UTF8模式"
+
+#: fslint.c:32
+msgid "Bad names"
+msgstr "坏的名称"
+
+#: fslint.c:33
+msgid "Search ("
+msgstr "搜寻 （"
+
+#: fslint.c:34
+msgid "$PATH"
+msgstr "$路径"
+
+#: fslint.c:35
+msgid ") for"
+msgstr "）为了...目的"
+
+#: fslint.c:36 ../fslint-gui:756
+msgid "Conflicting files"
+msgstr "相抵触的文件"
+
+#: fslint.c:37 fslint.c:41 ../fslint-gui:754 ../fslint-gui:763
+msgid "Aliases"
+msgstr "化名"
+
+#: fslint.c:38 ../fslint-gui:769
+msgid "Case conflicts"
+msgstr "个案冲突"
+
+#: fslint.c:39 ../fslint-gui:765
+msgid "Same names"
+msgstr "相同的名称"
+
+#: fslint.c:40 ../fslint-gui:767
+msgid "Same names(ignore case)"
+msgstr "相同的名称（忽略个案）"
+
+#: fslint.c:45
+msgid "Name clashes"
+msgstr "名称冲突"
+
+#: fslint.c:46
+msgid "More restrictive search for core files"
+msgstr "进一步限定搜索核心文件"
+
+#: fslint.c:47
+msgid "core file mode?"
+msgstr "核心文件模式？"
+
+#: fslint.c:48
+msgid "days"
+msgstr "天数"
+
+#: fslint.c:49
+msgid "minimum age"
+msgstr "最小年龄"
+
+#: fslint.c:54
+msgid "Temp files"
+msgstr "临时文件"
+
+#: fslint.c:55
+msgid "Dangling"
+msgstr "悬挂"
+
+#: fslint.c:56
+msgid "Absolute links to paths within or below the link's directory"
+msgstr "完全链接到链接的文件夹内或下的路径"
+
+#: fslint.c:57
+msgid "Suspect"
+msgstr "怀疑对象"
+
+#: fslint.c:58
+msgid "Relative"
+msgstr "有关的"
+
+#: fslint.c:59
+msgid "Absolute"
+msgstr "完全的"
+
+#: fslint.c:60
+msgid "/././. ///// /../ etc."
+msgstr "/././. ///// /../ 等等"
+
+#: fslint.c:61
+msgid "Redundant naming"
+msgstr "多余的命名"
+
+#: fslint.c:64
+msgid "Target"
+msgstr "标靶"
+
+#: fslint.c:65
+msgid "Bad symlinks"
+msgstr "坏的链接"
+
+#: fslint.c:68
+msgid "UID"
+msgstr "UID"
+
+#: fslint.c:69
+msgid "GID"
+msgstr "GID"
+
+#: fslint.c:72
+msgid "Bad IDs"
+msgstr "坏的IDs"
+
+#: fslint.c:76
+msgid "Empty directories"
+msgstr "空的文件夹"
+
+#: fslint.c:77
+msgid "Search $PATH"
+msgstr "搜寻 $路径"
+
+#: fslint.c:82
+msgid "Non stripped binaries"
+msgstr "没有剥离的二进制数字"
+
+#: fslint.c:87
+msgid "Redundant whitespace"
+msgstr "多余的空白"
+
+#: fslint.c:88
+msgid "Find"
+msgstr "寻找"
+
+#: fslint.c:89
+msgid "Stop"
+msgstr "停止"
+
+#: fslint.c:90
+msgid "selection"
+msgstr "选择"
+
+#: fslint.c:91
+msgid "Toggle"
+msgstr "开关"
+
+#: fslint.c:92
+msgid "list to file"
+msgstr "文件列表"
+
+#: fslint.c:93
+msgid "Save"
+msgstr "保存"
+
+#: fslint.c:94 fslint.c:98
+msgid "selected"
+msgstr "选定的"
+
+#: fslint.c:95
+msgid "Delete"
+msgstr "删除"
+
+#: fslint.c:96
+msgid "All (except selected) using hardlinks"
+msgstr "所有的硬链接（除去选定的）"
+
+#: fslint.c:97
+msgid "Merge"
+msgstr "混合"
+
+#: fslint.c:99
+msgid "Clean"
+msgstr "清除"
+
+#: fslint.c:101
+msgid "Select Path"
+msgstr "选择路径"
+
+#: ../fslint-gui:124
+#, python-format
+msgid "Usage: %s [OPTION] [PATHS]"
+msgstr "使用： %s 【选项】 【路径】"
+
+#: ../fslint-gui:125
+msgid "    --version       display version"
+msgstr "   --版本            显示版本"
+
+#: ../fslint-gui:126
+msgid "    --help          display help"
+msgstr "   --帮助            显示帮助"
+
+#: ../fslint-gui:313
+#, python-format
+msgid "%s of %s is used leaving %sB available"
+msgstr ""
+
+#: ../fslint-gui:400
+msgid "Do you want to overwrite?\n"
+msgstr "覆盖掉原文件？\n"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "Yes"
+msgstr "是"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "No"
+msgstr "否"
+
+#: ../fslint-gui:408
+msgid "You can't overwrite "
+msgstr "不可已覆盖"
+
+#: ../fslint-gui:445
+msgid "Invalid path ["
+msgstr "非法的路径 【"
+
+#: ../fslint-gui:497
+msgid "No search paths specified"
+msgstr "没有指明搜寻路径"
+
+#: ../fslint-gui:641
+#, fuzzy
+msgid ""
+"Sorry, FSlint does not support this functionality on your system at present."
+msgstr "对不起，FSlint在您的系统上现在不支持这项功能。"
+
+#: ../fslint-gui:657
+msgid " packages, "
+msgstr "包"
+
+#: ../fslint-gui:658
+#, fuzzy, python-format
+msgid "consuming %sB. "
+msgstr "消耗 %sB"
+
+#: ../fslint-gui:659
+#, python-format
+msgid "Note %s."
+msgstr ""
+
+#: ../fslint-gui:670 ../fslint-gui:711 ../fslint-gui:748 ../fslint-gui:809
+msgid " files"
+msgstr "文件"
+
+#: ../fslint-gui:690
+msgid " unstripped binaries"
+msgstr "没剥离的二进制数字"
+
+#: ../fslint-gui:700
+msgid " empty directories"
+msgstr "空文件夹"
+
+#: ../fslint-gui:732
+msgid " links"
+msgstr "链接"
+
+#: ../fslint-gui:747 ../fslint-gui:855
+msgid " bytes wasted in "
+msgstr "字节浪费在"
+
+#: ../fslint-gui:791 ../fslint-gui:856
+msgid " files (in "
+msgstr "个文件中 （在"
+
+#: ../fslint-gui:792 ../fslint-gui:857
+msgid " groups)"
+msgstr "组中）"
+
+#: ../fslint-gui:842
+msgid "bytes wasted"
+msgstr "浪费的字节"
+
+#: ../fslint-gui:884
+msgid "None selected"
+msgstr "没选中的"
+
+#: ../fslint-gui:890
+msgid " this item?\n"
+msgstr "这个项目？\n"
+
+#: ../fslint-gui:892
+#, python-format
+msgid " these %d items?\n"
+msgstr "这些 %d 项目？\n"
+
+#: ../fslint-gui:985
+msgid "User aborted"
+msgstr "用户取消"
+
+#: ../fslint-gui:1053
+msgid "Sorry, you must be root to delete system packages."
+msgstr ""
+
+#: ../fslint-gui:1057
+msgid "Are you sure you want to delete"
+msgstr "确定要删除吗？"
+
+#: ../fslint-gui:1070
+msgid "Calculating dependencies..."
+msgstr ""
+
+#: ../fslint-gui:1086
+#, python-format
+msgid "%d extra packages need to be deleted.\n"
+msgstr ""
+
+#: ../fslint-gui:1087
+msgid "Please review the updated selection."
+msgstr ""
+
+#: ../fslint-gui:1096
+msgid "Removing packages..."
+msgstr ""
+
+#: ../fslint-gui:1136
+msgid " items deleted"
+msgstr "删除的项目"
+
+#: ../fslint-gui:1212
+msgid "Are you sure you want to merge ALL files?\n"
+msgstr "确定要混合全部文件？\n"
+
+#: ../fslint-gui:1216
+msgid "(Ignoring those selected)\n"
+msgstr "（忽略被选中的)\n"
+
+#: ../fslint-gui:1247
+msgid "Are you sure you want to clean"
+msgstr "确定要清理？"
+
+#: ../fslint-gui:1281
+msgid " items cleaned ("
+msgstr "清理的项目"
+
+#: ../fslint-gui:1282
+msgid " bytes saved)"
+msgstr "保存的字节"

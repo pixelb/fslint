@@ -1,0 +1,433 @@
+# Swedish translation of `fslint'.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the `fslint' package.
+# Rikard Johnels <rikjoh@norweb.se>, 2005
+# Daniel Nylander <po@danielnylander.se>, 2005
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fslint 2.03\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-15 19:36+0000\n"
+"PO-Revision-Date: 2005-12-25 09:14+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: fslint.c:7
+msgid "FSlint"
+msgstr "FSlint"
+
+#: fslint.c:8 fslint.c:13
+msgid "Add"
+msgstr "Lägg till"
+
+#: fslint.c:9 fslint.c:14
+msgid "Remove"
+msgstr "Ta bort"
+
+#: fslint.c:10
+msgid "Directories to search"
+msgstr "Kataloger att söka i"
+
+#: fslint.c:11
+msgid "recurse?"
+msgstr "rekursiv?"
+
+# Borde denna vara "Sök i sökväg" ?
+#: fslint.c:12
+msgid "Search path"
+msgstr "Sökväg"
+
+#: fslint.c:15
+msgid "Paths to exclude"
+msgstr "Sökvägar att exkludera"
+
+#: fslint.c:16
+msgid "Extra find parameters"
+msgstr "Extra sökparametrar"
+
+#: fslint.c:17
+msgid "extra find filtering parameters"
+msgstr "extra sökparametrar för filtrering"
+
+#: fslint.c:18 fslint.c:100
+msgid "*"
+msgstr "*"
+
+#: fslint.c:19
+msgid "Advanced search parameters"
+msgstr "Avancerade sökparametrar"
+
+#: fslint.c:20 fslint.c:24 fslint.c:30 fslint.c:42 fslint.c:50 fslint.c:62
+#: fslint.c:66 fslint.c:73 fslint.c:78 fslint.c:83
+msgid "Name"
+msgstr "Namn"
+
+#: fslint.c:21 fslint.c:31 fslint.c:43 fslint.c:51 fslint.c:63 fslint.c:67
+#: fslint.c:74 fslint.c:79 fslint.c:84
+msgid "Directory"
+msgstr "Katalog"
+
+#: fslint.c:22 fslint.c:53 fslint.c:71 fslint.c:75 fslint.c:81 fslint.c:86
+msgid "Date"
+msgstr "Datum"
+
+#: fslint.c:23
+msgid "Duplicates"
+msgstr "Dubbletter"
+
+#: fslint.c:25 fslint.c:44 fslint.c:52 fslint.c:70 fslint.c:80 fslint.c:85
+msgid "Size"
+msgstr "Storlek"
+
+#: fslint.c:26
+msgid "Size_for_Sort"
+msgstr ""
+
+#: fslint.c:27
+msgid "Installed packages"
+msgstr ""
+
+#: fslint.c:28
+msgid "Sensitivity="
+msgstr "Sensitivitet="
+
+#: fslint.c:29
+msgid "invalid UTF8 mode?"
+msgstr ""
+
+#: fslint.c:32
+msgid "Bad names"
+msgstr "Felaktiga namn"
+
+#: fslint.c:33
+msgid "Search ("
+msgstr "Sök ("
+
+#: fslint.c:34
+msgid "$PATH"
+msgstr "$PATH"
+
+#: fslint.c:35
+msgid ") for"
+msgstr ") för"
+
+#: fslint.c:36 ../fslint-gui:756
+msgid "Conflicting files"
+msgstr "Filer i konflikt"
+
+#: fslint.c:37 fslint.c:41 ../fslint-gui:754 ../fslint-gui:763
+msgid "Aliases"
+msgstr "Alias"
+
+# Finns bättre ord
+#: fslint.c:38 ../fslint-gui:769
+msgid "Case conflicts"
+msgstr "Konflikt i gemener/versaler"
+
+#: fslint.c:39 ../fslint-gui:765
+msgid "Same names"
+msgstr "Samma namn"
+
+#: fslint.c:40 ../fslint-gui:767
+msgid "Same names(ignore case)"
+msgstr "Samma namn(ignorera versal/gemen)"
+
+#: fslint.c:45
+msgid "Name clashes"
+msgstr "Namnkrock"
+
+#: fslint.c:46
+msgid "More restrictive search for core files"
+msgstr "Mer restriktiv sökning för kärnfiler"
+
+#: fslint.c:47
+msgid "core file mode?"
+msgstr "kärnfilsläge?"
+
+#: fslint.c:48
+msgid "days"
+msgstr "dagar"
+
+#: fslint.c:49
+msgid "minimum age"
+msgstr "minimum ålder"
+
+#: fslint.c:54
+msgid "Temp files"
+msgstr "Temporära filer"
+
+#: fslint.c:55
+msgid "Dangling"
+msgstr "Hängande"
+
+#: fslint.c:56
+msgid "Absolute links to paths within or below the link's directory"
+msgstr "Absoluta länkar till sökvägar i eller under länkens katalog"
+
+#: fslint.c:57
+msgid "Suspect"
+msgstr "Misstänkt"
+
+#: fslint.c:58
+msgid "Relative"
+msgstr "Relativ"
+
+#: fslint.c:59
+msgid "Absolute"
+msgstr "Absolut"
+
+#: fslint.c:60
+msgid "/././. ///// /../ etc."
+msgstr "/././. ///// /../ etc."
+
+#: fslint.c:61
+msgid "Redundant naming"
+msgstr "Redundant namngivning"
+
+#: fslint.c:64
+msgid "Target"
+msgstr "Mål"
+
+#: fslint.c:65
+msgid "Bad symlinks"
+msgstr "Felaktiga symboliska länkar"
+
+#: fslint.c:68
+msgid "UID"
+msgstr "UID"
+
+#: fslint.c:69
+msgid "GID"
+msgstr "GID"
+
+#: fslint.c:72
+msgid "Bad IDs"
+msgstr "Felatiga IDs"
+
+#: fslint.c:76
+msgid "Empty directories"
+msgstr "Tomma kataloger"
+
+#: fslint.c:77
+msgid "Search $PATH"
+msgstr "Sök $PATH"
+
+#: fslint.c:82
+msgid "Non stripped binaries"
+msgstr "Ej strippade binärer"
+
+#: fslint.c:87
+msgid "Redundant whitespace"
+msgstr "Redundanta blanksteg"
+
+#: fslint.c:88
+msgid "Find"
+msgstr "Sök"
+
+#: fslint.c:89
+msgid "Stop"
+msgstr "Stopp"
+
+#: fslint.c:90
+msgid "selection"
+msgstr "val"
+
+#: fslint.c:91
+msgid "Toggle"
+msgstr "Växla"
+
+#: fslint.c:92
+msgid "list to file"
+msgstr "lista till fil"
+
+#: fslint.c:93
+msgid "Save"
+msgstr "Spara"
+
+#: fslint.c:94 fslint.c:98
+msgid "selected"
+msgstr "vald"
+
+#: fslint.c:95
+msgid "Delete"
+msgstr "Ta bort"
+
+#: fslint.c:96
+msgid "All (except selected) using hardlinks"
+msgstr "Alla (förutom valda) använder hårda länkar"
+
+#: fslint.c:97
+msgid "Merge"
+msgstr "Sammanfoga"
+
+#: fslint.c:99
+msgid "Clean"
+msgstr "Rensa"
+
+#: fslint.c:101
+msgid "Select Path"
+msgstr "Välj sökväg"
+
+#: ../fslint-gui:124
+#, python-format
+msgid "Usage: %s [OPTION] [PATHS]"
+msgstr "Användning: %s [FLAGGA] [SÖKVÄGAR]"
+
+#: ../fslint-gui:125
+msgid "    --version       display version"
+msgstr "    --version       visa version"
+
+#: ../fslint-gui:126
+msgid "    --help          display help"
+msgstr "    --help          visa hjälp"
+
+#: ../fslint-gui:313
+#, python-format
+msgid "%s of %s is used leaving %sB available"
+msgstr ""
+
+#: ../fslint-gui:400
+msgid "Do you want to overwrite?\n"
+msgstr "Vill du skriva över?\n"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "Yes"
+msgstr "Ja"
+
+#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+msgid "No"
+msgstr "Nej"
+
+#: ../fslint-gui:408
+msgid "You can't overwrite "
+msgstr "Du kan inte skriva över "
+
+#: ../fslint-gui:445
+msgid "Invalid path ["
+msgstr "Felaktig sökväg ["
+
+#: ../fslint-gui:497
+msgid "No search paths specified"
+msgstr "Inga sökvägar specifierade"
+
+#: ../fslint-gui:641
+msgid ""
+"Sorry, FSlint does not support this functionality on your system at present."
+msgstr ""
+
+#: ../fslint-gui:657
+msgid " packages, "
+msgstr ""
+
+#: ../fslint-gui:658
+#, python-format
+msgid "consuming %sB. "
+msgstr ""
+
+#: ../fslint-gui:659
+#, python-format
+msgid "Note %s."
+msgstr ""
+
+#: ../fslint-gui:670 ../fslint-gui:711 ../fslint-gui:748 ../fslint-gui:809
+msgid " files"
+msgstr " filer"
+
+# Det finns säkert en bättre översättning för "strip"
+#: ../fslint-gui:690
+msgid " unstripped binaries"
+msgstr " ostrippade binärer"
+
+#: ../fslint-gui:700
+msgid " empty directories"
+msgstr " tomma kataloger"
+
+#: ../fslint-gui:732
+msgid " links"
+msgstr " länkar"
+
+#: ../fslint-gui:747 ../fslint-gui:855
+msgid " bytes wasted in "
+msgstr " byte slösade i "
+
+#: ../fslint-gui:791 ../fslint-gui:856
+msgid " files (in "
+msgstr " filer (i "
+
+#: ../fslint-gui:792 ../fslint-gui:857
+msgid " groups)"
+msgstr " grupper)"
+
+#: ../fslint-gui:842
+msgid "bytes wasted"
+msgstr "byte slösade"
+
+#: ../fslint-gui:884
+msgid "None selected"
+msgstr "Ingen vald"
+
+#: ../fslint-gui:890
+msgid " this item?\n"
+msgstr " denna post\n"
+
+#: ../fslint-gui:892
+#, python-format
+msgid " these %d items?\n"
+msgstr " dessa %d poster\n"
+
+#: ../fslint-gui:985
+msgid "User aborted"
+msgstr "Användaren avbröt"
+
+#: ../fslint-gui:1053
+msgid "Sorry, you must be root to delete system packages."
+msgstr ""
+
+#: ../fslint-gui:1057
+msgid "Are you sure you want to delete"
+msgstr "Är du säker på att du vill radera"
+
+#: ../fslint-gui:1070
+msgid "Calculating dependencies..."
+msgstr ""
+
+#: ../fslint-gui:1086
+#, python-format
+msgid "%d extra packages need to be deleted.\n"
+msgstr ""
+
+#: ../fslint-gui:1087
+msgid "Please review the updated selection."
+msgstr ""
+
+#: ../fslint-gui:1096
+msgid "Removing packages..."
+msgstr ""
+
+#: ../fslint-gui:1136
+msgid " items deleted"
+msgstr " poster borttagna"
+
+#: ../fslint-gui:1212
+msgid "Are you sure you want to merge ALL files?\n"
+msgstr "Är du säker att du vill sammanfoga ALLA filer?\n"
+
+#: ../fslint-gui:1216
+msgid "(Ignoring those selected)\n"
+msgstr "(Ignorerar de valda)\n"
+
+#: ../fslint-gui:1247
+msgid "Are you sure you want to clean"
+msgstr "Är du säker på att du vill rensa"
+
+#: ../fslint-gui:1281
+msgid " items cleaned ("
+msgstr " poster rensade ("
+
+#: ../fslint-gui:1282
+msgid " bytes saved)"
+msgstr " byte sparades)"

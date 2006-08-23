@@ -1,0 +1,40 @@
+#!/bin/bash
+#Hmm noticed that ls V 4.01 has a -Sr option that does the same
+#as this (directories are listed though). It's kinda bad actually
+#since ls should just be listing files and other utils should
+#sort and format etc. Hmm.. Also ls still groups files in each directory
+#and doesn't group files together.
+
+#Note the following simpler command is not 100% correct as
+#you need ls on end of pipe to do --color=auto appropriately.
+#(BTW shouldn't --color default to --color=auto rather than --color=always ?)
+#	ls --color -l -U -A ${*-.} | grep -e "^d" -v | sort +4n
+
+#Note instead of doing `-type f -or -type l` in the find command
+#below one could have done:
+#{
+# find ${*-.} -type l -maxdepth 1 -printf "%s $findPathFormat\n"
+# find ${*-.} -type f -maxdepth 1 -printf "%s $findPathFormat\n"
+#} |
+#This obviously more inefficient in this case but the construct
+#could be very useful in certain situations.
+#Note I'm checking for symbolic links also as these are "real files"
+#and so have space allocated. (Note on ext2 if they're less than 60 bytes
+#they don't use space. Reiser does this for all (parts of) files less
+#than 1 block).
+
+script_dir=`dirname $0`
+
+if [ -d "$1" ]; then
+    dir="$1"
+    cd "$dir"
+else
+    dir="."
+fi
+
+find $dir -maxdepth 1 \( -type l -or -type f \) -printf "%s\t%P\n" |
+sort -k1,1n |
+cut -s -f2- |
+tr '\n' '\0' |
+xargs -r0 ls -lU --color=auto --
+
