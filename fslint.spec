@@ -1,13 +1,17 @@
 %define mandriva %([ -f /etc/mandrake-release ] && echo 1 || echo 0)
+%define suse %([ -f /etc/SuSE-release ] && echo 1 || echo 0)
 
 Name:           fslint
 Version:        2.17
 %if %{mandriva}
 Release:        1.mdk
-%else
+%endif
+%if %{suse}
+Release:        1.suse
+%endif
+%if !%{mandriva} && !%{suse}
 Release:        1
 %endif
-Epoch:          0
 Summary:        FSlint - a utility to find and clean "lint" on a filesystem
 
 Group:          Applications/File
@@ -19,10 +23,15 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  gettext, desktop-file-utils
 
+Requires:       python >= 2.0, cpio
 %if %{mandriva}
-Requires:       python >= 0:2.0, pygtk2.0, pygtk2.0-libglade, cpio
-%else
-Requires:       python >= 0:2.0, pygtk2, pygtk2-libglade, cpio
+Requires:       pygtk2.0, pygtk2.0-libglade
+%endif
+%if %{suse}
+Requires:       python-gtk >= 2.0
+%endif
+%if !%{mandriva} && !%{suse}
+Requires:       pygtk2, pygtk2-libglade
 %endif
 
 %description
@@ -90,8 +99,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 01 2006 Pádraig Brady
+- Support SuSE
+- Removed 0 Epoch to align with fedora policies
+
 * Thu Jun 22 2006 Pádraig Brady
 - Added man pages for fslint and fslint-gui
+- Support Mandriva
 - Other minor cleanups to align with debian package
   (suggested by lintian)
 

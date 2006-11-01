@@ -20,12 +20,12 @@ A. It's python so nothing needs to be built on the target.
    to build a deb just cp -a the working directory to fslint-x.xx
    and then: cd fslint-x.xx && dpkg-buildpackage -rfakeroot -tc
 
-Q. The released RPM doesn't install on mandrake or mandriva?
-A. Mandrake in their wisdom decided to use different pygtk package
-   names to everyone else. Now there is support for automatically
-   building the correct package on the mandriva platform, I just
-   don't release the mandriva specific RPM. To build the mandriva
-   specific RPM just get the release tar.gz and as in the previous FAQ:
+Q. The released RPM doesn't install on mandriva or SuSE?
+A. Unfortunately Mandriva and SuSE at least use different
+   pygtk package names to fedora/redhat.
+   FSlint does support automatically building the correct package
+   on the mandriva and suse platforms. To build a package for these
+   distros, just get the release tar.gz and as in the previous FAQ:
        sudo rpmbuild -ta fslint-x.xx.tar.gz
 
 Q. In "Advanced Search Parameters"->"Paths to exclude",
