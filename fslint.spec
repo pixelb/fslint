@@ -1,7 +1,7 @@
 %define mandriva %([ -f /etc/mandrake-release ] && echo 1 || echo 0)
 
 Name:           fslint
-Version:        2.16
+Version:        2.17
 %if %{mandriva}
 Release:        1.mdk
 %else
