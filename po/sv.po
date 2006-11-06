@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: fslint 2.03\n"
+"Project-Id-Version: fslint 2.16\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-06 08:16+0000\n"
-"PO-Revision-Date: 2005-12-25 09:14+0100\n"
+"PO-Revision-Date: 2006-11-04 18:30+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Sökväg"
 
 #: ../fslint.glade:494
 msgid "Paths to exclude"
-msgstr "Sökvägar att exkludera"
+msgstr "Sökvägar att undanta"
 
 #: ../fslint.glade:529
 msgid "Extra find parameters"
@@ -86,15 +86,15 @@ msgstr "Storlek"
 
 #: ../fslint.glade:916
 msgid "Installed packages"
-msgstr ""
+msgstr "Installerade paket"
 
 #: ../fslint.glade:957
 msgid "Sensitivity="
-msgstr "Sensitivitet="
+msgstr "Känslighet="
 
 #: ../fslint.glade:1001
 msgid "invalid UTF8 mode?"
-msgstr ""
+msgstr "ogiltigt UTF8-läge?"
 
 #: ../fslint.glade:1107
 msgid "Bad names"
@@ -110,7 +110,7 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1187
 msgid ") for"
-msgstr ") för"
+msgstr ") efter"
 
 #: ../fslint.glade:1234 ../fslint-gui:774
 msgid "Conflicting files"
@@ -132,11 +132,11 @@ msgstr "Samma namn"
 
 #: ../fslint.glade:1297 ../fslint-gui:785
 msgid "Same names(ignore case)"
-msgstr "Samma namn(ignorera versal/gemen)"
+msgstr "Samma namn(ignorera skiftläge)"
 
 #: ../fslint.glade:1434
 msgid "Name clashes"
-msgstr "Namnkrock"
+msgstr "Namnkrockar"
 
 #: ../fslint.glade:1469
 msgid "More restrictive search for core files"
@@ -160,7 +160,7 @@ msgstr "Temporära filer"
 
 #: ../fslint.glade:1700
 msgid "Dangling"
-msgstr "Hängande"
+msgstr "Dinglande"
 
 #: ../fslint.glade:1718
 msgid "Absolute links to paths within or below the link's directory"
@@ -204,7 +204,7 @@ msgstr "GID"
 
 #: ../fslint.glade:2075
 msgid "Bad IDs"
-msgstr "Felatiga IDs"
+msgstr "Felaktiga id"
 
 #: ../fslint.glade:2182
 msgid "Empty directories"
@@ -220,7 +220,7 @@ msgstr "Ej strippade binärer"
 
 #: ../fslint.glade:2466
 msgid "Redundant whitespace"
-msgstr "Redundanta blanksteg"
+msgstr "Överflödigt blankutrymme"
 
 #: ../fslint.glade:2552
 msgid "Find"
@@ -286,7 +286,7 @@ msgstr "    --help          visa hjälp"
 #: ../fslint-gui:330
 #, python-format
 msgid "%s of %s is used leaving %sB available"
-msgstr ""
+msgstr "%s av %s används och %sB är tillgängligt"
 
 #: ../fslint-gui:417
 msgid "Do you want to overwrite?\n"
@@ -316,20 +316,22 @@ msgstr "Inga sökvägar specifierade"
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
+"Tyvärr, FSlint har för tillfället inte stöd för den här funktionaliteten på "
+"ditt system."
 
 #: ../fslint-gui:674
 msgid " packages, "
-msgstr ""
+msgstr " paket, "
 
 #: ../fslint-gui:675
 #, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "tar upp %sB. "
 
 #: ../fslint-gui:676
 #, python-format
 msgid "Note %s."
-msgstr ""
+msgstr "Notera %s."
 
 #: ../fslint-gui:687 ../fslint-gui:728 ../fslint-gui:766 ../fslint-gui:827
 msgid " files"
@@ -338,7 +340,7 @@ msgstr " filer"
 # Det finns säkert en bättre översättning för "strip"
 #: ../fslint-gui:707
 msgid " unstripped binaries"
-msgstr " ostrippade binärer"
+msgstr " ej strippade binärer"
 
 #: ../fslint-gui:717
 msgid " empty directories"
@@ -350,7 +352,7 @@ msgstr " länkar"
 
 #: ../fslint-gui:765 ../fslint-gui:872
 msgid " bytes wasted in "
-msgstr " byte slösade i "
+msgstr " byte bortslösade i "
 
 #: ../fslint-gui:809 ../fslint-gui:873
 msgid " files (in "
@@ -383,7 +385,7 @@ msgstr "Användaren avbröt"
 
 #: ../fslint-gui:1075
 msgid "Sorry, you must be root to delete system packages."
-msgstr ""
+msgstr "Tyvärr, du måste vara root för att ta bort systempaket."
 
 #: ../fslint-gui:1079
 msgid "Are you sure you want to delete"
@@ -391,20 +393,20 @@ msgstr "Är du säker på att du vill radera"
 
 #: ../fslint-gui:1092
 msgid "Calculating dependencies..."
-msgstr ""
+msgstr "Beräknar beroenden..."
 
 #: ../fslint-gui:1108
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr ""
+msgstr "%d extra paket behöver tas bort.\n"
 
 #: ../fslint-gui:1109
 msgid "Please review the updated selection."
-msgstr ""
+msgstr "Granska den uppdaterade markeringen."
 
 #: ../fslint-gui:1118
 msgid "Removing packages..."
-msgstr ""
+msgstr "Tar bort paket..."
 
 #: ../fslint-gui:1158
 msgid " items deleted"
