@@ -5,9 +5,9 @@ DOMAIN = fslint
 all: mo
 
 #create pot file
-$(DOMAIN).pot: fslint.c ../fslint-gui
-	xgettext -k_ -kN_ -d$(DOMAIN) fslint.c -o $(DOMAIN).pot
-	xgettext -k_ -kN_ -d$(DOMAIN) -Lpython ../fslint-gui -o $(DOMAIN).pot -j
+$(DOMAIN).pot: ../fslint.glade ../fslint-gui
+	xgettext          -d$(DOMAIN) -LGlade  ../fslint.glade -o $(DOMAIN).pot
+	xgettext -k_ -kN_ -d$(DOMAIN) -LPython ../fslint-gui   -o $(DOMAIN).pot -j
 
 #update all po fles
 update-po: $(DOMAIN).pot

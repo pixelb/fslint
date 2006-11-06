@@ -21,7 +21,7 @@ Source0:        http://www.pixelbeat.org/fslint/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  gettext, desktop-file-utils
+BuildRequires:  gettext >= 0.13, desktop-file-utils
 
 Requires:       python >= 2.0, cpio
 %if %{mandriva}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint 2.03\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-15 19:36+0000\n"
+"POT-Creation-Date: 2006-11-06 08:16+0000\n"
 "PO-Revision-Date: 2005-11-23 17:19+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <translation-team-ms@lists.sourceforge.net>\n"
@@ -15,424 +15,416 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fslint.c:7
+#: ../fslint.glade:9
 msgid "FSlint"
 msgstr "FSlint"
 
-#: fslint.c:8 fslint.c:13
+#: ../fslint.glade:110 ../fslint.glade:363
 msgid "Add"
 msgstr "Tambah"
 
-#: fslint.c:9 fslint.c:14
+#: ../fslint.glade:186 ../fslint.glade:439
 msgid "Remove"
 msgstr "Buang"
 
-#: fslint.c:10
+#: ../fslint.glade:233
 msgid "Directories to search"
 msgstr "Direktori untuk dicari"
 
-#: fslint.c:11
+#: ../fslint.glade:258
 msgid "recurse?"
 msgstr "ulang?"
 
-#: fslint.c:12
+#: ../fslint.glade:282
 msgid "Search path"
 msgstr "Laluan carian"
 
-#: fslint.c:15
+#: ../fslint.glade:494
 msgid "Paths to exclude"
 msgstr "Laluan untuk diabaikan"
 
-#: fslint.c:16
+#: ../fslint.glade:529
 msgid "Extra find parameters"
 msgstr "Cari parameter ekstra"
 
-#: fslint.c:17
+#: ../fslint.glade:554
 msgid "extra find filtering parameters"
 msgstr "cari parameter tapisan tambahan"
 
-#: fslint.c:18 fslint.c:100
-msgid "*"
-msgstr "*"
-
-#: fslint.c:19
+#: ../fslint.glade:587
 msgid "Advanced search parameters"
 msgstr "Parameter carian lanjutan"
 
-#: fslint.c:20 fslint.c:24 fslint.c:30 fslint.c:42 fslint.c:50 fslint.c:62
-#: fslint.c:66 fslint.c:73 fslint.c:78 fslint.c:83
+#: ../fslint.glade:671 ../fslint.glade:802 ../fslint.glade:1053
+#: ../fslint.glade:1361 ../fslint.glade:1572 ../fslint.glade:1825
+#: ../fslint.glade:1945 ../fslint.glade:2116 ../fslint.glade:2248
+#: ../fslint.glade:2381
 msgid "Name"
 msgstr "Nama"
 
-#: fslint.c:21 fslint.c:31 fslint.c:43 fslint.c:51 fslint.c:63 fslint.c:67
-#: fslint.c:74 fslint.c:79 fslint.c:84
+#: ../fslint.glade:690 ../fslint.glade:1072 ../fslint.glade:1380
+#: ../fslint.glade:1591 ../fslint.glade:1844 ../fslint.glade:1964
+#: ../fslint.glade:2135 ../fslint.glade:2267 ../fslint.glade:2400
 msgid "Directory"
 msgstr "Direktori"
 
-#: fslint.c:22 fslint.c:53 fslint.c:71 fslint.c:75 fslint.c:81 fslint.c:86
+#: ../fslint.glade:709 ../fslint.glade:1629 ../fslint.glade:2040
+#: ../fslint.glade:2154 ../fslint.glade:2305 ../fslint.glade:2438
 msgid "Date"
 msgstr "Tarikh"
 
-#: fslint.c:23
+#: ../fslint.glade:744
 msgid "Duplicates"
 msgstr "Salinan"
 
-#: fslint.c:25 fslint.c:44 fslint.c:52 fslint.c:70 fslint.c:80 fslint.c:85
+#: ../fslint.glade:821 ../fslint.glade:1399 ../fslint.glade:1610
+#: ../fslint.glade:2021 ../fslint.glade:2286 ../fslint.glade:2419
 msgid "Size"
 msgstr "Saiz"
 
-#: fslint.c:26
-msgid "Size_for_Sort"
-msgstr ""
-
-#: fslint.c:27
+#: ../fslint.glade:916
 msgid "Installed packages"
 msgstr ""
 
-#: fslint.c:28
+#: ../fslint.glade:957
 msgid "Sensitivity="
 msgstr "Kesensitifan="
 
-#: fslint.c:29
+#: ../fslint.glade:1001
 msgid "invalid UTF8 mode?"
 msgstr ""
 
-#: fslint.c:32
+#: ../fslint.glade:1107
 msgid "Bad names"
 msgstr "Nama buruk"
 
-#: fslint.c:33
+#: ../fslint.glade:1142
 msgid "Search ("
 msgstr "Cari ("
 
-#: fslint.c:34
+#: ../fslint.glade:1168
 msgid "$PATH"
 msgstr "$PATH"
 
-#: fslint.c:35
+#: ../fslint.glade:1187
 msgid ") for"
 msgstr ") untuk"
 
-#: fslint.c:36 ../fslint-gui:756
+#: ../fslint.glade:1234 ../fslint-gui:774
 msgid "Conflicting files"
 msgstr "Fail Konflik"
 
-#: fslint.c:37 fslint.c:41 ../fslint-gui:754 ../fslint-gui:763
+#: ../fslint.glade:1242 ../fslint.glade:1305 ../fslint-gui:772
+#: ../fslint-gui:781
 msgid "Aliases"
 msgstr "Alias"
 
-#: fslint.c:38 ../fslint-gui:769
+#: ../fslint.glade:1281 ../fslint-gui:787
 msgid "Case conflicts"
 msgstr "Konflik Huruf"
 
-#: fslint.c:39 ../fslint-gui:765
+#: ../fslint.glade:1289 ../fslint-gui:783
 msgid "Same names"
 msgstr "Nama sama"
 
-#: fslint.c:40 ../fslint-gui:767
+#: ../fslint.glade:1297 ../fslint-gui:785
 msgid "Same names(ignore case)"
 msgstr "Nama sama (abai huruf)"
 
-#: fslint.c:45
+#: ../fslint.glade:1434
 msgid "Name clashes"
 msgstr "Percanggahan nama"
 
-#: fslint.c:46
+#: ../fslint.glade:1469
 msgid "More restrictive search for core files"
 msgstr "Lebih carian terhad untuk fail teras"
 
-#: fslint.c:47
+#: ../fslint.glade:1471
 msgid "core file mode?"
 msgstr "mod fail teras?"
 
-#: fslint.c:48
+#: ../fslint.glade:1495
 msgid "days"
 msgstr "hari"
 
-#: fslint.c:49
+#: ../fslint.glade:1515
 msgid "minimum age"
 msgstr "usia minimum"
 
-#: fslint.c:54
+#: ../fslint.glade:1664
 msgid "Temp files"
 msgstr "Fail sementara"
 
-#: fslint.c:55
+#: ../fslint.glade:1700
 msgid "Dangling"
 msgstr "Tergantung"
 
-#: fslint.c:56
+#: ../fslint.glade:1718
 msgid "Absolute links to paths within or below the link's directory"
 msgstr "Pautan mutlak ke laluan didalam atau dibawah direktori pautan"
 
-#: fslint.c:57
+#: ../fslint.glade:1720
 msgid "Suspect"
 msgstr "Syak"
 
-#: fslint.c:58
+#: ../fslint.glade:1740
 msgid "Relative"
 msgstr "Relatif"
 
-#: fslint.c:59
+#: ../fslint.glade:1760
 msgid "Absolute"
 msgstr "Multak"
 
-#: fslint.c:60
+#: ../fslint.glade:1779
 msgid "/././. ///// /../ etc."
 msgstr "/././. ///// /../ dsb."
 
-#: fslint.c:61
+#: ../fslint.glade:1781
 msgid "Redundant naming"
 msgstr "Penamaan lewah"
 
-#: fslint.c:64
+#: ../fslint.glade:1863
 msgid "Target"
 msgstr "Sasaran"
 
-#: fslint.c:65
+#: ../fslint.glade:1898
 msgid "Bad symlinks"
 msgstr "Pautan buruk"
 
-#: fslint.c:68
+#: ../fslint.glade:1983
 msgid "UID"
 msgstr "UID"
 
-#: fslint.c:69
+#: ../fslint.glade:2002
 msgid "GID"
 msgstr "GID"
 
-#: fslint.c:72
+#: ../fslint.glade:2075
 msgid "Bad IDs"
 msgstr "ID buruk"
 
-#: fslint.c:76
+#: ../fslint.glade:2182
 msgid "Empty directories"
 msgstr "Direktori kosong"
 
-#: fslint.c:77
+#: ../fslint.glade:2212
 msgid "Search $PATH"
 msgstr "Cari $PATH"
 
-#: fslint.c:82
+#: ../fslint.glade:2340
 msgid "Non stripped binaries"
 msgstr "Binari tidak dipadatkan"
 
-#: fslint.c:87
+#: ../fslint.glade:2466
 msgid "Redundant whitespace"
 msgstr "Ruangputih lewah"
 
-#: fslint.c:88
+#: ../fslint.glade:2552
 msgid "Find"
 msgstr "Cari"
 
-#: fslint.c:89
+#: ../fslint.glade:2627
 msgid "Stop"
 msgstr "Henti"
 
-#: fslint.c:90
+#: ../fslint.glade:2671
 msgid "selection"
 msgstr "pemilihan"
 
-#: fslint.c:91
+#: ../fslint.glade:2716
 msgid "Toggle"
 msgstr "Togol"
 
-#: fslint.c:92
+#: ../fslint.glade:2747
 msgid "list to file"
 msgstr "senarai ke fail"
 
-#: fslint.c:93
+#: ../fslint.glade:2792
 msgid "Save"
 msgstr "Simpan"
 
-#: fslint.c:94 fslint.c:98
+#: ../fslint.glade:2823 ../fslint.glade:2987
 msgid "selected"
 msgstr "dipilih"
 
-#: fslint.c:95
+#: ../fslint.glade:2868
 msgid "Delete"
 msgstr "Padam"
 
-#: fslint.c:96
+#: ../fslint.glade:2912
 msgid "All (except selected) using hardlinks"
 msgstr "Semua (kecuali dipilih0 menggunakan pautan kekal"
 
-#: fslint.c:97
+#: ../fslint.glade:2957
 msgid "Merge"
 msgstr "Gabung"
 
-#: fslint.c:99
+#: ../fslint.glade:3032
 msgid "Clean"
 msgstr "Bersih"
 
-#: fslint.c:101
+#: ../fslint.glade:3164
 msgid "Select Path"
 msgstr "Pilih Laluan"
 
-#: ../fslint-gui:124
+#: ../fslint-gui:141
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Penggunaan: %s [PILIHAN] [LALUAN]"
 
-#: ../fslint-gui:125
+#: ../fslint-gui:142
 msgid "    --version       display version"
 msgstr "    --version       papar versi"
 
-#: ../fslint-gui:126
+#: ../fslint-gui:143
 msgid "    --help          display help"
 msgstr "    --help          papar bantuan"
 
-#: ../fslint-gui:313
+#: ../fslint-gui:330
 #, python-format
 msgid "%s of %s is used leaving %sB available"
 msgstr ""
 
-#: ../fslint-gui:400
+#: ../fslint-gui:417
 msgid "Do you want to overwrite?\n"
 msgstr "Adakah anda mahu tindih?\n"
 
-#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+#: ../fslint-gui:418 ../fslint-gui:910 ../fslint-gui:1242
 msgid "Yes"
 msgstr "Ya"
 
-#: ../fslint-gui:401 ../fslint-gui:893 ../fslint-gui:1220
+#: ../fslint-gui:418 ../fslint-gui:910 ../fslint-gui:1242
 msgid "No"
 msgstr "Tidak"
 
-#: ../fslint-gui:408
+#: ../fslint-gui:425
 msgid "You can't overwrite "
 msgstr "Anda tidak menindih "
 
-#: ../fslint-gui:445
+#: ../fslint-gui:462
 msgid "Invalid path ["
 msgstr ""
 
-#: ../fslint-gui:497
+#: ../fslint-gui:514
 msgid "No search paths specified"
 msgstr "Jangan cari laluan dinyatakan"
 
-#: ../fslint-gui:641
+#: ../fslint-gui:658
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
 
-#: ../fslint-gui:657
+#: ../fslint-gui:674
 msgid " packages, "
 msgstr ""
 
-#: ../fslint-gui:658
+#: ../fslint-gui:675
 #, python-format
 msgid "consuming %sB. "
 msgstr ""
 
-#: ../fslint-gui:659
+#: ../fslint-gui:676
 #, python-format
 msgid "Note %s."
 msgstr ""
 
-#: ../fslint-gui:670 ../fslint-gui:711 ../fslint-gui:748 ../fslint-gui:809
+#: ../fslint-gui:687 ../fslint-gui:728 ../fslint-gui:766 ../fslint-gui:827
 msgid " files"
 msgstr " fail"
 
-#: ../fslint-gui:690
+#: ../fslint-gui:707
 msgid " unstripped binaries"
 msgstr " binari tidak mampat"
 
-#: ../fslint-gui:700
+#: ../fslint-gui:717
 msgid " empty directories"
 msgstr " direktori kosong"
 
-#: ../fslint-gui:732
+#: ../fslint-gui:749
 msgid " links"
 msgstr " pautan"
 
-#: ../fslint-gui:747 ../fslint-gui:855
+#: ../fslint-gui:765 ../fslint-gui:872
 msgid " bytes wasted in "
 msgstr " byte terbuang dalam "
 
-#: ../fslint-gui:791 ../fslint-gui:856
+#: ../fslint-gui:809 ../fslint-gui:873
 msgid " files (in "
 msgstr " fail (dalam "
 
-#: ../fslint-gui:792 ../fslint-gui:857
+#: ../fslint-gui:810 ../fslint-gui:874
 msgid " groups)"
 msgstr " kumpulan)"
 
-#: ../fslint-gui:842
+#: ../fslint-gui:865
 msgid "bytes wasted"
 msgstr "byte terbuang"
 
-#: ../fslint-gui:884
+#: ../fslint-gui:901
 msgid "None selected"
 msgstr "Tiada satu dipilih"
 
-#: ../fslint-gui:890
+#: ../fslint-gui:907
 #, fuzzy
 msgid " this item?\n"
 msgstr " item?\n"
 
-#: ../fslint-gui:892
+#: ../fslint-gui:909
 #, python-format
 msgid " these %d items?\n"
-msgstr ""
+msgstr " %d item ini?\n"
 
-#: ../fslint-gui:985
+#: ../fslint-gui:1007
 msgid "User aborted"
 msgstr "Pengguna dibatalkan"
 
-#: ../fslint-gui:1053
+#: ../fslint-gui:1075
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
 
-#: ../fslint-gui:1057
+#: ../fslint-gui:1079
 #, fuzzy
 msgid "Are you sure you want to delete"
-msgstr "Anda pasti anda mahu membuang %d ini"
+msgstr "Anda pasti anda mahu membuang"
 
-#: ../fslint-gui:1070
+#: ../fslint-gui:1092
 msgid "Calculating dependencies..."
 msgstr ""
 
-#: ../fslint-gui:1086
+#: ../fslint-gui:1108
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr ""
 
-#: ../fslint-gui:1087
+#: ../fslint-gui:1109
 msgid "Please review the updated selection."
 msgstr ""
 
-#: ../fslint-gui:1096
+#: ../fslint-gui:1118
 msgid "Removing packages..."
 msgstr ""
 
-#: ../fslint-gui:1136
+#: ../fslint-gui:1158
 msgid " items deleted"
 msgstr " item dipadam"
 
-#: ../fslint-gui:1212
+#: ../fslint-gui:1234
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Anda pasti anda mahu menggabungkan SEMUA fail?\n"
 
-#: ../fslint-gui:1216
+#: ../fslint-gui:1238
 msgid "(Ignoring those selected)\n"
 msgstr "(Mengabaikan yang dipilih)\n"
 
-#: ../fslint-gui:1247
+#: ../fslint-gui:1269
 #, fuzzy
 msgid "Are you sure you want to clean"
 msgstr "Anda pasti anda mahu membersihkan ini"
 
-#: ../fslint-gui:1281
+#: ../fslint-gui:1303
 msgid " items cleaned ("
 msgstr " item dibersihkan ("
 
-#: ../fslint-gui:1282
+#: ../fslint-gui:1304
 msgid " bytes saved)"
 msgstr " byte diselamatkan)"
-
-#~ msgid "errors"
-#~ msgstr "ralat"
-
-#~ msgid "Are you sure you want to delete this item?\n"
-#~ msgstr "Anda pasti anda mahu memadam item ini?\n"

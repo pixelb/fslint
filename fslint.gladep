@@ -4,6 +4,5 @@
 <glade-project>
   <name>FSlint</name>
   <program_name>fslint-gui</program_name>
-  <output_translatable_strings>TRUE</output_translatable_strings>
   <translatable_strings_file>po/fslint.c</translatable_strings_file>
 </glade-project>

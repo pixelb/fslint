@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Maintainer: Pádraig Brady <P@draigBrady.com>
 Build-Depends: debhelper (>= 4.0.0)
-Build-Depends-Indep: gettext
+Build-Depends-Indep: gettext (>= 0.13)
 Standards-Version: 3.7.2
 
 Package: fslint
