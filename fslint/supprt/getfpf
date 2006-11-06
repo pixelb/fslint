@@ -40,7 +40,7 @@ do
       if [ -z "$arg" ]; then
 	 break #can only happen if "" passed so break
       elif [ "$onfindswitches" = "true" ]; then
-         switches="$switches $arg"
+         switches="$switches '$arg'"
          onfindswitches=false #not required as no files after 1st switch
       else
          num_files=`expr $num_files + 1`
