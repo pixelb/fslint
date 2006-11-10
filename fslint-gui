@@ -475,7 +475,10 @@ class fslint(GladeWrapper):
 
     def get_fslint(self, command, delim='\n'):
         self.fslintproc = subProcess(command)
+        count=0
         while self.fslintproc.read(timeout=0.1):
+            self.status.set_text(_("searching")+"."*(count%10))
+            count+=1
             while gtk.events_pending(): gtk.main_iteration(False)
             if self.stopflag:
                 self.fslintproc.kill()
@@ -484,6 +487,8 @@ class fslint(GladeWrapper):
             self.fslintproc.outdata=self.fslintproc.outdata.split(delim)[:-1]
             ret = (self.fslintproc.outdata, self.fslintproc.errdata)
         del(self.fslintproc)
+        self.status.set_text(_("processing..."))
+        while gtk.events_pending(): gtk.main_iteration(False)
         if self.stopflag:
             raise self.UserAbort
         else:

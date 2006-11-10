@@ -1,6 +1,8 @@
 2.17 dd/mm/yy
 	* Updated translations: Swedish.
 	* Support building SuSE specific RPMs from the tarball.
+	* Give updating "searching...." status, to ensure that
+	  users know the program is still running.
 
 2.16 02/07/06
 
