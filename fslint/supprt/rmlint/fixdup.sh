@@ -9,6 +9,7 @@ while read file; do
   elif [ "nextfile" = "$keepfile" ]; then
     keepfile="$file"
   else
-    ln -f -- "$keepfile" "$file"
+    ln -f -- "$keepfile" "$file" 2>/dev/null ||
+    ln -sf -- "$keepfile" "$file"
   fi
 done

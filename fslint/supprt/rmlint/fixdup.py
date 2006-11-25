@@ -45,6 +45,12 @@ for line in sys.stdin.xreadlines():
                 try:
                     os.unlink(line)
                     if link:
-                        os.link(keep,line) #TODO: if error try symlink
+                        try:
+                            os.link(keep,line)
+                        except OSError, value:
+                            if value.errno == 18: #EXDEV
+                                os.symlink(os.path.realpath(keep),line)
+                            else:
+                                raise
                 except OSError:
                     sys.stderr.write(str(sys.exc_value)+'\n')

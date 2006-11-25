@@ -1265,7 +1265,13 @@ on your system at present."))
                     dupfile = path
                     try:
                         os.unlink(dupfile)
-                        os.link(keepfile,dupfile) #Don't do this for autodelete
+                        try: #Don't do this for autodelete
+                            os.link(keepfile,dupfile)
+                        except OSError, value:
+                            if value.errno == 18: #EXDEV
+                                os.symlink(os.path.realpath(keepfile),dupfile)
+                            else:
+                                raise
                         clist.set_background(row, self.bg_colour)
                     except OSError:
                         self.ShowErrors(str(sys.exc_value)+'\n')

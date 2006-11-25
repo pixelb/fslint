@@ -134,13 +134,13 @@ fi
                      #print name, inode & size.
 find "$@" -size +0c -type f -printf "$FPF\0$devFmt\0%i\0%s\n" |
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
-sort -k2,2n -k4,4nr -k3,3 $merge_early |#group [and merge] dev,size & inodes
+sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes
 if [ -z "$merge_early" ]; then
     $script_dir/supprt/rmlint/merge_hardlinks
 else
     uniq -3 -D       #pick just duplicate filesizes
 fi |
-sort -k3,3n |        #NB sort inodes so md5sum does less seeking all over disk
+sort -k2,2n -k3,3n | #NB sort inodes so md5sum does less seeking all over disk
 cut -f1 -d' ' -s |   #get filenames to work on
 tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
 xargs -r0 md5sum -- |#calculate md5sums for possible duplicates
