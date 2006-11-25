@@ -510,9 +510,8 @@ class fslint(GladeWrapper):
     def ShowErrors(self, lines):
         if len(lines) == 0:
             return
-        elif lines[-1] == '\n':
-            lines = lines[:-1]
-        self.errors.get_buffer().set_text(I18N.utf8(lines,"\n"))
+        end=self.errors.get_buffer().get_end_iter()
+        self.errors.get_buffer().insert(end,I18N.utf8(lines,"\n"))
 
     def ClearErrors(self):
         self.errors.get_buffer().set_text("")
@@ -1058,8 +1057,14 @@ on your system at present."))
             return
         self.dlgPathSel.show(1)
         if not self.dlgPathSel.canceled:
+            self.ClearErrors()
             fileSaveAs = self.dlgPathSel.GtkWindow.get_filename()
-            fileSaveAs = open(fileSaveAs, 'w')
+            try:
+                fileSaveAs = open(fileSaveAs, 'w')
+            except:
+                etype, emsg, etb = sys.exc_info()
+                self.ShowErrors(str(emsg)+'\n')
+                return
             if self.mode == self.mode_pkgs:
                 for row in range(clist.rows):
                     rowtext = ''

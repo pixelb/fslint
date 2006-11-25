@@ -15,6 +15,8 @@
 	* Give updating "searching...." status, to ensure that
 	  users know the program is still running.
 	* Give an explanation in the status field for each function (tab).
+	* Display all errors from an operation, not just the last.
+	* Display any errors from "save results" operation.
 
 2.16 02/07/06
 
