@@ -14,6 +14,7 @@
 	* Support building SuSE specific RPMs from the tarball.
 	* Give updating "searching...." status, to ensure that
 	  users know the program is still running.
+	* Give an explanation in the status field for each function (tab).
 
 2.16 02/07/06
 

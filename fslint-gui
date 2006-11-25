@@ -455,6 +455,18 @@ class fslint(GladeWrapper):
             self.mode_ns:self.clist_ns,
             self.mode_rs:self.clist_rs
         }
+        self.mode_descs = {
+            self.mode_up:_("Files with the same content"),
+            self.mode_pkgs:_("Installed packages ordered by disk usage"),
+            self.mode_nl:_("Problematic filenames"),
+            self.mode_sn:_("Possibly conflicting filenames"),
+            self.mode_tf:_("Possibly old temporary files"),
+            self.mode_bl:_("Problematic symbolic links"),
+            self.mode_id:_("Files with invalid user IDs"),
+            self.mode_ed:_("Empty directories"),
+            self.mode_ns:_("Executables still containing debugging information"),
+            self.mode_rs:_("Redundant whitespace at the end of lines within a file")
+        }
         for path in lArgs:
             if os.path.exists(path):
                 self.addDirs(self.ok_dirs, os.path.abspath(path))
@@ -463,6 +475,7 @@ class fslint(GladeWrapper):
         for bad_dir in ['/lost+found','/dev','/proc','/sys','/tmp']:
             self.addDirs(self.bad_dirs, bad_dir)
         self.mode=0
+        self.status.set_text(self.mode_descs[self.mode])
         self.bg_colour=self.vpanes.get_style().bg[gtk.STATE_NORMAL]
         #make readonly GtkEntry and GtkTextView widgets obviously so,
         #by making them the same colour as the surrounding panes
@@ -965,9 +978,9 @@ on your system at present."))
             self.lbl_findnl_sensitivity.show()
 
     def on_fslint_functions_switch_page(self, widget, dummy, pagenum):
-        self.status.delete_text(0,-1)
         self.ClearErrors()
         self.mode=pagenum
+        self.status.set_text(self.mode_descs[self.mode])
         if self.mode == self.mode_up:
             self.autoMerge.show()
         else:
