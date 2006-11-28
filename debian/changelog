@@ -1,3 +1,9 @@
+fslint (2.17-1) unstable; urgency=low
+
+  * Bump to devel version
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 28 Nov 2006 17:25:30 +0000
+
 fslint (2.16-1) unstable; urgency=low
 
   * Cleanups suggested by lintian
