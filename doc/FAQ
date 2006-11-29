@@ -15,10 +15,11 @@ A. Yes, just run ./fslint-gui from the directory you extract
 Q. Where's the Makefile? How do I build/install it from source?
 A. It's python so nothing needs to be built on the target.
    There's no Makefile to [un]install because there's no need (see previous FAQ)
-   To build an rpm just tar.gz the working directory to fslint-x.xx.tar.gz
+   To build an rpm just tar.gz the working directory to fslint-x.xx.tar.gz.
+   For example: tar czf fslint-2.17.tar.gz --exclude=.svn fslint
    and then: rpmbuild -ta fslint-x.xx.tar.gz. Alternatively
    to build a deb just cp -a the working directory to fslint-x.xx
-   and then: cd fslint-x.xx && dpkg-buildpackage -rfakeroot -tc
+   and then: cd fslint-x.xx && dpkg-buildpackage -I.svn -rfakeroot -tc
 
 Q. The released RPM doesn't install on mandriva or SuSE?
 A. Unfortunately Mandriva and SuSE at least use different
@@ -37,7 +38,8 @@ A. To exclude all txt files add a path of /*txt
 Q. How do I navigate the file lists with the keyboard?
 A. FSlint uses a GtkCList in "multiple selection" mode throughout.
 
-   1. General list movement keys are, up, down, Ctrl+home and Ctrl+end
+   1. Ctrl + up, down to scroll the list.
+   2. up, down, PgUp, PgDown, Ctrl+home and Ctrl+end to change selected item.
    2. Shift + the movement keys extends a contiguous selection.
    3. Ctrl + space, toggles the discontiguous selection mode. When in
    this mode, one can navigate to any row using the movement keys (1)
@@ -47,5 +49,5 @@ A. FSlint uses a GtkCList in "multiple selection" mode throughout.
 
    1. Clicking an item selects it.
    2. Ctrl+click adds toggles rows to and from a discontiguous selection.
-   3. Draging mouse over rows makes a contiguous selection.
+   3. Dragging the mouse over rows makes a contiguous selection.
    4. Shift+click extends a contiguous selection to the clicked row.
