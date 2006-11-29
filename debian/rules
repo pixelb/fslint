@@ -44,7 +44,7 @@ install:
 	install -pm 644 fslint.glade fslint_icon.png ${datadir}/${name}
 	install -dm 755 ${datadir}/pixmaps
 	ln -s ../${name}/fslint_icon.png ${datadir}/pixmaps
-	install -pm 755 fslint/{find*,fslint,zipdir} ${datadir}/${name}/fslint
+	install -pm 755 fslint/find* fslint/fslint fslint/zipdir ${datadir}/${name}/fslint
 	install -pm 755 fslint/fstool/* ${datadir}/${name}/fslint/fstool
 	install -pm 755 fslint/supprt/get* ${datadir}/${name}/fslint/supprt
 	install -pm 644 fslint/supprt/fslver ${datadir}/${name}/fslint/supprt
