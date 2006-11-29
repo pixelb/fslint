@@ -20,7 +20,6 @@
   <property name="type_hint">GDK_WINDOW_TYPE_HINT_NORMAL</property>
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
   <signal name="destroy" handler="on_fslint_destroy"/>
 
   <child>
@@ -1500,7 +1499,7 @@
 				  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 				  <property name="snap_to_ticks">False</property>
 				  <property name="wrap">False</property>
-				  <property name="adjustment">0 0 365 1 7 7</property>
+				  <property name="adjustment">0 0 9999 1 7 7</property>
 				</widget>
 				<packing>
 				  <property name="padding">0</property>
@@ -3174,7 +3173,6 @@
   <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
   <property name="show_fileops">True</property>
   <signal name="delete_event" handler="quit"/>
 
@@ -3217,7 +3215,6 @@
   <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
-  <property name="urgency_hint">False</property>
   <property name="has_separator">True</property>
   <signal name="destroy" handler="quit"/>
 

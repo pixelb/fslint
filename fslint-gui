@@ -459,10 +459,10 @@ class fslint(GladeWrapper):
             self.mode_up:_("Files with the same content"),
             self.mode_pkgs:_("Installed packages ordered by disk usage"),
             self.mode_nl:_("Problematic filenames"),
-            self.mode_sn:_("Possibly conflicting filenames"),
+            self.mode_sn:_("Possibly conflicting commands or filenames"),
             self.mode_tf:_("Possibly old temporary files"),
             self.mode_bl:_("Problematic symbolic links"),
-            self.mode_id:_("Files with invalid user IDs"),
+            self.mode_id:_("Files with missing user IDs"),
             self.mode_ed:_("Empty directories"),
             self.mode_ns:_("Executables still containing debugging information"),
             self.mode_rs:_("Redundant whitespace at the end of lines within a file")

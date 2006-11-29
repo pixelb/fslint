@@ -22,7 +22,7 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 Usage() {
 	ProgName=`basename "$0"`
 	echo "find Temporary Files.
-Usage: $ProgName [-c[days]] [[-r] [-f] paths(s) ...]
+Usage: $ProgName [-c] [--age=days] [[-r] [-f] paths(s) ...]
 
 If -c specified then a more thorough search is done for
 (and only for) core files, and more information is printed about them.

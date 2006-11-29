@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint 2.04\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-25 22:39+0000\n"
+"POT-Creation-Date: 2006-11-27 08:26+0000\n"
 "PO-Revision-Date: 2003-03-21 00:58+0100\n"
 "Last-Translator: Michael Armbrecht <marmbrecht@eircom.net>\n"
 "Language-Team: Michael Armbrecht <marmbrecht@eircom.net>\n"
@@ -19,256 +19,256 @@ msgstr ""
 msgid "FSlint"
 msgstr "FSlint"
 
-#: ../fslint.glade:110 ../fslint.glade:363
+#: ../fslint.glade:109 ../fslint.glade:362
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: ../fslint.glade:186 ../fslint.glade:439
+#: ../fslint.glade:185 ../fslint.glade:438
 msgid "Remove"
 msgstr "Entfernen"
 
-#: ../fslint.glade:233
+#: ../fslint.glade:232
 msgid "Directories to search"
 msgstr "Durchsuche Verzeichnisse"
 
-#: ../fslint.glade:258
+#: ../fslint.glade:257
 msgid "recurse?"
 msgstr "Rekursiv?"
 
-#: ../fslint.glade:282
+#: ../fslint.glade:281
 msgid "Search path"
 msgstr "Suchpfad"
 
-#: ../fslint.glade:494
+#: ../fslint.glade:493
 msgid "Paths to exclude"
 msgstr "Pfade ausschließen"
 
-#: ../fslint.glade:529
+#: ../fslint.glade:528
 msgid "Extra find parameters"
 msgstr "Zusätzliche Suchparameter"
 
-#: ../fslint.glade:554
+#: ../fslint.glade:553
 msgid "extra find filtering parameters"
 msgstr "Zusätzliche Filterparameter für die Suche"
 
-#: ../fslint.glade:587
+#: ../fslint.glade:586
 msgid "Advanced search parameters"
 msgstr "Weitere Suchparameter"
 
-#: ../fslint.glade:671 ../fslint.glade:802 ../fslint.glade:1053
-#: ../fslint.glade:1361 ../fslint.glade:1572 ../fslint.glade:1825
-#: ../fslint.glade:1945 ../fslint.glade:2116 ../fslint.glade:2248
-#: ../fslint.glade:2381
+#: ../fslint.glade:670 ../fslint.glade:801 ../fslint.glade:1052
+#: ../fslint.glade:1360 ../fslint.glade:1571 ../fslint.glade:1824
+#: ../fslint.glade:1944 ../fslint.glade:2115 ../fslint.glade:2247
+#: ../fslint.glade:2380
 msgid "Name"
 msgstr "Name"
 
-#: ../fslint.glade:690 ../fslint.glade:1072 ../fslint.glade:1380
-#: ../fslint.glade:1591 ../fslint.glade:1844 ../fslint.glade:1964
-#: ../fslint.glade:2135 ../fslint.glade:2267 ../fslint.glade:2400
+#: ../fslint.glade:689 ../fslint.glade:1071 ../fslint.glade:1379
+#: ../fslint.glade:1590 ../fslint.glade:1843 ../fslint.glade:1963
+#: ../fslint.glade:2134 ../fslint.glade:2266 ../fslint.glade:2399
 msgid "Directory"
 msgstr "Verzeichnis"
 
-#: ../fslint.glade:709 ../fslint.glade:1629 ../fslint.glade:2040
-#: ../fslint.glade:2154 ../fslint.glade:2305 ../fslint.glade:2438
+#: ../fslint.glade:708 ../fslint.glade:1628 ../fslint.glade:2039
+#: ../fslint.glade:2153 ../fslint.glade:2304 ../fslint.glade:2437
 msgid "Date"
 msgstr "Datum"
 
-#: ../fslint.glade:744
+#: ../fslint.glade:743
 msgid "Duplicates"
 msgstr "Duplikate"
 
-#: ../fslint.glade:821 ../fslint.glade:1399 ../fslint.glade:1610
-#: ../fslint.glade:2021 ../fslint.glade:2286 ../fslint.glade:2419
+#: ../fslint.glade:820 ../fslint.glade:1398 ../fslint.glade:1609
+#: ../fslint.glade:2020 ../fslint.glade:2285 ../fslint.glade:2418
 msgid "Size"
 msgstr "Größe"
 
-#: ../fslint.glade:916
+#: ../fslint.glade:915
 msgid "Installed packages"
 msgstr ""
 
-#: ../fslint.glade:957
+#: ../fslint.glade:956
 msgid "Sensitivity="
 msgstr "Empfindlichkeit="
 
-#: ../fslint.glade:1001
+#: ../fslint.glade:1000
 msgid "invalid UTF8 mode?"
 msgstr ""
 
-#: ../fslint.glade:1107
+#: ../fslint.glade:1106
 msgid "Bad names"
 msgstr "Ungültige Namen"
 
-#: ../fslint.glade:1142
+#: ../fslint.glade:1141
 msgid "Search ("
 msgstr "Suche ("
 
-#: ../fslint.glade:1168
+#: ../fslint.glade:1167
 msgid "$PATH"
 msgstr "$PATH"
 
-#: ../fslint.glade:1187
+#: ../fslint.glade:1186
 msgid ") for"
 msgstr ") für"
 
-#: ../fslint.glade:1234 ../fslint-gui:792
+#: ../fslint.glade:1233 ../fslint-gui:791
 msgid "Conflicting files"
 msgstr "Konflikt verursachende Dateien"
 
-#: ../fslint.glade:1242 ../fslint.glade:1305 ../fslint-gui:790
-#: ../fslint-gui:799
+#: ../fslint.glade:1241 ../fslint.glade:1304 ../fslint-gui:789
+#: ../fslint-gui:798
 msgid "Aliases"
 msgstr "Aliase"
 
-#: ../fslint.glade:1281 ../fslint-gui:805
+#: ../fslint.glade:1280 ../fslint-gui:804
 msgid "Case conflicts"
 msgstr "Konflikte durch Groß-/Kleinschreibung"
 
-#: ../fslint.glade:1289 ../fslint-gui:801
+#: ../fslint.glade:1288 ../fslint-gui:800
 msgid "Same names"
 msgstr "Gleiche Namen"
 
-#: ../fslint.glade:1297 ../fslint-gui:803
+#: ../fslint.glade:1296 ../fslint-gui:802
 msgid "Same names(ignore case)"
 msgstr "Gleiche Namen (ignoriere Groß-/Kleinschreibung)"
 
-#: ../fslint.glade:1434
+#: ../fslint.glade:1433
 msgid "Name clashes"
 msgstr "Namenskonflikte"
 
-#: ../fslint.glade:1469
+#: ../fslint.glade:1468
 msgid "More restrictive search for core files"
 msgstr "Restriktivere Suche nach Core-Dateien"
 
-#: ../fslint.glade:1471
+#: ../fslint.glade:1470
 msgid "core file mode?"
 msgstr "Core-Datei-Modus?"
 
-#: ../fslint.glade:1495
+#: ../fslint.glade:1494
 msgid "days"
 msgstr "Tage"
 
-#: ../fslint.glade:1515
+#: ../fslint.glade:1514
 msgid "minimum age"
 msgstr "Mindestalter"
 
-#: ../fslint.glade:1664
+#: ../fslint.glade:1663
 msgid "Temp files"
 msgstr "Temporäre Dateien"
 
-#: ../fslint.glade:1700
+#: ../fslint.glade:1699
 msgid "Dangling"
 msgstr "Hängend"
 
-#: ../fslint.glade:1718
+#: ../fslint.glade:1717
 msgid "Absolute links to paths within or below the link's directory"
 msgstr ""
 "Absolute Verweise auf Pfade innerhalb oder unterhalb des Verzeichnisses des "
 "Verweises"
 
-#: ../fslint.glade:1720
+#: ../fslint.glade:1719
 msgid "Suspect"
 msgstr "Verdächtig"
 
-#: ../fslint.glade:1740
+#: ../fslint.glade:1739
 msgid "Relative"
 msgstr "Relativ"
 
-#: ../fslint.glade:1760
+#: ../fslint.glade:1759
 msgid "Absolute"
 msgstr "Absolut"
 
-#: ../fslint.glade:1779
+#: ../fslint.glade:1778
 msgid "/././. ///// /../ etc."
 msgstr "/././. ///// /../ usw."
 
-#: ../fslint.glade:1781
+#: ../fslint.glade:1780
 msgid "Redundant naming"
 msgstr "Reduntante Benamung"
 
-#: ../fslint.glade:1863
+#: ../fslint.glade:1862
 msgid "Target"
 msgstr "Ziel"
 
-#: ../fslint.glade:1898
+#: ../fslint.glade:1897
 msgid "Bad symlinks"
 msgstr "Ungültige symlinks"
 
-#: ../fslint.glade:1983
+#: ../fslint.glade:1982
 msgid "UID"
 msgstr "UID"
 
-#: ../fslint.glade:2002
+#: ../fslint.glade:2001
 msgid "GID"
 msgstr "GID"
 
-#: ../fslint.glade:2075
+#: ../fslint.glade:2074
 msgid "Bad IDs"
 msgstr "Ungültige IDs"
 
-#: ../fslint.glade:2182 ../fslint-gui:466
+#: ../fslint.glade:2181 ../fslint-gui:466
 msgid "Empty directories"
 msgstr "Leere Verzeichnisse"
 
-#: ../fslint.glade:2212
+#: ../fslint.glade:2211
 msgid "Search $PATH"
 msgstr "Durchsuche $PATH"
 
-#: ../fslint.glade:2340
+#: ../fslint.glade:2339
 msgid "Non stripped binaries"
 msgstr "Binärdateien"
 
-#: ../fslint.glade:2466
+#: ../fslint.glade:2465
 msgid "Redundant whitespace"
 msgstr "Redundante Leerzeichen"
 
-#: ../fslint.glade:2552
+#: ../fslint.glade:2551
 msgid "Find"
 msgstr "Finde"
 
-#: ../fslint.glade:2627
+#: ../fslint.glade:2626
 msgid "Stop"
 msgstr "Stopp"
 
-#: ../fslint.glade:2671
+#: ../fslint.glade:2670
 msgid "selection"
 msgstr "Auswahl"
 
-#: ../fslint.glade:2716
+#: ../fslint.glade:2715
 msgid "Toggle"
 msgstr "Ein/Aus"
 
-#: ../fslint.glade:2747
+#: ../fslint.glade:2746
 msgid "list to file"
 msgstr "schreibe in Datei"
 
-#: ../fslint.glade:2792
+#: ../fslint.glade:2791
 msgid "Save"
 msgstr "Speichern"
 
-#: ../fslint.glade:2823 ../fslint.glade:2988
+#: ../fslint.glade:2822 ../fslint.glade:2987
 msgid "selected"
 msgstr "ausgewählt"
 
-#: ../fslint.glade:2868
+#: ../fslint.glade:2867
 msgid "Delete"
 msgstr "Löschen"
 
-#: ../fslint.glade:2912
+#: ../fslint.glade:2911
 #, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr "Alle (Auswahl ausgenommen) nutzen Hardlinks"
 
-#: ../fslint.glade:2958
+#: ../fslint.glade:2957
 msgid "Merge"
 msgstr "Zusammenfügen"
 
-#: ../fslint.glade:3033
+#: ../fslint.glade:3032
 msgid "Clean"
 msgstr "Aufräumen"
 
-#: ../fslint.glade:3165
+#: ../fslint.glade:3164
 msgid "Select Path"
 msgstr "Pfad auswählen"
 
@@ -294,11 +294,11 @@ msgstr ""
 msgid "Do you want to overwrite?\n"
 msgstr "Überschreiben?\n"
 
-#: ../fslint-gui:418 ../fslint-gui:928 ../fslint-gui:1260
+#: ../fslint-gui:418 ../fslint-gui:927 ../fslint-gui:1265
 msgid "Yes"
 msgstr "Ja"
 
-#: ../fslint-gui:418 ../fslint-gui:928 ../fslint-gui:1260
+#: ../fslint-gui:418 ../fslint-gui:927 ../fslint-gui:1265
 msgid "No"
 msgstr "Nein"
 
@@ -320,7 +320,7 @@ msgstr ""
 
 #: ../fslint-gui:462
 #, fuzzy
-msgid "Possibly conflicting filenames"
+msgid "Possibly conflicting commands or filenames"
 msgstr "Konflikt verursachende Dateien"
 
 #: ../fslint-gui:463
@@ -332,7 +332,7 @@ msgid "Problematic symbolic links"
 msgstr ""
 
 #: ../fslint-gui:465
-msgid "Files with invalid user IDs"
+msgid "Files with missing user IDs"
 msgstr ""
 
 #: ../fslint-gui:467
@@ -355,123 +355,123 @@ msgstr ""
 msgid "processing..."
 msgstr ""
 
-#: ../fslint-gui:532
+#: ../fslint-gui:531
 msgid "No search paths specified"
 msgstr "Kein Verzeichnis zum Durchsuchen"
 
-#: ../fslint-gui:676
+#: ../fslint-gui:675
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
 
-#: ../fslint-gui:692
+#: ../fslint-gui:691
 msgid " packages, "
 msgstr ""
 
-#: ../fslint-gui:693
+#: ../fslint-gui:692
 #, python-format
 msgid "consuming %sB. "
 msgstr ""
 
-#: ../fslint-gui:694
+#: ../fslint-gui:693
 #, python-format
 msgid "Note %s."
 msgstr ""
 
-#: ../fslint-gui:705 ../fslint-gui:746 ../fslint-gui:784 ../fslint-gui:845
+#: ../fslint-gui:704 ../fslint-gui:745 ../fslint-gui:783 ../fslint-gui:844
 msgid " files"
 msgstr " Dateien"
 
-#: ../fslint-gui:725
+#: ../fslint-gui:724
 msgid " unstripped binaries"
 msgstr " Binärdateien"
 
-#: ../fslint-gui:735
+#: ../fslint-gui:734
 msgid " empty directories"
 msgstr " leere Verzeichnisse"
 
-#: ../fslint-gui:767
+#: ../fslint-gui:766
 msgid " links"
 msgstr " Verweise"
 
-#: ../fslint-gui:783 ../fslint-gui:890
+#: ../fslint-gui:782 ../fslint-gui:889
 msgid " bytes wasted in "
 msgstr " Bytes ungenutzt in "
 
-#: ../fslint-gui:827 ../fslint-gui:891
+#: ../fslint-gui:826 ../fslint-gui:890
 msgid " files (in "
 msgstr " Dateien (in "
 
-#: ../fslint-gui:828 ../fslint-gui:892
+#: ../fslint-gui:827 ../fslint-gui:891
 msgid " groups)"
 msgstr " Gruppen)"
 
-#: ../fslint-gui:883
+#: ../fslint-gui:882
 msgid "bytes wasted"
 msgstr "Bytes ungenutzt"
 
-#: ../fslint-gui:919
+#: ../fslint-gui:918
 msgid "None selected"
 msgstr "Keine ausgewählt"
 
-#: ../fslint-gui:925
+#: ../fslint-gui:924
 msgid " this item?\n"
 msgstr " Objekte?\n"
 
-#: ../fslint-gui:927
+#: ../fslint-gui:926
 #, python-format
 msgid " these %d items?\n"
 msgstr " %d Objekte?\n"
 
-#: ../fslint-gui:1025
+#: ../fslint-gui:1024
 msgid "User aborted"
 msgstr "Abbruch durch Benutzer"
 
-#: ../fslint-gui:1093
+#: ../fslint-gui:1098
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
 
-#: ../fslint-gui:1097
+#: ../fslint-gui:1102
 msgid "Are you sure you want to delete"
 msgstr "Sind sie sicher, dass sie diese löschen wollen"
 
-#: ../fslint-gui:1110
+#: ../fslint-gui:1115
 msgid "Calculating dependencies..."
 msgstr ""
 
-#: ../fslint-gui:1126
+#: ../fslint-gui:1131
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr ""
 
-#: ../fslint-gui:1127
+#: ../fslint-gui:1132
 msgid "Please review the updated selection."
 msgstr ""
 
-#: ../fslint-gui:1136
+#: ../fslint-gui:1141
 msgid "Removing packages..."
 msgstr ""
 
-#: ../fslint-gui:1176
+#: ../fslint-gui:1181
 msgid " items deleted"
 msgstr " Dateien gelöscht"
 
-#: ../fslint-gui:1252
+#: ../fslint-gui:1257
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Sind sie sicher, dass sie ALLE Dateien zusammenfügen wollen?\n"
 
-#: ../fslint-gui:1256
+#: ../fslint-gui:1261
 msgid "(Ignoring those selected)\n"
 msgstr "(Ignoriere ausgewählte)\n"
 
-#: ../fslint-gui:1293
+#: ../fslint-gui:1298
 msgid "Are you sure you want to clean"
 msgstr "Sind sie sicher, dass sie diese aufräumen wollen"
 
-#: ../fslint-gui:1327
+#: ../fslint-gui:1332
 msgid " items cleaned ("
 msgstr " Objekte aufgeräumt ("
 
-#: ../fslint-gui:1328
+#: ../fslint-gui:1333
 msgid " bytes saved)"
 msgstr " Bytes gesichert)"
