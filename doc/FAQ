@@ -40,10 +40,11 @@ A. FSlint uses a GtkCList in "multiple selection" mode throughout.
 
    1. Ctrl + up, down to scroll the list.
    2. up, down, PgUp, PgDown, Ctrl+home and Ctrl+end to change selected item.
-   2. Shift + the movement keys extends a contiguous selection.
-   3. Ctrl + space, toggles the discontiguous selection mode. When in
-   this mode, one can navigate to any row using the movement keys (1)
-   and space will toggle that row's selection state.
+   3. Shift + the movement keys extends a contiguous selection.
+   4. Ctrl + space, toggles the discontiguous selection mode.
+   When in this mode, one can navigate to any row using the movement keys
+   and space will toggle that row's selection state. Also holding Shift
+   while using the movement keys will extend the selection.
 
    For completeness the mouse works like:
 

@@ -1,22 +1,30 @@
 2.17 dd/mm/yy
 	* Updated translations: Swedish.
-	* Fix a bug introduced in 2.15 wrt the independent hardlinks fix.
-	  The bug was essentially that duplicates would only
-          be found within one filesystem of the specififed search path(s).
-	  Note this bug only affects systems with findutils >= 4.2
-	  This bug was reported and fixed by Robert Seczkowski.
-	* Make disk head seeks more efficient when finding duplicates,
-	  in the case where multiple filsystems on the same physical
-	  disk are being checked.
-	* When merging duplicates using hardlinks, and those duplicates
-	  are on different filesystems, use symlinks rather than just
-	  deleting the files.
-	* Support building SuSE specific RPMs from the tarball.
-	* Give updating "searching...." status, to ensure that
-	  users know the program is still running.
-	* Give an explanation in the status field for each function (tab).
-	* Display all errors from an operation, not just the last.
-	* Display any errors from "save results" operation.
+	* Fixes for finding/merging duplicates across multiple filesystems:
+		* Fix a bug introduced in 2.15 wrt the independent hardlinks
+		  fix. The bug was essentially that duplicates would only be
+		  found within one filesystem of the specififed search path(s).
+		  Note this bug only affects systems with findutils >= 4.2
+		  This bug was reported and fixed by Robert Seczkowski.
+		* Make disk head seeks more efficient when finding duplicates,
+		  in the case where multiple filesystems on the same physical
+		  disk are being checked.
+		* When merging duplicates using hardlinks, and those duplicates
+		  are on different filesystems, use symlinks rather than just
+		  deleting the files.
+	* Packaging changes:
+		* Support building SuSE specific RPMs from the tarball.
+		* Simplify debian package so that it builds with dash.
+		* Add ebuild for gentoo.
+	* GUI improvments:
+		* Give updating "searching...." status, to ensure that users
+		  know the program is still running.
+		* Give an explanation in status field for each function (tab).
+		* Enable a default button for all dialogs (when enter pressed).
+		* Provide a menu to greatly enhance the selection functionality.
+		  This was prompted by feedback from x & y.
+		* Display all errors from an operation, not just the last.
+		* Display any errors from "save results" operation.
 
 2.16 02/07/06
 
