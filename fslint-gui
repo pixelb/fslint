@@ -348,9 +348,15 @@ class dlgUserInteraction(GladeWrapper):
             button.connect("clicked", self.button_clicked)
             self.GtkWindow.action_area.pack_start(button)
             button.show()
+            button.set_flags(gtk.CAN_DEFAULT)
+            button.grab_default() #last button is default
         self.app = app
         self.lblmsg.set_text(message)
         self.lblmsg.show()
+        if message.endswith(":"):
+            self.entry.show()
+        else:
+            self.entry.hide()
 
     def show(self):
         self.response=None
