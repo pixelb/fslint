@@ -470,8 +470,8 @@ class fslint(GladeWrapper):
             self.mode_bl:_("Problematic symbolic links"),
             self.mode_id:_("Files with missing user IDs"),
             self.mode_ed:_("Empty directories"),
-            self.mode_ns:_("Executables still containing debugging information"),
-            self.mode_rs:_("Redundant whitespace at the end of lines within a file")
+            self.mode_ns:_("Executables still containing debugging info"),
+            self.mode_rs:_("Whitespace at the end of lines in a text file")
         }
         for path in lArgs:
             if os.path.exists(path):
@@ -538,7 +538,8 @@ class fslint(GladeWrapper):
 
         search_dirs = ""
         for row in range(self.ok_dirs.rows):
-            search_dirs = search_dirs + " '" + self.ok_dirs.get_row_data(row) + "'"
+            search_dirs = search_dirs + \
+                          " '" + self.ok_dirs.get_row_data(row) + "'"
         exclude_dirs=""
 
         for row in range(self.bad_dirs.rows):
