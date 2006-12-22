@@ -642,7 +642,7 @@ class fslint(GladeWrapper):
         size=stat_val.st_blocks*512
 
         return (colour, stat_val[stat.ST_SIZE], size, stat_val[stat.ST_UID],
-                stat_val[stat.ST_GID], date)
+                stat_val[stat.ST_GID], date, stat_val[stat.ST_MTIME])
 
     def whatRequires(self, packages, level=0):
         if not packages: return
@@ -705,7 +705,7 @@ on your system at present."))
         po, pe = self.get_fslint("./findrs " + self.findParams)
         row = 0
         for line in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(line)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
             self.clist_append_path(clist_rs, line, colour, str(fsize), date)
             row=row+1
 
@@ -719,7 +719,7 @@ on your system at present."))
 
         unstripped=[]
         for line in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(line)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
             unstripped.append((fsize, line, date))
         unstripped.sort()
         unstripped.reverse()
@@ -735,7 +735,7 @@ on your system at present."))
         po, pe = self.get_fslint("./finded " + self.findParams)
         row = 0
         for line in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(line)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
             self.clist_append_path(clist_ed, line, '', date)
             row += 1
 
@@ -745,7 +745,7 @@ on your system at present."))
         po, pe = self.get_fslint("./findid " + self.findParams, '\0')
         row = 0
         for record in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(record)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(record)
             self.clist_append_path(clist_id, record, colour,
                                    str(uid), str(gid), str(fsize), date)
             row += 1
@@ -782,7 +782,7 @@ on your system at present."))
         row = 0
         byteWaste = 0
         for line in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(line)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
             self.clist_append_path(clist_tf, line, '', str(fsize), date)
             byteWaste+=size
             row += 1
@@ -824,8 +824,9 @@ on your system at present."))
                 self.clist_append_group_row(clist_sn, ['','',''])
                 findsn_groups += 1
             else:
-                colour, fsize, size, uid, gid, date = self.get_path_info(record)
+                colour,fsize,size,uid,gid,date,mtime=self.get_path_info(record)
                 self.clist_append_path(clist_sn, record, colour, str(fsize))
+                clist_sn.set_row_data(clist_sn.rows-1,mtime)
                 findsn_number += 1
             row += 1
         if findsn_number:
@@ -845,7 +846,7 @@ on your system at present."))
 
         row=0
         for record in po:
-            colour, fsize, size, uid, gid, date = self.get_path_info(record)
+            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(record)
             self.clist_append_path(clist_nl, record, colour)
             row += 1
 
@@ -866,8 +867,8 @@ on your system at present."))
                 numdups = 0
                 inodes = {}
             else:
-                colour, fsize, size, uid, gid, date = self.get_path_info(line)
-                dups.append((line,date))
+                colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
+                dups.append((line,date,mtime))
                 inode = os.lstat(line)[stat.ST_INO]
                 if not inodes.has_key(inode):
                     inodes[inode] = True
@@ -892,6 +893,7 @@ on your system at present."))
             row += 1
             for file in files:
                 self.clist_append_path(clist_dups,file[0],'',file[1])
+                clist_dups.set_row_data(row,file[2]) #mtime
                 row += 1
 
         return (human_num(byteWaste) + _(" bytes wasted in ") +
@@ -997,6 +999,20 @@ on your system at present."))
         else:
             self.autoClean.hide()
 
+    def on_selection_menu_button_press_event(self, widget, event):
+        if self.mode == self.mode_up or self.mode == self.mode_sn:
+            self.groups_menu.show()
+        else:
+            self.groups_menu.hide()
+        if event == None: #keyboard click
+            self.selection_menu_menu.popup(None,None,None,3,0) #at mouse pointer
+        elif type(widget) == gtk.Button or \
+             (type(widget) == gtk.CList and event.button == 3):
+            self.selection_menu_menu.popup(None,None,None,event.button,0)
+            if type(widget) == gtk.Button:
+                widget.grab_focus()
+            return True #Don't fire click event
+
     def on_find_clicked(self, event):
 
         try:
@@ -1073,16 +1089,102 @@ on your system at present."))
                 etype, emsg, etb = sys.exc_info()
                 self.ShowErrors(str(emsg)+'\n')
                 return
+            rows_to_save = clist.selection
             if self.mode == self.mode_pkgs:
                 for row in range(clist.rows):
+                    if len(rows_to_save):
+                        if row not in rows_to_save: continue
                     rowtext = ''
                     for col in (0,2): #ignore "human number" col
                         rowtext += clist.get_text(row,col) +'\t'
                     fileSaveAs.write(rowtext[:-1]+'\n')
             else:
-                fileSaveAs.writelines(clist.get_data("row_data"))
+                row_data=clist.get_data("row_data")
+                if len(rows_to_save):
+                    for row in range(clist.rows):
+                        if clist.get_selectable(row):
+                            if row not in rows_to_save: continue
+                        else: continue #don't save group headers
+                        fileSaveAs.write(row_data[row])
+                else:
+                    fileSaveAs.writelines(row_data)
 
-    def on_toggleSelection_clicked(self, event):
+    def on_unselect_using_wildcard_activate(self, event):
+        self.select_using_wildcard(False)
+    def on_select_using_wildcard_activate(self, event):
+        self.select_using_wildcard(True)
+    def select_using_wildcard(self, select):
+        msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
+                                    "UserInteraction")
+        msgbox.init(self, _("wildcard:"), (N_('Cancel'), N_('Ok')))
+        msgbox.show()
+        if msgbox.response != "Ok":
+            return
+        wildcard=msgbox.input
+        if wildcard != "":
+            clist = self.clists[self.mode]
+            if clist.rows == 0:
+                return
+            select_func=select and clist.select_row or clist.unselect_row
+            import fnmatch
+            if self.mode == self.mode_pkgs:
+                for row in range(clist.rows):
+                    pkgname = clist.get_text(row,0)
+                    if fnmatch.fnmatch(pkgname,wildcard):
+                        select_func(row, 0)
+            else:
+                row=0
+                for path in clist.get_data("row_data"):
+                    if fnmatch.fnmatch(path,wildcard): #trailing \n ignored
+                        select_func(row, 0)
+                    row+=1
+
+    def on_select_all_but_first_in_each_group_activate(self, event):
+        self.on_select_all_but_one_in_each_group_activate("first")
+    def on_select_all_but_newest_in_each_group_activate(self, event):
+        self.on_select_all_but_one_in_each_group_activate("newest")
+    def on_select_all_but_oldest_in_each_group_activate(self, event):
+        self.on_select_all_but_one_in_each_group_activate("oldest")
+
+    def on_select_all_but_one_in_each_group_activate(self, which):
+
+        def find_row_to_unselect(clist, row, which):
+            import operator
+            if which == "first":
+                if clist.get_selectable(row)==False:
+                   return row+1
+                else:
+                    return row #for first row in clist_sn
+            elif which == "newest":
+                unselect_mtime=-1
+                comp=operator.gt
+            elif which == "oldest":
+                unselect_mtime=2**32
+                comp=operator.lt
+            if clist.get_selectable(row)==False: #not the case for first sn row
+                row=row+1
+            while clist.get_selectable(row) == True and row < clist.rows:
+                mtime = clist.get_row_data(row)
+                if comp(mtime,unselect_mtime):
+                    unselect_mtime = mtime
+                    unselect_row=row
+                row=row+1
+            return unselect_row
+
+        clist = self.clists[self.mode]
+        clist.freeze()
+        clist.select_all()
+        for row in range(clist.rows):
+            if row==0 or clist.get_selectable(row)==False: #New group
+                unselect_row = find_row_to_unselect(clist, row, which)
+                clist.unselect_row(unselect_row, 0)
+        clist.thaw()
+
+    def on_unselect_all_activate(self, event):
+        clist = self.clists[self.mode]
+        clist.unselect_all()
+
+    def on_toggle_selection_activate(self, event):
         clist = self.clists[self.mode]
         clist.freeze()
         selected = clist.selection
@@ -1095,6 +1197,9 @@ on your system at present."))
             for row in selected:
                 clist.unselect_row(row, 0)
         clist.thaw()
+
+    def on_selection_clicked(self, widget):
+        self.on_selection_menu_button_press_event(self.selection, None)
 
     def on_delSelected_clicked(self, event):
         if self.mode == self.mode_pkgs:
@@ -1229,8 +1334,11 @@ on your system at present."))
     #function below from being called too frequently.
     #Note most users will scoll the list with {Up,Down} rather
     #than Ctrl+{Up,Down}, but at worst this will result in slow scrolling.
-    def on_clist_pkgs_button_press(self, *args):
-        self.clist_pkgs_user_input=True
+    def on_clist_pkgs_button_press(self, list, event):
+        if event.button == 3:
+            self.on_selection_menu_button_press_event(list, event)
+        else:
+            self.clist_pkgs_user_input=True
     def on_clist_pkgs_key_press(self, *args):
         self.clist_pkgs_user_input=True
 
