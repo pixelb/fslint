@@ -376,6 +376,7 @@ class dlgUserInteraction(GladeWrapper):
             gtk.main_quit()
 
     def button_clicked(self, button):
+        self.input = self.entry.get_text()
         self.response = button.get_data("text")
         self.quit()
 
