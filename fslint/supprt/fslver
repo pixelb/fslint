@@ -9,7 +9,7 @@ set -e
 export LC_CTYPE=C #uncomment for speed (noting the caveats above)
 
 Version() {
-  echo "FSlint 2.17" && exit
+  echo "FSlint 2.18" && exit
 }
 
 check_uniq() {
