@@ -1,0 +1,521 @@
+# Danish translations for FSlint (da.po)
+# Danske oversættelser for pakke FSlint (da.po).
+# Copyright (C) 2006 Pádraig Brady
+# This file is distributed under the same license as the FSlint package.
+# Joe Hansen <joedalton2@yahoo.dk>, 2006.
+# Martin Willemoes Hansen har udført korrektur på oversættelsen, 2006
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: da\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-23 22:25+0000\n"
+"PO-Revision-Date: 2006-12-22 15:38+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../fslint.glade:8
+msgid "FSlint"
+msgstr "FSlint"
+
+#: ../fslint.glade:68
+msgid "Select using wildcard"
+msgstr "Vælg med jokertegn"
+
+#: ../fslint.glade:77
+msgid "Unselect using wildcard"
+msgstr "Fravælg med jokertegn"
+
+#: ../fslint.glade:86
+msgid "within groups"
+msgstr "på grupper"
+
+#: ../fslint.glade:95
+msgid "Select all but first"
+msgstr "Vælg alle undtagen første"
+
+#: ../fslint.glade:104
+msgid "Select all but newest"
+msgstr "Vælg alle undtagen nyeste"
+
+#: ../fslint.glade:113
+msgid "Select all but oldest"
+msgstr "Vælg alle undtagen ældste"
+
+#: ../fslint.glade:126
+msgid "Toggle selection"
+msgstr "Til/fra markering"
+
+#: ../fslint.glade:135
+msgid "Unselect all"
+msgstr "Fravælg alle"
+
+#: ../fslint.glade:252 ../fslint.glade:505
+msgid "Add"
+msgstr "Tilføj"
+
+#: ../fslint.glade:328 ../fslint.glade:581
+msgid "Remove"
+msgstr "Fjern"
+
+#: ../fslint.glade:375
+msgid "Directories to search"
+msgstr "Kataloger der søges i"
+
+#: ../fslint.glade:400
+msgid "recurse?"
+msgstr "rekursion?"
+
+#: ../fslint.glade:424
+msgid "Search path"
+msgstr "Søgesti"
+
+#: ../fslint.glade:636
+msgid "Paths to exclude"
+msgstr "Søgestier der udelades"
+
+#: ../fslint.glade:671
+msgid "Extra find parameters"
+msgstr "Yderligere søgeparametre"
+
+#: ../fslint.glade:696
+msgid "extra find filtering parameters"
+msgstr "Yderligere søge-filtreringsparametre"
+
+#: ../fslint.glade:729
+msgid "Advanced search parameters"
+msgstr "Avancerede søgeparametre"
+
+#: ../fslint.glade:814 ../fslint.glade:945 ../fslint.glade:1197
+#: ../fslint.glade:1506 ../fslint.glade:1718 ../fslint.glade:1972
+#: ../fslint.glade:2093 ../fslint.glade:2265 ../fslint.glade:2398
+#: ../fslint.glade:2532
+msgid "Name"
+msgstr "Navn"
+
+#: ../fslint.glade:833 ../fslint.glade:1216 ../fslint.glade:1525
+#: ../fslint.glade:1737 ../fslint.glade:1991 ../fslint.glade:2112
+#: ../fslint.glade:2284 ../fslint.glade:2417 ../fslint.glade:2551
+msgid "Directory"
+msgstr "Katalog"
+
+#: ../fslint.glade:852 ../fslint.glade:1775 ../fslint.glade:2188
+#: ../fslint.glade:2303 ../fslint.glade:2455 ../fslint.glade:2589
+msgid "Date"
+msgstr "Dato"
+
+#: ../fslint.glade:887
+msgid "Duplicates"
+msgstr "Gengangere"
+
+#: ../fslint.glade:964 ../fslint.glade:1544 ../fslint.glade:1756
+#: ../fslint.glade:2169 ../fslint.glade:2436 ../fslint.glade:2570
+msgid "Size"
+msgstr "Størrelse"
+
+#: ../fslint.glade:1059
+msgid "Installed packages"
+msgstr "Installerede pakker"
+
+#: ../fslint.glade:1100
+msgid "Sensitivity="
+msgstr "Følsomhed="
+
+#: ../fslint.glade:1144
+msgid "invalid UTF8 mode?"
+msgstr "ugyldig UTF8-tilstand?"
+
+#: ../fslint.glade:1251
+msgid "Bad names"
+msgstr "Uegnede navne"
+
+#: ../fslint.glade:1286
+msgid "Search ("
+msgstr "Søg ("
+
+#: ../fslint.glade:1312
+msgid "$PATH"
+msgstr "$PATH"
+
+#: ../fslint.glade:1331
+msgid ") for"
+msgstr ") for"
+
+#: ../fslint.glade:1378 ../fslint-gui:799
+msgid "Conflicting files"
+msgstr "Filer i konflikt"
+
+#: ../fslint.glade:1386 ../fslint.glade:1449 ../fslint-gui:797
+#: ../fslint-gui:806
+msgid "Aliases"
+msgstr "Adressebog"
+
+#: ../fslint.glade:1425 ../fslint-gui:812
+msgid "Case conflicts"
+msgstr "Konflikt små/store bogstaver"
+
+#: ../fslint.glade:1433 ../fslint-gui:808
+msgid "Same names"
+msgstr "Ens navne"
+
+#: ../fslint.glade:1441 ../fslint-gui:810
+msgid "Same names(ignore case)"
+msgstr "Ens navne(ignorer små/store bogstaver"
+
+#: ../fslint.glade:1579
+msgid "Name clashes"
+msgstr "Navnesammenfald"
+
+#: ../fslint.glade:1614
+msgid "More restrictive search for core files"
+msgstr "Yderligere restriktiv søgning efter programfiler"
+
+#: ../fslint.glade:1616
+msgid "core file mode?"
+msgstr "programfil-tilstand?"
+
+#: ../fslint.glade:1640
+msgid "days"
+msgstr "dage"
+
+#: ../fslint.glade:1660
+msgid "minimum age"
+msgstr "minimumsalder"
+
+#: ../fslint.glade:1810
+msgid "Temp files"
+msgstr "Midlertidige filer"
+
+#: ../fslint.glade:1846
+msgid "Dangling"
+msgstr "Ikke afklaret"
+
+#: ../fslint.glade:1864
+msgid "Absolute links to paths within or below the link's directory"
+msgstr "Henvisning til stier indenfor eller under henvisningens katalog"
+
+#: ../fslint.glade:1866
+msgid "Suspect"
+msgstr "Mistænkelig"
+
+#: ../fslint.glade:1886
+msgid "Relative"
+msgstr "Relativ"
+
+#: ../fslint.glade:1906
+msgid "Absolute"
+msgstr "Absolut"
+
+#: ../fslint.glade:1925
+msgid "/././. ///// /../ etc."
+msgstr "/././. ///// /../ etc."
+
+#: ../fslint.glade:1927
+msgid "Redundant naming"
+msgstr "Redundant navngivning"
+
+#: ../fslint.glade:2010
+msgid "Target"
+msgstr "Mål"
+
+#: ../fslint.glade:2045
+msgid "Bad symlinks"
+msgstr "Ugyldig symbolsk henvisning"
+
+#: ../fslint.glade:2131
+msgid "UID"
+msgstr "UID"
+
+#: ../fslint.glade:2150
+msgid "GID"
+msgstr "GID"
+
+#: ../fslint.glade:2223
+msgid "Bad IDs"
+msgstr "Ugyldige ID'er"
+
+#: ../fslint.glade:2331 ../fslint-gui:473
+msgid "Empty directories"
+msgstr "Tomme kataloger"
+
+#: ../fslint.glade:2361
+msgid "Search $PATH"
+msgstr "Søg $PATH"
+
+# "Programmer med fejlfindingsinformation" is too long
+#: ../fslint.glade:2490
+msgid "Non stripped binaries"
+msgstr "Non stripped binaries"
+
+#: ../fslint.glade:2617
+msgid "Redundant whitespace"
+msgstr "Redundant mellemrum"
+
+#: ../fslint.glade:2703
+msgid "Find"
+msgstr "Find"
+
+#: ../fslint.glade:2778
+msgid "Stop"
+msgstr "Stop"
+
+#: ../fslint.glade:2867
+msgid "Select"
+msgstr "Vælg"
+
+#: ../fslint.glade:2898
+msgid "Save (selected) list to file"
+msgstr "Gem (valgte) liste i en fil"
+
+#: ../fslint.glade:2943
+msgid "Save"
+msgstr "Gem"
+
+#: ../fslint.glade:2974 ../fslint.glade:3139
+msgid "selected"
+msgstr "valgt"
+
+#: ../fslint.glade:3019
+msgid "Delete"
+msgstr "Slet"
+
+#: ../fslint.glade:3063
+msgid ""
+"All (except selected) using hardlinks\n"
+"(or symlinks if on a different filesystem)"
+msgstr ""
+"Alle (undtagen valgte) der bruger fast henvisning\n"
+"(eller symbolsk henvisning hvis på et andet filsystem)"
+
+#: ../fslint.glade:3109
+msgid "Merge"
+msgstr "Sammenflet"
+
+#: ../fslint.glade:3184
+msgid "Clean"
+msgstr "Rens"
+
+#: ../fslint.glade:3316
+msgid "Select Path"
+msgstr "Vælg sti"
+
+#: ../fslint-gui:141
+#, python-format
+msgid "Usage: %s [OPTION] [PATHS]"
+msgstr "Brug: %s [OPTION] [PATHS]"
+
+#: ../fslint-gui:142
+msgid "    --version       display version"
+msgstr "    --version       vis version"
+
+#: ../fslint-gui:143
+msgid "    --help          display help"
+msgstr "    --hjælp          vis hjælp"
+
+#: ../fslint-gui:330
+#, python-format
+msgid "%s of %s is used leaving %sB available"
+msgstr "%s af %s er anvendt og %sB er tilgængelig"
+
+#: ../fslint-gui:424
+msgid "Do you want to overwrite?\n"
+msgstr "Ønsker du at overskrive?\n"
+
+#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
+msgid "Yes"
+msgstr "Ja"
+
+#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
+msgid "No"
+msgstr "Nej"
+
+#: ../fslint-gui:432
+msgid "You can't overwrite "
+msgstr "Du kan ikke overskrive"
+
+#: ../fslint-gui:466
+msgid "Files with the same content"
+msgstr "Filer med det samme indhold"
+
+#: ../fslint-gui:467
+msgid "Installed packages ordered by disk usage"
+msgstr "Installerede pakker krævet af harddiskforbrug"
+
+#: ../fslint-gui:468
+msgid "Problematic filenames"
+msgstr "Problematiske filnavne"
+
+#: ../fslint-gui:469
+msgid "Possibly conflicting commands or filenames"
+msgstr "Mulig konflikt med kommandoer eller filnavne"
+
+#: ../fslint-gui:470
+msgid "Possibly old temporary files"
+msgstr "Muligvis gamle midlertidige filer"
+
+#: ../fslint-gui:471
+msgid "Problematic symbolic links"
+msgstr "Problematiske symbolske henvisninger"
+
+#: ../fslint-gui:472
+msgid "Files with missing user IDs"
+msgstr "Filer med manglende bruger ID"
+
+#: ../fslint-gui:474
+msgid "Executables still containing debugging info"
+msgstr "Programmer der stadig indeholder fejlsøgningsinformation"
+
+#: ../fslint-gui:475
+msgid "Whitespace at the end of lines in a text file"
+msgstr "Mellemrum ved slutningen af tekstfilen"
+
+#: ../fslint-gui:481
+msgid "Invalid path ["
+msgstr "Ugyldig sti ["
+
+#: ../fslint-gui:500
+msgid "searching"
+msgstr "søger"
+
+#: ../fslint-gui:510
+msgid "processing..."
+msgstr "bearbejder..."
+
+#: ../fslint-gui:538
+msgid "No search paths specified"
+msgstr "Ingen søgesti valgt"
+
+#: ../fslint-gui:683
+msgid ""
+"Sorry, FSlint does not support this functionality on your system at present."
+msgstr ""
+"Beklager, FSlint understøtter ikke denne funktionalitet på dit system for "
+"nuværende."
+
+#: ../fslint-gui:699
+msgid " packages, "
+msgstr " pakker, "
+
+#: ../fslint-gui:700
+#, python-format
+msgid "consuming %sB. "
+msgstr "Forbruger %sB. "
+
+#: ../fslint-gui:701
+#, python-format
+msgid "Note %s."
+msgstr "Bemærk %s."
+
+#: ../fslint-gui:712 ../fslint-gui:753 ../fslint-gui:791 ../fslint-gui:853
+msgid " files"
+msgstr " filer"
+
+#: ../fslint-gui:732
+msgid " unstripped binaries"
+msgstr " ikke fjernet binarier"
+
+#: ../fslint-gui:742
+msgid " empty directories"
+msgstr " tomme kataloger"
+
+#: ../fslint-gui:774
+msgid " links"
+msgstr " henvisninger"
+
+#: ../fslint-gui:790 ../fslint-gui:901
+msgid " bytes wasted in "
+msgstr " byte bortødslet i "
+
+#: ../fslint-gui:835 ../fslint-gui:902
+msgid " files (in "
+msgstr " filer (i "
+
+#: ../fslint-gui:836 ../fslint-gui:903
+msgid " groups)"
+msgstr " grupper)"
+
+#: ../fslint-gui:893
+msgid "bytes wasted"
+msgstr "byte bortødslet"
+
+#: ../fslint-gui:930
+msgid "None selected"
+msgstr "Ingen valg foretaget"
+
+#: ../fslint-gui:936
+msgid " this item?\n"
+msgstr " dette punkt?\n"
+
+#: ../fslint-gui:938
+#, python-format
+msgid " these %d items?\n"
+msgstr " disse %d punkter?\n"
+
+#: ../fslint-gui:1050
+msgid "User aborted"
+msgstr "Bruger afbrudt"
+
+#: ../fslint-gui:1121
+msgid "wildcard:"
+msgstr "Jokertegn:"
+
+#: ../fslint-gui:1121
+msgid "Cancel"
+msgstr "Afbryd"
+
+#: ../fslint-gui:1121
+msgid "Ok"
+msgstr "Ok"
+
+#: ../fslint-gui:1213
+msgid "Sorry, you must be root to delete system packages."
+msgstr "Beklager, du skal være administrator for at slette systempakker."
+
+#: ../fslint-gui:1217
+msgid "Are you sure you want to delete"
+msgstr "Er du sikker på at du ønsker at slette"
+
+#: ../fslint-gui:1230
+msgid "Calculating dependencies..."
+msgstr "Udregner afhængigheder..."
+
+#: ../fslint-gui:1246
+#, python-format
+msgid "%d extra packages need to be deleted.\n"
+msgstr "%d yderligere pakker skal slettes.\n"
+
+#: ../fslint-gui:1247
+msgid "Please review the updated selection."
+msgstr "Gennemse venligst det opdaterede valg."
+
+#: ../fslint-gui:1256
+msgid "Removing packages..."
+msgstr "Fjerner pakker..."
+
+#: ../fslint-gui:1296
+msgid " items deleted"
+msgstr " punkter slettet"
+
+#: ../fslint-gui:1375
+msgid "Are you sure you want to merge ALL files?\n"
+msgstr "Er du sikker du ønsker at flette ALLE filer?\n"
+
+#: ../fslint-gui:1379
+msgid "(Ignoring those selected)\n"
+msgstr "(Ignorerer de valgte)\n"
+
+#: ../fslint-gui:1416
+msgid "Are you sure you want to clean"
+msgstr "Er du sikker på at du ønsker at rydde op"
+
+#: ../fslint-gui:1450
+msgid " items cleaned ("
+msgstr " punkter ryddet op ("
+
+#: ../fslint-gui:1451
+msgid " bytes saved)"
+msgstr " byte gemt)"
