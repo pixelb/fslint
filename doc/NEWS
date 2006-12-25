@@ -1,5 +1,7 @@
 2.17 dd/mm/yy
-	* Updated translations: Swedish.
+	* Translations:
+		* Added: Danish.
+		* Updated: Swedish.
 	* Fixes for finding/merging duplicates across multiple filesystems:
 		* Fix a bug introduced in 2.15 wrt the independent hardlinks
 		  fix. The bug was essentially that duplicates would only be
@@ -15,14 +17,14 @@
 	* Packaging changes:
 		* Support building SuSE specific RPMs from the tarball.
 		* Simplify debian package so that it builds with dash.
-		* Add ebuild for gentoo.
+		* Add gentoo ebuild from Cédrick Gaillard to web site.
 	* GUI improvments:
 		* Give updating "searching...." status, to ensure that users
 		  know the program is still running.
 		* Give an explanation in status field for each function (tab).
 		* Enable a default button for all dialogs (when enter pressed).
 		* Provide a menu to greatly enhance the selection functionality.
-		  This was prompted by feedback from x & y.
+		  This was prompted by feedback from Rolf Leggewie.
 		* Display all errors from an operation, not just the last.
 		* Display any errors from "save results" operation.
 

@@ -858,6 +858,8 @@ on your system at present."))
         numdups = size = fsize = 0
         alldups = []
         inodes = {}
+        #inodes required to correctly report disk usage of
+        #duplicate files with seperate inode groups.
         for line in po:
             line = line.strip()
             if line == '': #grouped == 1

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint 2.03\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-22 12:18+0000\n"
+"POT-Creation-Date: 2006-12-23 22:25+0000\n"
 "PO-Revision-Date: 2005-01-19 18:25+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net> \n"
@@ -27,9 +27,8 @@ msgid "Unselect using wildcard"
 msgstr ""
 
 #: ../fslint.glade:86
-#, fuzzy
-msgid "groups"
-msgstr " nhóm)"
+msgid "within groups"
+msgstr "nhóm"
 
 #: ../fslint.glade:95
 msgid "Select all but first"
@@ -325,11 +324,11 @@ msgstr ""
 msgid "Do you want to overwrite?\n"
 msgstr "Bạn có muốn ghi đè không?\n"
 
-#: ../fslint-gui:425 ../fslint-gui:937 ../fslint-gui:1381
+#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
 msgid "Yes"
 msgstr "Có"
 
-#: ../fslint-gui:425 ../fslint-gui:937 ../fslint-gui:1381
+#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
 msgid "No"
 msgstr "Không"
 
@@ -425,99 +424,96 @@ msgstr " thư mục trống"
 msgid " links"
 msgstr " liên kết"
 
-#: ../fslint-gui:790 ../fslint-gui:899
+#: ../fslint-gui:790 ../fslint-gui:901
 msgid " bytes wasted in "
 msgstr " byte bị phí trong "
 
-#: ../fslint-gui:835 ../fslint-gui:900
+#: ../fslint-gui:835 ../fslint-gui:902
 msgid " files (in "
 msgstr " tập tin (trong "
 
-#: ../fslint-gui:836 ../fslint-gui:901
+#: ../fslint-gui:836 ../fslint-gui:903
 msgid " groups)"
 msgstr " nhóm)"
 
-#: ../fslint-gui:891
+#: ../fslint-gui:893
 msgid "bytes wasted"
 msgstr "byte bị phí"
 
-#: ../fslint-gui:928
+#: ../fslint-gui:930
 msgid "None selected"
 msgstr "Chưa có điều nào được chọn"
 
-#: ../fslint-gui:934
+#: ../fslint-gui:936
 msgid " this item?\n"
 msgstr " mục không?\n"
 
-#: ../fslint-gui:936
+#: ../fslint-gui:938
 #, python-format
 msgid " these %d items?\n"
 msgstr " %d mục không?\n"
 
-#: ../fslint-gui:1048
+#: ../fslint-gui:1050
 msgid "User aborted"
 msgstr "Người dùng đã hủy bỏ việc"
 
-#: ../fslint-gui:1119
+#: ../fslint-gui:1121
 msgid "wildcard:"
 msgstr ""
 
-#: ../fslint-gui:1119
+#: ../fslint-gui:1121
 msgid "Cancel"
 msgstr ""
 
-#: ../fslint-gui:1119
+#: ../fslint-gui:1121
 msgid "Ok"
 msgstr ""
 
-#: ../fslint-gui:1211
+#: ../fslint-gui:1213
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
 
-#: ../fslint-gui:1215
+#: ../fslint-gui:1217
 msgid "Are you sure you want to delete"
 msgstr "Bạn chắc muốn xóa bỏ những"
 
-#: ../fslint-gui:1228
+#: ../fslint-gui:1230
 msgid "Calculating dependencies..."
 msgstr ""
 
-#: ../fslint-gui:1244
+#: ../fslint-gui:1246
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr ""
 
-#: ../fslint-gui:1245
+#: ../fslint-gui:1247
 msgid "Please review the updated selection."
 msgstr ""
 
-#: ../fslint-gui:1254
+#: ../fslint-gui:1256
 msgid "Removing packages..."
 msgstr ""
 
-#: ../fslint-gui:1294
+#: ../fslint-gui:1296
 msgid " items deleted"
 msgstr " mục bị xóa bỏ"
 
-#: ../fslint-gui:1373
+#: ../fslint-gui:1375
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Bạn chắc muốn phối TẤT CẢ tập tin với nhau không?\n"
 
-#: ../fslint-gui:1377
+#: ../fslint-gui:1379
 msgid "(Ignoring those selected)\n"
 msgstr "(Trừ những điều được chọn)\n"
 
-#: ../fslint-gui:1414
+#: ../fslint-gui:1416
 msgid "Are you sure you want to clean"
 msgstr "Bạn chắc muốn gột những"
 
-#: ../fslint-gui:1448
+#: ../fslint-gui:1450
 msgid " items cleaned ("
 msgstr " mục được gột ("
 
-#: ../fslint-gui:1449
+#: ../fslint-gui:1451
 msgid " bytes saved)"
 msgstr " byte được giữ)"
-
-#~ msgid "Toggle"
-#~ msgstr "Bập bênh"

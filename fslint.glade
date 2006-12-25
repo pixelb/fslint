@@ -83,7 +83,7 @@
 		  <child>
 		    <widget class="GtkMenuItem" id="groups_menu">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">groups</property>
+		      <property name="label" translatable="yes">within groups</property>
 		      <property name="use_underline">True</property>
 
 		      <child>
