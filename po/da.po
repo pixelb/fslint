@@ -32,7 +32,7 @@ msgstr "Fravælg med jokertegn"
 
 #: ../fslint.glade:86
 msgid "within groups"
-msgstr "på grupper"
+msgstr "Indenfor grupper"
 
 #: ../fslint.glade:95
 msgid "Select all but first"
