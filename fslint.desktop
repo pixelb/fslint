@@ -6,4 +6,4 @@ Terminal=false
 Type=Application
 Icon=fslint_icon.png
 Encoding=UTF-8
-Categories=Application;Utility;System;GTK;
+Categories=System;Filesystem;GTK;
