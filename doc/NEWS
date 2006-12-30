@@ -1,4 +1,10 @@
 2.19 dd/mm/yy
+	* Translations:
+		* Updated: Danish.
+	* Packaging changes:
+		* Really support building SuSE specific RPMs from the tarball.
+		  Previously I used the "Application" category which is fedora
+		  specific. I now use only freedesktop standard categories.
 
 2.18 25/12/06
 	* Translations:
