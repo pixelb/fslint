@@ -479,7 +479,8 @@ class fslint(GladeWrapper):
                 self.addDirs(self.ok_dirs, os.path.abspath(path))
             else:
                 self.ShowErrors(_("Invalid path [") + path + "]")
-        for bad_dir in ['/lost+found','/dev','/proc','/sys','/tmp']:
+        for bad_dir in ['/lost+found','/dev','/proc','/sys','/tmp',
+                        '/*.svn','/*CVS']:
             self.addDirs(self.bad_dirs, bad_dir)
         self.mode=0
         self.status.set_text(self.mode_descs[self.mode])
