@@ -177,12 +177,12 @@ uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 if [ ! -z "$mode" ]; then
   cut -d' ' -f3- |
   if [ ! $mode = "gui" ]; then # external call to python as this is faster
-    if [ -f $script_dir/supprt/rmlint/fixdup.py ]; then
+    if $script_dir/supprt/rmlint/fixdup.py < /dev/null; then
         $script_dir/supprt/rmlint/fixdup.py $t$mode
-    elif [ -f $script_dir/supprt/rmlint/fixdup.sh ]; then
+    elif $script_dir/supprt/rmlint/fixdup.sh < /dev/null; then
         $script_dir/supprt/rmlint/fixdup.sh $t$mode
     else
-        echo "Error, couldn't find merge util" >&2
+        echo "Error, couldn't execute merge util" >&2
         exit 1
     fi
   else
