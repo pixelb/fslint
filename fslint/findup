@@ -144,6 +144,21 @@ sort -k2,2n -k3,3n | #NB sort inodes so md5sum does less seeking all over disk
 cut -f1 -d' ' -s |   #get filenames to work on
 tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
 
+# The following optional block, md5sums a small sample of each file,
+# which can help when there are many files of the same size,
+# even more so if they are large. This usually adds a small amount of
+# runtime, however it can save a large amount of time in certain situations.
+if $script_dir/supprt/md5sum_approx; then
+    xargs -r0 $script_dir/supprt/md5sum_approx |
+    sort |                     #group duplicate files together
+    uniq --all-repeated -w32 | #pick just duplicates
+    cut -d' ' -f3- |           #get filenames
+    sort |                     #sort by paths to try to minimise disk seeks
+    tr '\n' '\0'               #delimit names with \0
+else
+    cat
+fi |
+
 # This block selects duplicates using md5sum of whole file
 xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
 sort |                     #group duplicate files together
