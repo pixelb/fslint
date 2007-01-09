@@ -5,6 +5,7 @@
 		* Really support building SuSE specific RPMs from the tarball.
 		  Previously I used the "Application" category which is fedora
 		  specific. I now use only freedesktop standard categories.
+		* Fix minor lintian warning in debian/control file.
 
 2.18 25/12/06
 	* Translations:
@@ -13,7 +14,7 @@
 	* Fixes for finding/merging duplicates across multiple filesystems:
 		* Fix a bug introduced in 2.15 wrt the independent hardlinks
 		  fix. The bug was essentially that duplicates would only be
-		  found within one filesystem of the specififed search path(s).
+		  found within one filesystem of the specified search path(s).
 		  Note this bug only affects systems with findutils >= 4.2
 		  This bug was reported and fixed by Robert Seczkowski.
 		* Make disk head seeks more efficient when finding duplicates,
