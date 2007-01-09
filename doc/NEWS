@@ -6,6 +6,10 @@
 		  Previously I used the "Application" category which is fedora
 		  specific. I now use only freedesktop standard categories.
 		* Fix minor lintian warning in debian/control file.
+	* Improvements:
+		* Reduce CPU usage by 35% when finding dups.
+		* Handle large, same sized files with differing content
+		  more efficiently, when finding dups.
 
 2.18 25/12/06
 	* Translations:
@@ -27,7 +31,7 @@
 		* Support building SuSE specific RPMs from the tarball.
 		* Simplify debian package so that it builds with dash.
 		* Add gentoo ebuild from Cédrick Gaillard to web site.
-	* GUI improvments:
+	* GUI improvements:
 		* Give updating "searching...." status, to ensure that users
 		  know the program is still running.
 		* Give an explanation in status field for each function (tab).
