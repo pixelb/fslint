@@ -143,29 +143,24 @@ fi |
 sort -k2,2n -k3,3n | #NB sort inodes so md5sum does less seeking all over disk
 cut -f1 -d' ' -s |   #get filenames to work on
 tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
-xargs -r0 md5sum -- |#calculate md5sums for possible duplicates
-sort |               #group duplicate files together
-tr ' \t' '\1\2' |    #remove spaces & tabs again (sed can't match \0)
-sed -e 's/\(^.\{32\}\)..\(.*\)/\2 \1/' | #switch sums and filenames
+
+# This block selects duplicates using md5sum of whole file
+xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
+sort |                     #group duplicate files together
+uniq --all-repeated -w32 | #pick just duplicates
 
 # The following optional block, checks duplicates again using sha1
 # Note for data sets that don't totally fit in cache this will
 # probably read duplicate files off the disk again.
-uniq --all-repeated -1 | #pick just duplicates
-cut -d' ' -f1 |          #get filenames
-sort |                   #sort by paths to try to minimise disk seeks
-tr '\1\2\n' ' \t\0' |    #reset any space & tabs etc and delimit names with \0
-xargs -r0 sha1sum -- |   #to be sure to be sure
-sort |                   #group duplicate files together
-tr ' \t' '\1\2' |        #remove spaces & tabs again (sed can't match \0)
-sed -e 's/\(^.\{40\}\)..\(.*\)/\2 \1/' | #switch sums and filenames
-
-uniq --all-repeated=$sep_mode -1 | #pick just duplicates
-sed -e 's/\(^.*\) \(.*\)/\2 \1/' | #switch sums and filenames back
-tr '\1\2' ' \t' |    #put spaces & tabs back
+cut -d' ' -f3- |           #get filenames
+sort |                     #sort by paths to try to minimise disk seeks
+tr '\n' '\0' |             #delimit names with \0
+xargs -r0 sha1sum -- |     #to be sure to be sure
+sort |                     #group duplicate files together
+uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 
 if [ ! -z "$mode" ]; then
-  cut -d' ' -f2- |
+  cut -d' ' -f3- |
   if [ ! $mode = "gui" ]; then # external call to python as this is faster
     if [ -f $script_dir/supprt/rmlint/fixdup.py ]; then
         $script_dir/supprt/rmlint/fixdup.py $t$mode
