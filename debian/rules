@@ -47,6 +47,7 @@ install:
 	install -pm 755 fslint/find* fslint/fslint fslint/zipdir ${datadir}/${name}/fslint
 	install -pm 755 fslint/fstool/* ${datadir}/${name}/fslint/fstool
 	install -pm 755 fslint/supprt/get* ${datadir}/${name}/fslint/supprt
+	install -pm 755 fslint/supprt/md5sum_approx ${datadir}/${name}/fslint/supprt
 	install -pm 644 fslint/supprt/fslver ${datadir}/${name}/fslint/supprt
 	install -pm 755 fslint/supprt/rmlint/* ${datadir}/${name}/fslint/supprt/rmlint
 	$(MAKE) -C po DESTDIR=$(CURDIR)/$(installdir) install

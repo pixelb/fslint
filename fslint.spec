@@ -4,13 +4,13 @@
 Name:           fslint
 Version:        2.19
 %if %{mandriva}
-Release:        1.mdk
+Release:        2.mdk
 %endif
 %if %{suse}
-Release:        1.suse
+Release:        2.suse
 %endif
 %if !%{mandriva} && !%{suse}
-Release:        1
+Release:        2
 %endif
 Summary:        FSlint - a utility to find and clean "lint" on a filesystem
 
@@ -66,6 +66,8 @@ install -pm 755 fslint/fstool/* \
 install -pm 644 fslint/supprt/fslver \
   $RPM_BUILD_ROOT%{_datadir}/%{name}/fslint/supprt
 install -pm 755 fslint/supprt/get* \
+  $RPM_BUILD_ROOT%{_datadir}/%{name}/fslint/supprt
+install -pm 755 fslint/supprt/md5sum_approx \
   $RPM_BUILD_ROOT%{_datadir}/%{name}/fslint/supprt
 install -pm 755 fslint/supprt/rmlint/* \
   $RPM_BUILD_ROOT%{_datadir}/%{name}/fslint/supprt/rmlint

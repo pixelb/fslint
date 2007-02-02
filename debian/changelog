@@ -1,3 +1,7 @@
+fslint (2.19-2) unstable; urgency=low
+
+  * add md5sum_approx
+
 fslint (2.19-1) unstable; urgency=low
 
   * Bump to devel version
