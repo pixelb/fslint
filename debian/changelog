@@ -2,23 +2,25 @@ fslint (2.19-2) unstable; urgency=low
 
   * add md5sum_approx
 
+ -- Pádraig Brady <P@draigBrady.com>  Fri, 02 Feb 2007 00:34:00 +0000
+
 fslint (2.19-1) unstable; urgency=low
 
   * Bump to devel version
 
- -- Pádraig Brady <P@draigBrady.com>  Thu, 26 Dec 2006 14:54:00 +0000
+ -- Pádraig Brady <P@draigBrady.com>  Tue, 26 Dec 2006 14:54:00 +0000
 
 fslint (2.18-1) unstable; urgency=low
 
   * Bump to release version
 
- -- Pádraig Brady <P@draigBrady.com>  Thu, 25 Dec 2006 23:54:00 +0000
+ -- Pádraig Brady <P@draigBrady.com>  Mon, 25 Dec 2006 23:54:00 +0000
 
 fslint (2.17-1) unstable; urgency=low
 
   * Bump to devel version
 
- -- Pádraig Brady <P@draigBrady.com>  Thu, 28 Nov 2006 17:25:30 +0000
+ -- Pádraig Brady <P@draigBrady.com>  Tue, 28 Nov 2006 17:25:30 +0000
 
 fslint (2.16-1) unstable; urgency=low
 
@@ -30,7 +32,7 @@ fslint (2.15-1) unstable; urgency=low
 
   * Cleanups suggested by Justin Pryzsb
 
- -- Pádraig Brady <P@draigBrady.com>  Thu, 09 Mar 2006 08:50:03 +0000
+ -- Pádraig Brady <P@draigBrady.com>  Tue, 09 Mar 2006 08:50:03 +0000
 
 fslint (2.14-1) unstable; urgency=low
 
