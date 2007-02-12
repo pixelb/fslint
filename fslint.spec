@@ -58,7 +58,7 @@ install -dm 755 $RPM_BUILD_ROOT%{_mandir}/man1
 install -pm 644 fslint.glade fslint_icon.png \
   $RPM_BUILD_ROOT%{_datadir}/%{name}
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/pixmaps
-ln -s %{_datadir}/%{name}/fslint_icon.png $RPM_BUILD_ROOT%{_datadir}/pixmaps
+ln -s ../%{name}/fslint_icon.png $RPM_BUILD_ROOT%{_datadir}/pixmaps
 install -pm 755 fslint/{find*,fslint,zipdir} \
   $RPM_BUILD_ROOT%{_datadir}/%{name}/fslint
 install -pm 755 fslint/fstool/* \
