@@ -1,6 +1,6 @@
 # Danish translations for FSlint (da.po)
 # Danske oversættelser for pakke FSlint (da.po).
-# Copyright (C) 2006 Pádraig Brady
+# Copyright (C) 2007 Pádraig Brady
 # This file is distributed under the same license as the FSlint package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2006.
 # Martin Willemoes Hansen har udført korrektur på oversættelsen, 2006

@@ -1,4 +1,4 @@
-2.19 dd/mm/yy
+2.20 09/03/07
 	* Translations:
 		* Updated: Danish.
 	* Packaging changes:
@@ -6,6 +6,7 @@
 		  Previously I used the "Application" category which is fedora
 		  specific. I now use only freedesktop standard categories.
 		* Fix minor lintian warning in debian/control file.
+		* Updated package descriptions so it's easier to find in repos.
 	* Improvements:
 		* Reduce CPU usage by 35% when finding dups.
 		* Handle large, same sized files with differing content

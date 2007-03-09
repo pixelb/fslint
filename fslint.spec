@@ -2,15 +2,15 @@
 %define suse %([ -f /etc/SuSE-release ] && echo 1 || echo 0)
 
 Name:           fslint
-Version:        2.19
+Version:        2.20
 %if %{mandriva}
-Release:        2.mdk
+Release:        1.mdk
 %endif
 %if %{suse}
-Release:        2.suse
+Release:        1.suse
 %endif
 %if !%{mandriva} && !%{suse}
-Release:        2
+Release:        1
 %endif
 Summary:        FSlint - a utility to find and clean "lint" on a filesystem
 
@@ -35,8 +35,10 @@ Requires:       pygtk2, pygtk2-libglade
 %endif
 
 %description
-FSlint is a toolkit to find all redundant disk usage (duplicate files
-for e.g.). It includes a GUI as well as a command line interface.
+FSlint is a utility to find redundant disk usage like duplicate files
+for example. It can be used to reclaim disk space and fix other problems
+like file naming issues and bad symlinks etc.
+It includes a GTK+ GUI as well as a command line interface.
 
 
 %prep
@@ -101,6 +103,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 09 2007 Pádraig Brady
+- Put more info in description so the package is
+  easier to find in repositories
+
 * Wed Nov 01 2006 Pádraig Brady
 - Support SuSE
 - Removed 0 Epoch to align with fedora policies

@@ -1,3 +1,10 @@
+fslint (2.20-1) unstable; urgency=low
+
+  * Update description to make FSlint easier to find (bug 413907)
+  * Bump to release version
+
+ -- Pádraig Brady <P@draigBrady.com>  Fri, 09 Mar 2007 07:54:00 +0000
+
 fslint (2.19-2) unstable; urgency=low
 
   * add md5sum_approx
