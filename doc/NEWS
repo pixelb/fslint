@@ -1,4 +1,6 @@
 2.21 dd/mm/yy
+	* Translations:
+		* Added: Spanish.
 	* Improvements:
 		* Ensure all numbers are output appropriate to locale.
 
