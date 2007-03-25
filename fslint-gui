@@ -164,7 +164,7 @@ except getopt.error, msg:
 def human_num(num, divisor=1, power=""):
     num=float(num)
     if divisor == 1:
-        return locale.format("%ld",int(num),1)
+        return locale.format("%ld",num,1)
     elif divisor == 1000:
         powers=[" ","K","M","G","T","P"]
     elif divisor == 1024:
@@ -175,11 +175,11 @@ def human_num(num, divisor=1, power=""):
     while num >= 1000: #4 digits
         num /= divisor
         power=powers[powers.index(power)+1]
-        human_num(num,divisor,power)
     if power.strip():
-        return "%6.1f%s" % (num,power)
+        num = locale.format("%6.1f",num,1)
     else:
-        return "%4ld  %s" % (num,power)
+        num = locale.format("%4ld  ",num,1)
+    return "%s%s" % (num,power)
 
 class GladeWrapper:
     """

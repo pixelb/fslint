@@ -1,3 +1,7 @@
+2.21 dd/mm/yy
+	* Improvements:
+		* Ensure all numbers are output appropriate to locale.
+
 2.20 09/03/07
 	* Translations:
 		* Updated: Danish.
