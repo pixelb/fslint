@@ -402,7 +402,7 @@ msgstr "包"
 #: ../fslint-gui:700
 #, fuzzy, python-format
 msgid "consuming %sB. "
-msgstr "消耗 %sB"
+msgstr "消耗 %sB. "
 
 #: ../fslint-gui:701
 #, python-format
