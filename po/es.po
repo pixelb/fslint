@@ -194,7 +194,7 @@ msgstr "Pendiente"
 
 #: ../fslint.glade:1864
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "Enlances absolutos a la ruta o debajo el directorio de enlaces"
+msgstr "Enlaces absolutos a la ruta o debajo el directorio de enlaces"
 
 #: ../fslint.glade:1866
 msgid "Suspect"
@@ -222,7 +222,7 @@ msgstr "Objetivo"
 
 #: ../fslint.glade:2045
 msgid "Bad symlinks"
-msgstr "Enlances malos"
+msgstr "Enlaces malos"
 
 #: ../fslint.glade:2131
 msgid "UID"
