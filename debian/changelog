@@ -1,3 +1,9 @@
+fslint (2.21-1) unstable; urgency=low
+
+  * Bump to devel version
+
+ -- Pádraig Brady <P@draigBrady.com>  Fri, 30 Mar 2007 08:22:00 +0000
+
 fslint (2.20-1) unstable; urgency=low
 
   * Update description to make FSlint easier to find (bug 413907)

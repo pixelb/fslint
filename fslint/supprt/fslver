@@ -10,7 +10,7 @@ export LC_CTYPE=C #uncomment for speed (noting the caveats above)
 export LC_COLLATE=C #for even more speed
 
 Version() {
-  echo "FSlint 2.19" && exit
+  echo "FSlint 2.21" && exit
 }
 
 check_uniq() {
