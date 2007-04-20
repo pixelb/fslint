@@ -3,6 +3,10 @@
 		* Added: Spanish.
 	* Improvements:
 		* Ensure all numbers are output appropriate to locale.
+		* Add an indenting checker/fixer to the "redundant whitespace"
+		  function. This checks for erroneous mixing of tabs and spaces
+		  in the indenting at the start of a line, and the user
+		  can select to fix with tabs or spaces.
 
 2.20 09/03/07
 	* Translations:

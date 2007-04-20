@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint 2.04\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-23 22:25+0000\n"
+"POT-Creation-Date: 2007-04-20 08:42+0100\n"
 "PO-Revision-Date: 2003-09-17 19:20+0100\n"
 "Last-Translator: Patrick Kiernan <patrickk@campus.ie>\n"
 "Language-Team: Gaeilge <ga@li.org>\n"
@@ -92,18 +92,18 @@ msgstr "Paraiméadar cuardach ar aghaidh"
 #: ../fslint.glade:814 ../fslint.glade:945 ../fslint.glade:1197
 #: ../fslint.glade:1506 ../fslint.glade:1718 ../fslint.glade:1972
 #: ../fslint.glade:2093 ../fslint.glade:2265 ../fslint.glade:2398
-#: ../fslint.glade:2532
+#: ../fslint.glade:2621
 msgid "Name"
 msgstr "Ainm"
 
 #: ../fslint.glade:833 ../fslint.glade:1216 ../fslint.glade:1525
 #: ../fslint.glade:1737 ../fslint.glade:1991 ../fslint.glade:2112
-#: ../fslint.glade:2284 ../fslint.glade:2417 ../fslint.glade:2551
+#: ../fslint.glade:2284 ../fslint.glade:2417 ../fslint.glade:2640
 msgid "Directory"
 msgstr "Comhadlann"
 
 #: ../fslint.glade:852 ../fslint.glade:1775 ../fslint.glade:2188
-#: ../fslint.glade:2303 ../fslint.glade:2455 ../fslint.glade:2589
+#: ../fslint.glade:2303 ../fslint.glade:2455 ../fslint.glade:2678
 msgid "Date"
 msgstr "Dáta"
 
@@ -112,7 +112,7 @@ msgid "Duplicates"
 msgstr "Dúbailí"
 
 #: ../fslint.glade:964 ../fslint.glade:1544 ../fslint.glade:1756
-#: ../fslint.glade:2169 ../fslint.glade:2436 ../fslint.glade:2570
+#: ../fslint.glade:2169 ../fslint.glade:2436 ../fslint.glade:2659
 msgid "Size"
 msgstr "Toise"
 
@@ -144,24 +144,24 @@ msgstr "$PATH"
 msgid ") for"
 msgstr ") le haghaidh"
 
-#: ../fslint.glade:1378 ../fslint-gui:799
+#: ../fslint.glade:1378 ../fslint-gui:807
 msgid "Conflicting files"
 msgstr "Comhadí coimhlint"
 
-#: ../fslint.glade:1386 ../fslint.glade:1449 ../fslint-gui:797
-#: ../fslint-gui:806
+#: ../fslint.glade:1386 ../fslint.glade:1449 ../fslint-gui:805
+#: ../fslint-gui:814
 msgid "Aliases"
 msgstr ""
 
-#: ../fslint.glade:1425 ../fslint-gui:812
+#: ../fslint.glade:1425 ../fslint-gui:820
 msgid "Case conflicts"
 msgstr "Coimhlintí cás"
 
-#: ../fslint.glade:1433 ../fslint-gui:808
+#: ../fslint.glade:1433 ../fslint-gui:816
 msgid "Same names"
 msgstr "Ainmneacha céanna"
 
-#: ../fslint.glade:1441 ../fslint-gui:810
+#: ../fslint.glade:1441 ../fslint-gui:818
 msgid "Same names(ignore case)"
 msgstr "Ainmeacha(ná bac le cás)"
 
@@ -249,56 +249,64 @@ msgstr "Cuardaigh $PATH"
 msgid "Non stripped binaries"
 msgstr ""
 
-#: ../fslint.glade:2617
+#: ../fslint.glade:2526
+msgid "whitespace at end of line"
+msgstr ""
+
+#: ../fslint.glade:2551
+msgid "bad indenting for indent width"
+msgstr ""
+
+#: ../fslint.glade:2713
 msgid "Redundant whitespace"
 msgstr "Spásbán iomarach"
 
-#: ../fslint.glade:2703
+#: ../fslint.glade:2799
 msgid "Find"
 msgstr "Cuardaigh"
 
-#: ../fslint.glade:2778
+#: ../fslint.glade:2874
 msgid "Stop"
 msgstr "Stop"
 
-#: ../fslint.glade:2867
+#: ../fslint.glade:2963
 #, fuzzy
 msgid "Select"
 msgstr "Roghnaithe"
 
-#: ../fslint.glade:2898
+#: ../fslint.glade:2994
 #, fuzzy
 msgid "Save (selected) list to file"
 msgstr "Liosta chun comhad"
 
-#: ../fslint.glade:2943
+#: ../fslint.glade:3039
 msgid "Save"
 msgstr "Sabháil"
 
-#: ../fslint.glade:2974 ../fslint.glade:3139
+#: ../fslint.glade:3070 ../fslint.glade:3235
 msgid "selected"
 msgstr "Roghnaithe"
 
-#: ../fslint.glade:3019
+#: ../fslint.glade:3115
 msgid "Delete"
 msgstr "Scrios"
 
-#: ../fslint.glade:3063
+#: ../fslint.glade:3159
 #, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr "Gach (seachas roghnaithe) ag usáid naisc crúa"
 
-#: ../fslint.glade:3109
+#: ../fslint.glade:3205
 msgid "Merge"
 msgstr "Cumaisc"
 
-#: ../fslint.glade:3184
+#: ../fslint.glade:3280
 msgid "Clean"
 msgstr "Glán"
 
-#: ../fslint.glade:3316
+#: ../fslint.glade:3412
 msgid "Select Path"
 msgstr "Roghnaigh conair"
 
@@ -323,14 +331,6 @@ msgstr ""
 #: ../fslint-gui:424
 msgid "Do you want to overwrite?\n"
 msgstr "An dteastaíonn uait muinscríobh?\n"
-
-#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
-msgid "Yes"
-msgstr "Sea"
-
-#: ../fslint-gui:425 ../fslint-gui:939 ../fslint-gui:1383
-msgid "No"
-msgstr "Ní hea"
 
 #: ../fslint-gui:432
 msgid "You can't overwrite "
@@ -370,150 +370,154 @@ msgid "Executables still containing debugging info"
 msgstr ""
 
 #: ../fslint-gui:475
-msgid "Whitespace at the end of lines in a text file"
+msgid "Erroneous whitespace in a text file"
 msgstr ""
 
 #: ../fslint-gui:481
 msgid "Invalid path ["
 msgstr ""
 
-#: ../fslint-gui:500
+#: ../fslint-gui:501
 msgid "searching"
 msgstr ""
 
-#: ../fslint-gui:510
+#: ../fslint-gui:511
 msgid "processing..."
 msgstr ""
 
-#: ../fslint-gui:538
+#: ../fslint-gui:539
 msgid "No search paths specified"
 msgstr "Níl aon conairí cuardach sonraíaithe"
 
-#: ../fslint-gui:683
+#: ../fslint-gui:684
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
 
-#: ../fslint-gui:699
-msgid " packages, "
-msgstr ""
-
 #: ../fslint-gui:700
-#, python-format
-msgid "consuming %sB. "
+msgid " packages, "
 msgstr ""
 
 #: ../fslint-gui:701
 #, python-format
+msgid "consuming %sB. "
+msgstr ""
+
+#: ../fslint-gui:702
+#, python-format
 msgid "Note %s."
 msgstr ""
 
-#: ../fslint-gui:712 ../fslint-gui:753 ../fslint-gui:791 ../fslint-gui:853
+#: ../fslint-gui:720 ../fslint-gui:761 ../fslint-gui:799 ../fslint-gui:861
 msgid " files"
 msgstr " comhaid"
 
-#: ../fslint-gui:732
+#: ../fslint-gui:740
 msgid " unstripped binaries"
 msgstr ""
 
-#: ../fslint-gui:742
+#: ../fslint-gui:750
 msgid " empty directories"
 msgstr " eolairí folamh"
 
-#: ../fslint-gui:774
+#: ../fslint-gui:782
 msgid " links"
 msgstr " naisc"
 
-#: ../fslint-gui:790 ../fslint-gui:901
+#: ../fslint-gui:798 ../fslint-gui:909
 msgid " bytes wasted in "
 msgstr " beartí chuir amú i "
 
-#: ../fslint-gui:835 ../fslint-gui:902
+#: ../fslint-gui:843 ../fslint-gui:910
 msgid " files (in "
 msgstr " comhaid (i "
 
-#: ../fslint-gui:836 ../fslint-gui:903
+#: ../fslint-gui:844 ../fslint-gui:911
 msgid " groups)"
 msgstr " grúpaí)"
 
-#: ../fslint-gui:893
+#: ../fslint-gui:901
 msgid "bytes wasted"
 msgstr "beartí chuir amú"
 
-#: ../fslint-gui:930
+#: ../fslint-gui:938
 msgid "None selected"
 msgstr "Faic roghnaithe"
 
-#: ../fslint-gui:936
+#: ../fslint-gui:944
 msgid " this item?\n"
 msgstr " an mír seo?\n"
 
-#: ../fslint-gui:938
+#: ../fslint-gui:946
 #, python-format
 msgid " these %d items?\n"
 msgstr " na %d míreanna seo?\n"
 
-#: ../fslint-gui:1050
+#: ../fslint-gui:1058
 msgid "User aborted"
 msgstr "Tobscoir"
 
-#: ../fslint-gui:1121
+#: ../fslint-gui:1129
 msgid "wildcard:"
 msgstr ""
 
-#: ../fslint-gui:1121
-msgid "Cancel"
-msgstr ""
-
-#: ../fslint-gui:1121
-msgid "Ok"
-msgstr ""
-
-#: ../fslint-gui:1213
+#: ../fslint-gui:1221
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
 
-#: ../fslint-gui:1217
+#: ../fslint-gui:1225
 msgid "Are you sure you want to delete"
 msgstr "An bhfuil tú cinnte go teastaíonn uait a scrios"
 
-#: ../fslint-gui:1230
+#: ../fslint-gui:1238
 msgid "Calculating dependencies..."
 msgstr ""
 
-#: ../fslint-gui:1246
+#: ../fslint-gui:1254
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr ""
 
-#: ../fslint-gui:1247
+#: ../fslint-gui:1255
 msgid "Please review the updated selection."
 msgstr ""
 
-#: ../fslint-gui:1256
+#: ../fslint-gui:1264
 msgid "Removing packages..."
 msgstr ""
 
-#: ../fslint-gui:1296
+#: ../fslint-gui:1304
 msgid " items deleted"
 msgstr " míreanna scriosta"
 
-#: ../fslint-gui:1375
+#: ../fslint-gui:1383
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "An bhfuil tú cinnte go teastaíonn uait na comhaid GO LÉIR a cumaisc?\n"
 
-#: ../fslint-gui:1379
+#: ../fslint-gui:1387
 msgid "(Ignoring those selected)\n"
 msgstr "(Gan aird ar iad roghnaithe)\n"
 
-#: ../fslint-gui:1416
+#: ../fslint-gui:1428
+msgid "Which indenting method do you want to convert to?"
+msgstr ""
+
+#: ../fslint-gui:1429
+msgid "Tabs"
+msgstr ""
+
+#: ../fslint-gui:1429
+msgid "Spaces"
+msgstr ""
+
+#: ../fslint-gui:1437
 msgid "Are you sure you want to clean"
 msgstr "An bhfuil tú cinnte go teastaíonn uait a glánnadh"
 
-#: ../fslint-gui:1450
+#: ../fslint-gui:1479
 msgid " items cleaned ("
 msgstr " míreanna glán ("
 
-#: ../fslint-gui:1451
+#: ../fslint-gui:1480
 msgid " bytes saved)"
 msgstr " beartí sábháilte)"

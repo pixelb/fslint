@@ -422,7 +422,7 @@ class dlgPathSel(GladeWrapper):
                                               "UserInteraction")
                     msgbox.init(self,
                                 _("Do you want to overwrite?\n") + file,
-                                (N_('Yes'), N_('No')))
+                                ('Yes', 'No'))
                     msgbox.show()
                     if msgbox.response != "Yes":
                         return
@@ -472,7 +472,7 @@ class fslint(GladeWrapper):
             self.mode_id:_("Files with missing user IDs"),
             self.mode_ed:_("Empty directories"),
             self.mode_ns:_("Executables still containing debugging info"),
-            self.mode_rs:_("Whitespace at the end of lines in a text file")
+            self.mode_rs:_("Erroneous whitespace in a text file")
         }
         for path in lArgs:
             if os.path.exists(path):
@@ -703,7 +703,14 @@ on your system at present."))
         #Note pkgs generally installed on root partition so report space left.
 
     def findrs(self, clist_rs):
-        po, pe = self.get_fslint("./findrs " + self.findParams)
+        options=""
+        if self.chkWhitespace.get_active():
+            options+="-w "
+        if self.chkTabs.get_active():
+            options+="-t%d " % int(self.spinTabs.get_value())
+        if not options:
+            return ("","")
+        po, pe = self.get_fslint("./findrs " + options + self.findParams)
         row = 0
         for line in po:
             colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
@@ -937,7 +944,7 @@ on your system at present."))
                 question += _(" this item?\n")
             else:
                 question += _(" these %d items?\n") %  len(paths)
-            msgbox.init(self, question, (N_('Yes'), N_('No')))
+            msgbox.init(self, question, ('Yes', 'No'))
             msgbox.show()
             if msgbox.response != "Yes":
                 return False
@@ -1119,7 +1126,7 @@ on your system at present."))
     def select_using_wildcard(self, select):
         msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
                                     "UserInteraction")
-        msgbox.init(self, _("wildcard:"), (N_('Cancel'), N_('Ok')))
+        msgbox.init(self, _("wildcard:"), ('Cancel', 'Ok'))
         msgbox.show()
         if msgbox.response != "Ok":
             return
@@ -1381,7 +1388,7 @@ on your system at present."))
 
         msgbox = dlgUserInteraction(liblocation+"/fslint.glade",
                                     "UserInteraction")
-        msgbox.init(self, question, (N_('Yes'), N_('No')))
+        msgbox.init(self, question, ('Yes', 'No'))
         msgbox.show()
         if msgbox.response != "Yes":
             return
@@ -1414,8 +1421,36 @@ on your system at present."))
                         self.ShowErrors(str(sys.exc_value)+'\n')
 
     def on_autoClean_clicked(self, event):
-        if not self.check_user(_("Are you sure you want to clean")):
+        if self.mode == self.mode_rs and self.chkTabs.get_active():
+            msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
+                                        "UserInteraction")
+            msgbox.init(self,
+                        _("Which indenting method do you want to convert to?"),
+                        (N_('Tabs'), N_('Spaces'), 'Cancel'))
+            msgbox.show()
+            if msgbox.response == "Spaces":
+                indents="--indent-spaces"
+            elif msgbox.response == "Tabs":
+                indents="--indent-tabs"
+            else:
+                return
+        elif not self.check_user(_("Are you sure you want to clean")):
             return
+
+        if self.mode == self.mode_rs:
+            if not self.chkTabs.get_active():
+                indents="''"
+            if not self.chkWhitespace.get_active():
+                eol="''"
+            else:
+                eol="--eol"
+            command=liblocation+"/fslint/supprt/rmlint/fix_ws.sh "+\
+                    eol+" "+\
+                    indents+" "+\
+                    str(int(self.spinTabs.get_value()))
+        elif self.mode == self.mode_ns:
+            command="strip"
+
         clist = self.clists[self.mode]
         paths_to_clean = clist.selection
 
@@ -1426,21 +1461,14 @@ on your system at present."))
             try:
                 path_to_clean = row_data[row][:-1] #strip '\n'
                 startlen = os.stat(path_to_clean)[stat.ST_SIZE]
-                if self.mode == self.mode_ns:
-                    stripProcess = subProcess("strip "+path_to_clean)
-                    stripProcess.read()
-                    errors = stripProcess.errdata
-                    del(stripProcess)
-                    if len(errors):
-                        raise '', errors[:-1]
-                elif self.mode == self.mode_rs:
-                    file_to_clean = open(path_to_clean,'r')
-                    lines = open(path_to_clean,'r').readlines()
-                    file_to_clean.close()
-                    file_to_clean = open(path_to_clean,'w')
-                    lines = map(lambda s: s.rstrip()+'\n', lines)
-                    file_to_clean.writelines(lines)
-                    file_to_clean.close()
+
+                cleanProcess = subProcess(command+" '"+path_to_clean+"'")
+                cleanProcess.read()
+                errors = cleanProcess.errdata
+                del(cleanProcess)
+                if len(errors):
+                    raise '', errors[:-1]
+
                 clist.set_background(row, self.bg_colour)
                 clist.unselect_row(row,0)
                 totalSaved += startlen - os.stat(path_to_clean)[stat.ST_SIZE]

@@ -41,8 +41,8 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 . $script_dir/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
-	echo "find (files) with duplicate or conflicting names.
+    ProgName=`basename "$0"`
+    echo "find (files) with duplicate or conflicting names.
 Usage: $ProgName [-A -c -C] [[-r] [-f] paths(s) ...]
 
 If no arguments are supplied the \$PATH is searched for any redundant
@@ -59,7 +59,7 @@ I.E. -c will flag files & directories that will conflict if transfered
 to a case insensitive file system. Note if -c or -C specified and
 no path(s) specifed the current directory is assumed."
 
-	exit
+    exit
 }
 
 mode="matchFilenames"
@@ -71,38 +71,37 @@ if [ -p /proc/self/fd/1 ]; then
 fi
 
 if [ $# -eq "0" ]; then #Nothing on cmdline means search $PATH
-	mode="path"
-	eval set -- `. $script_dir/supprt/getffp`
-	FPF="%p"
+    mode="path"
+    eval set -- `. $script_dir/supprt/getffp`
+    FPF="%p"
 elif [ $# -eq "1" ] && [ "$1" = "-A" ]; then
-	mode="aliases"
-	eval set -- `. $script_dir/supprt/getffp`
-	FPF="%p"
+    mode="aliases"
+    eval set -- `. $script_dir/supprt/getffp`
+    FPF="%p"
 else
-	for arg
-	do
-		case "$arg" in
-		-h|--help|-help)
-			Usage ;;
-		-v|--version)
-			Version ;;
-		-C)
-			uniq_ignore_case="-i"
-			sort_ignore_case="-f" ;;
-		-c)
-			mode="casePortability" ;;
-		-A)
-			mode="aliases" ;;
-		*)
-			argsToPassOn="$argsToPassOn '$arg'" ;;
-		esac
-	done
+    for arg; do
+        case "$arg" in
+        -h|--help|-help)
+            Usage ;;
+        -v|--version)
+            Version ;;
+        -C)
+            uniq_ignore_case="-i"
+            sort_ignore_case="-f" ;;
+        -c)
+            mode="casePortability" ;;
+        -A)
+            mode="aliases" ;;
+        *)
+            argsToPassOn="$argsToPassOn '$arg'" ;;
+        esac
+    done
 
-        if [ $topipe = yes ]; then
-	    . $script_dir/supprt/getfpf -f "$argsToPassOn"
-        else
-            . $script_dir/supprt/getfpf "$argsToPassOn"
-        fi
+    if [ $topipe = yes ]; then
+        . $script_dir/supprt/getfpf -f "$argsToPassOn"
+    else
+        . $script_dir/supprt/getfpf "$argsToPassOn"
+    fi
 fi
 
 check_uniq

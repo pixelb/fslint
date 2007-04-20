@@ -13,8 +13,8 @@ $(DOMAIN).pot: ../fslint.glade ../fslint-gui
 update-po: $(DOMAIN).pot
 	for po in *.po; do \
 		lingua=`basename $$po .po`; \
-	        mv $$lingua.po $$lingua.old.po; \
-		if msgmerge -o $$lingua.po $$lingua.old.po $(DOMAIN).pot; then \
+		mv $$lingua.po $$lingua.old.po; \
+		if msgmerge -N -o $$lingua.po $$lingua.old.po $(DOMAIN).pot; then \
 		    rm $$lingua.old.po; \
 		else \
 		    rm -f $$lingua.po; \
