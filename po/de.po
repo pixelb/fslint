@@ -318,12 +318,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Verwendung: %s [OPTION] [PFADE]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       Version anzeigen"
+msgid "display version"
+msgstr "Version anzeigen"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          Hilfe anzeigen"
+msgid "display help"
+msgstr "Hilfe anzeigen"
 
 #: ../fslint-gui:330
 #, python-format

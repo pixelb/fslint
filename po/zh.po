@@ -315,12 +315,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "使用： %s 【选项】 【路径】"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "   --版本            显示版本"
+msgid "display version"
+msgstr "显示版本"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "   --帮助            显示帮助"
+msgid "display help"
+msgstr "显示帮助"
 
 #: ../fslint-gui:330
 #, python-format

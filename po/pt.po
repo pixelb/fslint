@@ -316,12 +316,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Uso: %s [OPÇÃO] [CAMINHOS]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       mostra versão"
+msgid "display version"
+msgstr "mostra versão"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          mostra ajuda"
+msgid "display help"
+msgstr "mostra ajuda"
 
 #: ../fslint-gui:330
 #, python-format

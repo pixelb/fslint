@@ -319,12 +319,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Användning: %s [FLAGGA] [SÖKVÄGAR]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       visa version"
+msgid "display version"
+msgstr "visa version"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          visa hjälp"
+msgid "display help"
+msgstr "visa hjälp"
 
 #: ../fslint-gui:330
 #, python-format

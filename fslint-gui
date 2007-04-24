@@ -139,8 +139,8 @@ I18N=i18n() #call first so everything is internationalized
 import getopt
 def Usage():
     print _("Usage: %s [OPTION] [PATHS]") % os.path.split(sys.argv[0])[1]
-    print _("    --version       display version")
-    print _("    --help          display help")
+    print   "    --version       " + _("display version")
+    print   "    --help          " + _("display help")
 
 try:
     lOpts, lArgs = getopt.getopt(sys.argv[1:], "", ["help","version"])

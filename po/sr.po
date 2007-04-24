@@ -315,12 +315,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Употреба: %s [ОПЦИЈА] [ПУТАЊЕ]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       прикажи верзију"
+msgid "display version"
+msgstr "прикажи верзију"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          прикажи објашњење"
+msgid "display help"
+msgstr "прикажи објашњење"
 
 #: ../fslint-gui:330
 #, python-format

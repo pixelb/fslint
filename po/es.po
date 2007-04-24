@@ -22,7 +22,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:68
 msgid "Select using wildcard"
-msgstr "Selccione usando comodines"
+msgstr "Seleccione usando comodines"
 
 #: ../fslint.glade:77
 msgid "Unselect using wildcard"
@@ -78,7 +78,7 @@ msgstr "Directorios de exclusion"
 
 #: ../fslint.glade:671
 msgid "Extra find parameters"
-msgstr "Parametros de busqueda extra"
+msgstr "Parámetros de busqueda extra"
 
 #: ../fslint.glade:696
 msgid "extra find filtering parameters"
@@ -314,12 +314,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Uso: %s [OPTION] [PATHS]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       display version"
+msgid "display version"
+msgstr ""
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          display help"
+msgid "display help"
+msgstr ""
 
 #: ../fslint-gui:330
 #, python-format

@@ -317,12 +317,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Utilizare: %s [OPŢIUNE] [CĂI]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       afişează versiunea"
+msgid "display version"
+msgstr "afişează versiunea"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          afişează ajutorul"
+msgid "display help"
+msgstr "afişează ajutorul"
 
 #: ../fslint-gui:330
 #, python-format

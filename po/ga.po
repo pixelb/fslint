@@ -316,12 +316,12 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Úsáid: %s [ROGHA] [CONAIRÍ]"
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
-msgstr "    --version       taispéain leagan"
+msgid "display version"
+msgstr "taispéain leagan"
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
-msgstr "    --help          taispéain cabhár"
+msgid "display help"
+msgstr "taispéain cabhár"
 
 #: ../fslint-gui:330
 #, python-format
