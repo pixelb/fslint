@@ -10,6 +10,9 @@
 	* Fixes:
 		* Position dialogs correctly over the FSlint window,
 		  and also don't leak the dialog memory.
+		* Change popup (selection) menu so that it (dis)appears
+		  in response to more standard user events. This issue was
+		  identified by Bruce Byfield.
 
 2.20 09/03/07
 	* Translations:
