@@ -7,6 +7,9 @@
 		  function. This checks for erroneous mixing of tabs and spaces
 		  in the indenting at the start of a line, and the user
 		  can select to fix with tabs or spaces.
+	* Fixes:
+		* Position dialogs correctly over the FSlint window,
+		  and also don't leak the dialog memory.
 
 2.20 09/03/07
 	* Translations:

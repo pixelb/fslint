@@ -335,7 +335,9 @@ class dlgUserInteraction(GladeWrapper):
     so that the stock buttons are used if possible. But the
     translations should be available, so use N_ for input
     buttons tuple text. Note the returned response is not
-    translated either.
+    translated either. Note also, that if you know a stock
+    button is already available, then there's no point in
+    translating the passed in string.
     """
     def init(self, app, message, buttons=('Ok',)):
         for text in buttons:
@@ -361,7 +363,7 @@ class dlgUserInteraction(GladeWrapper):
     def show(self):
         self.response=None
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
-        self.GtkWindow.show()
+        self.GtkWindow.show() #Note dialog is initially hidden in glade file
         if self.GtkWindow.modal:
             gtk.main() #synchronous call from parent
         #else: not supported
@@ -371,14 +373,13 @@ class dlgUserInteraction(GladeWrapper):
     #################
 
     def quit(self, *args):
-        self.GtkWindow.hide()
         if self.GtkWindow.modal:
             gtk.main_quit()
 
     def button_clicked(self, button):
         self.input = self.entry.get_text()
         self.response = button.get_data("text")
-        self.quit()
+        self.GtkWindow.destroy()
 
 class dlgPathSel(GladeWrapper):
 
@@ -394,7 +395,6 @@ class dlgPathSel(GladeWrapper):
             self.GtkWindow.show_fileop_buttons()
         else:
             self.GtkWindow.hide_fileop_buttons()
-        #self.GtkWindow.set_parent(self.app.GtkWindow)#error (on gtk-1.2.10-11?)
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show()
         if self.GtkWindow.modal:
@@ -1480,6 +1480,6 @@ on your system at present."))
                   human_num(totalSaved) + _(" bytes saved)")
         self.status.set_text(status)
 
-FSlint = fslint(liblocation+"/fslint.glade", "fslint")
+FSlint=fslint(liblocation+"/fslint.glade", "fslint")
 
 gtk.main ()
