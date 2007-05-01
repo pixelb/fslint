@@ -339,7 +339,7 @@ class dlgUserInteraction(GladeWrapper):
     button is already available, then there's no point in
     translating the passed in string.
     """
-    def init(self, app, message, buttons=('Ok',)):
+    def init(self, app, message, buttons):
         for text in buttons:
             try:
                 stock_text=getattr(gtk,"STOCK_"+text.upper())
@@ -361,7 +361,7 @@ class dlgUserInteraction(GladeWrapper):
             self.entry.hide()
 
     def show(self):
-        self.response=None
+        self.response=self.input=None
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show() #Note dialog is initially hidden in glade file
         if self.GtkWindow.modal:
@@ -418,19 +418,14 @@ class dlgPathSel(GladeWrapper):
             file = self.GtkWindow.get_filename()
             if os.path.exists(file):
                 if os.path.isfile(file):
-                    msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                              "UserInteraction")
-                    msgbox.init(self,
-                                _("Do you want to overwrite?\n") + file,
-                                ('Yes', 'No'))
-                    msgbox.show()
-                    if msgbox.response != "Yes":
+                    (response, input) = self.app.msgbox(
+                      _("Do you want to overwrite?\n") + file,
+                      ('Yes', 'No')
+                    )
+                    if response != "Yes":
                         return
                 else:
-                    msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                              "UserInteraction")
-                    msgbox.init(self, _("You can't overwrite ") + file)
-                    msgbox.show()
+                    self.app.msgbox(_("You can't overwrite ") + file)
                     return
         self.canceled=0
         self.quit()
@@ -925,6 +920,12 @@ on your system at present."))
         self.find.show()
         self.find.grab_focus() #as it already would have been in focus
 
+    def msgbox(self, message, buttons=('Ok',)):
+        msgbox=dlgUserInteraction(liblocation+"/fslint.glade","UserInteraction")
+        msgbox.init(self, message, buttons)
+        msgbox.show()
+        return (msgbox.response, msgbox.input)
+
     def check_user(self, question):
         self.ClearErrors()
         #remove as status from previous operation could be confusing
@@ -938,15 +939,12 @@ on your system at present."))
             self.ShowErrors(_("None selected"))
             return False
         else:
-            msgbox = dlgUserInteraction(liblocation+"/fslint.glade",
-                                        "UserInteraction")
             if len(paths) == 1:
                 question += _(" this item?\n")
             else:
-                question += _(" these %d items?\n") %  len(paths)
-            msgbox.init(self, question, ('Yes', 'No'))
-            msgbox.show()
-            if msgbox.response != "Yes":
+                question += _(" these %d items?\n") % len(paths)
+            (response, input) = self.msgbox(question, ('Yes', 'No'))
+            if response != "Yes":
                 return False
             return True
 
@@ -1120,14 +1118,10 @@ on your system at present."))
     def on_select_using_wildcard_activate(self, event):
         self.select_using_wildcard(True)
     def select_using_wildcard(self, select):
-        msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                    "UserInteraction")
-        msgbox.init(self, _("wildcard:"), ('Cancel', 'Ok'))
-        msgbox.show()
-        if msgbox.response != "Ok":
+        (response, wildcard) = self.msgbox(_("wildcard:"), ('Cancel', 'Ok'))
+        if response != "Ok":
             return
-        wildcard=msgbox.input
-        if wildcard != "":
+        if wildcard:
             clist = self.clists[self.mode]
             if clist.rows == 0:
                 return
@@ -1210,13 +1204,9 @@ on your system at present."))
     def on_delSelected_clicked(self, event):
         if self.mode == self.mode_pkgs:
             if os.geteuid() != 0:
-                msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                          "UserInteraction")
-                msgbox.init(
-                  self,
+                self.msgbox(
                   _("Sorry, you must be root to delete system packages.")
                 )
-                msgbox.show()
                 return
         if not self.check_user(_("Are you sure you want to delete")):
             return
@@ -1243,14 +1233,10 @@ on your system at present."))
                         for row in range(clist.rows):
                             if package == clist.get_row_data(row):
                                 clist.select_row(row,0)
-                msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                          "UserInteraction")
-                msgbox.init(
-                  self,
+                self.msgbox(
                   _("%d extra packages need to be deleted.\n") % num_new_pkgs +
                   _("Please review the updated selection.")
                 )
-                msgbox.show()
                 #Note this is not ideal as it's difficult for users
                 #to get info on selected packages (Ctrl click twice).
                 #Should really have a seperate marked_for_deletion  column.
@@ -1382,11 +1368,8 @@ on your system at present."))
         if len(paths_to_leave):
             question+=_("(Ignoring those selected)\n")
 
-        msgbox = dlgUserInteraction(liblocation+"/fslint.glade",
-                                    "UserInteraction")
-        msgbox.init(self, question, ('Yes', 'No'))
-        msgbox.show()
-        if msgbox.response != "Yes":
+        (response, input) = self.msgbox(question, ('Yes', 'No'))
+        if response != "Yes":
             return
 
         newGroup = 0
@@ -1418,15 +1401,13 @@ on your system at present."))
 
     def on_autoClean_clicked(self, event):
         if self.mode == self.mode_rs and self.chkTabs.get_active():
-            msgbox=dlgUserInteraction(liblocation+"/fslint.glade",
-                                        "UserInteraction")
-            msgbox.init(self,
-                        _("Which indenting method do you want to convert to?"),
-                        (N_('Tabs'), N_('Spaces'), 'Cancel'))
-            msgbox.show()
-            if msgbox.response == "Spaces":
+            (response, input) = self.msgbox(
+              _("Which indenting method do you want to convert to?"),
+              (N_('Tabs'), N_('Spaces'), 'Cancel')
+            )
+            if response == "Spaces":
                 indents="--indent-spaces"
-            elif msgbox.response == "Tabs":
+            elif response == "Tabs":
                 indents="--indent-tabs"
             else:
                 return
