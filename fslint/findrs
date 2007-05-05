@@ -89,6 +89,7 @@ fi
 . $script_dir/supprt/getfpf "$argsToPassOn"
 
 find "$@" -type f -size +0c -printf "$FPF\0" |
+sort -zu | #merge files (indirectly) specified multiple times
 xargs -r0 file |
 grep ":.* text" |
 cut -f1 -d: -s |

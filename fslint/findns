@@ -56,9 +56,10 @@ else
 fi
 
 find "$@" -type f -perm +111 -printf "%i\t$FPF\n" |
+sort -u |          #merge files (indirectly) specified multiple times
 #sorting by inodes runs in 17s for my 2250 binaries
 #compared to 20s without
-sort -k1,1n |
+sort -k1,1n | #sort by inodes
 cut -f2- |
 tr '\n' '\0' |
 xargs -r0 file |

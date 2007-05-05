@@ -49,6 +49,7 @@ done
 . $script_dir/supprt/getfpf "$argsToPassOn"
 
 find "$@" -printf "$FPF\n" |
+sort -u | #merge files (indirectly) specified multiple times
 LANG=C grep -E '[^ -~]' | #filter out purely ASCII names
 while read name; do
     echo "$name" | iconv --from=utf8 --to=utf8 >/dev/null 2>&1 || echo "$name"

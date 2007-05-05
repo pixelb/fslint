@@ -113,8 +113,17 @@ done
 . $script_dir/supprt/getfpf "$argsToPassOn"
 
 case "$mode" in
+suspect)
+	FPF="$FPF ->\1%p\1%l" ;;
+absolute|relative|redundant)
+	FPF="$FPF ->\1%l" ;;
+esac
+
+find "$@" -type l -printf "$FPF\n" |
+sort -u |            #merge links (indirectly) specified multiple times
+
+case "$mode" in
 dangling)
-	find "$@" -type l -printf "$FPF\n" |
 	#perl -nle '-e || print' | #this is much faster than below
 	#/usr/share/dict/words is 45424 lines which is 0.12s for
 	#perl and 3.8s for shell while read! should be OK though?
@@ -124,13 +133,11 @@ dangling)
 	xargs -r0 ls -lUd -- |
         sed 's/.*[0-9]\{2\} \(.*\)/\1/' ;; #only leave link -> target
 suspect)
-	find "$@" -type l -printf "$FPF ->\1%p\1%l\n" |
 	grep "${ASC_01}.*${ASC_01}/" | #get absolute links
 	sed -e "s¬${ASC_01}./¬${ASC_01}$PWD/¬g" | #change rel to abs paths
 	grep -E "${ASC_01}(.*)/[^/]+${ASC_01}\1" | #find suspect links
 	sed -e "s¬${ASC_01}.*${ASC_01}¬ ¬g" ;; #drop work column
 absolute|relative|redundant)
-	find "$@" -type l -printf "$FPF ->\1%l\n" |
 	grep -E "$search_expr" |
 	tr '\1' ' ' ;;
 esac

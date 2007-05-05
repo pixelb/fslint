@@ -122,6 +122,7 @@ case "$mode" in
 
 casePortability)
    find "$@" \( -type d -o -type f \) -printf "%f\1$FPF\1%h\0" |
+   sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort -b -k3,3 -k1,1f | #group paths (case sens), then names (case insens)
    uniq -2 -D |
@@ -129,6 +130,7 @@ casePortability)
    cut -f2 -d' ' ;;
 matchFilenames)
    find "$@" -type f -printf "$FPF\1%f\0" |
+   sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort $sort_ignore_case -k2,2 |
    uniq --all-repeated=$uniqsep -1 $uniq_ignore_case ;;
@@ -142,6 +144,7 @@ path)
    fi
    find "$@" \( -type f -o -type l \) -follow \( $IGNORE_pred \) \
         -printf "$FPF\1%i\1%f\0" |
+   sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort -k3,3 -k2,2n |
    uniq -D -2 |
@@ -149,6 +152,7 @@ path)
    uniq --all-repeated=$uniqsep -2 ;;
 aliases)
    find "$@" \( -type f -o -type l \) -follow -printf "$FPF\1%i\0" |
+   sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort -k2,2n |
    uniq --all-repeated=$uniqsep -1 ;;

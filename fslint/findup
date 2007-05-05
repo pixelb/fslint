@@ -129,10 +129,11 @@ if [ `find . -maxdepth 0 -printf "%D" 2> /dev/null` = "D" ]
 then
     devFmt="\060" #0
 else
-    devFmt=%D #This is new and will help find more duplicate files
+    devFmt=%D #This is new in findutils-4.2 and will help find more duplicates
 fi
                      #print name, inode & size.
 find "$@" -size +0c -type f -printf "$FPF\0$devFmt\0%i\0%s\n" |
+sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes
 if [ -z "$merge_early" ]; then

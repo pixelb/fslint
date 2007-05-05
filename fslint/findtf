@@ -96,4 +96,5 @@ do
 done
 Names="\( $Names \)"
 
-eval find '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\n'"
+eval find '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\n'" |
+sort -u #merge files (indirectly) specified multiple times
