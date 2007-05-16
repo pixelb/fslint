@@ -7,7 +7,6 @@
 		  function. This checks for erroneous mixing of tabs and spaces
 		  in the indenting at the start of a line, and the user
 		  can select to fix with tabs or spaces.
-		* Ignore paths (indirectly) specified multiple times.
 		* Set mouse pointer to "busy interactive" during searches.
 		  This makes it more obvious that work is progressing and
 		  only parts of the GUI will be responsive.
@@ -17,6 +16,9 @@
 		* Change popup (selection) menu so that it (dis)appears
 		  in response to more standard user events. This issue was
 		  identified by Bruce Byfield.
+		* Ignore paths (indirectly) specified multiple times.
+		  This would cause duplicate file merging to break
+		  resulting in a file being deleted and not linked to a copy.
 
 2.20 09/03/07
 	* Translations:

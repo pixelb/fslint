@@ -1068,7 +1068,8 @@ on your system at present."))
         if event == None: #standard button click
             self.selection_menu_menu.popup(None,None,None,3,0) #at mouse pointer
         elif type(widget) == gtk.CList and event.button == 3:
-            self.selection_menu_menu.popup(None,None,None,event.button,event.time)
+            self.selection_menu_menu.popup(None,None,None,
+                                           event.button,event.time)
 
     def on_find_clicked(self, event):
 
