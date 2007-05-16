@@ -8,6 +8,9 @@
 		  in the indenting at the start of a line, and the user
 		  can select to fix with tabs or spaces.
 		* Ignore paths (indirectly) specified multiple times.
+		* Set mouse pointer to "busy interactive" during searches.
+		  This makes it more obvious that work is progressing and
+		  only parts of the GUI will be responsive.
 	* Fixes:
 		* Position dialogs correctly over the FSlint window,
 		  and also don't leak the dialog memory.
