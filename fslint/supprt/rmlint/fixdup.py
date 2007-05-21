@@ -10,7 +10,7 @@
 # filename4
 # ...
 
-import sys, string, os
+import sys, string, os, tempfile
 
 link=1
 dryRun=0
@@ -30,10 +30,10 @@ for line in sys.stdin.xreadlines():
         ingroup = 0
     else:
         if not ingroup:
-            keep = line
+            keepfile = line
             ingroup = 1
             if dryRun:
-                print "\nkeeping", keep + "\t",
+                print "\nkeeping", keepfile + "\t",
                 if link:
                     print "hardlinking:",
                 else:
@@ -42,15 +42,28 @@ for line in sys.stdin.xreadlines():
             if dryRun:
                 print line,
             else:
+                dupfile = line
+                dupdir = os.path.dirname(dupfile)
+                tmpfile = tempfile.mktemp(dir=dupdir)
                 try:
-                    os.unlink(line)
                     if link:
                         try:
-                            os.link(keep,line)
+                            os.link(keepfile,tmpfile)
                         except OSError, value:
                             if value.errno == 18: #EXDEV
-                                os.symlink(os.path.realpath(keep),line)
+                                os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise
+                        os.rename(tmpfile, dupfile)
+                    else:
+                        os.unlink(dupfile)
                 except OSError:
                     sys.stderr.write(str(sys.exc_value)+'\n')
+                try:
+                    #always try this as POSIX has bad requirement that
+                    #rename(file1,file2) where both are links to the same
+                    #file, does nothing, and returns success. So if user
+                    #merges files multiple times, tmp files will be left.
+                    os.unlink(tmpfile)
+                except:
+                    pass

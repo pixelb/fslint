@@ -27,7 +27,7 @@ import locale
 import gtk
 import gtk.glade
 
-import os, sys, time, stat
+import os, sys, time, stat, tempfile
 
 # Maintain compatibility with Python 2.2 and below,
 # while getting rid of warnings in newer pyGtks.
@@ -505,7 +505,7 @@ class fslint(GladeWrapper):
         except TypeError:
             #http://bugzilla.gnome.org/show_bug.cgi?id=103616 #older pygtks
             #http://bugzilla.gnome.org/show_bug.cgi?id=318874 #pygtk-2.8.[12]
-            #Note pygtk-2.8.1 was released with breezy :(
+            #Note pygtk-2.8.1 was released with ubuntu breezy :(
             self.LEFT_PTR_WATCH=None #default cursor
         self.SB_V_DOUBLE_ARROW=gtk.gdk.Cursor(gtk.gdk.SB_V_DOUBLE_ARROW)
         self.XTERM=gtk.gdk.Cursor(gtk.gdk.XTERM) #I beam
@@ -1440,18 +1440,28 @@ on your system at present."))
                     newGroup = 0
                 else:
                     dupfile = path
+                    dupdir = os.path.dirname(dupfile)
+                    tmpfile = tempfile.mktemp(dir=dupdir)
                     try:
-                        os.unlink(dupfile)
-                        try: #Don't do this for autodelete
-                            os.link(keepfile,dupfile)
+                        try:
+                            os.link(keepfile,tmpfile)
                         except OSError, value:
                             if value.errno == 18: #EXDEV
-                                os.symlink(os.path.realpath(keepfile),dupfile)
+                                os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise
+                        os.rename(tmpfile, dupfile)
                         clist.set_background(row, self.bg_colour)
                     except OSError:
                         self.ShowErrors(str(sys.exc_value)+'\n')
+                    try:
+                        #always try this as POSIX has bad requirement that
+                        #rename(file1,file2) where both are links to the same
+                        #file, does nothing, and returns success. So if user
+                        #merges files multiple times, tmp files will be left.
+                        os.unlink(tmpfile)
+                    except:
+                        pass
 
     def on_autoClean_clicked(self, event):
         if self.mode == self.mode_rs and self.chkTabs.get_active():

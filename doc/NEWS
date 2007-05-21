@@ -11,6 +11,8 @@
 		  This makes it more obvious that work is progressing and
 		  only parts of the GUI will be responsive.
 	* Fixes:
+		* Change duplicate file merging algorithm to be more robust in
+		  rare error conditions, to eliminate any chance of data loss.
 		* Position dialogs correctly over the FSlint window,
 		  and also don't leak the dialog memory.
 		* Change popup (selection) menu so that it (dis)appears
