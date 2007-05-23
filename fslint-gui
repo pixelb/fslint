@@ -1115,7 +1115,6 @@ on your system at present."))
         self.look_interactive()
 
     def on_stop_clicked(self, event):
-        self.look_interactive()
         self.stopflag=1
 
     def on_stop_keypress(self, button, event):
