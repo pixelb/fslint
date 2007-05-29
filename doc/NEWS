@@ -22,6 +22,9 @@
 		* Ignore paths (indirectly) specified multiple times.
 		  This would cause duplicate file merging to break
 		  resulting in a file being deleted and not linked to a copy.
+		* Handle paths containing '\n' characters.
+		  Previously this would cause various errors to be output.
+		  Bug report from Bjørn Ingmar Berg.
 
 2.20 09/03/07
 	* Translations:

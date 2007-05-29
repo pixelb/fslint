@@ -42,5 +42,6 @@ done
 
 . $script_dir/supprt/getfpf "$argsToPassOn"
 
-find "$@" -empty -type d -printf "$FPF\n" |
-sort -u #merge dirs (indirectly) specified multiple times
+find "$@" -empty -type d ! -name '*\n*' -printf "$FPF\0" |
+sort -zu | #merge dirs (indirectly) specified multiple times
+xargs -r0 ls -bUd --

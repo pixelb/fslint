@@ -20,8 +20,8 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 . $script_dir/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
-	echo "find Temporary Files.
+    ProgName=`basename "$0"`
+    echo "find Temporary Files.
 Usage: $ProgName [-c] [--age=days] [[-r] [-f] paths(s) ...]
 
 If -c specified then a more thorough search is done for
@@ -32,30 +32,30 @@ number of \"days\" old before being reported.
 For e.g. findtf -c --age=4 only reports core files over 4 days old.
 
 If no path(s) specified then the currrent directory is assumed."
-	exit
+    exit
 }
 
 MIN_AGE=0 #days
 
 for arg
 do
-	case "$arg" in
-	-h|--help|-help)
-		Usage ;;
-	-v|--version)
-		Version ;;
-        --age=*)
-		days=`echo $arg | cut -b7-`
-		[ "$days" ] && MIN_AGE=$days ;;
-	-c)
-		core_mode="yes" ;;
-	*)
-		argsToPassOn="$argsToPassOn '$arg'" ;;
-	esac
+    case "$arg" in
+    -h|--help|-help)
+        Usage ;;
+    -v|--version)
+        Version ;;
+    --age=*)
+        days=`echo $arg | cut -b7-`
+        [ "$days" ] && MIN_AGE=$days ;;
+    -c)
+        core_mode="yes" ;;
+    *)
+        argsToPassOn="$argsToPassOn '$arg'" ;;
+    esac
 done
 
 if [ "$MIN_AGE" != "0" ]; then
-	FIND_AGE="-mtime +$MIN_AGE"
+    FIND_AGE="-mtime +$MIN_AGE"
 fi
 
 if [ "$force_full" = "yes" ]; then
@@ -65,16 +65,16 @@ else
 fi
 
 if [ "$core_mode" = "yes" ]; then
-	find "$@" -type f -name "*core*" $FIND_AGE -printf "%p\n" |
-	grep -E "/core$|\.core$|/core\.[0-9]+$" |
-	xargs -r file |
-	grep -F "core file " |
-        if [ -p /proc/self/fd/1 ]; then
-            cut -f1 -d: #only leave filename
-        else
-            cat
-        fi
-	exit
+    find "$@" -type f -name "*core*" $FIND_AGE ! -name '*\n*' -printf "%p\n" |
+    grep -E "/core$|\.core$|/core\.[0-9]+$" |
+    xargs -r file |
+    grep -F "core file " |
+    if [ -p /proc/self/fd/1 ]; then
+        cut -f1 -d: #only leave filename
+    else
+        cat
+    fi
+    exit
 fi
 
 # .v are rcs files
@@ -96,5 +96,6 @@ do
 done
 Names="\( $Names \)"
 
-eval find '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\n'" |
-sort -u #merge files (indirectly) specified multiple times
+eval find '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\0'" |
+sort -zu | #merge files (indirectly) specified multiple times
+tr '\0' '\n'

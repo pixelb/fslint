@@ -38,7 +38,8 @@
 #	in different directories are reported as duplicates sometimes.
 #
 #	This script requires uniq > V2.0.21 (part of GNU textutils|coreutils)
-#	undefined operation if any dir/file names contain \n or \\
+#	dir/file names containing \n are ignored
+#	undefined operation for dir/file names containing \1
 #	sparse files are not treated differently.
 #	Don't specify params to find that affect output etc. (e.g -printf etc.)
 #	zero length files are ignored.
@@ -130,8 +131,8 @@ then
 else
     devFmt=%D #This is new in findutils-4.2 and will help find more duplicates
 fi
-                     #print name, inode & size.
-find "$@" -size +0c -type f -printf "$FPF\0$devFmt\0%i\0%s\n" |
+                                           #print name, dev, inode & size.
+find "$@" -size +0c -type f ! -name '*\n*' -printf "$FPF\0$devFmt\0%i\0%s\n" |
 sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes

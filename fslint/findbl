@@ -119,7 +119,7 @@ absolute|relative|redundant)
 	FPF="$FPF ->\1%l" ;;
 esac
 
-find "$@" -type l -printf "$FPF\n" |
+find "$@" -type l ! -name '*\n*' -printf "$FPF\n" |
 sort -u |            #merge links (indirectly) specified multiple times
 
 case "$mode" in
