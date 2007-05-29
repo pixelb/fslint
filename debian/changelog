@@ -1,6 +1,7 @@
 fslint (2.21-1) unstable; urgency=low
 
   * Bump to devel version
+  * Remove findup -m cross device limitation (Closes: #426522)
 
  -- Pádraig Brady <P@draigBrady.com>  Fri, 30 Mar 2007 08:22:00 +0000
 

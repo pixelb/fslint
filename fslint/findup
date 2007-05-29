@@ -106,7 +106,6 @@ do
                 argsToPassOn="$argsToPassOn '$arg'"
 	esac
 done
-[ "$mode" = "merge" ] && argsToPassOn="$argsToPassOn -xdev"
 
 if [ ! -z "$mode" ]; then
     forceFullPath="-f"
