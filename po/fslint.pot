@@ -312,11 +312,11 @@ msgid "Usage: %s [OPTION] [PATHS]"
 msgstr ""
 
 #: ../fslint-gui:142
-msgid "    --version       display version"
+msgid "display version"
 msgstr ""
 
 #: ../fslint-gui:143
-msgid "    --help          display help"
+msgid "display help"
 msgstr ""
 
 #: ../fslint-gui:330
