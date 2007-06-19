@@ -17,7 +17,7 @@ if [ "$#" = "1" ]; then
     fi
 fi
 
-keepfile=''
+keepfile='nextfile'
 while read file; do
   if [ -z "$file" ]; then
     keepfile="nextfile"
@@ -45,6 +45,6 @@ while read file; do
     fi
   fi
 done
-if [ "$dryRun" = "1"  -a "$keepfile" ]; then
+if [ "$dryRun" = "1" ] && [ "$keepfile" != "nextfile" ]; then
     echo
 fi

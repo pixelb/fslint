@@ -10,6 +10,8 @@
 		* Set mouse pointer to "busy interactive" during searches.
 		  This makes it more obvious that work is progressing and
 		  only parts of the GUI will be responsive.
+		* Simplify the default output from the findup CLI tool, to make
+		  it easier to pipe. Use the --sizes option to get old format.
 	* Fixes:
 		* Change duplicate file merging algorithm to be more robust in
 		  rare error conditions, to eliminate any chance of data loss.

@@ -877,9 +877,10 @@ on your system at present."))
         return (str(row) + _(" files"), pe)
 
     def findup(self, clist_dups):
-        po, pe = self.get_fslint("./findup " + self.findParams + " --gui")
+        po, pe = self.get_fslint("./findup " + self.findParams + " -f")
 
         numdups = size = fsize = 0
+        dups = []
         alldups = []
         inodes = {}
         #inodes required to correctly report disk usage of

@@ -17,34 +17,42 @@
 
 # Description
 #
-#	will show duplicate files in the specified directories
-#	(and their subdirectories), in the format:
+#   will show duplicate files in the specified directories
+#   (and their subdirectories), in the format:
 #
-#	2 * 2048	file1 file2
-#	3 * 1024	file3 file4 file5
-#	2 * 1024	file6 file7
+#       file1
+#       file2
 #
-#	Where the number is the disk usage in bytes of each of the
-#	duplicate files on that line, and all duplicate files are
-#	shown on the same line.
-#		Output it ordered by largest disk usage first and
-#	then by the number of duplicate files.
+#       file3
+#       file4
+#       file5
+#
+#   or if the --sizes option is specified:
+#
+#       2 * 2048	file1 file2
+#       3 * 1024	file3 file4 file5
+#
+#   Where the number is the disk usage in bytes of each of the
+#   duplicate files on that line, and all duplicate files are
+#   shown on the same line.
+#       Output it ordered by largest disk usage first and
+#   then by the number of duplicate files.
 #
 # Caveats/Notes:
-#	I compared this to any equivalent utils I could find (as of Nov 2000)
-#	and it's (by far) the fastest, has the most functionality (thanks to
-#	find) and has no (known) bugs. In my opinion fdupes is the next best but
-#	is slower (even though written in C), and has a bug where hard links
-#	in different directories are reported as duplicates sometimes.
+#   I compared this to any equivalent utils I could find (as of Nov 2000)
+#   and it's (by far) the fastest, has the most functionality (thanks to
+#   find) and has no (known) bugs. In my opinion fdupes is the next best but
+#   is slower (even though written in C), and has a bug where hard links
+#   in different directories are reported as duplicates sometimes.
 #
-#	This script requires uniq > V2.0.21 (part of GNU textutils|coreutils)
-#	dir/file names containing \n are ignored
-#	undefined operation for dir/file names containing \1
-#	sparse files are not treated differently.
-#	Don't specify params to find that affect output etc. (e.g -printf etc.)
-#	zero length files are ignored.
-#	symbolic links are ignored.
-#	path1 & path2 can be files &/or directories
+#   This script requires uniq > V2.0.21 (part of GNU textutils|coreutils)
+#   dir/file names containing \n are ignored
+#   undefined operation for dir/file names containing \1
+#   sparse files are not treated differently.
+#   Don't specify params to find that affect output etc. (e.g -printf etc.)
+#   zero length files are ignored.
+#   symbolic links are ignored.
+#   path1 & path2 can be files &/or directories
 
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
@@ -52,68 +60,65 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 . $script_dir/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
-	echo "find dUPlicate files.
-Usage: $ProgName [[-t [-m|-d]] [-r] [-f] paths(s) ...]
+    ProgName=`basename "$0"`
+    echo "find dUPlicate files.
+Usage: $ProgName [[[-t [-m|-d]] | [--sizes]] [-r] [-f] paths(s) ...]
 
 If no path(s) specified then the currrent directory is assumed.
 
+
 When -m is specified any found duplicates will be merged (using hardlinks).
-When -d is specified any found duplicates will be deleted (only 1 left).
+When -d is specified any found duplicates will be deleted (leaving just 1).
 When -t is specfied, only report what -m or -d would do.
 
-You can also pipe output to $script_dir/fstool/dupwaste to
-get a total of the wastage due to duplicates.
+When --sizes is specified change output format to include file sizes.
+You can also pipe this output format to $script_dir/fstool/dupwaste
+to get a total of the wastage due to duplicates.
 
 Examples:
 
 search for duplicates in current directory and below
-	findup or findup .
+    findup or findup .
 search for duplicates in all linux source directories and merge using hardlinks
-	findup -m /usr/src/linux*
+    findup -m /usr/src/linux*
 same as above but don't look in subdirectories
-	findup -r .
+    findup -r .
 search for duplicates in /usr/bin
-	findup /usr/bin
+    findup /usr/bin
 search in multiple directories but not their subdirectories
-	findup -r /usr/bin /bin /usr/sbin /sbin
+    findup -r /usr/bin /bin /usr/sbin /sbin
 search for duplicates in \$PATH
-	findup \`$script_dir/supprt/getffp\`
+    findup \`$script_dir/supprt/getffp\`
 search system for duplicate files over 100K in size
-	findup / -size +100k
+    findup / -size +100k
 search only my files (that I own and are in my home dir)
-	findup ~ -user \`id -u\`
+    findup ~ -user \`id -u\`
 search system for duplicate files belonging to roger
-	findup / -user \`id -u roger\`"
-	exit
+    findup / -user \`id -u roger\`"
+    exit
 }
 
 for arg
 do
-	case "$arg" in
-	-h|--help|-help)
-		Usage ;;
-	-v|--version)
-		Version ;;
-	--gui)
-		mode="gui" ;;
-	-m)
-		mode="merge" ;;
-	-d)
-		mode="del" ;;
-	-t)
-		t="t" ;;
-	*)
-                argsToPassOn="$argsToPassOn '$arg'"
-	esac
+    case "$arg" in
+    -h|--help|-help)
+        Usage ;;
+    -v|--version)
+        Version ;;
+    --sizes)
+        mode="sizes" ;;
+    -m)
+        mode="merge" ;;
+    -d)
+        mode="del" ;;
+    -t)
+        t="t" ;;
+    *)
+        argsToPassOn="$argsToPassOn '$arg'"
+    esac
 done
 
-if [ ! -z "$mode" ]; then
-    forceFullPath="-f"
-    sep_mode="prepend"
-else
-    sep_mode="none"
-fi
+sep_mode="separate"
 
 if [ "$mode" = "gui" ] || [ "$mode" = "merge" ] || [ "$mode" = "del" ]; then
     merge_early=""    #process hardlinks
@@ -121,7 +126,7 @@ else
     merge_early="-u"  #ignore hardlinks
 fi
 
-. $script_dir/supprt/getfpf $forceFullPath "$argsToPassOn"
+. $script_dir/supprt/getfpf "$argsToPassOn"
 
 check_uniq
 
@@ -163,21 +168,22 @@ fi |
 # This block selects duplicates using md5sum of whole file
 xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
 sort |                     #group duplicate files together
-uniq --all-repeated -w32 | #pick just duplicates
+uniq --all-repeated=$sep_mode -w32 | #pick just duplicates
 
 # The following optional block, checks duplicates again using sha1
 # Note for data sets that don't totally fit in cache this will
 # probably read duplicate files off the disk again.
-cut -d' ' -f3- |           #get filenames
+cut -s -d' ' -f3- |        #get filenames
 sort |                     #sort by paths to try to minimise disk seeks
 tr '\n' '\0' |             #delimit names with \0
 xargs -r0 sha1sum -- |     #to be sure to be sure
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 
+cut -d' ' -f3- |
+
 if [ ! -z "$mode" ]; then
-  cut -d' ' -f3- |
-  if [ ! $mode = "gui" ]; then # external call to python as this is faster
+  if [ ! $mode = "sizes" ]; then # external call to python as this is faster
     if $script_dir/supprt/rmlint/fixdup.py </dev/null 2>/dev/null; then
         $script_dir/supprt/rmlint/fixdup.py $t$mode
     elif $script_dir/supprt/rmlint/fixdup.sh </dev/null 2>/dev/null; then
@@ -187,30 +193,32 @@ if [ ! -z "$mode" ]; then
         exit 1
     fi
   else
-    cat
+    (
+    line=''
+    declare -i counter #Use bash arithmetic, not expr (for speed)
+    counter=1
+    while read file; do
+        if [ ! "$file" ]; then
+            if [ ! -z "$line" ]; then
+                echo "$counter * $line"
+            fi
+            counter=1
+        else
+            if [ $counter -eq 1 ]; then
+                line="`du -B1 "$file"`"
+            else
+                line="$line $file"
+            fi
+            counter=counter+1
+        fi
+    done
+
+    if [ ! -z "$line" ]; then
+          echo "$counter * $line"
+    fi
+    ) |
+    sort -k3,3 -k1,1 -brn
   fi
 else
-(
-psum='no match'
-line=''
-declare -i counter
-while read sum file; do           #sum is delimited by first space
-  if [ "$sum" != "$psum" ]; then
-    if [ ! -z "$line" ]; then
-       echo "$counter * $line"
-    fi
-    counter=1
-    line="`du -b "$file"`"
-    psum="$sum"
-  else
-    counter=counter+1             #Use bash arithmetic, not expr (for speed)
-    line="$line $file"
-  fi
-done
-
-if [ ! -z "$line" ]; then
-  echo "$counter * $line"
-fi
-) |
-sort -k3,3 -k1,1 -brn
+  cat
 fi
