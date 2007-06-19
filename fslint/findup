@@ -197,15 +197,15 @@ if [ ! -z "$mode" ]; then
     (
     line=''
     declare -i counter #Use bash arithmetic, not expr (for speed)
-    counter=1
+    counter=0
     while read file; do
         if [ ! "$file" ]; then
             if [ ! -z "$line" ]; then
                 echo "$counter * $line"
             fi
-            counter=1
+            counter=0
         else
-            if [ $counter -eq 1 ]; then
+            if [ $counter -eq 0 ]; then
                 line="`du -B1 "$file"`"
             else
                 line="$line $file"
