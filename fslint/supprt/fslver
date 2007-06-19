@@ -1,6 +1,10 @@
 # Exit early if there is an error
 set -e
 
+# Store \n in a variable for use in scripts
+LF='
+'
+
 # The following is essentially to speedup sort & grep
 # (which redhat really crippled speedwise around redhat 8/9 for UTF8 locales).
 # Note since glibc 2.3.3 this causes (error) messages from
