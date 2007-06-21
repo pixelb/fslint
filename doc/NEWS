@@ -1,6 +1,7 @@
 2.21 dd/mm/yy
 	* Translations:
 		* Added: Spanish.
+		* Updated: Danish.
 	* Improvements:
 		* Ensure all numbers are output appropriate to locale.
 		* Add an indenting checker/fixer to the "redundant whitespace"

@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-20 08:42+0100\n"
-"PO-Revision-Date: 2006-12-22 15:38+0100\n"
+"PO-Revision-Date: 2007-06-20 19:02+0000\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Rosetta-Export-Date: 2007-06-20 19:08:13+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -257,7 +257,7 @@ msgstr "mellemrum ved slutningen"
 
 #: ../fslint.glade:2551
 msgid "bad indenting for indent width"
-msgstr ""
+msgstr "Forkert indryk vedrørende indrykningsbredde"
 
 #: ../fslint.glade:2713
 msgid "Redundant whitespace"
@@ -335,7 +335,7 @@ msgstr "Ønsker du at overskrive?\n"
 
 #: ../fslint-gui:432
 msgid "You can't overwrite "
-msgstr "Du kan ikke overskrive"
+msgstr "Du kan ikke overskrive "
 
 #: ../fslint-gui:466
 msgid "Files with the same content"
@@ -371,7 +371,7 @@ msgstr "Programmer der stadig indeholder fejlsøgningsinformation"
 
 #: ../fslint-gui:475
 msgid "Erroneous whitespace in a text file"
-msgstr ""
+msgstr "Fejlbehæftet mellemrum i en tekstfil"
 
 #: ../fslint-gui:481
 msgid "Invalid path ["
@@ -502,15 +502,15 @@ msgstr "(Ignorerer de valgte)\n"
 
 #: ../fslint-gui:1428
 msgid "Which indenting method do you want to convert to?"
-msgstr ""
+msgstr "Hvilken indrykningsmetode ønsker du at skifte til?"
 
 #: ../fslint-gui:1429
 msgid "Tabs"
-msgstr ""
+msgstr "Faneblade"
 
 #: ../fslint-gui:1429
 msgid "Spaces"
-msgstr ""
+msgstr "Mellemrum"
 
 #: ../fslint-gui:1437
 msgid "Are you sure you want to clean"
