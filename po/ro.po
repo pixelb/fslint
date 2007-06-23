@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint 2.04\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-20 08:42+0100\n"
+"POT-Creation-Date: 2007-06-23 01:13+0100\n"
 "PO-Revision-Date: 2003-07-07 18:11+0100\n"
 "Last-Translator: Eugen Hoanca <eugenh@urban-grafx.ro>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -21,504 +21,522 @@ msgid "FSlint"
 msgstr "FSlint"
 
 #: ../fslint.glade:68
+msgid "Rename..."
+msgstr ""
+
+#: ../fslint.glade:90
 msgid "Select using wildcard"
 msgstr ""
 
-#: ../fslint.glade:77
+#: ../fslint.glade:99
 msgid "Unselect using wildcard"
 msgstr ""
 
-#: ../fslint.glade:86
+#: ../fslint.glade:108
 msgid "within groups"
 msgstr "grupuri"
 
-#: ../fslint.glade:95
+#: ../fslint.glade:117
 msgid "Select all but first"
 msgstr ""
 
-#: ../fslint.glade:104
+#: ../fslint.glade:126
 msgid "Select all but newest"
 msgstr ""
 
-#: ../fslint.glade:113
+#: ../fslint.glade:135
 msgid "Select all but oldest"
 msgstr ""
 
-#: ../fslint.glade:126
+#: ../fslint.glade:148
 #, fuzzy
 msgid "Toggle selection"
 msgstr "selecţie"
 
-#: ../fslint.glade:135
+#: ../fslint.glade:157
 #, fuzzy
 msgid "Unselect all"
 msgstr "Selecteaza Cale"
 
-#: ../fslint.glade:252 ../fslint.glade:505
+#: ../fslint.glade:274 ../fslint.glade:527
 msgid "Add"
 msgstr "Adaugă"
 
-#: ../fslint.glade:328 ../fslint.glade:581
+#: ../fslint.glade:350 ../fslint.glade:603
 msgid "Remove"
 msgstr "Elimină"
 
-#: ../fslint.glade:375
+#: ../fslint.glade:397
 msgid "Directories to search"
 msgstr "Caută în directoare"
 
-#: ../fslint.glade:400
+#: ../fslint.glade:422
 msgid "recurse?"
 msgstr "recursiv?"
 
-#: ../fslint.glade:424
+#: ../fslint.glade:446
 msgid "Search path"
 msgstr "Calea de căutare"
 
-#: ../fslint.glade:636
+#: ../fslint.glade:658
 msgid "Paths to exclude"
 msgstr "Căi excluse"
 
-#: ../fslint.glade:671
+#: ../fslint.glade:693
 msgid "Extra find parameters"
 msgstr "Parametri cautare adiţionali"
 
-#: ../fslint.glade:696
+#: ../fslint.glade:718
 msgid "extra find filtering parameters"
 msgstr "Parametri adiţionali pentru filtrarea cautării"
 
-#: ../fslint.glade:729
+#: ../fslint.glade:751
 msgid "Advanced search parameters"
 msgstr "Parametri cautare avansaţi"
 
-#: ../fslint.glade:814 ../fslint.glade:945 ../fslint.glade:1197
-#: ../fslint.glade:1506 ../fslint.glade:1718 ../fslint.glade:1972
-#: ../fslint.glade:2093 ../fslint.glade:2265 ../fslint.glade:2398
-#: ../fslint.glade:2621
+#: ../fslint.glade:836 ../fslint.glade:967 ../fslint.glade:1219
+#: ../fslint.glade:1528 ../fslint.glade:1740 ../fslint.glade:1994
+#: ../fslint.glade:2115 ../fslint.glade:2287 ../fslint.glade:2420
+#: ../fslint.glade:2643
 msgid "Name"
 msgstr "Nume"
 
-#: ../fslint.glade:833 ../fslint.glade:1216 ../fslint.glade:1525
-#: ../fslint.glade:1737 ../fslint.glade:1991 ../fslint.glade:2112
-#: ../fslint.glade:2284 ../fslint.glade:2417 ../fslint.glade:2640
+#: ../fslint.glade:855 ../fslint.glade:1238 ../fslint.glade:1547
+#: ../fslint.glade:1759 ../fslint.glade:2013 ../fslint.glade:2134
+#: ../fslint.glade:2306 ../fslint.glade:2439 ../fslint.glade:2662
 msgid "Directory"
 msgstr "Director"
 
-#: ../fslint.glade:852 ../fslint.glade:1775 ../fslint.glade:2188
-#: ../fslint.glade:2303 ../fslint.glade:2455 ../fslint.glade:2678
+#: ../fslint.glade:874 ../fslint.glade:1797 ../fslint.glade:2210
+#: ../fslint.glade:2325 ../fslint.glade:2477 ../fslint.glade:2700
 msgid "Date"
 msgstr "Dată"
 
-#: ../fslint.glade:887
+#: ../fslint.glade:909
 msgid "Duplicates"
 msgstr "Duplicate"
 
-#: ../fslint.glade:964 ../fslint.glade:1544 ../fslint.glade:1756
-#: ../fslint.glade:2169 ../fslint.glade:2436 ../fslint.glade:2659
+#: ../fslint.glade:986 ../fslint.glade:1566 ../fslint.glade:1778
+#: ../fslint.glade:2191 ../fslint.glade:2458 ../fslint.glade:2681
 msgid "Size"
 msgstr "Mărime"
 
-#: ../fslint.glade:1059
+#: ../fslint.glade:1081
 msgid "Installed packages"
 msgstr ""
 
-#: ../fslint.glade:1100
+#: ../fslint.glade:1122
 msgid "Sensitivity="
 msgstr "Senzitivitate="
 
-#: ../fslint.glade:1144
+#: ../fslint.glade:1166
 msgid "invalid UTF8 mode?"
 msgstr ""
 
-#: ../fslint.glade:1251
+#: ../fslint.glade:1273
 msgid "Bad names"
 msgstr "Nume greşite"
 
-#: ../fslint.glade:1286
+#: ../fslint.glade:1308
 msgid "Search ("
 msgstr "Caută ("
 
-#: ../fslint.glade:1312
+#: ../fslint.glade:1334
 msgid "$PATH"
 msgstr "$PATH"
 
-#: ../fslint.glade:1331
+#: ../fslint.glade:1353
 msgid ") for"
 msgstr ") pentru"
 
-#: ../fslint.glade:1378 ../fslint-gui:807
+#: ../fslint.glade:1400 ../fslint-gui:855
 msgid "Conflicting files"
 msgstr "Fişiere în conflict"
 
-#: ../fslint.glade:1386 ../fslint.glade:1449 ../fslint-gui:805
-#: ../fslint-gui:814
+#: ../fslint.glade:1408 ../fslint.glade:1471 ../fslint-gui:853
+#: ../fslint-gui:862
 msgid "Aliases"
 msgstr "Aliasuri"
 
-#: ../fslint.glade:1425 ../fslint-gui:820
+#: ../fslint.glade:1447 ../fslint-gui:868
 msgid "Case conflicts"
 msgstr "Conflict de cazuri"
 
-#: ../fslint.glade:1433 ../fslint-gui:816
+#: ../fslint.glade:1455 ../fslint-gui:864
 msgid "Same names"
 msgstr "Aceleaşi nume"
 
-#: ../fslint.glade:1441 ../fslint-gui:818
+#: ../fslint.glade:1463 ../fslint-gui:866
 msgid "Same names(ignore case)"
 msgstr "Aceleaşi nume(se ignoră cazul)"
 
-#: ../fslint.glade:1579
+#: ../fslint.glade:1601
 msgid "Name clashes"
 msgstr "Nume în conflict"
 
-#: ../fslint.glade:1614
+#: ../fslint.glade:1636
 msgid "More restrictive search for core files"
 msgstr "Căutare restrânsă pentru fişiere de tip \"core\""
 
-#: ../fslint.glade:1616
+#: ../fslint.glade:1638
 msgid "core file mode?"
 msgstr "mod fişier \"core\"?"
 
-#: ../fslint.glade:1640
+#: ../fslint.glade:1662
 msgid "days"
 msgstr "zile"
 
-#: ../fslint.glade:1660
+#: ../fslint.glade:1682
 msgid "minimum age"
 msgstr "vârstă minimă"
 
-#: ../fslint.glade:1810
+#: ../fslint.glade:1832
 msgid "Temp files"
 msgstr "Fişiere temporare"
 
-#: ../fslint.glade:1846
+#: ../fslint.glade:1868
 msgid "Dangling"
 msgstr "Rămăşiţe"
 
-#: ../fslint.glade:1864
+#: ../fslint.glade:1886
 msgid "Absolute links to paths within or below the link's directory"
 msgstr "link-uri absolute la căi în sau sub directorul link-ului"
 
-#: ../fslint.glade:1866
+#: ../fslint.glade:1888
 msgid "Suspect"
 msgstr "Suspecte"
 
-#: ../fslint.glade:1886
+#: ../fslint.glade:1908
 msgid "Relative"
 msgstr "Relativ"
 
-#: ../fslint.glade:1906
+#: ../fslint.glade:1928
 msgid "Absolute"
 msgstr "Absolut"
 
-#: ../fslint.glade:1925
+#: ../fslint.glade:1947
 msgid "/././. ///// /../ etc."
 msgstr "/././. ///// /../ etc."
 
-#: ../fslint.glade:1927
+#: ../fslint.glade:1949
 msgid "Redundant naming"
 msgstr "Numire redundantă"
 
-#: ../fslint.glade:2010
+#: ../fslint.glade:2032
 msgid "Target"
 msgstr "Destinaţie"
 
-#: ../fslint.glade:2045
+#: ../fslint.glade:2067
 msgid "Bad symlinks"
 msgstr "symlinkuri greşite"
 
-#: ../fslint.glade:2131
+#: ../fslint.glade:2153
 msgid "UID"
 msgstr "UID"
 
-#: ../fslint.glade:2150
+#: ../fslint.glade:2172
 msgid "GID"
 msgstr "GID"
 
-#: ../fslint.glade:2223
+#: ../fslint.glade:2245
 msgid "Bad IDs"
 msgstr "ID-uri invalide"
 
-#: ../fslint.glade:2331 ../fslint-gui:473
+#: ../fslint.glade:2353 ../fslint-gui:486
 msgid "Empty directories"
 msgstr "Directoare goale"
 
-#: ../fslint.glade:2361
+#: ../fslint.glade:2383
 msgid "Search $PATH"
 msgstr "Caută $PATH"
 
-#: ../fslint.glade:2490
+#: ../fslint.glade:2512
 msgid "Non stripped binaries"
 msgstr "\"non-stripped\" Executabile"
 
-#: ../fslint.glade:2526
+#: ../fslint.glade:2548
 msgid "whitespace at end of line"
 msgstr ""
 
-#: ../fslint.glade:2551
+#: ../fslint.glade:2573
 msgid "bad indenting for indent width"
 msgstr ""
 
-#: ../fslint.glade:2713
+#: ../fslint.glade:2735
 msgid "Redundant whitespace"
 msgstr "Spaţii redundante"
 
-#: ../fslint.glade:2799
+#: ../fslint.glade:2821
 msgid "Find"
 msgstr "Caută"
 
-#: ../fslint.glade:2874
+#: ../fslint.glade:2896
 msgid "Stop"
 msgstr "Stop"
 
-#: ../fslint.glade:2963
+#: ../fslint.glade:2984
 #, fuzzy
 msgid "Select"
 msgstr "selectat"
 
-#: ../fslint.glade:2994
+#: ../fslint.glade:3015
 #, fuzzy
 msgid "Save (selected) list to file"
 msgstr "listează în fişier"
 
-#: ../fslint.glade:3039
+#: ../fslint.glade:3060
 msgid "Save"
 msgstr "Salvează"
 
-#: ../fslint.glade:3070 ../fslint.glade:3235
+#: ../fslint.glade:3091 ../fslint.glade:3256
 msgid "selected"
 msgstr "selectat"
 
-#: ../fslint.glade:3115
+#: ../fslint.glade:3136
 msgid "Delete"
 msgstr "Şterge"
 
-#: ../fslint.glade:3159
+#: ../fslint.glade:3180
 #, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr "Toate (except selectat) folosind hardlink-urile"
 
-#: ../fslint.glade:3205
+#: ../fslint.glade:3226
 msgid "Merge"
 msgstr "Combină"
 
-#: ../fslint.glade:3280
+#: ../fslint.glade:3301
 msgid "Clean"
 msgstr "Curăţă"
 
-#: ../fslint.glade:3412
+#: ../fslint.glade:3433
 msgid "Select Path"
 msgstr "Selecteaza Cale"
 
-#: ../fslint-gui:141
+#: ../fslint-gui:154
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Utilizare: %s [OPŢIUNE] [CĂI]"
 
-#: ../fslint-gui:142
+#: ../fslint-gui:155
 msgid "display version"
 msgstr "afişează versiunea"
 
-#: ../fslint-gui:143
+#: ../fslint-gui:156
 msgid "display help"
 msgstr "afişează ajutorul"
 
-#: ../fslint-gui:330
+#: ../fslint-gui:344
 #, python-format
-msgid "%s of %s is used leaving %sB available"
+msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
 msgstr ""
 
-#: ../fslint-gui:424
+#: ../fslint-gui:440
 msgid "Do you want to overwrite?\n"
 msgstr "Doriţi să suprascrieţi?\n"
 
-#: ../fslint-gui:432
+#: ../fslint-gui:446
 msgid "You can't overwrite "
 msgstr "Nu puteţi să scrieţi peste "
 
-#: ../fslint-gui:466
+#: ../fslint-gui:479
 msgid "Files with the same content"
 msgstr ""
 
-#: ../fslint-gui:467
+#: ../fslint-gui:480
 msgid "Installed packages ordered by disk usage"
 msgstr ""
 
-#: ../fslint-gui:468
+#: ../fslint-gui:481
 msgid "Problematic filenames"
 msgstr ""
 
-#: ../fslint-gui:469
+#: ../fslint-gui:482
 #, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Fişiere în conflict"
 
-#: ../fslint-gui:470
+#: ../fslint-gui:483
 msgid "Possibly old temporary files"
 msgstr ""
 
-#: ../fslint-gui:471
+#: ../fslint-gui:484
 msgid "Problematic symbolic links"
 msgstr ""
 
-#: ../fslint-gui:472
+#: ../fslint-gui:485
 msgid "Files with missing user IDs"
 msgstr ""
 
-#: ../fslint-gui:474
+#: ../fslint-gui:487
 msgid "Executables still containing debugging info"
 msgstr ""
 
-#: ../fslint-gui:475
+#: ../fslint-gui:488
 msgid "Erroneous whitespace in a text file"
 msgstr ""
 
-#: ../fslint-gui:481
+#: ../fslint-gui:494
 msgid "Invalid path ["
 msgstr ""
 
-#: ../fslint-gui:501
+#: ../fslint-gui:535
 msgid "searching"
 msgstr ""
 
-#: ../fslint-gui:511
+#: ../fslint-gui:545
 msgid "processing..."
 msgstr ""
 
-#: ../fslint-gui:539
+#: ../fslint-gui:573
 msgid "No search paths specified"
 msgstr "Fără directoare de căutare"
 
-#: ../fslint-gui:684
+#: ../fslint-gui:732
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
 
-#: ../fslint-gui:700
+#: ../fslint-gui:748
 msgid " packages, "
 msgstr ""
 
-#: ../fslint-gui:701
+#: ../fslint-gui:749
 #, python-format
 msgid "consuming %sB. "
 msgstr ""
 
-#: ../fslint-gui:702
+#: ../fslint-gui:750
 #, python-format
 msgid "Note %s."
 msgstr ""
 
-#: ../fslint-gui:720 ../fslint-gui:761 ../fslint-gui:799 ../fslint-gui:861
+#: ../fslint-gui:768 ../fslint-gui:809 ../fslint-gui:847 ../fslint-gui:909
 msgid " files"
 msgstr " fişiere"
 
-#: ../fslint-gui:740
+#: ../fslint-gui:788
 msgid " unstripped binaries"
 msgstr " binare cu informaţii de depanare"
 
-#: ../fslint-gui:750
+#: ../fslint-gui:798
 msgid " empty directories"
 msgstr " directoare goale"
 
-#: ../fslint-gui:782
+#: ../fslint-gui:830
 msgid " links"
 msgstr " link-uri"
 
-#: ../fslint-gui:798 ../fslint-gui:909
+#: ../fslint-gui:846 ../fslint-gui:958
 msgid " bytes wasted in "
 msgstr " bytes irosiţi în "
 
-#: ../fslint-gui:843 ../fslint-gui:910
+#: ../fslint-gui:891 ../fslint-gui:959
 msgid " files (in "
 msgstr " fişiere (în "
 
-#: ../fslint-gui:844 ../fslint-gui:911
+#: ../fslint-gui:892 ../fslint-gui:960
 msgid " groups)"
 msgstr " grupuri)"
 
-#: ../fslint-gui:901
+#: ../fslint-gui:950
 msgid "bytes wasted"
 msgstr "bytes irosiţi"
 
-#: ../fslint-gui:938
+#: ../fslint-gui:1025
 msgid "None selected"
 msgstr "Fără selecţie"
 
-#: ../fslint-gui:944
+#: ../fslint-gui:1029
 msgid " this item?\n"
 msgstr ""
 
-#: ../fslint-gui:946
+#: ../fslint-gui:1031
 #, python-format
 msgid " these %d items?\n"
 msgstr ""
 
-#: ../fslint-gui:1058
+#: ../fslint-gui:1146
 msgid "User aborted"
 msgstr "Intrerupt de utilizator"
 
-#: ../fslint-gui:1129
-msgid "wildcard:"
-msgstr ""
-
-#: ../fslint-gui:1221
-msgid "Sorry, you must be root to delete system packages."
+#: ../fslint-gui:1216
+msgid "Rename:"
 msgstr ""
 
 #: ../fslint-gui:1225
+#, python-format
+msgid "Error: [%s] can not be represented on your file system"
+msgstr ""
+
+#: ../fslint-gui:1235
+#, python-format
+msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
+msgstr ""
+
+#: ../fslint-gui:1251
+msgid "wildcard:"
+msgstr ""
+
+#: ../fslint-gui:1338
+msgid "Sorry, you must be root to delete system packages."
+msgstr ""
+
+#: ../fslint-gui:1341
 msgid "Are you sure you want to delete"
 msgstr ""
 
-#: ../fslint-gui:1238
+#: ../fslint-gui:1354
 msgid "Calculating dependencies..."
 msgstr ""
 
-#: ../fslint-gui:1254
+#: ../fslint-gui:1367
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr ""
 
-#: ../fslint-gui:1255
+#: ../fslint-gui:1368
 msgid "Please review the updated selection."
 msgstr ""
 
-#: ../fslint-gui:1264
+#: ../fslint-gui:1376
 msgid "Removing packages..."
 msgstr ""
 
-#: ../fslint-gui:1304
+#: ../fslint-gui:1406
 msgid " items deleted"
 msgstr " elemente şterse"
 
-#: ../fslint-gui:1383
+#: ../fslint-gui:1485
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Doriţi să fuzionaţi TOATE fişierele?\n"
 
-#: ../fslint-gui:1387
+#: ../fslint-gui:1489
 msgid "(Ignoring those selected)\n"
 msgstr "(Ignoring those selecţie)\n"
 
-#: ../fslint-gui:1428
+#: ../fslint-gui:1535
 msgid "Which indenting method do you want to convert to?"
 msgstr ""
 
-#: ../fslint-gui:1429
+#: ../fslint-gui:1536
 msgid "Tabs"
 msgstr ""
 
-#: ../fslint-gui:1429
+#: ../fslint-gui:1536
 msgid "Spaces"
 msgstr ""
 
-#: ../fslint-gui:1437
+#: ../fslint-gui:1544
 msgid "Are you sure you want to clean"
 msgstr ""
 
-#: ../fslint-gui:1479
+#: ../fslint-gui:1586
 msgid " items cleaned ("
 msgstr " elemente curăţate ("
 
-#: ../fslint-gui:1480
+#: ../fslint-gui:1587
 msgid " bytes saved)"
 msgstr " bytes salvaţi)"

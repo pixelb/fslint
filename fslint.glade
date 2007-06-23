@@ -54,6 +54,28 @@
 	  </child>
 
 	  <child>
+	    <widget class="GtkMenuItem" id="edit_menu">
+	      <property name="visible">True</property>
+	      <property name="label">_Edit</property>
+	      <property name="use_underline">True</property>
+
+	      <child>
+		<widget class="GtkMenu" id="edit_menu_menu">
+
+		  <child>
+		    <widget class="GtkMenuItem" id="rename">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Rename...</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_rename_activate" last_modification_time="Fri, 22 Jun 2007 07:35:13 GMT"/>
+		    </widget>
+		  </child>
+		</widget>
+	      </child>
+	    </widget>
+	  </child>
+
+	  <child>
 	    <widget class="GtkMenuItem" id="selection_menu">
 	      <property name="visible">True</property>
 	      <property name="label">_Selection</property>

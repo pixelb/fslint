@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# vim:fileencoding=utf8
+# vim:fileencoding=utf-8
 # Note both python and vim understand the above encoding declaration
 
 # Note using env above will cause the system to register
@@ -77,6 +77,7 @@ class i18n:
             #gtk will print warning for a duff locale
             pass
         #Note python 2.3 has the nicer locale.getpreferredencoding()
+        #Note also that this encoding name is canonlicalised already
         self.preferred_encoding=locale.nl_langinfo(locale.CODESET)
 
     class unicode_displayable(unicode):
@@ -102,9 +103,10 @@ class i18n:
         #    translated_string=unicode(string).translate(cls.translate_table)
         #    return unicode.__new__(cls, translated_string)
 
-    #The following is used for display strings only
-    def utf8(self,orig,exclude=""):
-        """If orig is not a valid utf8 string,
+    def displayable_utf8(self,orig,exclude=""):
+        """Convert to utf8, and also convert chars that are not
+        easily displayable (control chars currently).
+        If orig is not a valid utf8 string,
         then try to convert to utf8 using preferred encoding while
         also replacing undisplayable or invalid characters.
         Exclude contains control chars you don't want to translate."""
@@ -133,6 +135,17 @@ class i18n:
                     # has a representation for each byte, but it's not general.
         uc=self.__class__.unicode_displayable(uc).displayable(exclude)
         return uc.encode("utf-8")
+
+    def g_filename_from_utf8(self, string):
+        filename_encoding = os.environ.get("G_FILENAME_ENCODING")
+        if filename_encoding: filename_encoding=filename_encoding.lower()
+        if filename_encoding == "utf8": filename_encoding="utf-8"
+        if filename_encoding==None:
+            filename_encoding=self.preferred_encoding
+        if filename_encoding != "utf-8":
+            uc=unicode(string,"utf-8")
+            string=uc.encode(filename_encoding) #can raise exception
+        return string
 
 I18N=i18n() #call first so everything is internationalized
 
@@ -327,7 +340,9 @@ dist_type=distroType()
 def human_space_left(where):
     (device, total, used_b, avail, used_p, mount)=\
     os.popen("df -h %s | tail -1"%where).read().split()
-    return _("%s of %s is used leaving %sB available") % (used_p, mount, avail)
+    translation_map={"percent":used_p, "disk":mount, "size":avail}
+    return _("%(percent)s of %(disk)s is used leaving %(size)sB available") %\
+             translation_map
 
 class dlgUserInteraction(GladeWrapper):
     """
@@ -339,7 +354,7 @@ class dlgUserInteraction(GladeWrapper):
     button is already available, then there's no point in
     translating the passed in string.
     """
-    def init(self, app, message, buttons):
+    def init(self, app, message, buttons, entry_default):
         for text in buttons:
             try:
                 stock_text=getattr(gtk,"STOCK_"+text.upper())
@@ -356,6 +371,8 @@ class dlgUserInteraction(GladeWrapper):
         self.lblmsg.set_text(message)
         self.lblmsg.show()
         if message.endswith(":"):
+            if entry_default:
+                self.entry.set_text(entry_default)
             self.entry.show()
         else:
             self.entry.hide()
@@ -387,10 +404,11 @@ class dlgPathSel(GladeWrapper):
         self.app = app
         self.pwd = self.app.pwd
 
-    def show(self, fileOps=0):
+    def show(self, fileOps=0, filename=None):
         self.canceled=1
         self.fileOps = fileOps
-        self.GtkWindow.set_filename(self.pwd+'/')
+        if not filename: filename=self.pwd+'/'
+        self.GtkWindow.set_filename(filename)
         if self.fileOps:
             self.GtkWindow.show_fileop_buttons()
         else:
@@ -535,7 +553,7 @@ class fslint(GladeWrapper):
         if len(lines) == 0:
             return
         end=self.errors.get_buffer().get_end_iter()
-        self.errors.get_buffer().insert(end,I18N.utf8(lines,"\n"))
+        self.errors.get_buffer().insert(end,I18N.displayable_utf8(lines,"\n"))
 
     def ClearErrors(self):
         self.errors.get_buffer().set_text("")
@@ -581,7 +599,7 @@ class fslint(GladeWrapper):
 
     def addDirs(self, dirlist, dirs):
         """Adds items to passed clist."""
-        dirlist.append([I18N.utf8(dirs)])
+        dirlist.append([I18N.displayable_utf8(dirs)])
         dirlist.set_row_data(dirlist.rows-1, dirs)
 
     def removeDirs(self, dirlist):
@@ -611,7 +629,7 @@ class fslint(GladeWrapper):
     def clist_append_path(self, clist, path, colour, *rest):
         """append path to clist, handling utf8 and colour issues"""
         colour = self.clist_alloc_colour(clist, colour)
-        utf8_path=I18N.utf8(path)
+        utf8_path=I18N.displayable_utf8(path)
         (dir,file)=os.path.split(utf8_path)
         clist.append((file,dir)+rest)
         row_data = clist.get_data("row_data")
@@ -626,6 +644,20 @@ class fslint(GladeWrapper):
         row_data.append('#'+"\t".join(cols).rstrip()+'\n')
         clist.set_background(clist.rows-1,self.bg_colour)
         clist.set_selectable(clist.rows-1,0)
+
+    def clist_remove_empty_groups(self, clist):
+        row_data = clist.get_data("row_data")
+        rowver=clist.rows
+        rows_left = range(rowver)
+        rows_left.reverse()
+        for row in rows_left:
+            if clist.get_selectable(row) == False:
+                if (row == clist.rows-1) or (clist.get_selectable(row+1) ==
+                    False):
+                    clist.remove(row)
+                    if self.mode != self.mode_pkgs:
+                        row_data.pop(row)
+
 
     def get_path_info(self, path):
         """Returns path info appropriate for display, i.e.
@@ -974,9 +1006,9 @@ on your system at present."))
         self.find.grab_focus() #as it already would have been in focus
         self.set_cursor(None)
 
-    def msgbox(self, message, buttons=('Ok',)):
+    def msgbox(self, message, buttons=('Ok',), entry_default=None):
         msgbox=dlgUserInteraction(liblocation+"/fslint.glade","UserInteraction")
-        msgbox.init(self, message, buttons)
+        msgbox.init(self, message, buttons, entry_default)
         msgbox.show()
         return (msgbox.response, msgbox.input)
 
@@ -1069,8 +1101,15 @@ on your system at present."))
         if event == None: #standard button click
             self.selection_menu_menu.popup(None,None,None,3,0) #at mouse pointer
         elif type(widget) == gtk.CList and event.button == 3:
-            self.selection_menu_menu.popup(None,None,None,
-                                           event.button,event.time)
+            menu=self.selection_menu_menu
+            if self.mode != self.mode_pkgs:
+                sel=widget.get_selection_info(int(event.x),int(event.y))
+                if sel:
+                    row,col=sel
+                    selected = widget.selection
+                    if len(selected)==1 and row in selected:
+                        menu=self.edit_menu_menu
+            menu.popup(None,None,None,event.button,event.time)
 
     def on_find_clicked(self, event):
 
@@ -1166,6 +1205,43 @@ on your system at present."))
                         fileSaveAs.write(row_data[row])
                 else:
                     fileSaveAs.writelines(row_data)
+
+    def on_rename_activate(self, event):
+        clist = self.clists[self.mode]
+        row_data=clist.get_data("row_data")
+        row=clist.selection[0] #menu item only enabled if 1 item selected
+        utf8_name=clist.get_text(row,0)
+        path_name=row_data[row][:-1]
+
+        (response,new_path)=self.msgbox(_("Rename:"),('Cancel','Ok'),utf8_name)
+        if response == "Ok" and new_path!=utf8_name:
+            self.ClearErrors()
+            if not (self.mode==self.mode_nl and self.chk_findu8.get_active()):
+                try:
+                    new_encoded_path=I18N.g_filename_from_utf8(new_path)
+                except UnicodeEncodeError:
+                    new_encoded_path=None
+                    self.ShowErrors(_(
+                    "Error: [%s] can not be represented on your file system") %\
+                    (new_path) +'\n')
+            else:
+                new_encoded_path=new_path #leave in (displayable) utf-8
+            if new_encoded_path:
+                dir,base=os.path.split(path_name)
+                new_encoded_path=dir+'/'+new_encoded_path
+                if os.path.exists(new_encoded_path):
+                    translation_map={"old_path":utf8_name, "new_path":new_path}
+                    self.ShowErrors(_(
+                    "Error: Can't rename [%(old_path)s] as "\
+                    "[%(new_path)s] exists") % translation_map + '\n')
+                else:
+                    try:
+                        os.rename(path_name, new_encoded_path)
+                        row_data.pop(row)
+                        clist.remove(row)
+                        self.clist_remove_empty_groups(clist)
+                    except OSError:
+                        self.ShowErrors(str(sys.exc_value)+'\n')
 
     def on_unselect_using_wildcard_activate(self, event):
         self.select_using_wildcard(False)
@@ -1323,17 +1399,7 @@ on your system at present."))
             clist.remove(row)
             numDeleted += 1
 
-        #Remove any redundant grouping rows
-        rowver=clist.rows
-        rows_left = range(rowver)
-        rows_left.reverse()
-        for row in rows_left:
-            if clist.get_selectable(row) == False:
-                if (row == clist.rows-1) or (clist.get_selectable(row+1) ==
-                    False):
-                    clist.remove(row)
-                    if self.mode != self.mode_pkgs:
-                        row_data.pop(row)
+        self.clist_remove_empty_groups(clist)
 
         clist.columns_autosize()
         clist.thaw()
@@ -1406,7 +1472,7 @@ on your system at present."))
         pkg_process = subProcess(cmd)
         pkg_process.read()
         lines=pkg_process.outdata
-        self.pkg_info.get_buffer().set_text(I18N.utf8(lines,"\n"))
+        self.pkg_info.get_buffer().set_text(I18N.displayable_utf8(lines,"\n"))
         del(pkg_process)
 
     def on_autoMerge_clicked(self, event):

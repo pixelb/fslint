@@ -13,6 +13,8 @@
 		  only parts of the GUI will be responsive.
 		* Simplify the default output from the findup CLI tool, to make
 		  it easier to pipe. Use the --sizes option to get old format.
+		* Add a rename option for files. To activate:
+		  Select a file in a list, right click and select Rename...
 	* Fixes:
 		* Change duplicate file merging algorithm to be more robust in
 		  rare error conditions, to eliminate any chance of data loss.
