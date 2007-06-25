@@ -21,6 +21,7 @@
   <property name="gravity">GDK_GRAVITY_NORTH_WEST</property>
   <property name="focus_on_map">True</property>
   <signal name="destroy" handler="on_fslint_destroy"/>
+  <signal name="key_press_event" handler="on_fslint_keypress" last_modification_time="Mon, 25 Jun 2007 07:48:30 GMT"/>
 
   <child>
     <widget class="GtkVBox" id="vbox1">
@@ -63,11 +64,21 @@
 		<widget class="GtkMenu" id="edit_menu_menu">
 
 		  <child>
+		    <widget class="GtkImageMenuItem" id="copy">
+		      <property name="visible">True</property>
+		      <property name="label">gtk-copy</property>
+		      <property name="use_stock">True</property>
+		      <signal name="activate" handler="on_copy_activate" last_modification_time="Mon, 25 Jun 2007 06:36:23 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkMenuItem" id="rename">
 		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Rename...</property>
+		      <property name="label" translatable="yes">_Rename...</property>
 		      <property name="use_underline">True</property>
 		      <signal name="activate" handler="on_rename_activate" last_modification_time="Fri, 22 Jun 2007 07:35:13 GMT"/>
+		      <accelerator key="F2" modifiers="0" signal="activate"/>
 		    </widget>
 		  </child>
 		</widget>

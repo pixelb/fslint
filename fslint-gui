@@ -1172,6 +1172,17 @@ on your system at present."))
             pass
         return True
 
+    def on_fslint_keypress(self, button, event):
+        #ingore capslock and numlock
+        state = event.state & ~(gtk.gdk.LOCK_MASK | gtk.gdk.MOD2_MASK)
+        ksyms=gtk.keysyms
+        if state == int(gtk.gdk.CONTROL_MASK):
+            if event.keyval in (ksyms.c, ksyms.C):
+                self.on_copy_activate(event)
+        if state == 0:
+            if event.keyval in (ksyms.F2,):
+                self.on_rename_activate(event)
+
     def on_saveAs_clicked(self, event):
         clist = self.clists[self.mode]
         if clist.rows == 0:
@@ -1206,15 +1217,38 @@ on your system at present."))
                 else:
                     fileSaveAs.writelines(row_data)
 
+    def on_copy_activate(self, event):
+        clist = self.clists[self.mode]
+        if self.mode==self.mode_pkgs or len(clist.selection)!=1:
+            return
+
+        row_data=clist.get_data("row_data")
+        row=clist.selection[0] #menu item only enabled if 1 item selected
+        utf8_name=clist.get_text(row,0)
+        path_name=row_data[row][:-1]
+
+        dir,name=os.path.split(path_name)
+        if name != utf8_name:
+            import urllib
+            path="file://"+urllib.pathname2url(path_name)
+        else:
+            path=dir+'/'+utf8_name
+
+        clipboard=clist.get_clipboard("CLIPBOARD")
+        clipboard.set_text(path, -1)
+
     def on_rename_activate(self, event):
         clist = self.clists[self.mode]
+        if self.mode==self.mode_pkgs or len(clist.selection)!=1:
+            return
+
         row_data=clist.get_data("row_data")
         row=clist.selection[0] #menu item only enabled if 1 item selected
         utf8_name=clist.get_text(row,0)
         path_name=row_data[row][:-1]
 
         (response,new_path)=self.msgbox(_("Rename:"),('Cancel','Ok'),utf8_name)
-        if response == "Ok" and new_path!=utf8_name:
+        if response == "Ok":
             self.ClearErrors()
             if not (self.mode==self.mode_nl and self.chk_findu8.get_active()):
                 try:

@@ -13,8 +13,11 @@
 		  only parts of the GUI will be responsive.
 		* Simplify the default output from the findup CLI tool, to make
 		  it easier to pipe. Use the --sizes option to get old format.
-		* Add a rename option for files. To activate:
-		  Select a file in a list, right click and select Rename...
+		* Add a "rename" function for paths. To activate: Select a path
+		  in a list and hit F2 or right click and select Rename...
+		* Add a "copy path to clipboard" function for paths.
+		  To activate: Select a path in a list, and hit Ctrl-C or
+		  right click and select Copy.
 	* Fixes:
 		* Change duplicate file merging algorithm to be more robust in
 		  rare error conditions, to eliminate any chance of data loss.
