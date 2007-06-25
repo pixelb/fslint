@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Rosetta-Export-Date: 2007-06-25 15:28:06+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -319,11 +320,11 @@ msgstr "Uso: %s [OPTION] [PATHS]"
 
 #: ../fslint-gui:155
 msgid "display version"
-msgstr ""
+msgstr "Muestra la versión"
 
 #: ../fslint-gui:156
 msgid "display help"
-msgstr ""
+msgstr "Muestra la ayuda"
 
 #: ../fslint-gui:344
 #, python-format
@@ -492,7 +493,7 @@ msgstr "Calculando dependencias..."
 #: ../fslint-gui:1401
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "%d paquetes extra que necesitan ser borrados. \n"
+msgstr "%d paquetes extra que necesitan ser borrados.\n"
 
 #: ../fslint-gui:1402
 msgid "Please review the updated selection."
