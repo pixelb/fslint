@@ -1290,18 +1290,15 @@ on your system at present."))
             if clist.rows == 0:
                 return
             select_func=select and clist.select_row or clist.unselect_row
+            if '/' not in wildcard or self.mode == self.mode_pkgs:
+                get_text = lambda row: clist.get_text(row,0)
+            else: #Note fnmatch ignores trailing \n
+                row_data = clist.get_data("row_data")
+                get_text = lambda row: row_data[row]
             import fnmatch
-            if self.mode == self.mode_pkgs:
-                for row in range(clist.rows):
-                    pkgname = clist.get_text(row,0)
-                    if fnmatch.fnmatch(pkgname,wildcard):
-                        select_func(row, 0)
-            else:
-                row=0
-                for path in clist.get_data("row_data"):
-                    if fnmatch.fnmatch(path,wildcard): #trailing \n ignored
-                        select_func(row, 0)
-                    row+=1
+            for row in range(clist.rows):
+                if fnmatch.fnmatch(get_text(row), wildcard):
+                    select_func(row, 0)
 
     def on_select_all_but_first_in_each_group_activate(self, event):
         self.on_select_all_but_one_in_each_group_activate("first")
