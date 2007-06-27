@@ -13,6 +13,12 @@ LF='
 export LC_CTYPE=C #uncomment for speed (noting the caveats above)
 export LC_COLLATE=C #for even more speed
 
+# I noticed Fedora 7 was much slower than FC4 for grep.
+# The following change restores the faster operation.
+# Also DFA seems more correct wrt multibyte input?
+# https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=121313
+export GREP_USE_DFA=1
+
 Version() {
   echo "FSlint 2.21" && exit
 }

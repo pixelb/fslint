@@ -111,7 +111,6 @@ if [ "$level" != "p" ]; then
     # Note this slows grep down 320% on FC4 (grep-2.5.1) at least.
     # Hence the minimum fslint-gui run time will be about 6 times larger
     # due to the polling mechanism it uses.
-    # Update: on FC7 (grep-2.5.1-57.fc7) runtime is 24 times longer!
 #else
     #I'm trusting grep to process [:alnum:] appropriately
     #for the users locale.
