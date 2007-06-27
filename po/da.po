@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-25 14:57+0100\n"
+"POT-Creation-Date: 2007-06-27 14:29+0100\n"
 "PO-Revision-Date: 2007-06-20 19:02+0000\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -149,24 +149,24 @@ msgstr "$PATH"
 msgid ") for"
 msgstr ") for"
 
-#: ../fslint.glade:1411 ../fslint-gui:855
+#: ../fslint.glade:1411 ../fslint-gui:869
 msgid "Conflicting files"
 msgstr "Filer i konflikt"
 
-#: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:853
-#: ../fslint-gui:862
+#: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:867
+#: ../fslint-gui:876
 msgid "Aliases"
 msgstr "Adressebog"
 
-#: ../fslint.glade:1458 ../fslint-gui:868
+#: ../fslint.glade:1458 ../fslint-gui:882
 msgid "Case conflicts"
 msgstr "Konflikt små/store bogstaver"
 
-#: ../fslint.glade:1466 ../fslint-gui:864
+#: ../fslint.glade:1466 ../fslint-gui:878
 msgid "Same names"
 msgstr "Ens navne"
 
-#: ../fslint.glade:1474 ../fslint-gui:866
+#: ../fslint.glade:1474 ../fslint-gui:880
 msgid "Same names(ignore case)"
 msgstr "Ens navne(ignorer små/store bogstaver"
 
@@ -242,7 +242,7 @@ msgstr "GID"
 msgid "Bad IDs"
 msgstr "Ugyldige ID'er"
 
-#: ../fslint.glade:2364 ../fslint-gui:486
+#: ../fslint.glade:2364 ../fslint-gui:500
 msgid "Empty directories"
 msgstr "Tomme kataloger"
 
@@ -315,229 +315,229 @@ msgstr "Rens"
 msgid "Select Path"
 msgstr "Vælg sti"
 
-#: ../fslint-gui:154
+#: ../fslint-gui:168
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Brug: %s [OPTION] [PATHS]"
 
-#: ../fslint-gui:155
+#: ../fslint-gui:169
 msgid "display version"
 msgstr "vis version"
 
-#: ../fslint-gui:156
+#: ../fslint-gui:170
 msgid "display help"
 msgstr "vis hjælp"
 
-#: ../fslint-gui:344
+#: ../fslint-gui:358
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
 msgstr "%(percent)s af %(disk)s er anvendt og %(size)sB er tilgængelig"
 
-#: ../fslint-gui:440
+#: ../fslint-gui:454
 msgid "Do you want to overwrite?\n"
 msgstr "Ønsker du at overskrive?\n"
 
-#: ../fslint-gui:446
+#: ../fslint-gui:460
 msgid "You can't overwrite "
 msgstr "Du kan ikke overskrive "
 
-#: ../fslint-gui:479
+#: ../fslint-gui:493
 msgid "Files with the same content"
 msgstr "Filer med det samme indhold"
 
-#: ../fslint-gui:480
+#: ../fslint-gui:494
 msgid "Installed packages ordered by disk usage"
 msgstr "Installerede pakker krævet af harddiskforbrug"
 
-#: ../fslint-gui:481
+#: ../fslint-gui:495
 msgid "Problematic filenames"
 msgstr "Problematiske filnavne"
 
-#: ../fslint-gui:482
+#: ../fslint-gui:496
 msgid "Possibly conflicting commands or filenames"
 msgstr "Mulig konflikt med kommandoer eller filnavne"
 
-#: ../fslint-gui:483
+#: ../fslint-gui:497
 msgid "Possibly old temporary files"
 msgstr "Muligvis gamle midlertidige filer"
 
-#: ../fslint-gui:484
+#: ../fslint-gui:498
 msgid "Problematic symbolic links"
 msgstr "Problematiske symbolske henvisninger"
 
-#: ../fslint-gui:485
+#: ../fslint-gui:499
 msgid "Files with missing user IDs"
 msgstr "Filer med manglende bruger ID"
 
-#: ../fslint-gui:487
+#: ../fslint-gui:501
 msgid "Executables still containing debugging info"
 msgstr "Programmer der stadig indeholder fejlsøgningsinformation"
 
-#: ../fslint-gui:488
+#: ../fslint-gui:502
 msgid "Erroneous whitespace in a text file"
 msgstr "Fejlbehæftet mellemrum i en tekstfil"
 
-#: ../fslint-gui:494
+#: ../fslint-gui:508
 msgid "Invalid path ["
 msgstr "Ugyldig sti ["
 
-#: ../fslint-gui:535
+#: ../fslint-gui:549
 msgid "searching"
 msgstr "søger"
 
-#: ../fslint-gui:545
+#: ../fslint-gui:559
 msgid "processing..."
 msgstr "bearbejder..."
 
-#: ../fslint-gui:573
+#: ../fslint-gui:587
 msgid "No search paths specified"
 msgstr "Ingen søgesti valgt"
 
-#: ../fslint-gui:732
+#: ../fslint-gui:746
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
 "Beklager, FSlint understøtter ikke denne funktionalitet på dit system for "
 "nuværende."
 
-#: ../fslint-gui:748
+#: ../fslint-gui:762
 msgid " packages, "
 msgstr " pakker, "
 
-#: ../fslint-gui:749
+#: ../fslint-gui:763
 #, python-format
 msgid "consuming %sB. "
 msgstr "Forbruger %sB. "
 
-#: ../fslint-gui:750
+#: ../fslint-gui:764
 #, python-format
 msgid "Note %s."
 msgstr "Bemærk %s."
 
-#: ../fslint-gui:768 ../fslint-gui:809 ../fslint-gui:847 ../fslint-gui:909
+#: ../fslint-gui:782 ../fslint-gui:823 ../fslint-gui:861 ../fslint-gui:923
 msgid " files"
 msgstr " filer"
 
-#: ../fslint-gui:788
+#: ../fslint-gui:802
 msgid " unstripped binaries"
 msgstr " ikke fjernet binarier"
 
-#: ../fslint-gui:798
+#: ../fslint-gui:812
 msgid " empty directories"
 msgstr " tomme kataloger"
 
-#: ../fslint-gui:830
+#: ../fslint-gui:844
 msgid " links"
 msgstr " henvisninger"
 
-#: ../fslint-gui:846 ../fslint-gui:958
+#: ../fslint-gui:860 ../fslint-gui:972
 msgid " bytes wasted in "
 msgstr " byte bortødslet i "
 
-#: ../fslint-gui:891 ../fslint-gui:959
+#: ../fslint-gui:905 ../fslint-gui:973
 msgid " files (in "
 msgstr " filer (i "
 
-#: ../fslint-gui:892 ../fslint-gui:960
+#: ../fslint-gui:906 ../fslint-gui:974
 msgid " groups)"
 msgstr " grupper)"
 
-#: ../fslint-gui:950
+#: ../fslint-gui:964
 msgid "bytes wasted"
 msgstr "byte bortødslet"
 
-#: ../fslint-gui:1025
+#: ../fslint-gui:1039
 msgid "None selected"
 msgstr "Ingen valg foretaget"
 
-#: ../fslint-gui:1029
+#: ../fslint-gui:1043
 msgid " this item?\n"
 msgstr " dette punkt?\n"
 
-#: ../fslint-gui:1031
+#: ../fslint-gui:1045
 #, python-format
 msgid " these %d items?\n"
 msgstr " disse %d punkter?\n"
 
-#: ../fslint-gui:1146
+#: ../fslint-gui:1160
 msgid "User aborted"
 msgstr "Bruger afbrudt"
 
-#: ../fslint-gui:1250
+#: ../fslint-gui:1264
 msgid "Rename:"
 msgstr "Omdøb:"
 
-#: ../fslint-gui:1259
+#: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
 msgstr ""
 
-#: ../fslint-gui:1269
+#: ../fslint-gui:1285
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
 msgstr ""
 
-#: ../fslint-gui:1285
+#: ../fslint-gui:1305
 msgid "wildcard:"
 msgstr "Jokertegn:"
 
-#: ../fslint-gui:1372
+#: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."
 msgstr "Beklager, du skal være administrator for at slette systempakker."
 
-#: ../fslint-gui:1375
+#: ../fslint-gui:1403
 msgid "Are you sure you want to delete"
 msgstr "Er du sikker på at du ønsker at slette"
 
-#: ../fslint-gui:1388
+#: ../fslint-gui:1416
 msgid "Calculating dependencies..."
 msgstr "Udregner afhængigheder..."
 
-#: ../fslint-gui:1401
+#: ../fslint-gui:1429
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr "%d yderligere pakker skal slettes.\n"
 
-#: ../fslint-gui:1402
+#: ../fslint-gui:1430
 msgid "Please review the updated selection."
 msgstr "Gennemse venligst det opdaterede valg."
 
-#: ../fslint-gui:1410
+#: ../fslint-gui:1438
 msgid "Removing packages..."
 msgstr "Fjerner pakker..."
 
-#: ../fslint-gui:1440
+#: ../fslint-gui:1468
 msgid " items deleted"
 msgstr " punkter slettet"
 
-#: ../fslint-gui:1519
+#: ../fslint-gui:1547
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Er du sikker du ønsker at flette ALLE filer?\n"
 
-#: ../fslint-gui:1523
+#: ../fslint-gui:1551
 msgid "(Ignoring those selected)\n"
 msgstr "(Ignorerer de valgte)\n"
 
-#: ../fslint-gui:1569
+#: ../fslint-gui:1597
 msgid "Which indenting method do you want to convert to?"
 msgstr "Hvilken indrykningsmetode ønsker du at skifte til?"
 
-#: ../fslint-gui:1570
+#: ../fslint-gui:1598
 msgid "Tabs"
 msgstr "Faneblade"
 
-#: ../fslint-gui:1570
+#: ../fslint-gui:1598
 msgid "Spaces"
 msgstr "Mellemrum"
 
-#: ../fslint-gui:1578
+#: ../fslint-gui:1606
 msgid "Are you sure you want to clean"
 msgstr "Er du sikker på at du ønsker at rydde op"
 
-#: ../fslint-gui:1620
+#: ../fslint-gui:1648
 msgid " items cleaned ("
 msgstr " punkter ryddet op ("
 
-#: ../fslint-gui:1621
+#: ../fslint-gui:1649
 msgid " bytes saved)"
 msgstr " byte gemt)"
