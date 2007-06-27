@@ -56,6 +56,11 @@ except:
 class i18n:
 
     def __init__(self):
+        self._init_translations()
+        self._init_locale()
+        self._init_preferred_encoding()
+
+    def _init_translations(self):
         #gtk2 only understands utf-8 so convert to unicode
         #which will be automatically converted to utf-8 by pygtk
         gettext.install("fslint", locale_base, unicode=1)
@@ -71,14 +76,25 @@ class i18n:
             #if no glade.bindtextdomain then we'll do without
             pass
 
+    def _init_locale(self):
         try:
             locale.setlocale(locale.LC_ALL,'')
         except:
             #gtk will print warning for a duff locale
             pass
+
+    def _init_preferred_encoding(self):
         #Note python 2.3 has the nicer locale.getpreferredencoding()
         #Note also that this encoding name is canonlicalised already
         self.preferred_encoding=locale.nl_langinfo(locale.CODESET)
+        #filename encoding can be different from default encoding
+        filename_encoding = os.environ.get("G_FILENAME_ENCODING")
+        if filename_encoding:
+            filename_encoding=filename_encoding.lower()
+            if filename_encoding == "utf8": filename_encoding="utf-8"
+            self.filename_encoding=filename_encoding
+        else:
+            self.filename_encoding=self.preferred_encoding
 
     class unicode_displayable(unicode):
         """translate non displayable chars to an appropriate representation"""
@@ -103,7 +119,7 @@ class i18n:
         #    translated_string=unicode(string).translate(cls.translate_table)
         #    return unicode.__new__(cls, translated_string)
 
-    def displayable_utf8(self,orig,exclude=""):
+    def displayable_utf8(self,orig,exclude="",path=False):
         """Convert to utf8, and also convert chars that are not
         easily displayable (control chars currently).
         If orig is not a valid utf8 string,
@@ -122,7 +138,10 @@ class i18n:
                     # replaces multiple bytes with a FFFD in utf8 locales
                     # This is silly as then you know it's not utf8 so
                     # one should try each character.
-                    uc=unicode(orig,self.preferred_encoding)
+                    if path:
+                        uc=unicode(orig,self.filename_encoding)
+                    else:
+                        uc=unicode(orig,self.preferred_encoding)
                 except:
                     uc=unicode(orig,"ascii","replace")
                     # Note I don't like the "replacement char" representation
@@ -137,14 +156,9 @@ class i18n:
         return uc.encode("utf-8")
 
     def g_filename_from_utf8(self, string):
-        filename_encoding = os.environ.get("G_FILENAME_ENCODING")
-        if filename_encoding: filename_encoding=filename_encoding.lower()
-        if filename_encoding == "utf8": filename_encoding="utf-8"
-        if filename_encoding==None:
-            filename_encoding=self.preferred_encoding
-        if filename_encoding != "utf-8":
+        if self.filename_encoding != "utf-8":
             uc=unicode(string,"utf-8")
-            string=uc.encode(filename_encoding) #can raise exception
+            string=uc.encode(self.filename_encoding) #can raise exception
         return string
 
 I18N=i18n() #call first so everything is internationalized
@@ -599,7 +613,7 @@ class fslint(GladeWrapper):
 
     def addDirs(self, dirlist, dirs):
         """Adds items to passed clist."""
-        dirlist.append([I18N.displayable_utf8(dirs)])
+        dirlist.append([I18N.displayable_utf8(dirs,path=True)])
         dirlist.set_row_data(dirlist.rows-1, dirs)
 
     def removeDirs(self, dirlist):
@@ -629,7 +643,7 @@ class fslint(GladeWrapper):
     def clist_append_path(self, clist, path, colour, *rest):
         """append path to clist, handling utf8 and colour issues"""
         colour = self.clist_alloc_colour(clist, colour)
-        utf8_path=I18N.displayable_utf8(path)
+        utf8_path=I18N.displayable_utf8(path,path=True)
         (dir,file)=os.path.split(utf8_path)
         clist.append((file,dir)+rest)
         row_data = clist.get_data("row_data")
@@ -1248,57 +1262,74 @@ on your system at present."))
         path_name=row_data[row][:-1]
 
         (response,new_path)=self.msgbox(_("Rename:"),('Cancel','Ok'),utf8_name)
-        if response == "Ok":
-            self.ClearErrors()
-            if not (self.mode==self.mode_nl and self.chk_findu8.get_active()):
-                try:
-                    new_encoded_path=I18N.g_filename_from_utf8(new_path)
-                except UnicodeEncodeError:
-                    new_encoded_path=None
-                    self.ShowErrors(_(
-                    "Error: [%s] can not be represented on your file system") %\
-                    (new_path) +'\n')
+        if response != "Ok":
+            return
+
+        self.ClearErrors()
+        if not (self.mode==self.mode_nl and self.chk_findu8.get_active()):
+            try:
+                new_encoded_path=I18N.g_filename_from_utf8(new_path)
+            except UnicodeEncodeError:
+                new_encoded_path=None
+                self.ShowErrors(_(
+                "Error: [%s] can not be represented on your file system") %\
+                (new_path) +'\n')
+        else:
+            new_encoded_path=new_path #leave in (displayable) utf-8
+        if new_encoded_path:
+            dir,base=os.path.split(path_name)
+            new_encoded_path=dir+'/'+new_encoded_path
+            if os.path.exists(new_encoded_path):
+                translation_map={"old_path":utf8_name, "new_path":new_path}
+                self.ShowErrors(_(
+                "Error: Can't rename [%(old_path)s] as "\
+                "[%(new_path)s] exists") % translation_map + '\n')
             else:
-                new_encoded_path=new_path #leave in (displayable) utf-8
-            if new_encoded_path:
-                dir,base=os.path.split(path_name)
-                new_encoded_path=dir+'/'+new_encoded_path
-                if os.path.exists(new_encoded_path):
-                    translation_map={"old_path":utf8_name, "new_path":new_path}
-                    self.ShowErrors(_(
-                    "Error: Can't rename [%(old_path)s] as "\
-                    "[%(new_path)s] exists") % translation_map + '\n')
-                else:
-                    try:
-                        os.rename(path_name, new_encoded_path)
-                        row_data.pop(row)
-                        clist.remove(row)
-                        self.clist_remove_empty_groups(clist)
-                    except OSError:
-                        self.ShowErrors(str(sys.exc_value)+'\n')
+                try:
+                    os.rename(path_name, new_encoded_path)
+                    row_data.pop(row)
+                    clist.remove(row)
+                    self.clist_remove_empty_groups(clist)
+                except OSError:
+                    self.ShowErrors(str(sys.exc_value)+'\n')
 
     def on_unselect_using_wildcard_activate(self, event):
         self.select_using_wildcard(False)
     def on_select_using_wildcard_activate(self, event):
         self.select_using_wildcard(True)
     def select_using_wildcard(self, select):
-        (response, wildcard) = self.msgbox(_("wildcard:"), ('Cancel', 'Ok'))
-        if response != "Ok":
+        clist = self.clists[self.mode]
+        if clist.rows == 0:
             return
-        if wildcard:
-            clist = self.clists[self.mode]
-            if clist.rows == 0:
+
+        (response, wildcard) = self.msgbox(_("wildcard:"), ('Cancel', 'Ok'))
+        if response!="Ok" or not wildcard:
+            return
+
+        self.ClearErrors()
+        if '/' in wildcard:
+            #Convert from utf8 if required so can match non utf-8 paths
+            try:
+                wildcard=I18N.g_filename_from_utf8(wildcard)
+            except UnicodeEncodeError:
+                self.ShowErrors(_(
+                "Error: [%s] can not be represented on your file system") %\
+                (wildcard) +'\n')
                 return
-            select_func=select and clist.select_row or clist.unselect_row
-            if '/' not in wildcard or self.mode == self.mode_pkgs:
-                get_text = lambda row: clist.get_text(row,0)
-            else: #Note fnmatch ignores trailing \n
-                row_data = clist.get_data("row_data")
-                get_text = lambda row: row_data[row]
-            import fnmatch
-            for row in range(clist.rows):
-                if fnmatch.fnmatch(get_text(row), wildcard):
-                    select_func(row, 0)
+        else:
+            #Convert to unicode to match unicode string below
+            wildcard=unicode(wildcard, "utf-8")
+        select_func=select and clist.select_row or clist.unselect_row
+        if '/' not in wildcard or self.mode == self.mode_pkgs:
+            #Convert to unicode so ? in glob matching works correctly
+            get_text = lambda row: unicode(clist.get_text(row,0),"utf-8")
+        else: #Note fnmatch ignores trailing \n
+            row_data = clist.get_data("row_data")
+            get_text = lambda row: row_data[row]
+        import fnmatch
+        for row in range(clist.rows):
+            if fnmatch.fnmatch(get_text(row), wildcard):
+                select_func(row, 0)
 
     def on_select_all_but_first_in_each_group_activate(self, event):
         self.on_select_all_but_one_in_each_group_activate("first")
