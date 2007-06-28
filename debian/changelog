@@ -1,3 +1,7 @@
+fslint (2.22-1) unstable; urgency=low
+
+  * Bump to release version
+
 fslint (2.21-1) unstable; urgency=low
 
   * Bump to devel version
