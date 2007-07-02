@@ -20,3 +20,5 @@ Description: A utility to fix problems with filesystems' data, like duplicate fi
     - Bad symlinks
     - Empty directories
     - Nonstripped binaries
+ .
+  Homepage: http://www.pixelbeat.org/fslint/
