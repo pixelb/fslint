@@ -1,3 +1,5 @@
+2.23 dd/mm/yy
+
 2.22 28/06/07
 	* Translations:
 		* Added: Spanish.
@@ -34,7 +36,7 @@
 		  resulting in a file being deleted and not linked to a copy.
 		* Handle paths containing '\n' characters.
 		  Previously this would cause various errors to be output.
-		  Bug report from Bjørn Ingmar Berg.
+		  Bug report from BjÃ¸rn Ingmar Berg.
 
 2.20 09/03/07
 	* Translations:
@@ -69,7 +71,7 @@
 	* Packaging changes:
 		* Support building SuSE specific RPMs from the tarball.
 		* Simplify debian package so that it builds with dash.
-		* Add gentoo ebuild from Cédrick Gaillard to web site.
+		* Add gentoo ebuild from CÃ©drick Gaillard to web site.
 	* GUI improvements:
 		* Give updating "searching...." status, to ensure that users
 		  know the program is still running.
@@ -180,7 +182,7 @@
 
 	* Added translations: Dutch, Irish.
 	* Fixed a few missing translations in the code.
-	* Incorporated some of the packaging changes from Ville Skyttä
+	* Incorporated some of the packaging changes from Ville SkyttÃ¤
 	  <ville.skytta at iki.fi> that he did while creating the fedora rpm.
 	* Gave all result lists a border for consistency.
 	* Tidied search abort code, so confusing status/error not given,
@@ -333,7 +335,7 @@
 	* Removed the perl dependency (1 line from findbl!). I rewrote
 	  it in shell (again 1 line).
 	* I cleaned up the argument handling of the various tools as
-	  it was quite silly really. Eivind Kjørstad prompted me to fix it.
+	  it was quite silly really. Eivind KjÃ¸rstad prompted me to fix it.
 	* Handled the special case of the redhatism /usr/bin/consolehelper
 	  which gave "false" positives for conflicting binaries (reported
 	  by the default mode of findsn).
