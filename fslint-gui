@@ -932,7 +932,6 @@ on your system at present."))
         #inodes required to correctly report disk usage of
         #duplicate files with seperate inode groups.
         for line in po:
-            line = line.strip()
             if line == '': #grouped == 1
                 if len(inodes)>1:
                     alldups.append(((numdups-1)*size, numdups, fsize, dups))
