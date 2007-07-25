@@ -44,4 +44,8 @@ done
 
 find "$@" -empty -type d ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge dirs (indirectly) specified multiple times
-xargs -r0 ls -bUd --
+if [ ! -p /proc/self/fd/1 ]; then
+    xargs -r0 ls -b1Ud --
+else
+    cat
+fi

@@ -1,4 +1,7 @@
 2.23 dd/mm/yy
+	* Fixes:
+		* Make the gui handle paths with spaces for empty directories,
+		  and spaces at the end of names of duplicate files.
 
 2.22 28/06/07
 	* Translations:

@@ -82,4 +82,9 @@ cat "$TMP/all_used_libs" "$TMP/unused_and_referenced_libs" |
 sort -k2,2n |
 uniq -u -f1 |
 cut -f1 |
-sort | xargs ls -lUb --color=auto --
+sort |
+if [ ! -p /proc/self/fd/1 ]; then
+    xargs -r ls -lUb --color=auto --
+else
+    cat
+fi
