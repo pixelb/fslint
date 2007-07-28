@@ -2,6 +2,8 @@
 	* Fixes:
 		* Make the gui handle paths with spaces for empty directories,
 		  and spaces at the end of names of duplicate files.
+		* Remove brace expansion from debian/rules to allow package
+		  to build on debian systems where dash is the default shell.
 
 2.22 28/06/07
 	* Translations:
