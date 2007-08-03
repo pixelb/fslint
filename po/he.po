@@ -1,19 +1,20 @@
-# Chinese (Simplified) Translation for fslint.
-# Copyright (C) 2006 Free Software Foundation, Inc.
-# Seann Liu <Seann.Liu@gmail.com>, 2006.
+# Hebrew translation for fslint
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the fslint package.
+# Dotan Mazor <launchpad@dotanmazor.com>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-03 08:53+0100\n"
-"PO-Revision-Date: 2007-07-31 07:43+0000\n"
-"Last-Translator: rainofchaos <rainofchaos@gmail.com>\n"
-"Language-Team: Seann Liu <Seann.Liu@gmail.com>\n"
+"POT-Creation-Date: 2007-06-27 14:29+0100\n"
+"PO-Revision-Date: 2007-08-01 18:19+0000\n"
+"Last-Translator: Dotan Mazor <launchpad@dotanmazor.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-08-01 15:38:06+0000\n"
+"X-Rosetta-Export-Date: 2007-08-03 08:58:10+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -21,122 +22,122 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr "重命名(_R)"
+msgstr ""
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
-msgstr "使用通配符选择"
+msgstr ""
 
 #: ../fslint.glade:110
 msgid "Unselect using wildcard"
-msgstr "使用通配符排除"
+msgstr ""
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "组中"
+msgstr "בתוך קבוצות"
 
 #: ../fslint.glade:128
 msgid "Select all but first"
-msgstr "除了第一个外全选"
+msgstr "בחירת הכל חוץ מהראשון"
 
 #: ../fslint.glade:137
 msgid "Select all but newest"
-msgstr "除了最新的外全选"
+msgstr "בחירת הכל חוץ מהחדש ביותר"
 
 #: ../fslint.glade:146
 msgid "Select all but oldest"
-msgstr "除了最老的外全选"
+msgstr "בחירת הכל חוץ מהישן ביותר"
 
 #: ../fslint.glade:159
 msgid "Toggle selection"
-msgstr "切换选择"
+msgstr "הפיכת הבחירה"
 
 #: ../fslint.glade:168
 msgid "Unselect all"
-msgstr "取消所有选择"
+msgstr ""
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
-msgstr "添加"
+msgstr "הוספה"
 
 #: ../fslint.glade:361 ../fslint.glade:614
 msgid "Remove"
-msgstr "删除"
+msgstr "הסרה"
 
 #: ../fslint.glade:408
 msgid "Directories to search"
-msgstr "要搜索的文件夹"
+msgstr "ספריות לחיפוש"
 
 #: ../fslint.glade:433
 msgid "recurse?"
-msgstr "递归？"
+msgstr "חיפוש גם בספריות פנימיות?"
 
 #: ../fslint.glade:457
 msgid "Search path"
-msgstr "搜索路径"
+msgstr "נתיב חיפוש"
 
 #: ../fslint.glade:669
 msgid "Paths to exclude"
-msgstr "排除的路径"
+msgstr "נתיבים להתעלמות"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr "额外搜索参数"
+msgstr "פרמטרים נוספים לחיפוש"
 
 #: ../fslint.glade:729
 msgid "extra find filtering parameters"
-msgstr "额外搜索过滤参数"
+msgstr "פרמטרים נוספים לפילטרים לחיפוש"
 
 #: ../fslint.glade:762
 msgid "Advanced search parameters"
-msgstr "高级搜索参数"
+msgstr "פרמטרים מתקדמים לחיפוש"
 
 #: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1230
 #: ../fslint.glade:1539 ../fslint.glade:1751 ../fslint.glade:2005
 #: ../fslint.glade:2126 ../fslint.glade:2298 ../fslint.glade:2431
 #: ../fslint.glade:2654
 msgid "Name"
-msgstr "名称"
+msgstr "שם"
 
 #: ../fslint.glade:866 ../fslint.glade:1249 ../fslint.glade:1558
 #: ../fslint.glade:1770 ../fslint.glade:2024 ../fslint.glade:2145
 #: ../fslint.glade:2317 ../fslint.glade:2450 ../fslint.glade:2673
 msgid "Directory"
-msgstr "目录"
+msgstr "ספרייה"
 
 #: ../fslint.glade:885 ../fslint.glade:1808 ../fslint.glade:2221
 #: ../fslint.glade:2336 ../fslint.glade:2488 ../fslint.glade:2711
 msgid "Date"
-msgstr "日期"
+msgstr "תאריך"
 
 #: ../fslint.glade:920
 msgid "Duplicates"
-msgstr "重复"
+msgstr "כפילויות"
 
 #: ../fslint.glade:997 ../fslint.glade:1577 ../fslint.glade:1789
 #: ../fslint.glade:2202 ../fslint.glade:2469 ../fslint.glade:2692
 msgid "Size"
-msgstr "大小"
+msgstr "גודל"
 
 #: ../fslint.glade:1092
 msgid "Installed packages"
-msgstr "已经安装的软件包"
+msgstr "חבילות מותקנות"
 
 #: ../fslint.glade:1133
 msgid "Sensitivity="
-msgstr "敏感性＝"
+msgstr "רגישות="
 
 #: ../fslint.glade:1177
 msgid "invalid UTF8 mode?"
-msgstr "非法的UTF8模式"
+msgstr "מצב UTF8 לא תקין?"
 
 #: ../fslint.glade:1284
 msgid "Bad names"
-msgstr "坏的名称"
+msgstr "שמות פגומים"
 
 #: ../fslint.glade:1319
 msgid "Search ("
-msgstr "查找 （"
+msgstr "חיפוש ("
 
 #: ../fslint.glade:1345
 msgid "$PATH"
@@ -144,323 +145,320 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1364
 msgid ") for"
-msgstr ") 为"
+msgstr ") אחר"
 
 #: ../fslint.glade:1411 ../fslint-gui:869
 msgid "Conflicting files"
-msgstr "冲突的文件"
+msgstr "קבצים סותרים"
 
 #: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:867
 #: ../fslint-gui:876
 msgid "Aliases"
-msgstr "别名"
+msgstr "כינויים"
 
 #: ../fslint.glade:1458 ../fslint-gui:882
 msgid "Case conflicts"
-msgstr "个案冲突"
+msgstr "סתירות באותיות גדולות וקטנות"
 
 #: ../fslint.glade:1466 ../fslint-gui:878
 msgid "Same names"
-msgstr "相同的名称"
+msgstr "שמות זהים"
 
 #: ../fslint.glade:1474 ../fslint-gui:880
 msgid "Same names(ignore case)"
-msgstr "相同的名称（忽略个案）"
+msgstr "שמות זהים (בהתעלמות מאותיות גדולות וקטנות)"
 
 #: ../fslint.glade:1612
 msgid "Name clashes"
-msgstr "名称冲突"
+msgstr "התנגשות של שמות"
 
 #: ../fslint.glade:1647
 msgid "More restrictive search for core files"
-msgstr "进一步限定搜索核心文件"
+msgstr ""
 
 #: ../fslint.glade:1649
 msgid "core file mode?"
-msgstr "核心文件模式？"
+msgstr ""
 
 #: ../fslint.glade:1673
 msgid "days"
-msgstr "天数"
+msgstr "ימים"
 
 #: ../fslint.glade:1693
 msgid "minimum age"
-msgstr "最小存在时间"
+msgstr "גיל מינימלי"
 
 #: ../fslint.glade:1843
 msgid "Temp files"
-msgstr "临时文件"
+msgstr "קבצים זמניים"
 
 #: ../fslint.glade:1879
 msgid "Dangling"
-msgstr "悬挂"
+msgstr ""
 
 #: ../fslint.glade:1897
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "链接的文件夹内的绝对链结"
+msgstr ""
 
 #: ../fslint.glade:1899
 msgid "Suspect"
-msgstr "怀疑"
+msgstr "חשוד"
 
 #: ../fslint.glade:1919
 msgid "Relative"
-msgstr "有关"
+msgstr "יחסי"
 
 #: ../fslint.glade:1939
 msgid "Absolute"
-msgstr "绝对"
+msgstr "אבסולוטי"
 
 #: ../fslint.glade:1958
 msgid "/././. ///// /../ etc."
-msgstr "/././. ///// /../ 等等"
+msgstr ""
 
 #: ../fslint.glade:1960
 msgid "Redundant naming"
-msgstr "多余的命名"
+msgstr ""
 
 #: ../fslint.glade:2043
 msgid "Target"
-msgstr "目标"
+msgstr "יעד"
 
 #: ../fslint.glade:2078
 msgid "Bad symlinks"
-msgstr "坏的链接"
+msgstr "קישורים סמליים פגומים"
 
 #: ../fslint.glade:2164
 msgid "UID"
-msgstr "UID"
+msgstr ""
 
 #: ../fslint.glade:2183
 msgid "GID"
-msgstr "GID"
+msgstr ""
 
 #: ../fslint.glade:2256
 msgid "Bad IDs"
-msgstr "坏的IDs"
+msgstr ""
 
 #: ../fslint.glade:2364 ../fslint-gui:500
 msgid "Empty directories"
-msgstr "空文件夹"
+msgstr "ספריות ריקות"
 
 #: ../fslint.glade:2394
 msgid "Search $PATH"
-msgstr "查找 $PATH"
+msgstr "חיפוש $PATH"
 
-# This is too long: "未剥离（strip）的二进制程序"
 #: ../fslint.glade:2523
 msgid "Non stripped binaries"
-msgstr "没剥离的二进制文件"
+msgstr ""
 
 #: ../fslint.glade:2559
 msgid "whitespace at end of line"
-msgstr "行尾的空白"
+msgstr ""
 
 #: ../fslint.glade:2584
 msgid "bad indenting for indent width"
-msgstr "错误的缩进宽度"
+msgstr ""
 
 #: ../fslint.glade:2746
 msgid "Redundant whitespace"
-msgstr "多余的空白"
+msgstr ""
 
 #: ../fslint.glade:2832
 msgid "Find"
-msgstr "查找"
+msgstr "חיפוש"
 
 #: ../fslint.glade:2907
 msgid "Stop"
-msgstr "停止"
+msgstr "הפסקת החיפוש"
 
 #: ../fslint.glade:2995
 msgid "Select"
-msgstr "选择"
+msgstr "בחירה"
 
 #: ../fslint.glade:3026
 msgid "Save (selected) list to file"
-msgstr "将选择的列表保存到文件"
+msgstr "שמירת הרשימה שנבחרה לקובץ"
 
 #: ../fslint.glade:3071
 msgid "Save"
-msgstr "保存"
+msgstr "שמירה"
 
 #: ../fslint.glade:3102 ../fslint.glade:3267
 msgid "selected"
-msgstr "选定的"
+msgstr ""
 
 #: ../fslint.glade:3147
 msgid "Delete"
-msgstr "删除"
+msgstr "מחיקה"
 
 #: ../fslint.glade:3191
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
-"所有(除选择外)使用中的硬连接\n"
-"(或者位于不同文件系统上的符号连接)"
 
 #: ../fslint.glade:3237
 msgid "Merge"
-msgstr "合并"
+msgstr "מיזוג"
 
 #: ../fslint.glade:3312
 msgid "Clean"
-msgstr "清除"
+msgstr "ניקוי"
 
 #: ../fslint.glade:3444
 msgid "Select Path"
-msgstr "选择路径"
+msgstr "בחירת נתיב"
 
 #: ../fslint-gui:168
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "使用： %s [选项] [路径]"
+msgstr ""
 
 #: ../fslint-gui:169
 msgid "display version"
-msgstr "显示版本"
+msgstr ""
 
 #: ../fslint-gui:170
 msgid "display help"
-msgstr "显示帮助"
+msgstr ""
 
 #: ../fslint-gui:358
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr "使用了%(percent)s，共%(disk)s，剩余 %(size)sB"
+msgstr ""
 
 #: ../fslint-gui:454
 msgid "Do you want to overwrite?\n"
-msgstr "覆盖掉原文件？\n"
+msgstr "האם לשכתב?\n"
 
 #: ../fslint-gui:460
 msgid "You can't overwrite "
-msgstr "无法覆盖 "
+msgstr "לא ניתן לשכתב "
 
 #: ../fslint-gui:493
 msgid "Files with the same content"
-msgstr "具有相同内容的文件"
+msgstr "קבצים עם אותו תוכן"
 
 #: ../fslint-gui:494
 msgid "Installed packages ordered by disk usage"
-msgstr "已安装的包，按照大小排序"
+msgstr "חבילות שהותקנות מסודרות בהתאם לנפח השימוש בדיסק"
 
 #: ../fslint-gui:495
 msgid "Problematic filenames"
-msgstr "有问题的文件名"
+msgstr "שמות קבצים בעייתיים"
 
 #: ../fslint-gui:496
 msgid "Possibly conflicting commands or filenames"
-msgstr "可能发生冲突的命令或者文件名"
+msgstr "פקודות או שמות קבצים שייתכן ויש בהם סתירה"
 
 #: ../fslint-gui:497
 msgid "Possibly old temporary files"
-msgstr "可能的陈旧临时文件"
+msgstr "קבצים זמניים שייתכן שהם ישנים"
 
 #: ../fslint-gui:498
 msgid "Problematic symbolic links"
-msgstr "有问题的符号链结"
+msgstr "קישורים סמליים בעייתיים"
 
 #: ../fslint-gui:499
 msgid "Files with missing user IDs"
-msgstr "缺少用户IDs的文件"
+msgstr ""
 
 #: ../fslint-gui:501
 msgid "Executables still containing debugging info"
-msgstr "包含调式信息的可执行文件"
+msgstr ""
 
 #: ../fslint-gui:502
 msgid "Erroneous whitespace in a text file"
-msgstr "文本文件中的错误空白"
+msgstr ""
 
 #: ../fslint-gui:508
 msgid "Invalid path ["
-msgstr "非法的路径 ["
+msgstr "נתיב לא תקין ["
 
 #: ../fslint-gui:549
 msgid "searching"
-msgstr "正在搜索"
+msgstr "חיפוש"
 
 #: ../fslint-gui:559
 msgid "processing..."
-msgstr "正在处理..."
+msgstr "בעיבוד..."
 
 #: ../fslint-gui:587
 msgid "No search paths specified"
-msgstr "没有指搜索路径"
+msgstr "נתיבי חיפוש לא הוגדרו"
 
 #: ../fslint-gui:746
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "对不起，FSlint在您的系统上现在不支持这项功能。"
+msgstr "סליחה. התוכנה כרגע אינה תומכת בפעולה זו על המערכת הנוכחית."
 
 #: ../fslint-gui:762
 msgid " packages, "
-msgstr " 包 "
+msgstr " חבילות "
 
 #: ../fslint-gui:763
 #, python-format
 msgid "consuming %sB. "
-msgstr "占用 %sB. "
+msgstr ""
 
 #: ../fslint-gui:764
 #, python-format
 msgid "Note %s."
-msgstr "注意 %s."
+msgstr ""
 
 #: ../fslint-gui:782 ../fslint-gui:823 ../fslint-gui:861 ../fslint-gui:923
 msgid " files"
-msgstr " 文件"
+msgstr " קבצים"
 
 #: ../fslint-gui:802
 msgid " unstripped binaries"
-msgstr " 没剥离的二进制文件"
+msgstr ""
 
 #: ../fslint-gui:812
 msgid " empty directories"
-msgstr " 空文件夹"
+msgstr " ספריות ריקות"
 
 #: ../fslint-gui:844
 msgid " links"
-msgstr " 链接"
+msgstr " קישורים"
 
 #: ../fslint-gui:860 ../fslint-gui:972
 msgid " bytes wasted in "
-msgstr " 字节浪费在 "
+msgstr " בתים מבוזבזים ב "
 
 #: ../fslint-gui:905 ../fslint-gui:973
 msgid " files (in "
-msgstr " 个文件中 （在 "
+msgstr " קבצים (ב "
 
 #: ../fslint-gui:906 ../fslint-gui:974
 msgid " groups)"
-msgstr " 组中）"
+msgstr " קבוצות)"
 
 #: ../fslint-gui:964
 msgid "bytes wasted"
-msgstr "浪费的字节"
+msgstr "בתים מבוזבזים"
 
 #: ../fslint-gui:1039
 msgid "None selected"
-msgstr "未选择"
+msgstr "כלום לא נבחר"
 
 #: ../fslint-gui:1043
 msgid " this item?\n"
-msgstr " 这项？\n"
+msgstr " פריט זה?\n"
 
 #: ../fslint-gui:1045
 #, python-format
 msgid " these %d items?\n"
-msgstr " 这 %d 项？\n"
+msgstr " %d פריטים אלו?\n"
 
 #: ../fslint-gui:1160
 msgid "User aborted"
-msgstr "用户取消"
+msgstr "המשתמש הפסיק"
 
 #: ../fslint-gui:1264
 msgid "Rename:"
-msgstr "重命名:"
+msgstr ""
 
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
@@ -474,65 +472,65 @@ msgstr ""
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr "通配符:"
+msgstr ""
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."
-msgstr "对不起，要删除系统软件需要管理员权限"
+msgstr "סליחה, אבל צריך להיות מנהל המערכת (משתמש-העל root) כדי למחוק חבילות."
 
 #: ../fslint-gui:1403
 msgid "Are you sure you want to delete"
-msgstr "确定要删除吗？"
+msgstr "האם באמת למחוק?"
 
 #: ../fslint-gui:1416
 msgid "Calculating dependencies..."
-msgstr "正在计算依赖关系..."
+msgstr "חישוב תלויות..."
 
 #: ../fslint-gui:1429
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "需要删除 %d个额外软件包 。\n"
+msgstr "צריך למחוק עוד %d חבילות.\n"
 
 #: ../fslint-gui:1430
 msgid "Please review the updated selection."
-msgstr "请查看更新后的选择。"
+msgstr "נא לעבור על הבחירה המעודכנת."
 
 #: ../fslint-gui:1438
 msgid "Removing packages..."
-msgstr "正在删除软件包..."
+msgstr "הסרת חבילות..."
 
 #: ../fslint-gui:1468
 msgid " items deleted"
-msgstr " 删除的项目"
+msgstr " פריטים נמחקו"
 
 #: ../fslint-gui:1547
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "确定要合并全部文件？\n"
+msgstr "האם באמת למזג את כל הקבצים?\n"
 
 #: ../fslint-gui:1551
 msgid "(Ignoring those selected)\n"
-msgstr "（忽略被选中的)\n"
+msgstr "(בלי להתחשב בנבחרים)\n"
 
 #: ../fslint-gui:1597
 msgid "Which indenting method do you want to convert to?"
-msgstr "希望转化为何种缩进方式？"
+msgstr ""
 
 #: ../fslint-gui:1598
 msgid "Tabs"
-msgstr "制表符"
+msgstr "טאבים"
 
 #: ../fslint-gui:1598
 msgid "Spaces"
-msgstr "空格"
+msgstr "רווחים"
 
 #: ../fslint-gui:1606
 msgid "Are you sure you want to clean"
-msgstr "确定要清理？"
+msgstr "האם באמת לנקות?"
 
 #: ../fslint-gui:1648
 msgid " items cleaned ("
-msgstr " 清理的项目("
+msgstr " פריטים נוקו ("
 
 #: ../fslint-gui:1649
 msgid " bytes saved)"
-msgstr " 节省的字节)"
+msgstr " בתים הוצלו)"

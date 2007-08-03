@@ -925,7 +925,8 @@ on your system at present."))
     def findup(self, clist_dups):
         po, pe = self.get_fslint("./findup " + self.findParams + " -f")
 
-        numdups = size = fsize = 0
+        numdups = 0
+        size = fsize = 0
         dups = []
         alldups = []
         inodes = {}
