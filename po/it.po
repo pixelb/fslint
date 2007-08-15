@@ -22,7 +22,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr ""
+msgstr "_Renomina"
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
@@ -274,7 +274,7 @@ msgstr "Arresta"
 
 #: ../fslint.glade:2995
 msgid "Select"
-msgstr ""
+msgstr "Seleziona"
 
 #: ../fslint.glade:3026
 msgid "Save (selected) list to file"
@@ -282,7 +282,7 @@ msgstr ""
 
 #: ../fslint.glade:3071
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: ../fslint.glade:3102 ../fslint.glade:3267
 msgid "selected"
@@ -290,7 +290,7 @@ msgstr "selezionato"
 
 #: ../fslint.glade:3147
 msgid "Delete"
-msgstr ""
+msgstr "Elimina"
 
 #: ../fslint.glade:3191
 msgid ""
@@ -458,7 +458,7 @@ msgstr ""
 
 #: ../fslint-gui:1264
 msgid "Rename:"
-msgstr ""
+msgstr "Renomina:"
 
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
@@ -472,7 +472,7 @@ msgstr ""
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr ""
+msgstr "wildcard:"
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."

@@ -960,7 +960,7 @@ on your system at present."))
             byteWaste += groupWaste
             numWaste += groupSize - 1
             groupHeader = ["%d x %s" % (groupSize, human_num(FilesSize)),
-                           "=> %s" % human_num(groupWaste),
+                           "(%s)" % human_num(groupWaste),
                            _("bytes wasted")]
             self.clist_append_group_row(clist_dups, groupHeader)
             row += 1

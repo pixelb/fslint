@@ -480,7 +480,7 @@ msgstr "סליחה, אבל צריך להיות מנהל המערכת (משתמש
 
 #: ../fslint-gui:1403
 msgid "Are you sure you want to delete"
-msgstr "האם באמת למחוק?"
+msgstr "האם באמת למחוק"
 
 #: ../fslint-gui:1416
 msgid "Calculating dependencies..."

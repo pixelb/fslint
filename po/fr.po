@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: GNU fslint 2.04\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-27 14:29+0100\n"
-"PO-Revision-Date: 2004-01-04 20:00-0500\n"
-"Last-Translator: Michel Robitaille <robitail@IRO.UMontreal.CA>\n"
+"PO-Revision-Date: 2007-08-04 14:53+0000\n"
+"Last-Translator: Rocky Road <m.baert@free.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Rosetta-Export-Date: 2007-08-14 13:38:09+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -26,37 +26,35 @@ msgstr "_Renommer..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
-msgstr ""
+msgstr "Sélection par masque"
 
 #: ../fslint.glade:110
 msgid "Unselect using wildcard"
-msgstr ""
+msgstr "Désélection par masque"
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "groupes"
+msgstr "dans les groupes"
 
 #: ../fslint.glade:128
 msgid "Select all but first"
-msgstr ""
+msgstr "Sélectionner tous sauf le premier"
 
 #: ../fslint.glade:137
 msgid "Select all but newest"
-msgstr ""
+msgstr "Sélectionner tous sauf le plus récent"
 
 #: ../fslint.glade:146
 msgid "Select all but oldest"
-msgstr ""
+msgstr "Sélectionner tous sauf le plus ancien"
 
 #: ../fslint.glade:159
-#, fuzzy
 msgid "Toggle selection"
-msgstr "sélection"
+msgstr "Basculer la sélection"
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Unselect all"
-msgstr "Sélectionner le chemin"
+msgstr "Tout désectionner"
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
@@ -68,7 +66,7 @@ msgstr "Enlever"
 
 #: ../fslint.glade:408
 msgid "Directories to search"
-msgstr "Répertoire à rechercher"
+msgstr "Répertoires à examiner"
 
 #: ../fslint.glade:433
 msgid "recurse?"
@@ -200,7 +198,8 @@ msgstr "Cas pendants"
 
 #: ../fslint.glade:1897
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "Liens absolus aux chemins à l'intérieur ou sous le répertoire du lien"
+msgstr ""
+"Liens absolus aux chemins à l'intérieur ou sous le répertoire du lien"
 
 #: ../fslint.glade:1899
 msgid "Suspect"
@@ -275,12 +274,10 @@ msgid "Stop"
 msgstr "Stopper"
 
 #: ../fslint.glade:2995
-#, fuzzy
 msgid "Select"
 msgstr "sélectionné"
 
 #: ../fslint.glade:3026
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "lister au fichier"
 
@@ -297,7 +294,6 @@ msgid "Delete"
 msgstr "Détruire"
 
 #: ../fslint.glade:3191
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -355,7 +351,6 @@ msgid "Problematic filenames"
 msgstr ""
 
 #: ../fslint-gui:496
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Fichiers conflictuels"
 
@@ -479,7 +474,7 @@ msgstr ""
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr ""
+msgstr "masque:"
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."

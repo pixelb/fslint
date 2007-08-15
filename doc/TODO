@@ -1,5 +1,3 @@
-give rename functionality
-
 New widgets to try are (grouped) GtkClist -> Gtk{TreeView,Model}
 
 Use checkboxes within package list to mark a package for deletion,
