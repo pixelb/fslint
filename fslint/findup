@@ -27,7 +27,7 @@
 #       file4
 #       file5
 #
-#   or if the --sizes option is specified:
+#   or if the --summary option is specified:
 #
 #       2 * 2048	file1 file2
 #       3 * 1024	file3 file4 file5
@@ -62,7 +62,7 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 Usage() {
     ProgName=`basename "$0"`
     echo "find dUPlicate files.
-Usage: $ProgName [[[-t [-m|-d]] | [--sizes]] [-r] [-f] paths(s) ...]
+Usage: $ProgName [[[-t [-m|-d]] | [--summary]] [-r] [-f] paths(s) ...]
 
 If no path(s) specified then the currrent directory is assumed.
 
@@ -71,8 +71,8 @@ When -m is specified any found duplicates will be merged (using hardlinks).
 When -d is specified any found duplicates will be deleted (leaving just 1).
 When -t is specfied, only report what -m or -d would do.
 
-When --sizes is specified change output format to include file sizes.
-You can also pipe this output format to $script_dir/fstool/dupwaste
+When --summary is specified change output format to include file sizes.
+You can also pipe this summary format to $script_dir/fstool/dupwaste
 to get a total of the wastage due to duplicates.
 
 Examples:
@@ -105,8 +105,8 @@ do
         Usage ;;
     -v|--version)
         Version ;;
-    --sizes)
-        mode="sizes" ;;
+    --summary)
+        mode="summary" ;;
     -m)
         mode="merge" ;;
     -d)
@@ -120,10 +120,10 @@ done
 
 sep_mode="separate"
 
-if [ "$mode" = "gui" ] || [ "$mode" = "merge" ] || [ "$mode" = "del" ]; then
-    merge_early=""    #process hardlinks
-else
-    merge_early="-u"  #ignore hardlinks
+if [ "$mode" = "summary" ]; then
+    #Don't do extra hardlink processing.
+    #This speeds things up, and also removes the python dependency
+    merge_early="-u"
 fi
 
 . $script_dir/supprt/getfpf "$argsToPassOn"
@@ -184,7 +184,7 @@ uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 cut -d' ' -f3- |
 
 if [ ! -z "$mode" ]; then
-  if [ ! $mode = "sizes" ]; then # external call to python as this is faster
+  if [ ! $mode = "summary" ]; then # external call to python as this is faster
     if $script_dir/supprt/rmlint/fixdup.py </dev/null 2>/dev/null; then
         $script_dir/supprt/rmlint/fixdup.py $t$mode
     elif $script_dir/supprt/rmlint/fixdup.sh </dev/null 2>/dev/null; then
