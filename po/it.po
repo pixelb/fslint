@@ -22,7 +22,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr "_Renomina"
+msgstr "_Rinomina..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
@@ -34,7 +34,7 @@ msgstr "Deseleziona usando wildcard"
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "senza gruppi"
+msgstr "con i gruppi"
 
 #: ../fslint.glade:128
 msgid "Select all but first"
@@ -82,7 +82,7 @@ msgstr "Percorsi da escludere"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr ""
+msgstr "Parametri di ricerca aggiuntivi"
 
 #: ../fslint.glade:729
 msgid "extra find filtering parameters"
@@ -125,11 +125,11 @@ msgstr "Pacchetti installati"
 
 #: ../fslint.glade:1133
 msgid "Sensitivity="
-msgstr ""
+msgstr "Sensibilità="
 
 #: ../fslint.glade:1177
 msgid "invalid UTF8 mode?"
-msgstr ""
+msgstr "Modo UTF8 non valido?"
 
 #: ../fslint.glade:1284
 msgid "Bad names"
@@ -149,7 +149,7 @@ msgstr ") di"
 
 #: ../fslint.glade:1411 ../fslint-gui:869
 msgid "Conflicting files"
-msgstr ""
+msgstr "Files in conflitto"
 
 #: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:867
 #: ../fslint-gui:876
@@ -162,7 +162,7 @@ msgstr ""
 
 #: ../fslint.glade:1466 ../fslint-gui:878
 msgid "Same names"
-msgstr ""
+msgstr "Stessi nomi"
 
 #: ../fslint.glade:1474 ../fslint-gui:880
 msgid "Same names(ignore case)"
@@ -458,7 +458,7 @@ msgstr ""
 
 #: ../fslint-gui:1264
 msgid "Rename:"
-msgstr "Renomina:"
+msgstr "Rinomina:"
 
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
