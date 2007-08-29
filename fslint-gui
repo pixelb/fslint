@@ -1113,7 +1113,7 @@ on your system at present."))
         else:
             self.groups_menu.hide()
         if event == None: #standard button click
-            self.selection_menu_menu.popup(None,None,None,3,0) #at mouse pointer
+            self.selection_menu_menu.popup(None,None,None,1,0) #at mouse pointer
         elif type(widget) == gtk.CList and event.button == 3:
             menu=self.selection_menu_menu
             if self.mode != self.mode_pkgs:
