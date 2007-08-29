@@ -5,6 +5,9 @@
 	* Fixes:
 		* Make the GUI handle paths with spaces in names of empty dirs,
 		  and spaces at the end of names of duplicate files.
+		* Make the "within groups" selection sub menu respond to
+		  not just right click, after clicking the "Select" button.
+		  This issue was reported by Andrew U. Frank.
 		* Remove brace expansion from debian/rules to allow package
 		  to build on debian systems where dash is the default shell.
 		* Fixed a bug reintroduced in 2.22 (GUI only) where duplicates
