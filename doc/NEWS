@@ -1,7 +1,8 @@
 2.23 dd/mm/yy
 	* Translations:
 		* Added: Italian, Slovak, Hewbrew.
-		* Updated: Chinese (simplified), French, German, Vietnamese.
+		* Updated: Chinese (simplified), French, German,
+		  Swedish, Vietnamese.
 	* Fixes:
 		* Make the GUI handle paths with spaces in names of empty dirs,
 		  and spaces at the end of names of duplicate files.
