@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-27 14:29+0100\n"
-"PO-Revision-Date: 2007-08-01 18:19+0000\n"
+"PO-Revision-Date: 2007-09-17 13:59+0000\n"
 "Last-Translator: Dotan Mazor <launchpad@dotanmazor.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-08-03 08:58:10+0000\n"
+"X-Rosetta-Export-Date: 2007-09-17 14:28:11+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -22,15 +22,15 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr ""
+msgstr "_שינוי שם..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
-msgstr ""
+msgstr "בחירה באמצעות תווים כלליים"
 
 #: ../fslint.glade:110
 msgid "Unselect using wildcard"
-msgstr ""
+msgstr "ביטול בחירה באמצעות תווים כלליים"
 
 #: ../fslint.glade:119
 msgid "within groups"
@@ -54,7 +54,7 @@ msgstr "הפיכת הבחירה"
 
 #: ../fslint.glade:168
 msgid "Unselect all"
-msgstr ""
+msgstr "ביטול כל הבחירות"
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
@@ -174,11 +174,11 @@ msgstr "התנגשות של שמות"
 
 #: ../fslint.glade:1647
 msgid "More restrictive search for core files"
-msgstr ""
+msgstr "חיפוש מוגבל יותר לקבצים המכילים מידע על קריסות (קבצי core)"
 
 #: ../fslint.glade:1649
 msgid "core file mode?"
-msgstr ""
+msgstr "מצב מציאת קבצי מידע על קריסות (core)?"
 
 #: ../fslint.glade:1673
 msgid "days"
@@ -194,11 +194,11 @@ msgstr "קבצים זמניים"
 
 #: ../fslint.glade:1879
 msgid "Dangling"
-msgstr ""
+msgstr "ללא קישור"
 
 #: ../fslint.glade:1897
 msgid "Absolute links to paths within or below the link's directory"
-msgstr ""
+msgstr "נתיבי קישורים אבסולוטיים בתוך או מתחת לספריית הקישור"
 
 #: ../fslint.glade:1899
 msgid "Suspect"
@@ -230,15 +230,15 @@ msgstr "קישורים סמליים פגומים"
 
 #: ../fslint.glade:2164
 msgid "UID"
-msgstr ""
+msgstr "זיהוי משתמש (UID)"
 
 #: ../fslint.glade:2183
 msgid "GID"
-msgstr ""
+msgstr "זיהוי קבוצה (GID)"
 
 #: ../fslint.glade:2256
 msgid "Bad IDs"
-msgstr ""
+msgstr "תגיות זיהוי (ID) שגויות"
 
 #: ../fslint.glade:2364 ../fslint-gui:500
 msgid "Empty directories"
@@ -250,11 +250,11 @@ msgstr "חיפוש $PATH"
 
 #: ../fslint.glade:2523
 msgid "Non stripped binaries"
-msgstr ""
+msgstr "קבצים בינאריים שלא הוסר מהם מידע הדיבוג"
 
 #: ../fslint.glade:2559
 msgid "whitespace at end of line"
-msgstr ""
+msgstr "רווח בסוף שורה"
 
 #: ../fslint.glade:2584
 msgid "bad indenting for indent width"
@@ -262,7 +262,7 @@ msgstr ""
 
 #: ../fslint.glade:2746
 msgid "Redundant whitespace"
-msgstr ""
+msgstr "רווח מיותר"
 
 #: ../fslint.glade:2832
 msgid "Find"
@@ -286,7 +286,7 @@ msgstr "שמירה"
 
 #: ../fslint.glade:3102 ../fslint.glade:3267
 msgid "selected"
-msgstr ""
+msgstr "נבחר"
 
 #: ../fslint.glade:3147
 msgid "Delete"
@@ -297,6 +297,8 @@ msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
+"הכל (לבד מהנבחרים) אשר משתמשים בקישורים קשיחים\n"
+"(או קישורים סמליים אם על מערכת קבצים נפרדת)"
 
 #: ../fslint.glade:3237
 msgid "Merge"
@@ -317,11 +319,11 @@ msgstr ""
 
 #: ../fslint-gui:169
 msgid "display version"
-msgstr ""
+msgstr "הצגת גרסה"
 
 #: ../fslint-gui:170
 msgid "display help"
-msgstr ""
+msgstr "הצגת עזרה"
 
 #: ../fslint-gui:358
 #, python-format
@@ -362,15 +364,15 @@ msgstr "קישורים סמליים בעייתיים"
 
 #: ../fslint-gui:499
 msgid "Files with missing user IDs"
-msgstr ""
+msgstr "קבצים ללא זיהוי משתמש (ID)"
 
 #: ../fslint-gui:501
 msgid "Executables still containing debugging info"
-msgstr ""
+msgstr "קבצי הרצה שעדיין מכילים מידע דיבוג"
 
 #: ../fslint-gui:502
 msgid "Erroneous whitespace in a text file"
-msgstr ""
+msgstr "רווחים שגויים בקובץ טקסט"
 
 #: ../fslint-gui:508
 msgid "Invalid path ["
@@ -413,7 +415,7 @@ msgstr " קבצים"
 
 #: ../fslint-gui:802
 msgid " unstripped binaries"
-msgstr ""
+msgstr " קבצי הרצה עם מידע דיבוג"
 
 #: ../fslint-gui:812
 msgid " empty directories"
@@ -458,7 +460,7 @@ msgstr "המשתמש הפסיק"
 
 #: ../fslint-gui:1264
 msgid "Rename:"
-msgstr ""
+msgstr "שינוי שם:"
 
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
@@ -472,7 +474,7 @@ msgstr ""
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr ""
+msgstr "תו כללי:"
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."
@@ -480,7 +482,7 @@ msgstr "סליחה, אבל צריך להיות מנהל המערכת (משתמש
 
 #: ../fslint-gui:1403
 msgid "Are you sure you want to delete"
-msgstr "האם באמת למחוק"
+msgstr "האם באמת למחוק?"
 
 #: ../fslint-gui:1416
 msgid "Calculating dependencies..."
