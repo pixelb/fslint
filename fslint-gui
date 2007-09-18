@@ -597,7 +597,10 @@ class fslint(GladeWrapper):
                 exclude_dirs = '\(' + ' -path "'
             else:
                 exclude_dirs += ' -o -path "'
-            exclude_dirs += self.bad_dirs.get_row_data(row) + '"'
+            path=self.bad_dirs.get_row_data(row)
+            if path[-1]=='/': #find -path doesn't match dirs with trailing /
+                path=path[:-1]
+            exclude_dirs += path + '"'
         if exclude_dirs != "":
             exclude_dirs += ' \) -prune -o '
 
