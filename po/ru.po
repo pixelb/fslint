@@ -1,20 +1,19 @@
-# Hebrew translation for fslint
-# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
-# This file is distributed under the same license as the fslint package.
-# Dotan Mazor <launchpad@dotanmazor.com>, 2007.
+# Russian translation fslint
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the FSlint package.
+# Dmitry Beketov <bds@bk.ru>, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: fslint\n"
+"Project-Id-Version: fslint 2.22\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-27 14:29+0100\n"
-"PO-Revision-Date: 2007-09-17 13:59+0000\n"
-"Last-Translator: Dotan Mazor <launchpad@dotanmazor.com>\n"
-"Language-Team: Hebrew <he@li.org>\n"
+"PO-Revision-Date: 2007-09-18 20:55+0300\n"
+"Last-Translator: Dmitry Beketov <bds@bk.ru>\n"
+"Language-Team: Russian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-09-17 14:28:11+0000\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -22,122 +21,122 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr "_שינוי שם..."
+msgstr "Пере_именовать..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
-msgstr "בחירה באמצעות תווים כלליים"
+msgstr "Выделить по шаблону"
 
 #: ../fslint.glade:110
 msgid "Unselect using wildcard"
-msgstr "ביטול בחירה באמצעות תווים כלליים"
+msgstr "Снять выделение по шаблону"
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "בתוך קבוצות"
+msgstr "в группах"
 
 #: ../fslint.glade:128
 msgid "Select all but first"
-msgstr "בחירת הכל חוץ מהראשון"
+msgstr "Вуделить все кроме первых"
 
 #: ../fslint.glade:137
 msgid "Select all but newest"
-msgstr "בחירת הכל חוץ מהחדש ביותר"
+msgstr "Выделить все кроме новых"
 
 #: ../fslint.glade:146
 msgid "Select all but oldest"
-msgstr "בחירת הכל חוץ מהישן ביותר"
+msgstr "Выделить все кроме старых"
 
 #: ../fslint.glade:159
 msgid "Toggle selection"
-msgstr "הפיכת הבחירה"
+msgstr "Обратить выделение"
 
 #: ../fslint.glade:168
 msgid "Unselect all"
-msgstr "ביטול כל הבחירות"
+msgstr "Снять выделение"
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
-msgstr "הוספה"
+msgstr "Добавить"
 
 #: ../fslint.glade:361 ../fslint.glade:614
 msgid "Remove"
-msgstr "הסרה"
+msgstr "Удалить"
 
 #: ../fslint.glade:408
 msgid "Directories to search"
-msgstr "ספריות לחיפוש"
+msgstr "Директории для поиска"
 
 #: ../fslint.glade:433
 msgid "recurse?"
-msgstr "חיפוש גם בספריות פנימיות?"
+msgstr "рекурсивно?"
 
 #: ../fslint.glade:457
 msgid "Search path"
-msgstr "נתיב חיפוש"
+msgstr "Путь для поиска"
 
 #: ../fslint.glade:669
 msgid "Paths to exclude"
-msgstr "נתיבים להתעלמות"
+msgstr "Пути для выполнения"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr "פרמטרים נוספים לחיפוש"
+msgstr "Дополнительные параметры поиска"
 
 #: ../fslint.glade:729
 msgid "extra find filtering parameters"
-msgstr "פרמטרים נוספים לפילטרים לחיפוש"
+msgstr "дополнительные параметры фильтрации поиска"
 
 #: ../fslint.glade:762
 msgid "Advanced search parameters"
-msgstr "פרמטרים מתקדמים לחיפוש"
+msgstr "Продвинутые параметры поиска"
 
 #: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1230
 #: ../fslint.glade:1539 ../fslint.glade:1751 ../fslint.glade:2005
 #: ../fslint.glade:2126 ../fslint.glade:2298 ../fslint.glade:2431
 #: ../fslint.glade:2654
 msgid "Name"
-msgstr "שם"
+msgstr "Имя"
 
 #: ../fslint.glade:866 ../fslint.glade:1249 ../fslint.glade:1558
 #: ../fslint.glade:1770 ../fslint.glade:2024 ../fslint.glade:2145
 #: ../fslint.glade:2317 ../fslint.glade:2450 ../fslint.glade:2673
 msgid "Directory"
-msgstr "ספרייה"
+msgstr "Директория"
 
 #: ../fslint.glade:885 ../fslint.glade:1808 ../fslint.glade:2221
 #: ../fslint.glade:2336 ../fslint.glade:2488 ../fslint.glade:2711
 msgid "Date"
-msgstr "תאריך"
+msgstr "Дата"
 
 #: ../fslint.glade:920
 msgid "Duplicates"
-msgstr "כפילויות"
+msgstr "Дубликаты"
 
 #: ../fslint.glade:997 ../fslint.glade:1577 ../fslint.glade:1789
 #: ../fslint.glade:2202 ../fslint.glade:2469 ../fslint.glade:2692
 msgid "Size"
-msgstr "גודל"
+msgstr "Размер"
 
 #: ../fslint.glade:1092
 msgid "Installed packages"
-msgstr "חבילות מותקנות"
+msgstr "Установленные пакеты"
 
 #: ../fslint.glade:1133
 msgid "Sensitivity="
-msgstr "רגישות="
+msgstr "Чувствительность="
 
 #: ../fslint.glade:1177
 msgid "invalid UTF8 mode?"
-msgstr "מצב UTF8 לא תקין?"
+msgstr "недопустим режим UTF8"
 
 #: ../fslint.glade:1284
 msgid "Bad names"
-msgstr "שמות פגומים"
+msgstr "Плохие имена"
 
 #: ../fslint.glade:1319
 msgid "Search ("
-msgstr "חיפוש ("
+msgstr "Поиск ("
 
 #: ../fslint.glade:1345
 msgid "$PATH"
@@ -145,186 +144,185 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1364
 msgid ") for"
-msgstr ") אחר"
+msgstr ") для"
 
 #: ../fslint.glade:1411 ../fslint-gui:869
 msgid "Conflicting files"
-msgstr "קבצים סותרים"
+msgstr "Конфликтующие файлы"
 
 #: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:867
 #: ../fslint-gui:876
 msgid "Aliases"
-msgstr "כינויים"
+msgstr "Ссылки"
 
 #: ../fslint.glade:1458 ../fslint-gui:882
 msgid "Case conflicts"
-msgstr "סתירות באותיות גדולות וקטנות"
+msgstr ""
 
 #: ../fslint.glade:1466 ../fslint-gui:878
 msgid "Same names"
-msgstr "שמות זהים"
+msgstr "Одинаковые имена"
 
 #: ../fslint.glade:1474 ../fslint-gui:880
 msgid "Same names(ignore case)"
-msgstr "שמות זהים (בהתעלמות מאותיות גדולות וקטנות)"
+msgstr ""
 
 #: ../fslint.glade:1612
 msgid "Name clashes"
-msgstr "התנגשות של שמות"
+msgstr "Конфликты имен"
 
 #: ../fslint.glade:1647
 msgid "More restrictive search for core files"
-msgstr "חיפוש מוגבל יותר לקבצים המכילים מידע על קריסות (קבצי core)"
+msgstr "Ограничение поиска core-файлов"
 
 #: ../fslint.glade:1649
 msgid "core file mode?"
-msgstr "מצב מציאת קבצי מידע על קריסות (core)?"
+msgstr "режим поиска core-файлов"
 
 #: ../fslint.glade:1673
 msgid "days"
-msgstr "ימים"
+msgstr "дни"
 
 #: ../fslint.glade:1693
 msgid "minimum age"
-msgstr "גיל מינימלי"
+msgstr "минимальный возраст"
 
 #: ../fslint.glade:1843
 msgid "Temp files"
-msgstr "קבצים זמניים"
+msgstr "Временные файлы"
 
 #: ../fslint.glade:1879
 msgid "Dangling"
-msgstr "ללא קישור"
+msgstr ""
 
 #: ../fslint.glade:1897
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "נתיבי קישורים אבסולוטיים בתוך או מתחת לספריית הקישור"
+msgstr "Абсолютные ссылки на несуществующие пути"
 
 #: ../fslint.glade:1899
 msgid "Suspect"
-msgstr "חשוד"
+msgstr "Сомнительный"
 
 #: ../fslint.glade:1919
 msgid "Relative"
-msgstr "יחסי"
+msgstr "Относительный"
 
 #: ../fslint.glade:1939
 msgid "Absolute"
-msgstr "אבסולוטי"
+msgstr "Абсолютный"
 
 #: ../fslint.glade:1958
 msgid "/././. ///// /../ etc."
-msgstr ""
+msgstr "Избыточность в именах (/././. ///// /../ и т.д.)"
 
 #: ../fslint.glade:1960
 msgid "Redundant naming"
-msgstr ""
+msgstr "излишним"
 
 #: ../fslint.glade:2043
 msgid "Target"
-msgstr "יעד"
+msgstr "Цель"
 
 #: ../fslint.glade:2078
 msgid "Bad symlinks"
-msgstr "קישורים סמליים פגומים"
+msgstr "Ошибки символических ссылок"
 
 #: ../fslint.glade:2164
 msgid "UID"
-msgstr "זיהוי משתמש (UID)"
+msgstr "UID"
 
 #: ../fslint.glade:2183
 msgid "GID"
-msgstr "זיהוי קבוצה (GID)"
+msgstr "GID"
 
 #: ../fslint.glade:2256
 msgid "Bad IDs"
-msgstr "תגיות זיהוי (ID) שגויות"
+msgstr "Ошибки идентификаторов"
 
 #: ../fslint.glade:2364 ../fslint-gui:500
 msgid "Empty directories"
-msgstr "ספריות ריקות"
+msgstr "Пустые директории"
 
 #: ../fslint.glade:2394
 msgid "Search $PATH"
-msgstr "חיפוש $PATH"
+msgstr "Поиск $PATH"
 
-#"קבצים בינאריים שלא הוסר מהם מידע הדיבוג"
 #: ../fslint.glade:2523
 msgid "Non stripped binaries"
-msgstr "קבצי הרצה עם מידע דיבוג"
+msgstr ""
 
 #: ../fslint.glade:2559
 msgid "whitespace at end of line"
-msgstr "רווח בסוף שורה"
+msgstr "пробелы в конце строки"
 
 #: ../fslint.glade:2584
 msgid "bad indenting for indent width"
-msgstr ""
+msgstr "слишком большие отступы"
 
 #: ../fslint.glade:2746
 msgid "Redundant whitespace"
-msgstr "רווח מיותר"
+msgstr "Лишние пробелы"
 
 #: ../fslint.glade:2832
 msgid "Find"
-msgstr "חיפוש"
+msgstr "Поиск"
 
 #: ../fslint.glade:2907
 msgid "Stop"
-msgstr "הפסקת החיפוש"
+msgstr "Стоп"
 
 #: ../fslint.glade:2995
 msgid "Select"
-msgstr "בחירה"
+msgstr "Выбор"
 
 #: ../fslint.glade:3026
 msgid "Save (selected) list to file"
-msgstr "שמירת הרשימה שנבחרה לקובץ"
+msgstr "Сохранить выделенный список в файл"
 
 #: ../fslint.glade:3071
 msgid "Save"
-msgstr "שמירה"
+msgstr "Сохранить"
 
 #: ../fslint.glade:3102 ../fslint.glade:3267
 msgid "selected"
-msgstr "נבחר"
+msgstr "выделено"
 
 #: ../fslint.glade:3147
 msgid "Delete"
-msgstr "מחיקה"
+msgstr "Удалить"
 
 #: ../fslint.glade:3191
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
-"הכל (לבד מהנבחרים) אשר משתמשים בקישורים קשיחים\n"
-"(או קישורים סמליים אם על מערכת קבצים נפרדת)"
+"Все жесткие ссылки (кроме выделенных)\n"
+"или символические, в зависимости от файловой системы"
 
 #: ../fslint.glade:3237
 msgid "Merge"
-msgstr "מיזוג"
+msgstr "Объединить"
 
 #: ../fslint.glade:3312
 msgid "Clean"
-msgstr "ניקוי"
+msgstr "Очистить"
 
 #: ../fslint.glade:3444
 msgid "Select Path"
-msgstr "בחירת נתיב"
+msgstr "Выберите путь"
 
 #: ../fslint-gui:168
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr ""
+msgstr "Использование: %s [ОПЦИИ] [ПУТИ]"
 
 #: ../fslint-gui:169
 msgid "display version"
-msgstr "הצגת גרסה"
+msgstr "показывать версию"
 
 #: ../fslint-gui:170
 msgid "display help"
-msgstr "הצגת עזרה"
+msgstr "показывать помощь"
 
 #: ../fslint-gui:358
 #, python-format
@@ -333,207 +331,207 @@ msgstr ""
 
 #: ../fslint-gui:454
 msgid "Do you want to overwrite?\n"
-msgstr "האם לשכתב?\n"
+msgstr "Вы хотите перезаписать?\n"
 
 #: ../fslint-gui:460
 msgid "You can't overwrite "
-msgstr "לא ניתן לשכתב "
+msgstr "Вы не можете перезаписать "
 
 #: ../fslint-gui:493
 msgid "Files with the same content"
-msgstr "קבצים עם אותו תוכן"
+msgstr "Файлы с одинаковым содержимым"
 
 #: ../fslint-gui:494
 msgid "Installed packages ordered by disk usage"
-msgstr "חבילות שהותקנות מסודרות בהתאם לנפח השימוש בדיסק"
+msgstr "Установленные пакеты и занимаемое место на диске"
 
 #: ../fslint-gui:495
 msgid "Problematic filenames"
-msgstr "שמות קבצים בעייתיים"
+msgstr "Проблемные имена"
 
 #: ../fslint-gui:496
 msgid "Possibly conflicting commands or filenames"
-msgstr "פקודות או שמות קבצים שייתכן ויש בהם סתירה"
+msgstr "Вероятные конфликты команд и имен файлов"
 
 #: ../fslint-gui:497
 msgid "Possibly old temporary files"
-msgstr "קבצים זמניים שייתכן שהם ישנים"
+msgstr "Возможно устаревшие временные файлы"
 
 #: ../fslint-gui:498
 msgid "Problematic symbolic links"
-msgstr "קישורים סמליים בעייתיים"
+msgstr "Сомнительные символические ссылки"
 
 #: ../fslint-gui:499
 msgid "Files with missing user IDs"
-msgstr "קבצים ללא זיהוי משתמש (ID)"
+msgstr "Файлы с неверными идентификаторами владельца"
 
 #: ../fslint-gui:501
 msgid "Executables still containing debugging info"
-msgstr "קבצי הרצה שעדיין מכילים מידע דיבוג"
+msgstr "Бинарные файлы, содержащие отладочную информацию"
 
 #: ../fslint-gui:502
 msgid "Erroneous whitespace in a text file"
-msgstr "רווחים שגויים בקובץ טקסט"
+msgstr "Ненужные пробелы в текстовых файлах"
 
 #: ../fslint-gui:508
 msgid "Invalid path ["
-msgstr "נתיב לא תקין ["
+msgstr "Неверный путь ["
 
 #: ../fslint-gui:549
 msgid "searching"
-msgstr "חיפוש"
+msgstr "поиск"
 
 #: ../fslint-gui:559
 msgid "processing..."
-msgstr "בעיבוד..."
+msgstr "подождите..."
 
 #: ../fslint-gui:587
 msgid "No search paths specified"
-msgstr "נתיבי חיפוש לא הוגדרו"
+msgstr "Не заданы пути поиска"
 
 #: ../fslint-gui:746
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "סליחה. התוכנה כרגע אינה תומכת בפעולה זו על המערכת הנוכחית."
+msgstr "Извините, FSlint не поддерживает данные функции в вашей системе"
 
 #: ../fslint-gui:762
 msgid " packages, "
-msgstr " חבילות "
+msgstr " пакеты, "
 
 #: ../fslint-gui:763
 #, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "всепоглощающий %sB. "
 
 #: ../fslint-gui:764
 #, python-format
 msgid "Note %s."
-msgstr ""
+msgstr "Примечание %s."
 
 #: ../fslint-gui:782 ../fslint-gui:823 ../fslint-gui:861 ../fslint-gui:923
 msgid " files"
-msgstr " קבצים"
+msgstr " файлы"
 
 #: ../fslint-gui:802
 msgid " unstripped binaries"
-msgstr " קבצי הרצה עם מידע דיבוג"
+msgstr " бинарные файлы с лишней (отладочной) информацией"
 
 #: ../fslint-gui:812
 msgid " empty directories"
-msgstr " ספריות ריקות"
+msgstr " пустые директории"
 
 #: ../fslint-gui:844
 msgid " links"
-msgstr " קישורים"
+msgstr " ссылки"
 
 #: ../fslint-gui:860 ../fslint-gui:972
 msgid " bytes wasted in "
-msgstr " בתים מבוזבזים ב "
+msgstr " байт занято "
 
 #: ../fslint-gui:905 ../fslint-gui:973
 msgid " files (in "
-msgstr " קבצים (ב "
+msgstr " файлы (в "
 
 #: ../fslint-gui:906 ../fslint-gui:974
 msgid " groups)"
-msgstr " קבוצות)"
+msgstr " группы)"
 
 #: ../fslint-gui:964
 msgid "bytes wasted"
-msgstr "בתים מבוזבזים"
+msgstr "байт занято"
 
 #: ../fslint-gui:1039
 msgid "None selected"
-msgstr "כלום לא נבחר"
+msgstr "Ничего не выделено"
 
 #: ../fslint-gui:1043
 msgid " this item?\n"
-msgstr " פריט זה?\n"
+msgstr " этот пункт?\n"
 
 #: ../fslint-gui:1045
 #, python-format
 msgid " these %d items?\n"
-msgstr " %d פריטים אלו?\n"
+msgstr " эти %d элемента?\n"
 
 #: ../fslint-gui:1160
 msgid "User aborted"
-msgstr "המשתמש הפסיק"
+msgstr "Остановлено пользователем"
 
 #: ../fslint-gui:1264
 msgid "Rename:"
-msgstr "שינוי שם:"
+msgstr "Переименование:"
 
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr ""
+msgstr "Ошибка: [%s] не могу обработать вашу файловую системы"
 
 #: ../fslint-gui:1285
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
-msgstr ""
+msgstr "Ошибка: Не могу переименовать [%(old_path)s] в существующий [%(new_path)s]"
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr "תו כללי:"
+msgstr "шаблон:"
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."
-msgstr "סליחה, אבל צריך להיות מנהל המערכת (משתמש-העל root) כדי למחוק חבילות."
+msgstr "Извините, но вы должны быть суперпользователем, чтобы удалить системные пакеты."
 
 #: ../fslint-gui:1403
 msgid "Are you sure you want to delete"
-msgstr "האם באמת למחוק?"
+msgstr "Вы уверены, что хотите удалить"
 
 #: ../fslint-gui:1416
 msgid "Calculating dependencies..."
-msgstr "חישוב תלויות..."
+msgstr "Вычисление зависимостей..."
 
 #: ../fslint-gui:1429
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "צריך למחוק עוד %d חבילות.\n"
+msgstr "%d пакеты должны быть удалены.\n"
 
 #: ../fslint-gui:1430
 msgid "Please review the updated selection."
-msgstr "נא לעבור על הבחירה המעודכנת."
+msgstr "Пожалуйста просмотрите обновленное выделение."
 
 #: ../fslint-gui:1438
 msgid "Removing packages..."
-msgstr "הסרת חבילות..."
+msgstr "Удаление пакетов..."
 
 #: ../fslint-gui:1468
 msgid " items deleted"
-msgstr " פריטים נמחקו"
+msgstr " пункты удалены"
 
 #: ../fslint-gui:1547
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "האם באמת למזג את כל הקבצים?\n"
+msgstr "Вы уверены, что хотите объединить ВСЕ файлы?\n"
 
 #: ../fslint-gui:1551
 msgid "(Ignoring those selected)\n"
-msgstr "(בלי להתחשב בנבחרים)\n"
+msgstr "(Игнорировать выделенные)\n"
 
 #: ../fslint-gui:1597
 msgid "Which indenting method do you want to convert to?"
-msgstr ""
+msgstr "Какой метод конфертирования вы выбераете?"
 
 #: ../fslint-gui:1598
 msgid "Tabs"
-msgstr "טאבים"
+msgstr "Вкладки"
 
 #: ../fslint-gui:1598
 msgid "Spaces"
-msgstr "רווחים"
+msgstr "Пробелы"
 
 #: ../fslint-gui:1606
 msgid "Are you sure you want to clean"
-msgstr "האם באמת לנקות?"
+msgstr "Вы уверены, что хотите очистить"
 
 #: ../fslint-gui:1648
 msgid " items cleaned ("
-msgstr " פריטים נוקו ("
+msgstr " пунктов очищено ("
 
 #: ../fslint-gui:1649
 msgid " bytes saved)"
-msgstr " בתים הוצלו)"
+msgstr " байт сохранено)"
