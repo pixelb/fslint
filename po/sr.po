@@ -4,7 +4,7 @@
 # Aleksandar Jelenak <jelenak@netlinkplus.net>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: fslint 2.03\n"
+"Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-27 14:29+0100\n"
 "PO-Revision-Date: 2004-03-16 00:16-0500\n"

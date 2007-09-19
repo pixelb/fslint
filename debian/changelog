@@ -1,3 +1,9 @@
+fslint (2.24-1) unstable; urgency=low
+
+  * Bump to release version
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 19 Sep 2007 07:38:00 +0000
+
 fslint (2.23-1) unstable; urgency=low
 
   * Bump to devel version

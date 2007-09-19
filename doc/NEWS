@@ -1,4 +1,4 @@
-2.23 dd/mm/yy
+2.24 19/09/07
 	* Translations:
 		* Added: Hewbrew, Italian, Russian.
 		* Updated: Chinese (simplified), French, German,
@@ -9,7 +9,11 @@
 		* Make the "within groups" selection sub menu respond to
 		  not just right click, after clicking the "Select" button.
 		  This issue was reported by Andrew U. Frank.
-		* Make sure the GUI honours all "directories to exclude".
+		* Ensure the GUI honours all "directories to exclude".
+		  Previously directories with a trailing / were ignored.
+		* Fix the packing of a few of the GUI widgets, so that
+		  all "action" buttons are the same size, and to allow the app
+		  window to be resized smaller than was previously possible.
 		* Remove brace expansion from debian/rules to allow package
 		  to build on debian systems where dash is the default shell.
 		* Fixed a bug reintroduced in 2.22 (GUI only) where duplicates
