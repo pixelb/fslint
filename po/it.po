@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-03 08:53+0100\n"
-"PO-Revision-Date: 2007-07-30 14:01+0000\n"
+"PO-Revision-Date: 2007-10-01 14:01+0000\n"
 "Last-Translator: Carlo Brualdi <carlo.brualdi@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -403,7 +403,7 @@ msgstr " pacchetti, "
 #: ../fslint-gui:763
 #, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "occupanti %sB. "
 
 #: ../fslint-gui:764
 #, python-format
