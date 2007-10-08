@@ -118,7 +118,7 @@ msgstr "Duplicati"
 #: ../fslint.glade:997 ../fslint.glade:1577 ../fslint.glade:1789
 #: ../fslint.glade:2202 ../fslint.glade:2469 ../fslint.glade:2692
 msgid "Size"
-msgstr "Dimesione"
+msgstr "Dimensione"
 
 #: ../fslint.glade:1092
 msgid "Installed packages"
