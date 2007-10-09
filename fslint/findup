@@ -145,7 +145,7 @@ else
     devFmt=%D #This is new in findutils-4.2 and will help find more duplicates
 fi
 
-                                           #print name, dev, inode & size.
+                                              #print name, dev, inode & size.
 find "$@" -size +0c -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
 sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
@@ -191,9 +191,9 @@ unescape_sum |             #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 
-cut -d' ' -f3- |
+cut -d' ' -f3- |           #get filenames (and leave separating lines)
 
-if [ ! -z "$mode" ]; then
+if [ "$mode" ]; then
   if [ ! $mode = "summary" ]; then # external call to python as this is faster
     if $script_dir/supprt/rmlint/fixdup.py </dev/null 2>/dev/null; then
         $script_dir/supprt/rmlint/fixdup.py $t$mode
