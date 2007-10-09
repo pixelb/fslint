@@ -1,4 +1,7 @@
 2.25 dd/mm/yy
+	* Fixes:
+		* Don't ignore duplicate files with '\' chars in the path.
+		  This issue was reported by Andrew U. Frank.
 
 2.24 19/09/07
 	* Translations:
