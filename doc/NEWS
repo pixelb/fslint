@@ -2,6 +2,8 @@
 	* Fixes:
 		* Don't ignore duplicate files with '\' chars in the path.
 		  This issue was reported by Andrew U. Frank.
+		* Use and document better syntax for excluding paths.
+		* Honour/sanitize user specified wildcards for excluding paths.
 
 2.24 19/09/07
 	* Translations:

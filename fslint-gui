@@ -507,7 +507,7 @@ class fslint(GladeWrapper):
             else:
                 self.ShowErrors(_("Invalid path [") + path + "]")
         for bad_dir in ['/lost+found','/dev','/proc','/sys','/tmp',
-                        '/*.svn','/*CVS']:
+                        '*/.svn','*/CVS', '*/.git']:
             self.addDirs(self.bad_dirs, bad_dir)
         self._alloc_mouse_cursors()
         self.mode=0
@@ -598,8 +598,6 @@ class fslint(GladeWrapper):
             else:
                 exclude_dirs += ' -o -path "'
             path=self.bad_dirs.get_row_data(row)
-            if path[-1]=='/': #find -path doesn't match dirs with trailing /
-                path=path[:-1]
             exclude_dirs += path + '"'
         if exclude_dirs != "":
             exclude_dirs += ' \) -prune -o '
@@ -1067,12 +1065,29 @@ on your system at present."))
         self.dlgPathSel.show()
         if not self.dlgPathSel.canceled:
             path = self.dlgPathSel.GtkWindow.get_filename()
+            path = os.path.normpath(path)
             self.addDirs(self.ok_dirs, path)
 
     def on_addBadDir_clicked(self, event):
         self.dlgPathSel.show()
         if not self.dlgPathSel.canceled:
             path = self.dlgPathSel.GtkWindow.get_filename()
+            path = os.path.normpath(path)
+            #Note find -path doesn't match dirs with trailing /
+            #and normpath strips trailing / among other things
+            #XXX: The following is not robust. We really should
+            #split specifying wildcards and paths
+            if not os.path.exists(path): #probably a wildcard?
+                #hacky way to get just user specified component
+                dirs = path.split('/')
+                if len(dirs) > 2:
+                    for i in range(len(dirs)):
+                        path = '/'.join(dirs[:i+1])
+                        if path and not os.path.exists(path):
+                            path = '/'.join(dirs[i:])
+                            break
+                if path.find('/') == -1:
+                    path = "*/" + path #more accurate
             self.addDirs(self.bad_dirs, path)
 
     def on_removeOkDir_clicked(self, event):
