@@ -29,11 +29,17 @@ A. Unfortunately Mandriva and SuSE at least use different
    distros, just get the release tar.gz and as in the previous FAQ:
        sudo rpmbuild -ta fslint-x.xx.tar.gz
 
-Q. In "Advanced Search Parameters"->"Paths to exclude",
-   how do I exclude directories &/or files matching a pattern
-   rather than a specific file or directory?
-A. To exclude all txt files add a path of /*txt
-   To exclude all CVS dirs  add a path of /*CVS
+Q. In the GUI how do I exclude dirs (and and sub-dirs) matching a pattern?
+A. In "Advanced Search Parameters"->"Paths to exclude", add
+   "*/CVS" to exclude all CVS dirs for example
+
+Q. In the GUI how do I exclude files matching a pattern?
+A. In "Advanced Search Parameters"->"Extra find parameters", add
+   "\( ! -name COPYING* -a ! -name LICENSE \)" to exclude licence files for e.g.
+
+Q. From the command line how do I exclude paths matching a pattern?
+A. To exclude directories: findup \( -path "*/.svn" \) -prune -o
+A. To exclude files:       findup \( ! -name "*.py[co]" \)
 
 Q. How do I navigate the file lists with the keyboard?
 A. FSlint uses a GtkCList in "multiple selection" mode throughout.
