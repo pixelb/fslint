@@ -1,6 +1,7 @@
 fslint (2.25-1) unstable; urgency=low
 
   * Bump to devel version
+  * Remove bash dependency from "fix whitespace" script (Closes: #446326)
 
  -- Pádraig Brady <P@draigBrady.com>  Thu, 19 Sep 2007 10:40:00 +0000
 

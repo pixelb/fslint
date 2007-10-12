@@ -4,6 +4,7 @@
 		  This issue was reported by Andrew U. Frank.
 		* Use and document better syntax for excluding paths.
 		* Honour/sanitize user specified wildcards for excluding paths.
+		* Tweak "fix whitespace" script to run on dash (ubuntu).
 
 2.24 19/09/07
 	* Translations:

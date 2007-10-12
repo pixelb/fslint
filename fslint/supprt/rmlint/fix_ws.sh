@@ -7,7 +7,7 @@ usage() {
     exit 1
 }
 
-[ "$#" == "4" ] || usage
+[ "$#" = "4" ] || usage
 
 FILE="$4"
 if [ ! -f "$FILE" ]; then
