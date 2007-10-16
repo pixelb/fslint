@@ -5,6 +5,10 @@
 		* Use and document better syntax for excluding paths.
 		* Honour/sanitize user specified wildcards for excluding paths.
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
+	* Improvements:
+		* Make file deletion much easier by supporting the Delete key,
+		  auto removing groups from display when only 1 item remaining
+		  and giving the option to not confirm every delete operation.
 
 2.24 19/09/07
 	* Translations:

@@ -27,7 +27,7 @@ import locale
 import gtk
 import gtk.glade
 
-import os, sys, time, stat, tempfile
+import types, os, sys, time, stat, tempfile
 
 # Maintain compatibility with Python 2.2 and below,
 # while getting rid of warnings in newer pyGtks.
@@ -126,7 +126,6 @@ class i18n:
         then try to convert to utf8 using preferred encoding while
         also replacing undisplayable or invalid characters.
         Exclude contains control chars you don't want to translate."""
-        import types
         if type(orig) == types.UnicodeType:
             uc=orig
         else:
@@ -368,7 +367,8 @@ class dlgUserInteraction(GladeWrapper):
     button is already available, then there's no point in
     translating the passed in string.
     """
-    def init(self, app, message, buttons, entry_default):
+    def init(self, app, message, buttons, entry_default,
+             again=False, again_val=True):
         for text in buttons:
             try:
                 stock_text=getattr(gtk,"STOCK_"+text.upper())
@@ -384,15 +384,26 @@ class dlgUserInteraction(GladeWrapper):
         self.app = app
         self.lblmsg.set_text(message)
         self.lblmsg.show()
+        self.response=None
         if message.endswith(":"):
             if entry_default:
                 self.entry.set_text(entry_default)
             self.entry.show()
+            self.input=None
         else:
             self.entry.hide()
+        if again:
+            self.again=again_val
+            if type(again) == types.StringType:
+                self.chkAgain.set_label(again)
+                self.chkAgain.set_active(again_val)
+            #Dialog seems to give focus to first available widget,
+            #So undo the focus on the check box
+            self.GtkWindow.action_area.get_children()[-1].grab_focus()
+            self.chkAgain.show()
+
 
     def show(self):
-        self.response=self.input=None
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show() #Note dialog is initially hidden in glade file
         if self.GtkWindow.modal:
@@ -408,8 +419,11 @@ class dlgUserInteraction(GladeWrapper):
             gtk.main_quit()
 
     def button_clicked(self, button):
-        self.input = self.entry.get_text()
         self.response = button.get_data("text")
+        if self.entry.flags() & gtk.VISIBLE:
+            self.input = self.entry.get_text()
+        if self.chkAgain.flags() & gtk.VISIBLE:
+            self.again = self.chkAgain.get_active()
         self.GtkWindow.destroy()
 
 class dlgPathSel(GladeWrapper):
@@ -450,7 +464,7 @@ class dlgPathSel(GladeWrapper):
             file = self.GtkWindow.get_filename()
             if os.path.exists(file):
                 if os.path.isfile(file):
-                    (response, input) = self.app.msgbox(
+                    (response,) = self.app.msgbox(
                       _("Do you want to overwrite?\n") + file,
                       ('Yes', 'No')
                     )
@@ -473,6 +487,8 @@ class fslint(GladeWrapper):
         GladeWrapper.__init__(self, Filename, WindowName)
         self.dlgPathSel = dlgPathSel(liblocation+"/fslint.glade", "PathSel")
         self.dlgPathSel.init(self)
+        self.confirm_delete = True
+        self.confirm_clean = True
         #Just need to keep this tuple in sync with tabs
         (self.mode_up, self.mode_pkgs, self.mode_nl, self.mode_sn,
          self.mode_tf, self.mode_bl, self.mode_id, self.mode_ed,
@@ -628,6 +644,7 @@ class fslint(GladeWrapper):
             paths_to_remove.reverse() #so deleting works correctly
             for row in paths_to_remove:
                 dirlist.remove(row)
+            dirlist.select_row(dirlist.focus_row,0)
 
     def clist_alloc_colour(self, clist, colour):
         """cache colour allocation for clist
@@ -660,7 +677,7 @@ class fslint(GladeWrapper):
         clist.set_background(clist.rows-1,self.bg_colour)
         clist.set_selectable(clist.rows-1,0)
 
-    def clist_remove_empty_groups(self, clist):
+    def clist_remove_handled_groups(self, clist):
         row_data = clist.get_data("row_data")
         rowver=clist.rows
         rows_left = range(rowver)
@@ -670,8 +687,16 @@ class fslint(GladeWrapper):
                 if (row == clist.rows-1) or (clist.get_selectable(row+1) ==
                     False):
                     clist.remove(row)
-                    if self.mode != self.mode_pkgs:
-                        row_data.pop(row)
+                    row_data.pop(row)
+            else: #remove single item groups
+                if (row == clist.rows-1) and (clist.get_selectable(row-1) ==
+                    False):
+                    clist.remove(row)
+                    row_data.pop(row)
+                elif (clist.get_selectable(row-1) == False) and \
+                     (clist.get_selectable(row+1) == False):
+                    clist.remove(row)
+                    row_data.pop(row)
 
 
     def get_path_info(self, path):
@@ -1021,33 +1046,40 @@ on your system at present."))
         self.find.grab_focus() #as it already would have been in focus
         self.set_cursor(None)
 
-    def msgbox(self, message, buttons=('Ok',), entry_default=None):
+    def msgbox(self, message, buttons=('Ok',), entry_default=None,
+               again=False, again_val=True):
         msgbox=dlgUserInteraction(liblocation+"/fslint.glade","UserInteraction")
-        msgbox.init(self, message, buttons, entry_default)
+        msgbox.init(self, message, buttons, entry_default, again, again_val)
         msgbox.show()
-        return (msgbox.response, msgbox.input)
+        response = (msgbox.response,)
+        if hasattr(msgbox, "input"):
+            response += (msgbox.input,)
+        if hasattr(msgbox, "again"):
+            response += (msgbox.again,)
+        return response
 
+    #Return tuple of booleans meaning: (user_ok_with_action, ask_again)
     def check_user(self, question):
         self.ClearErrors()
         #remove as status from previous operation could be confusing
         self.status.delete_text(0,-1)
         clist = self.clists[self.mode]
         if not clist.rows:
-            return False #Be consistent
+            return False, True #Be consistent
                          #All actions buttons do nothing if no results
         paths = clist.selection
         if len(paths) == 0:
             self.ShowErrors(_("None selected"))
-            return False
+            return False, True
         else:
             if len(paths) == 1:
                 question += _(" this item?\n")
             else:
                 question += _(" these %d items?\n") % len(paths)
-            (response, input) = self.msgbox(question, ('Yes', 'No'))
+            (response, again) = self.msgbox(question, ('Yes', 'No'), again=True)
             if response != "Yes":
-                return False
-            return True
+                return (False, again)
+            return (True, again)
 
     #################
     # Signal handlers
@@ -1204,6 +1236,13 @@ on your system at present."))
             pass
         return True
 
+    #Note Ctrl-C as well as doing "copy path" which is handled here,
+    #also cancels a find in progress. That doesn't need to be handled here
+    #because the stop button grabs focus during the find operation.
+    #
+    #Note also that, we need a global handler here for all lists
+    #as in GTK, keyboard events specifically are sent to the window first,
+    #rather than the widget. The alternative is to add handlers to all lists.
     def on_fslint_keypress(self, button, event):
         #ingore capslock and numlock
         state = event.state & ~(gtk.gdk.LOCK_MASK | gtk.gdk.MOD2_MASK)
@@ -1214,6 +1253,13 @@ on your system at present."))
         if state == 0:
             if event.keyval in (ksyms.F2,):
                 self.on_rename_activate(event)
+            if event.keyval in (ksyms.Delete,):
+                if self.ok_dirs.flags() & gtk.HAS_FOCUS:
+                    self.on_removeOkDir_clicked(event)
+                elif self.bad_dirs.flags() & gtk.HAS_FOCUS:
+                    self.on_removeBadDir_clicked(event)
+                elif self.clists[self.mode].flags() & gtk.HAS_FOCUS:
+                    self.on_delSelected_clicked(event)
 
     def on_saveAs_clicked(self, event):
         clist = self.clists[self.mode]
@@ -1307,7 +1353,7 @@ on your system at present."))
                     os.rename(path_name, new_encoded_path)
                     row_data.pop(row)
                     clist.remove(row)
-                    self.clist_remove_empty_groups(clist)
+                    self.clist_remove_handled_groups(clist)
                 except OSError:
                     self.ShowErrors(str(sys.exc_value)+'\n')
 
@@ -1411,15 +1457,18 @@ on your system at present."))
     def on_selection_clicked(self, widget):
         self.on_selection_menu_button_press_event(self.selection, None)
 
-    def on_delSelected_clicked(self, event):
+    def on_delSelected_clicked(self, src):
         if self.mode == self.mode_pkgs:
             if os.geteuid() != 0:
                 self.msgbox(
                   _("Sorry, you must be root to delete system packages.")
                 )
                 return
-        if not self.check_user(_("Are you sure you want to delete")):
-            return
+        if self.confirm_delete:
+            (response, self.confirm_delete) =\
+            self.check_user(_("Are you sure you want to delete"))
+            if not response:
+                return
         clist = self.clists[self.mode]
         row_data = clist.get_data("row_data")
         paths_to_remove = clist.selection
@@ -1479,7 +1528,10 @@ on your system at present."))
             clist.remove(row)
             numDeleted += 1
 
-        self.clist_remove_empty_groups(clist)
+        if self.mode != self.mode_pkgs:
+            self.clist_remove_handled_groups(clist)
+
+        clist.select_row(clist.focus_row,0)
 
         clist.columns_autosize()
         clist.thaw()
@@ -1568,7 +1620,7 @@ on your system at present."))
         if len(paths_to_leave):
             question+=_("(Ignoring those selected)\n")
 
-        (response, input) = self.msgbox(question, ('Yes', 'No'))
+        (response,) = self.msgbox(question, ('Yes', 'No'))
         if response != "Yes":
             return
 
@@ -1611,7 +1663,7 @@ on your system at present."))
 
     def on_autoClean_clicked(self, event):
         if self.mode == self.mode_rs and self.chkTabs.get_active():
-            (response, input) = self.msgbox(
+            (response,) = self.msgbox(
               _("Which indenting method do you want to convert to?"),
               (N_('Tabs'), N_('Spaces'), 'Cancel')
             )
@@ -1621,8 +1673,12 @@ on your system at present."))
                 indents="--indent-tabs"
             else:
                 return
-        elif not self.check_user(_("Are you sure you want to clean")):
-            return
+        else:
+            if self.confirm_clean:
+                (response, self.confirm_clean) =\
+                self.check_user(_("Are you sure you want to clean"))
+                if not response:
+                    return
 
         if self.mode == self.mode_rs:
             if not self.chkTabs.get_active():
