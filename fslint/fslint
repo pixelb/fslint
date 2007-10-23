@@ -31,18 +31,18 @@ Usage() {
 A collection of utilities to find lint on a filesystem.
 To get more info on each utility run 'util --help'.
 
-findup	find DUPlicate files
-findnl	find Name Lint (problems with filenames)
-findu8  find filenames with invalid utf8 encoding
-findbl	find Bad Links (various problems with symlinks)
-findsn	find Same Name (problems with clashing names)
-finded	find Empty Directories
-findid	find files with dead user IDs
-findns	find Non Stripped executables
-findrs	find Redundant Whitespace in files <-
-findtf	find Temporary Files
-findul	find possibly Unused Libraries
-zipdir	Reclaim wasted space in ext2 directory entries"
+findup -- find DUPlicate files
+findnl -- find Name Lint (problems with filenames)
+findu8 -- find filenames with invalid utf8 encoding
+findbl -- find Bad Links (various problems with symlinks)
+findsn -- find Same Name (problems with clashing names)
+finded -- find Empty Directories
+findid -- find files with dead user IDs
+findns -- find Non Stripped executables
+findrs -- find Redundant Whitespace in files
+findtf -- find Temporary Files
+findul -- find possibly Unused Libraries
+zipdir -- Reclaim wasted space in ext2 directory entries"
 	exit
 }
 
