@@ -20,7 +20,7 @@
 # This is slow as it starts an iconv process per file,
 # but it mitigates this by filtering out ascii only names beforehand.
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver

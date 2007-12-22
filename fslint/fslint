@@ -20,7 +20,7 @@
 # This is just a simple wrapper for the various commands.
 # This assumes all commands are in same dir.
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
@@ -57,23 +57,23 @@ do
 done
 
 echo "-----------------------------------file name lint"
-$script_dir/findnl "$@"
+"$script_dir"/findnl "$@"
 echo "-------------------------------Invalid utf8 names"
-$script_dir/findu8 "$@"
+"$script_dir"/findu8 "$@"
 echo "-----------------------------------file case lint"
-$script_dir/findsn -c "$@"
+"$script_dir"/findsn -c "$@"
 echo "----------------------------------DUPlicate files"
-$script_dir/findup "$@"
+"$script_dir"/findup "$@"
 echo "-----------------------------------Dangling links"
-$script_dir/findbl "$@"
+"$script_dir"/findbl "$@"
 echo "--------------------redundant characters in links"
-$script_dir/findbl -n "$@"
+"$script_dir"/findbl -n "$@"
 echo "------------------------------------suspect links"
-$script_dir/findbl -s "$@"
+"$script_dir"/findbl -s "$@"
 echo "--------------------------------Empty Directories"
-$script_dir/finded "$@"
+"$script_dir"/finded "$@"
 echo "----------------------------------Temporary Files"
-$script_dir/findtf "$@"
+"$script_dir"/findtf "$@"
 echo "----------------------duplicate/conflicting Names"
 if [ "$1" = "/" ]; then
     "$script_dir"/findsn
@@ -81,7 +81,7 @@ else
     "$script_dir"/findsn "$@"
 fi
 echo "------------------------------------------Bad ids"
-$script_dir/findid "$@"
+"$script_dir"/findid "$@"
 echo "-------------------------Non Stripped executables"
 if [ "$1" = "/" ]; then
     "$script_dir"/findns

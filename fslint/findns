@@ -22,7 +22,7 @@
 # since there will be more seeking over disk and
 # therefore will be much slower.
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver

@@ -54,7 +54,7 @@
 #   symbolic links are ignored.
 #   path1 & path2 can be files &/or directories
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver

@@ -21,7 +21,7 @@
 #   the corresponding regexp would be? "^[ 	]*${2,}"
 # Note paths with : in names will not be processed correctly
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver

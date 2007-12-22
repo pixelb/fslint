@@ -30,7 +30,7 @@
 # look for it. Hmm I guess if there are any extended
 # attributes cpio will not copy them?
 
-script_dir=`dirname $0`                #directory of this script
+script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
