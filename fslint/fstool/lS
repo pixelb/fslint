@@ -23,8 +23,6 @@
 #they don't use space. Reiser does this for all (parts of) files less
 #than 1 block).
 
-script_dir=`dirname $0`
-
 if [ -d "$1" ]; then
     dir="$1"
     cd "$dir"
@@ -37,4 +35,3 @@ sort -k1,1n |
 cut -s -f2- |
 tr '\n' '\0' |
 xargs -r0 ls -lU --color=auto --
-

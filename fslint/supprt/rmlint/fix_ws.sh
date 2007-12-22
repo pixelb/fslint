@@ -3,7 +3,8 @@
 set -e #exit on error
 
 usage() {
-    echo "Usage: `basename $0`: --eol|'' --indent-spaces|--indent-tabs|'' indent_width filename" >&2
+    prog=`basename "$0"`
+    echo "Usage: $prog --eol|'' --indent-spaces|--indent-tabs|'' indent_width filename" >&2
     exit 1
 }
 
