@@ -5,6 +5,7 @@
 		* Use and document better syntax for excluding paths.
 		* Honour/sanitize user specified wildcards for excluding paths.
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
+		* Allow cli scripts to run from paths containing whitespace.
 	* Improvements:
 		* Make file deletion much easier by supporting the Delete key,
 		  auto removing groups from display when only 1 item remaining
@@ -43,7 +44,7 @@
 		  in the indenting at the start of a line, and the user
 		  can select to fix with tabs or spaces.
 		* Set mouse pointer to "busy interactive" during searches.
-		  This makes it more obvious that work is progressing and
+		  This makes it more obvious that work is progressing and that
 		  only parts of the GUI will be responsive.
 		* Simplify the default output from the findup CLI tool, to make
 		  it easier to pipe. Use the --sizes option to get old format.
