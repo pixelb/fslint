@@ -33,7 +33,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -85,7 +85,7 @@ then
 fi
 
 set -f #no globbing
-. $script_dir/supprt/getfpf -f "$argsToPassOn" #Force absolute path mode
+. "$script_dir"/supprt/getfpf -f "$argsToPassOn" #Force absolute path mode
 
 #Sanity checks in case user specifies any of these
 #can't process /bin as mv & rmdir here

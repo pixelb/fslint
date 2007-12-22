@@ -50,7 +50,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -110,7 +110,7 @@ search_expr="$search_expr|(${ASC_01}.+/$)" ;; #finds ending with /
 	esac
 done
 
-. $script_dir/supprt/getfpf "$argsToPassOn"
+. "$script_dir"/supprt/getfpf "$argsToPassOn"
 
 case "$mode" in
 suspect)

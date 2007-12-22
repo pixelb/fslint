@@ -25,7 +25,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -38,7 +38,7 @@ If no path(s) specified then the PATH is searched."
 
 if [ $# -eq "0" ] #Nothing on cmdline means search binary directories
 then
-	eval set -- `. $script_dir/supprt/getffp`
+	eval set -- `. "$script_dir"/supprt/getffp`
 	FPF="%p"
 else
 	for arg
@@ -52,7 +52,7 @@ else
 			argsToPassOn="$argsToPassOn '$arg'" ;;
 		esac
 	done
-	. $script_dir/supprt/getfpf "$argsToPassOn"
+	. "$script_dir"/supprt/getfpf "$argsToPassOn"
 fi
 
 find "$@" -type f -perm +111 ! -name "*$LF*" -printf "%i\t$FPF\n" |

@@ -17,7 +17,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
     ProgName=`basename "$0"`
@@ -59,9 +59,9 @@ if [ "$MIN_AGE" != "0" ]; then
 fi
 
 if [ "$force_full" = "yes" ]; then
-    . $script_dir/supprt/getfpf -f "$argsToPassOn"
+    . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
 else
-    . $script_dir/supprt/getfpf "$argsToPassOn"
+    . "$script_dir"/supprt/getfpf "$argsToPassOn"
 fi
 
 if [ "$core_mode" = "yes" ]; then

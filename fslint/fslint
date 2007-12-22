@@ -23,7 +23,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -76,15 +76,15 @@ echo "----------------------------------Temporary Files"
 $script_dir/findtf "$@"
 echo "----------------------duplicate/conflicting Names"
 if [ "$1" = "/" ]; then
-    $script_dir/findsn
+    "$script_dir"/findsn
 else
-    $script_dir/findsn "$@"
+    "$script_dir"/findsn "$@"
 fi
 echo "------------------------------------------Bad ids"
 $script_dir/findid "$@"
 echo "-------------------------Non Stripped executables"
 if [ "$1" = "/" ]; then
-    $script_dir/findns
+    "$script_dir"/findns
 else
-    $script_dir/findns "$@"
+    "$script_dir"/findns "$@"
 fi

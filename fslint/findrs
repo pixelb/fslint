@@ -24,7 +24,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -86,7 +86,7 @@ else
 	re="$eol"
 fi
 
-. $script_dir/supprt/getfpf "$argsToPassOn"
+. "$script_dir"/supprt/getfpf "$argsToPassOn"
 
 find "$@" -type f -size +0c ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
@@ -96,7 +96,7 @@ cut -f1 -d: -s |
 tr '\n' '\0' |
 if [ "$view" = "yes" ]; then
 	xargs -r0 grep -nE "$re" |
-	$script_dir/supprt/rmlint/view_ws.sh -
+	"$script_dir"/supprt/rmlint/view_ws.sh -
 elif [ "$count" = "yes" ]; then
 	xargs -r0 grep -Ec "$re" |
 	grep -vE "(:0$|^0$)" |

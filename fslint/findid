@@ -17,7 +17,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -40,7 +40,7 @@ do
 	esac
 done
 
-. $script_dir/supprt/getfpf "$argsToPassOn"
+. "$script_dir"/supprt/getfpf "$argsToPassOn"
 
 reUsers="`cut -f3 -d: /etc/passwd | tr '\n' '|'`0"
 reGroups="`cut -f3 -d: /etc/group | tr '\n' '|'`0"

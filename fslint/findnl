@@ -52,7 +52,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
 	ProgName=`basename "$0"`
@@ -145,7 +145,7 @@ characters1="$characters2()\"$|\\"
 eval expressions=\$expressions$level
 eval characters=\$characters$level
 
-. $script_dir/supprt/getfpf -f "$argsToPassOn"
+. "$script_dir"/supprt/getfpf -f "$argsToPassOn"
 #forcing -f as expressions assume / before name
 #Note could run through basename after if required?
 

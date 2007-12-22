@@ -57,7 +57,7 @@
 script_dir=`dirname $0`                #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
-. $script_dir/supprt/fslver
+. "$script_dir"/supprt/fslver
 
 Usage() {
     ProgName=`basename "$0"`
@@ -72,7 +72,7 @@ When -d is specified any found duplicates will be deleted (leaving just 1).
 When -t is specfied, only report what -m or -d would do.
 
 When --summary is specified change output format to include file sizes.
-You can also pipe this summary format to $script_dir/fstool/dupwaste
+You can also pipe this summary format to "$script_dir"/fstool/dupwaste
 to get a total of the wastage due to duplicates.
 
 Examples:
@@ -88,7 +88,7 @@ search for duplicates in /usr/bin
 search in multiple directories but not their subdirectories
     findup -r /usr/bin /bin /usr/sbin /sbin
 search for duplicates in \$PATH
-    findup \`$script_dir/supprt/getffp\`
+    findup \`"$script_dir"/supprt/getffp\`
 search system for duplicate files over 100K in size
     findup / -size +100k
 search only my files (that I own and are in my home dir)
@@ -134,7 +134,7 @@ if [ "$mode" = "summary" ]; then
     merge_early="-u"
 fi
 
-. $script_dir/supprt/getfpf "$argsToPassOn"
+. "$script_dir"/supprt/getfpf "$argsToPassOn"
 
 check_uniq
 
@@ -151,7 +151,7 @@ sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes
 if [ -z "$merge_early" ]; then
-    $script_dir/supprt/rmlint/merge_hardlinks
+    "$script_dir"/supprt/rmlint/merge_hardlinks
 else
     uniq -3 -D       #pick just duplicate filesizes
 fi |
@@ -163,8 +163,8 @@ tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
 # which can help when there are many files of the same size,
 # even more so if they are large. This usually adds a small amount of
 # runtime, however it can save a large amount of time in certain situations.
-if $script_dir/supprt/md5sum_approx </dev/null 2>/dev/null; then
-    xargs -r0 $script_dir/supprt/md5sum_approx |
+if "$script_dir"/supprt/md5sum_approx </dev/null 2>/dev/null; then
+    xargs -r0 "$script_dir"/supprt/md5sum_approx |
     sort |                     #group duplicate files together
     uniq --all-repeated -w32 | #pick just duplicates
     cut -d' ' -f3- |           #get filenames
@@ -195,10 +195,10 @@ cut -d' ' -f3- |           #get filenames (and leave separating lines)
 
 if [ "$mode" ]; then
   if [ ! $mode = "summary" ]; then # external call to python as this is faster
-    if $script_dir/supprt/rmlint/fixdup.py </dev/null 2>/dev/null; then
-        $script_dir/supprt/rmlint/fixdup.py $t$mode
-    elif $script_dir/supprt/rmlint/fixdup.sh </dev/null 2>/dev/null; then
-        $script_dir/supprt/rmlint/fixdup.sh $t$mode
+    if "$script_dir"/supprt/rmlint/fixdup.py </dev/null 2>/dev/null; then
+        "$script_dir"/supprt/rmlint/fixdup.py $t$mode
+    elif "$script_dir"/supprt/rmlint/fixdup.sh </dev/null 2>/dev/null; then
+        "$script_dir"/supprt/rmlint/fixdup.sh $t$mode
     else
         echo "Error, couldn't execute merge util" >&2
         exit 1
