@@ -40,7 +40,8 @@ do
 	esac
 done
 
-. "$script_dir"/supprt/getfpf "$argsToPassOn"
+. "$script_dir"/supprt/getfpf -f "$argsToPassOn"
+#forcing -f as if specify an empty dir it would not display
 
 find "$@" -empty -type d ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge dirs (indirectly) specified multiple times
