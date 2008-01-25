@@ -970,12 +970,16 @@ on your system at present."))
                 numdups = 0
                 inodes = {}
             else:
-                pi = pathInfo(line)
-                size, du = (pi.size, pi.du)
-                dups.append((line, pi.ls_date, pi.mtime))
-                if not inodes.has_key(pi.inode):
-                    inodes[pi.inode] = True
-                    numdups = numdups + 1
+                try:
+                    pi = pathInfo(line)
+                    size, du = (pi.size, pi.du)
+                    dups.append((line, pi.ls_date, pi.mtime))
+                    if not inodes.has_key(pi.inode):
+                        inodes[pi.inode] = True
+                        numdups = numdups + 1
+                except OSError:
+                    #file may have been deleted, changed permissions, ...
+                    self.ShowErrors(str(sys.exc_value)+'\n')
         else:
             if len(inodes)>1:
                 alldups.append(((numdups-1)*du, numdups, size, dups))
