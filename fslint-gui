@@ -207,6 +207,45 @@ def human_num(num, divisor=1, power=""):
         num = locale.format("%4ld  ",num,1)
     return "%s%s" % (num,power)
 
+class pathInfo:
+    """Gets path info appropriate for display, i.e.
+        (ls_colour, du, size, uid, gid, ls_date, mtime)"""
+
+    def __init__(self, path):
+        stat_val = os.lstat(path)
+
+        date = time.ctime(stat_val[stat.ST_MTIME])
+        month_time = date[4:16]
+        year = date[-5:]
+        timediff = time.time()-stat_val[stat.ST_MTIME]
+        if timediff > 15552000: #6months
+            date = month_time[0:6] + year
+        else:
+            date = month_time
+
+        mode = stat_val[stat.ST_MODE]
+        if stat.S_ISREG(mode):
+            colour = '' #default
+            if mode & (stat.S_IXGRP|stat.S_IXUSR|stat.S_IXOTH):
+                colour = "#00C000"
+        elif stat.S_ISDIR(mode):
+            colour = "blue"
+        elif stat.S_ISLNK(mode):
+            colour = "cyan"
+            if not os.path.exists(path):
+                colour = "#C00000"
+        else:
+            colour = "tan"
+
+        self.ls_colour = colour
+        self.du = stat_val.st_blocks*512
+        self.size = stat_val[stat.ST_SIZE]
+        self.uid = stat_val[stat.ST_UID]
+        self.gid = stat_val[stat.ST_GID]
+        self.ls_date = date
+        self.mtime = stat_val[stat.ST_MTIME]
+        self.inode = stat_val[stat.ST_INO]
+
 class GladeWrapper:
     """
     Superclass for glade based applications. Just derive from this
@@ -698,41 +737,6 @@ class fslint(GladeWrapper):
                     clist.remove(row)
                     row_data.pop(row)
 
-
-    def get_path_info(self, path):
-        """Returns path info appropriate for display, i.e.
-           (color, size, ondisk_size, username, groupname, mtime_ls_date)"""
-
-        stat_val = os.lstat(path)
-
-        date = time.ctime(stat_val[stat.ST_MTIME])
-        month_time = date[4:16]
-        year = date[-5:]
-        timediff = time.time()-stat_val[stat.ST_MTIME]
-        if timediff > 15552000: #6months
-            date = month_time[0:6] + year
-        else:
-            date = month_time
-
-        mode = stat_val[stat.ST_MODE]
-        if stat.S_ISREG(mode):
-            colour = '' #default
-            if mode & (stat.S_IXGRP|stat.S_IXUSR|stat.S_IXOTH):
-                colour = "#00C000"
-        elif stat.S_ISDIR(mode):
-            colour = "blue"
-        elif stat.S_ISLNK(mode):
-            colour = "cyan"
-            if not os.path.exists(path):
-                colour = "#C00000"
-        else:
-            colour = "tan"
-
-        size=stat_val.st_blocks*512
-
-        return (colour, stat_val[stat.ST_SIZE], size, stat_val[stat.ST_UID],
-                stat_val[stat.ST_GID], date, stat_val[stat.ST_MTIME])
-
     def whatRequires(self, packages, level=0):
         if not packages: return
         if level==0: self.checked_pkgs={}
@@ -801,8 +805,9 @@ on your system at present."))
         po, pe = self.get_fslint("./findrs " + options + self.findParams)
         row = 0
         for line in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
-            self.clist_append_path(clist_rs, line, colour, str(fsize), date)
+            pi = pathInfo(line)
+            self.clist_append_path(clist_rs, line,
+                                   pi.ls_colour, str(pi.size), pi.ls_date)
             row=row+1
 
         return (str(row) + _(" files"), pe)
@@ -815,14 +820,14 @@ on your system at present."))
 
         unstripped=[]
         for line in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
-            unstripped.append((fsize, line, date))
+            pi = pathInfo(line)
+            unstripped.append((pi.size, line, pi.ls_date))
         unstripped.sort()
         unstripped.reverse()
 
         row = 0
-        for fsize, path, date in unstripped:
-            self.clist_append_path(clist_ns, path, '', human_num(fsize), date)
+        for size, path, ls_date in unstripped:
+            self.clist_append_path(clist_ns, path, '', human_num(size), ls_date)
             row += 1
 
         return (str(row) + _(" unstripped binaries"), pe)
@@ -831,8 +836,7 @@ on your system at present."))
         po, pe = self.get_fslint("./finded " + self.findParams, '\0')
         row = 0
         for line in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
-            self.clist_append_path(clist_ed, line, '', date)
+            self.clist_append_path(clist_ed, line, '', pathInfo(line).ls_date)
             row += 1
 
         return (str(row) + _(" empty directories"), pe)
@@ -841,9 +845,9 @@ on your system at present."))
         po, pe = self.get_fslint("./findid " + self.findParams, '\0')
         row = 0
         for record in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(record)
-            self.clist_append_path(clist_id, record, colour,
-                                   str(uid), str(gid), str(fsize), date)
+            pi = pathInfo(record)
+            self.clist_append_path(clist_id, record, pi.ls_colour, str(pi.uid),
+                                   str(pi.gid), str(pi.size), ps.ls_date)
             row += 1
 
         return (str(row) + _(" files"), pe)
@@ -878,9 +882,9 @@ on your system at present."))
         row = 0
         byteWaste = 0
         for line in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
-            self.clist_append_path(clist_tf, line, '', str(fsize), date)
-            byteWaste+=size
+            pi = pathInfo(line)
+            self.clist_append_path(clist_tf, line, '', str(pi.size), pi.ls_date)
+            byteWaste+=pi.du
             row += 1
 
         return (human_num(byteWaste) + _(" bytes wasted in ") +
@@ -920,9 +924,10 @@ on your system at present."))
                 self.clist_append_group_row(clist_sn, ['','',''])
                 findsn_groups += 1
             else:
-                colour,fsize,size,uid,gid,date,mtime=self.get_path_info(record)
-                self.clist_append_path(clist_sn, record, colour, str(fsize))
-                clist_sn.set_row_data(clist_sn.rows-1,mtime)
+                pi = pathInfo(record)
+                self.clist_append_path(clist_sn, record,
+                                       pi.ls_colour, str(pi.size))
+                clist_sn.set_row_data(clist_sn.rows-1, pi.mtime)
                 findsn_number += 1
             row += 1
         if findsn_number:
@@ -942,8 +947,7 @@ on your system at present."))
 
         row=0
         for record in po:
-            colour,fsize,size,uid,gid,date,mtime = self.get_path_info(record)
-            self.clist_append_path(clist_nl, record, colour)
+            self.clist_append_path(clist_nl, record, pathInfo(record).ls_colour)
             row += 1
 
         return (str(row) + _(" files"), pe)
@@ -952,7 +956,7 @@ on your system at present."))
         po, pe = self.get_fslint("./findup " + self.findParams)
 
         numdups = 0
-        size = fsize = 0
+        du = size = 0
         dups = []
         alldups = []
         inodes = {}
@@ -961,20 +965,20 @@ on your system at present."))
         for line in po:
             if line == '': #grouped == 1
                 if len(inodes)>1:
-                    alldups.append(((numdups-1)*size, numdups, fsize, dups))
+                    alldups.append(((numdups-1)*du, numdups, size, dups))
                 dups = []
                 numdups = 0
                 inodes = {}
             else:
-                colour,fsize,size,uid,gid,date,mtime = self.get_path_info(line)
-                dups.append((line,date,mtime))
-                inode = os.lstat(line)[stat.ST_INO]
-                if not inodes.has_key(inode):
-                    inodes[inode] = True
+                pi = pathInfo(line)
+                size, du = (pi.size, pi.du)
+                dups.append((line, pi.ls_date, pi.mtime))
+                if not inodes.has_key(pi.inode):
+                    inodes[pi.inode] = True
                     numdups = numdups + 1
         else:
             if len(inodes)>1:
-                alldups.append(((numdups-1)*size, numdups, fsize, dups))
+                alldups.append(((numdups-1)*du, numdups, size, dups))
 
         alldups.sort()
         alldups.reverse()
@@ -982,10 +986,10 @@ on your system at present."))
         byteWaste = 0
         numWaste = 0
         row=0
-        for groupWaste, groupSize, FilesSize, files in alldups:
+        for groupWaste, groupSize, size, files in alldups:
             byteWaste += groupWaste
             numWaste += groupSize - 1
-            groupHeader = ["%d x %s" % (groupSize, human_num(FilesSize)),
+            groupHeader = ["%d x %s" % (groupSize, human_num(size)),
                            "(%s)" % human_num(groupWaste),
                            _("bytes wasted")]
             self.clist_append_group_row(clist_dups, groupHeader)
