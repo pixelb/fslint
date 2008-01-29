@@ -575,6 +575,7 @@ class fslint(GladeWrapper):
         self.pkg_info.modify_base(gtk.STATE_NORMAL,self.bg_colour)
         #Other GUI stuff that ideally [lib]glade should support
         self.clist_pkgs.set_column_visibility(2,0)
+        self.clist_pkgs.set_column_visibility(3,0)
         self.clist_ns.set_column_justification(2,gtk.JUSTIFY_RIGHT)
 
     def _alloc_mouse_cursors(self):
@@ -785,7 +786,7 @@ on your system at present."))
                 pkg_size = pkg_size*1024
             pkg_tot += pkg_size
             clist_pkgs.append([pkg_name,human_num(pkg_size,1000).strip(),
-                               "%010ld"%pkg_size])
+                               "%010ld"%pkg_size,"0"])
             clist_pkgs.set_row_data(row, pkg_name)
             row=row+1
 
@@ -1484,10 +1485,12 @@ on your system at present."))
         paths_to_remove.reverse() #so deleting works correctly
         numDeleted = 0
         if self.mode == self.mode_pkgs:
+            #get pkg names to delete
             pkgs_selected = []
             for row in paths_to_remove:
                 package = clist.get_row_data(row)
                 pkgs_selected.append(package)
+            #determine if we need to select more packages
             self.status.set_text(_("Calculating dependencies..."))
             while gtk.events_pending(): gtk.main_iteration(False)
             all_deps=self.whatRequires(pkgs_selected)
@@ -1500,6 +1503,10 @@ on your system at present."))
                         for row in range(clist.rows):
                             if package == clist.get_row_data(row):
                                 clist.select_row(row,0)
+
+                #make it easy to review by grouping all selected packages
+                self.clist_pkgs_sort_by_selection(clist)
+
                 self.msgbox(
                   _("%d extra packages need to be deleted.\n") % num_new_pkgs +
                   _("Please review the updated selection.")
@@ -1547,6 +1554,18 @@ on your system at present."))
         if self.mode == self.mode_pkgs:
            status += ". " + human_space_left('/')
         self.status.set_text(status)
+
+    def clist_pkgs_sort_by_selection(self, clist):
+        selection = clist.selection
+        for row in range(clist.rows):
+            if row in selection:
+                clist.set_text(row,3,"1")
+            else:
+                clist.set_text(row,3,"0")
+        clist.set_sort_type(gtk.SORT_DESCENDING)
+        clist.set_sort_column(3)
+        clist.sort()
+        clist.moveto(0,0,0.0,0.0)
 
     def on_clist_pkgs_click_column(self, clist, col):
         self.clist_pkgs_order[col] = not self.clist_pkgs_order[col]
