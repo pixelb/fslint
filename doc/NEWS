@@ -9,11 +9,11 @@
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
 		* Allow cli scripts to run from paths containing whitespace.
 	* Improvements:
-		* Make file deletion much easier by supporting the Delete key,
+		* Make file deletion much easier by supporting the 'Delete' key,
 		  auto removing groups from display when only 1 item remaining
 		  and giving the option to not confirm every delete operation.
-		* When packages for deletion are auto selected due to
-		  dependencies, group all selected packages for easier review.
+		* When we auto select packages for deletion due to dependencies,
+		  group all selected packages together for easier review.
 
 2.24 19/09/07
 	* Translations:

@@ -1466,6 +1466,84 @@ on your system at present."))
     def on_selection_clicked(self, widget):
         self.on_selection_menu_button_press_event(self.selection, None)
 
+    def clist_pkgs_sort_by_selection(self, clist):
+        selection = clist.selection
+        for row in range(clist.rows):
+            if row in selection:
+                clist.set_text(row,3,"1")
+            else:
+                clist.set_text(row,3,"0")
+        clist.set_sort_type(gtk.SORT_DESCENDING)
+        clist.set_sort_column(3)
+        clist.sort()
+        clist.moveto(0,0,0.0,0.0)
+
+    def on_clist_pkgs_click_column(self, clist, col):
+        self.clist_pkgs_order[col] = not self.clist_pkgs_order[col]
+        if self.clist_pkgs_order[col]:
+            clist.set_sort_type(gtk.SORT_ASCENDING)
+        else:
+            clist.set_sort_type(gtk.SORT_DESCENDING)
+        try:
+            #focus_row is not updated after ordering, so can't use
+            #last_selected=clist.get_row_data(clist.focus_row)
+            last_selected=self.clist_pkgs_last_selected
+        except:
+            last_selected=0
+        if col==0:
+            clist.set_sort_column(0)
+        else:
+            clist.set_sort_column(2)
+        clist.sort() #note ascii sort (locale ignored)
+        #could instead just use our "row_data" and
+        #repopulate the gtkclist with something like:
+        #row_data = clist.get_data("row_data")
+        #row_data.sort(key = lambda x:x[col],
+        #              reverse = not self.clist_pkgs_order[col])
+        if last_selected:
+            #Warning! As of pygtk2-2.4.0 at least
+            #find_row_from_data only compares pointers, not strings!
+            last_selected_row=clist.find_row_from_data(last_selected)
+            clist.moveto(last_selected_row,0,0.5,0.0)
+            #clist.set_focus_row(last_selected_row)
+        else:
+            clist.moveto(0,0,0.0,0.0)
+
+    #Note the events and event ordering provided by the GtkClist
+    #make it very hard to provide robust and performant handlers
+    #for selected rows. These flags are an attempt to stop the
+    #function below from being called too frequently.
+    #Note most users will scoll the list with {Up,Down} rather
+    #than Ctrl+{Up,Down}, but at worst this will result in slow scrolling.
+    def on_clist_pkgs_button_press(self, list, event):
+        if event.button == 3:
+            self.on_selection_menu_button_press_event(list, event)
+        else:
+            self.clist_pkgs_user_input=True
+    def on_clist_pkgs_key_press(self, *args):
+        self.clist_pkgs_user_input=True
+
+    def on_clist_pkgs_selection_changed(self, clist, *args):
+        self.pkg_info.get_buffer().set_text("")
+        if not self.clist_pkgs_user_input:
+            self.clist_pkgs_last_selected=False
+            return
+        self.clist_pkgs_user_input=False
+        if len(clist.selection) == 0:
+            return
+        pkg=clist.get_row_data(clist.selection[-1])
+        self.clist_pkgs_last_selected=pkg #for ordering later
+        if dist_type.rpm:
+            cmd = "rpm -q --queryformat '%{DESCRIPTION}' "
+        elif dist_type.deb:
+            cmd = "dpkg-query -W --showformat='${Description}' "
+        cmd += pkg
+        pkg_process = subProcess(cmd)
+        pkg_process.read()
+        lines=pkg_process.outdata
+        self.pkg_info.get_buffer().set_text(I18N.displayable_utf8(lines,"\n"))
+        del(pkg_process)
+
     def on_delSelected_clicked(self, src):
         if self.mode == self.mode_pkgs:
             if os.geteuid() != 0:
@@ -1554,85 +1632,6 @@ on your system at present."))
         if self.mode == self.mode_pkgs:
            status += ". " + human_space_left('/')
         self.status.set_text(status)
-
-    def clist_pkgs_sort_by_selection(self, clist):
-        selection = clist.selection
-        for row in range(clist.rows):
-            if row in selection:
-                clist.set_text(row,3,"1")
-            else:
-                clist.set_text(row,3,"0")
-        clist.set_sort_type(gtk.SORT_DESCENDING)
-        clist.set_sort_column(3)
-        clist.sort()
-        clist.moveto(0,0,0.0,0.0)
-
-    def on_clist_pkgs_click_column(self, clist, col):
-        self.clist_pkgs_order[col] = not self.clist_pkgs_order[col]
-        if self.clist_pkgs_order[col]:
-            clist.set_sort_type(gtk.SORT_ASCENDING)
-        else:
-            clist.set_sort_type(gtk.SORT_DESCENDING)
-        try:
-            #focus_row is not updated after ordering, so can't use
-            #last_selected=clist.get_row_data(clist.focus_row)
-            last_selected=self.clist_pkgs_last_selected
-        except:
-            last_selected=0
-        if col==0:
-            clist.set_sort_column(0)
-        else:
-            clist.set_sort_column(2)
-        clist.sort()
-        #could instead just use our "row_data" and
-        #repopulate the gtkclist with something like:
-        #row_data = clist.get_data("row_data")
-        #row_data.sort(key = lambda x:x[col],
-        #              reverse = not self.clist_pkgs_order[col])
-        if last_selected:
-            #Warning! As of pygtk2-2.4.0 at least
-            #find_row_from_data only compares pointers, not strings!
-            last_selected_row=clist.find_row_from_data(last_selected)
-            clist.moveto(last_selected_row,0,0.5,0.0)
-            #clist.set_focus_row(last_selected_row)
-        else:
-            clist.moveto(0,0,0.0,0.0)
-
-
-    #Note the events and event ordering provided by the GtkClist
-    #make it very hard to provide robust and performant handlers
-    #for selected rows. These flags are an attempt to stop the
-    #function below from being called too frequently.
-    #Note most users will scoll the list with {Up,Down} rather
-    #than Ctrl+{Up,Down}, but at worst this will result in slow scrolling.
-    def on_clist_pkgs_button_press(self, list, event):
-        if event.button == 3:
-            self.on_selection_menu_button_press_event(list, event)
-        else:
-            self.clist_pkgs_user_input=True
-    def on_clist_pkgs_key_press(self, *args):
-        self.clist_pkgs_user_input=True
-
-    def on_clist_pkgs_selection_changed(self, clist, *args):
-        self.pkg_info.get_buffer().set_text("")
-        if not self.clist_pkgs_user_input:
-            self.clist_pkgs_last_selected=False
-            return
-        self.clist_pkgs_user_input=False
-        if len(clist.selection) == 0:
-            return
-        pkg=clist.get_row_data(clist.selection[-1])
-        self.clist_pkgs_last_selected=pkg #for ordering later
-        if dist_type.rpm:
-            cmd = "rpm -q --queryformat '%{DESCRIPTION}' "
-        elif dist_type.deb:
-            cmd = "dpkg-query -W --showformat='${Description}' "
-        cmd += pkg
-        pkg_process = subProcess(cmd)
-        pkg_process.read()
-        lines=pkg_process.outdata
-        self.pkg_info.get_buffer().set_text(I18N.displayable_utf8(lines,"\n"))
-        del(pkg_process)
 
     def on_autoMerge_clicked(self, event):
         self.ClearErrors()
