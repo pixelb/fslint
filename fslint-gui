@@ -1626,7 +1626,6 @@ on your system at present."))
 
         clist.select_row(clist.focus_row,0)
 
-        clist.columns_autosize()
         clist.thaw()
         status = str(numDeleted) + _(" items deleted")
         if self.mode == self.mode_pkgs:

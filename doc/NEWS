@@ -10,8 +10,9 @@
 		* Allow cli scripts to run from paths containing whitespace.
 	* Improvements:
 		* Make file deletion much easier by supporting the 'Delete' key,
-		  auto removing groups from display when only 1 item remaining
-		  and giving the option to not confirm every delete operation.
+		  auto removing groups from display when only 1 item remaining,
+		  giving the option to not confirm every delete operation and
+		  not resetting column widths on every delete operation.
 		* When we auto select packages for deletion due to dependencies,
 		  group all selected packages together for easier review.
 
