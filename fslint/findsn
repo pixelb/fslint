@@ -161,7 +161,7 @@ esac |
    if [ $topipe = yes ]; then
       translate safe2pipe
    else
-      #change all this block to "translate safe2human" for grouped output
+      #one can change this block to "translate safe2human" for grouped output
       #Alternatively you can pipe output to "tr '\0' '\n'"
       sed '/^ *$/d' |
       translate safe2pipe |

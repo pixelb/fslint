@@ -1,6 +1,6 @@
 #!/bin/bash
 # This script shows the total space wasted by duplicate files
-# as reported by findup (pipe findup to this).
+# as reported by findup (pipe `findup --summary`to this).
 
 bytes=`cut -f1                            | # grab x * y
        sed -e 's/* \([0-9]*\)/* \1 - \1/' | # x * y --> x * y - y

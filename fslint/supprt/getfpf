@@ -14,7 +14,7 @@
 # Returns: printf format in $FPF (Find Path format)
 #          find parameters in "$@"
 #
-# ToDo: Have option when 1 dir specified
+# TODO: Have option when 1 dir specified
 #       which is not . or ./ or ./././. (use basename
 #       to reduce all these to .) then %p returned
 
