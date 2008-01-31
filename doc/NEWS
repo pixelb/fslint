@@ -8,6 +8,7 @@
 		* Honour/sanitize user specified wildcards for excluding paths.
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
 		* Allow cli scripts to run from paths containing whitespace.
+		* Fix erroneous reordering of certain find command parameters.
 	* Improvements:
 		* Make file deletion much easier by supporting the 'Delete' key,
 		  auto removing groups from display when only 1 item remaining,

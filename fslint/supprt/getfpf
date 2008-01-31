@@ -18,6 +18,9 @@
 #       which is not . or ./ or ./././. (use basename
 #       to reduce all these to .) then %p returned
 
+#change here was to support all find params I think
+#search for email about guy trying to ignore svn dirs
+
 num_files=0
 files=
 switches=
@@ -33,15 +36,12 @@ do
       #don't say onfindswitches=true since want to allow -r before paths
    -f) #force full paths even if only 1 specified
       forcefullpath=true ;;
-   -*|\(|\)) #pass other switches onto find
+   -*|\(|\)|!) #pass other switches onto find
       switches="$switches '$arg'"
       onfindswitches=true ;;
    *)
-      if [ -z "$arg" ]; then
-	 break #can only happen if "" passed so break
-      elif [ "$onfindswitches" = "true" ]; then
+      if [ "$onfindswitches" = "true" ]; then
          switches="$switches '$arg'"
-         onfindswitches=false #not required as no files after 1st switch
       else
          num_files=`expr $num_files + 1`
          if [ -z "$files" ]; then
