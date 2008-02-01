@@ -1,14 +1,14 @@
 # fslint Bahasa Melayu (Malay) (ms).
-# Copyright (C) 2005 Free Software Foundation, Inc.
+# Copyright (C) 2005-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the fslint package.
-# Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>, 2005.
+# Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: fslint\n"
+"Project-Id-Version: fslint 2.22\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-27 14:29+0100\n"
-"PO-Revision-Date: 2005-11-23 17:19+0800\n"
+"PO-Revision-Date: 2008-01-31 18:08+0800\n"
 "Last-Translator: Sharuzzaman Ahmat Raslan <sharuzzaman@myrealbox.com>\n"
 "Language-Team: Malay <translation-team-ms@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -25,37 +25,35 @@ msgstr "_Tukarnama..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
-msgstr ""
+msgstr "Pilih menggunakan wildcard"
 
 #: ../fslint.glade:110
 msgid "Unselect using wildcard"
-msgstr ""
+msgstr "Nyahpilih menggunakan wildcard"
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "kumpulan"
+msgstr "dalam kumpulan"
 
 #: ../fslint.glade:128
 msgid "Select all but first"
-msgstr ""
+msgstr "Pilih semua kecuali pertama"
 
 #: ../fslint.glade:137
 msgid "Select all but newest"
-msgstr ""
+msgstr "Pilih semua kecuali terbaru"
 
 #: ../fslint.glade:146
 msgid "Select all but oldest"
-msgstr ""
+msgstr "Pilih semua kecuali paling lama"
 
 #: ../fslint.glade:159
-#, fuzzy
 msgid "Toggle selection"
-msgstr "pemilihan"
+msgstr "Toggle pilihan"
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Unselect all"
-msgstr "Pilih Laluan"
+msgstr "Nyahpilih Semua"
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
@@ -122,7 +120,7 @@ msgstr "Saiz"
 
 #: ../fslint.glade:1092
 msgid "Installed packages"
-msgstr ""
+msgstr "Pakej dipasang"
 
 #: ../fslint.glade:1133
 msgid "Sensitivity="
@@ -130,7 +128,7 @@ msgstr "Kesensitifan="
 
 #: ../fslint.glade:1177
 msgid "invalid UTF8 mode?"
-msgstr ""
+msgstr "mod UTF8 tidak sah?"
 
 #: ../fslint.glade:1284
 msgid "Bad names"
@@ -255,11 +253,11 @@ msgstr "Binari tidak dipadatkan"
 
 #: ../fslint.glade:2559
 msgid "whitespace at end of line"
-msgstr ""
+msgstr "ruang putih di penghujung baris"
 
 #: ../fslint.glade:2584
 msgid "bad indenting for indent width"
-msgstr ""
+msgstr "indent buruk untuk lebar indent"
 
 #: ../fslint.glade:2746
 msgid "Redundant whitespace"
@@ -274,14 +272,12 @@ msgid "Stop"
 msgstr "Henti"
 
 #: ../fslint.glade:2995
-#, fuzzy
 msgid "Select"
-msgstr "dipilih"
+msgstr "Pilih"
 
 #: ../fslint.glade:3026
-#, fuzzy
 msgid "Save (selected) list to file"
-msgstr "senarai ke fail"
+msgstr "Simpan senarai (dipilih) ke dalam fail"
 
 #: ../fslint.glade:3071
 msgid "Save"
@@ -296,11 +292,12 @@ msgid "Delete"
 msgstr "Padam"
 
 #: ../fslint.glade:3191
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
-msgstr "Semua (kecuali dipilih0 menggunakan pautan kekal"
+msgstr ""
+"Semua (kecuali dipilih) menggunakan pautan kekal\n"
+"(atau symlink jika pada sistemfail berlainan)"
 
 #: ../fslint.glade:3237
 msgid "Merge"
@@ -330,7 +327,7 @@ msgstr "papar bantuan"
 #: ../fslint-gui:358
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr ""
+msgstr "%(percent)s dari %(disk)s digunakan meninggalkan %(size)sB masih ada"
 
 #: ../fslint-gui:454
 msgid "Do you want to overwrite?\n"
@@ -338,56 +335,55 @@ msgstr "Adakah anda mahu tindih?\n"
 
 #: ../fslint-gui:460
 msgid "You can't overwrite "
-msgstr "Anda tidak menindih "
+msgstr "Anda tidak menindih"
 
 #: ../fslint-gui:493
 msgid "Files with the same content"
-msgstr ""
+msgstr "Fail dengan kandungan sama"
 
 #: ../fslint-gui:494
 msgid "Installed packages ordered by disk usage"
-msgstr ""
+msgstr "Pakej dipasang disusun dengan penggunaan cakera"
 
 #: ../fslint-gui:495
 msgid "Problematic filenames"
-msgstr ""
+msgstr "Namafail bermasalah"
 
 #: ../fslint-gui:496
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
-msgstr "Fail Konflik"
+msgstr "Kemungkinan konflik arahan atau namafail"
 
 #: ../fslint-gui:497
 msgid "Possibly old temporary files"
-msgstr ""
+msgstr "Kemungkinan fail sementara lama"
 
 #: ../fslint-gui:498
 msgid "Problematic symbolic links"
-msgstr ""
+msgstr "Pautan simbolik bermasalah"
 
 #: ../fslint-gui:499
 msgid "Files with missing user IDs"
-msgstr ""
+msgstr "Fail dengan user ID hilang"
 
 #: ../fslint-gui:501
 msgid "Executables still containing debugging info"
-msgstr ""
+msgstr "Executable masih mengandungi maklumat nyahpepijat"
 
 #: ../fslint-gui:502
 msgid "Erroneous whitespace in a text file"
-msgstr ""
+msgstr "Ruangputih tidak betul dalam fail teks"
 
 #: ../fslint-gui:508
 msgid "Invalid path ["
-msgstr ""
+msgstr "Laluan tidak sah ["
 
 #: ../fslint-gui:549
 msgid "searching"
-msgstr ""
+msgstr "mencari"
 
 #: ../fslint-gui:559
 msgid "processing..."
-msgstr ""
+msgstr "memproses..."
 
 #: ../fslint-gui:587
 msgid "No search paths specified"
@@ -396,21 +392,21 @@ msgstr "Jangan cari laluan dinyatakan"
 #: ../fslint-gui:746
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr ""
+msgstr "Maaf, FSlint tidak menyokong fungsi ini pada sistem anda sekarang."
 
 #: ../fslint-gui:762
 msgid " packages, "
-msgstr ""
+msgstr " pakej, "
 
 #: ../fslint-gui:763
 #, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "menggunakan %sB. "
 
 #: ../fslint-gui:764
 #, python-format
 msgid "Note %s."
-msgstr ""
+msgstr "Nota %s."
 
 #: ../fslint-gui:782 ../fslint-gui:823 ../fslint-gui:861 ../fslint-gui:923
 msgid " files"
@@ -430,7 +426,7 @@ msgstr " pautan"
 
 #: ../fslint-gui:860 ../fslint-gui:972
 msgid " bytes wasted in "
-msgstr " byte terbuang dalam "
+msgstr " byte membazir dalam "
 
 #: ../fslint-gui:905 ../fslint-gui:973
 msgid " files (in "
@@ -442,16 +438,15 @@ msgstr " kumpulan)"
 
 #: ../fslint-gui:964
 msgid "bytes wasted"
-msgstr "byte terbuang"
+msgstr "byte membazir"
 
 #: ../fslint-gui:1039
 msgid "None selected"
 msgstr "Tiada satu dipilih"
 
 #: ../fslint-gui:1043
-#, fuzzy
 msgid " this item?\n"
-msgstr " item?\n"
+msgstr " item ini?\n"
 
 #: ../fslint-gui:1045
 #, python-format
@@ -469,42 +464,42 @@ msgstr "Tukarnama:"
 #: ../fslint-gui:1275 ../fslint-gui:1316
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr ""
+msgstr "Ralat: [%s] tidak dapat dipaparkan pada sistem fail anda"
 
 #: ../fslint-gui:1285
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
 msgstr ""
+"Ralat: Tidak dapat menukar nama [%(old_path)s] kerana [%(new_path)s] wujud"
 
 #: ../fslint-gui:1305
 msgid "wildcard:"
-msgstr ""
+msgstr "wildcard:"
 
 #: ../fslint-gui:1400
 msgid "Sorry, you must be root to delete system packages."
-msgstr ""
+msgstr "Maaf, anda mesti sebagai root untuk memadam pakej sistem."
 
 #: ../fslint-gui:1403
-#, fuzzy
 msgid "Are you sure you want to delete"
-msgstr "Anda pasti anda mahu membuang"
+msgstr "Anda pasti untuk memadam"
 
 #: ../fslint-gui:1416
 msgid "Calculating dependencies..."
-msgstr ""
+msgstr "Mengira kebergantungan..."
 
 #: ../fslint-gui:1429
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr ""
+msgstr "%d pakej ekstra perlu dibuang.\n"
 
 #: ../fslint-gui:1430
 msgid "Please review the updated selection."
-msgstr ""
+msgstr "Sila tinjau pilihan dikemaskini."
 
 #: ../fslint-gui:1438
 msgid "Removing packages..."
-msgstr ""
+msgstr "Membuang pakej..."
 
 #: ../fslint-gui:1468
 msgid " items deleted"
@@ -520,20 +515,19 @@ msgstr "(Mengabaikan yang dipilih)\n"
 
 #: ../fslint-gui:1597
 msgid "Which indenting method do you want to convert to?"
-msgstr ""
+msgstr "Kaedah indent mana yang anda hendak ditukarkan kepada?"
 
 #: ../fslint-gui:1598
 msgid "Tabs"
-msgstr ""
+msgstr "Tab"
 
 #: ../fslint-gui:1598
 msgid "Spaces"
-msgstr ""
+msgstr "Ruang"
 
 #: ../fslint-gui:1606
-#, fuzzy
 msgid "Are you sure you want to clean"
-msgstr "Anda pasti anda mahu membersihkan ini"
+msgstr "Anda pasti anda mahu membersihkan"
 
 #: ../fslint-gui:1648
 msgid " items cleaned ("

@@ -1,4 +1,6 @@
 2.25 dd/mm/yy
+	* Translations:
+		* Updated: Malay.
 	* Fixes:
 		* Don't ignore duplicate files with '\' chars in the path.
 		  This issue was reported by Andrew U. Frank.
