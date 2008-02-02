@@ -18,6 +18,8 @@
 		  not resetting column widths on every delete operation.
 		* When we auto select packages for deletion due to dependencies,
 		  group all selected packages together for easier review.
+		* Indicate using the mouse pointer that the application is busy,
+		  during the possibly long cleaning/deleting/merging processes.
 
 2.24 19/09/07
 	* Translations:

@@ -597,6 +597,7 @@ class fslint(GladeWrapper):
             self.LEFT_PTR_WATCH=None #default cursor
         self.SB_V_DOUBLE_ARROW=gtk.gdk.Cursor(gtk.gdk.SB_V_DOUBLE_ARROW)
         self.XTERM=gtk.gdk.Cursor(gtk.gdk.XTERM) #I beam
+        self.WATCH=gtk.gdk.Cursor(gtk.gdk.WATCH) #hourglass
 
     def get_fslint(self, command, delim='\n'):
         self.fslintproc = subProcess(command)
@@ -1038,6 +1039,7 @@ on your system at present."))
                 width,height=window.get_size()
                 if width==handle_size or height==handle_size:
                     window.set_cursor(cursor)
+        while gtk.events_pending(): gtk.main_iteration(False)
 
     def look_busy(self):
         self.find.hide()
@@ -1554,6 +1556,7 @@ on your system at present."))
             self.check_user(_("Are you sure you want to delete"))
             if not response:
                 return
+        self.set_cursor(self.WATCH)
         clist = self.clists[self.mode]
         row_data = clist.get_data("row_data")
         paths_to_remove = clist.selection
@@ -1583,6 +1586,7 @@ on your system at present."))
                 #make it easy to review by grouping all selected packages
                 self.clist_pkgs_sort_by_selection(clist)
 
+                self.set_cursor(None)
                 self.msgbox(
                   _("%d extra packages need to be deleted.\n") % num_new_pkgs +
                   _("Please review the updated selection.")
@@ -1629,6 +1633,7 @@ on your system at present."))
         if self.mode == self.mode_pkgs:
            status += ". " + human_space_left('/')
         self.status.set_text(status)
+        self.set_cursor(None)
 
     def on_autoMerge_clicked(self, event):
         self.ClearErrors()
@@ -1647,6 +1652,7 @@ on your system at present."))
         if response != "Yes":
             return
 
+        self.set_cursor(self.WATCH)
         newGroup = 0
         row_data=clist.get_data("row_data")
         for row in range(clist.rows):
@@ -1683,6 +1689,7 @@ on your system at present."))
                         os.unlink(tmpfile)
                     except:
                         pass
+        self.set_cursor(None)
 
     def on_autoClean_clicked(self, event):
         if self.mode == self.mode_rs and self.chkTabs.get_active():
@@ -1703,6 +1710,7 @@ on your system at present."))
                 if not response:
                     return
 
+        self.set_cursor(self.WATCH)
         if self.mode == self.mode_rs:
             if not self.chkTabs.get_active():
                 indents="''"
@@ -1745,6 +1753,7 @@ on your system at present."))
         status =  str(numCleaned) + _(" items cleaned (") + \
                   human_num(totalSaved) + _(" bytes saved)")
         self.status.set_text(status)
+        self.set_cursor(None)
 
 FSlint=fslint(liblocation+"/fslint.glade", "fslint")
 
