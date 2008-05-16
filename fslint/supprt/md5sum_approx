@@ -2,14 +2,15 @@
 
 # md5sum CHUNK_SIZE bytes of file
 
-CHUNK_SIZE=512
+CHUNK_SIZE=512 #4096 for full file
 
-# Note this takes 60% more time than md5sum on FC4 at least,
-# when checksumming the whole file
+# Note this takes 60% more CPU than md5sum on FC4 at least,
+# when checksumming the whole file.
+# On F7 I retested it takes around 20% more CPU.
 
 #TODO: see how kernel readahead affects this
 
-import os,sys
+import os,sys,md5
 
 def md5sum(filename, CHUNK=CHUNK_SIZE):
     """takes filename, hand back Checksum of it"""
@@ -17,14 +18,13 @@ def md5sum(filename, CHUNK=CHUNK_SIZE):
     try:
         fo = open(filename, 'r', CHUNK)
 
-        import md5
         sum = md5.new()
 
         # To sum the whole file do:
         #chunk = fo.read
         #while chunk:
         #    chunk = fo.read(CHUNK)
-        #    sum.update(chunk)
+        #    sum.update(chunk) #update with nothing does not change sum
 
 
         # Note if seek past end of file then read() returns ''
@@ -52,5 +52,4 @@ def printsum(filename):
     except (IOError, OSError), value:
         sys.stderr.write("md5sum: %s: %s\n" % (filename, value.strerror))
 
-import sys
 map(printsum, sys.argv[1:])
