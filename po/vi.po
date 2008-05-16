@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-27 14:29+0100\n"
+"POT-Creation-Date: 2008-02-01 16:07+0000\n"
 "PO-Revision-Date: 2007-08-08 14:34+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com> \n"
@@ -92,21 +92,21 @@ msgstr "tham số lọc tìm thêm nữa"
 msgid "Advanced search parameters"
 msgstr "Tham số tìm kiếm nâng cấp"
 
-#: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1230
-#: ../fslint.glade:1539 ../fslint.glade:1751 ../fslint.glade:2005
-#: ../fslint.glade:2126 ../fslint.glade:2298 ../fslint.glade:2431
-#: ../fslint.glade:2654
+#: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1249
+#: ../fslint.glade:1558 ../fslint.glade:1770 ../fslint.glade:2024
+#: ../fslint.glade:2145 ../fslint.glade:2317 ../fslint.glade:2450
+#: ../fslint.glade:2675
 msgid "Name"
 msgstr "Tên"
 
-#: ../fslint.glade:866 ../fslint.glade:1249 ../fslint.glade:1558
-#: ../fslint.glade:1770 ../fslint.glade:2024 ../fslint.glade:2145
-#: ../fslint.glade:2317 ../fslint.glade:2450 ../fslint.glade:2673
+#: ../fslint.glade:866 ../fslint.glade:1268 ../fslint.glade:1577
+#: ../fslint.glade:1789 ../fslint.glade:2043 ../fslint.glade:2164
+#: ../fslint.glade:2336 ../fslint.glade:2469 ../fslint.glade:2694
 msgid "Directory"
 msgstr "Thư mục"
 
-#: ../fslint.glade:885 ../fslint.glade:1808 ../fslint.glade:2221
-#: ../fslint.glade:2336 ../fslint.glade:2488 ../fslint.glade:2711
+#: ../fslint.glade:885 ../fslint.glade:1827 ../fslint.glade:2240
+#: ../fslint.glade:2355 ../fslint.glade:2507 ../fslint.glade:2732
 msgid "Date"
 msgstr "Ngày"
 
@@ -114,185 +114,185 @@ msgstr "Ngày"
 msgid "Duplicates"
 msgstr "Bản sao"
 
-#: ../fslint.glade:997 ../fslint.glade:1577 ../fslint.glade:1789
-#: ../fslint.glade:2202 ../fslint.glade:2469 ../fslint.glade:2692
+#: ../fslint.glade:997 ../fslint.glade:1596 ../fslint.glade:1808
+#: ../fslint.glade:2221 ../fslint.glade:2488 ../fslint.glade:2713
 msgid "Size"
 msgstr "Cỡ"
 
-#: ../fslint.glade:1092
+#: ../fslint.glade:1111
 msgid "Installed packages"
 msgstr "Gói đã cài đặt"
 
-#: ../fslint.glade:1133
+#: ../fslint.glade:1152
 msgid "Sensitivity="
 msgstr "Độ nhạy="
 
-#: ../fslint.glade:1177
+#: ../fslint.glade:1196
 msgid "invalid UTF8 mode?"
 msgstr "chế độ UTF-8 không hợp lệ ?"
 
-#: ../fslint.glade:1284
+#: ../fslint.glade:1303
 msgid "Bad names"
 msgstr "Tên sai"
 
-#: ../fslint.glade:1319
+#: ../fslint.glade:1338
 msgid "Search ("
 msgstr "Tìm kiếm qua ("
 
-#: ../fslint.glade:1345
+#: ../fslint.glade:1364
 msgid "$PATH"
 msgstr "$PATH"
 
-#: ../fslint.glade:1364
+#: ../fslint.glade:1383
 msgid ") for"
 msgstr ") tìm"
 
-#: ../fslint.glade:1411 ../fslint-gui:869
+#: ../fslint.glade:1430 ../fslint-gui:899
 msgid "Conflicting files"
 msgstr "Tập tin xung đột"
 
-#: ../fslint.glade:1419 ../fslint.glade:1482 ../fslint-gui:867
-#: ../fslint-gui:876
+#: ../fslint.glade:1438 ../fslint.glade:1501 ../fslint-gui:897
+#: ../fslint-gui:906
 msgid "Aliases"
 msgstr "Bí danh"
 
-#: ../fslint.glade:1458 ../fslint-gui:882
+#: ../fslint.glade:1477 ../fslint-gui:912
 msgid "Case conflicts"
 msgstr "Chữ hoa/thường xung đột"
 
-#: ../fslint.glade:1466 ../fslint-gui:878
+#: ../fslint.glade:1485 ../fslint-gui:908
 msgid "Same names"
 msgstr "Cùng tên"
 
-#: ../fslint.glade:1474 ../fslint-gui:880
+#: ../fslint.glade:1493 ../fslint-gui:910
 msgid "Same names(ignore case)"
 msgstr "Cùng tên (bỏ qua chữ hoa/thường)"
 
-#: ../fslint.glade:1612
+#: ../fslint.glade:1631
 msgid "Name clashes"
 msgstr "Tên xung đột"
 
-#: ../fslint.glade:1647
+#: ../fslint.glade:1666
 msgid "More restrictive search for core files"
 msgstr "Tìm kiếm hạn chế hơn cho các tập tin lõi"
 
-#: ../fslint.glade:1649
+#: ../fslint.glade:1668
 msgid "core file mode?"
 msgstr "chế độ tập tin lõi ?"
 
-#: ../fslint.glade:1673
+#: ../fslint.glade:1692
 msgid "days"
 msgstr "ngày"
 
-#: ../fslint.glade:1693
+#: ../fslint.glade:1712
 msgid "minimum age"
 msgstr "hạn dùng tối thiểu"
 
-#: ../fslint.glade:1843
+#: ../fslint.glade:1862
 msgid "Temp files"
 msgstr "Tập tin tạm"
 
-#: ../fslint.glade:1879
+#: ../fslint.glade:1898
 msgid "Dangling"
 msgstr "Không hướng về gì"
 
-#: ../fslint.glade:1897
+#: ../fslint.glade:1916
 msgid "Absolute links to paths within or below the link's directory"
 msgstr "Liên kết tuyệt đối đến dường dẫn trong hay dưới thư mục của liên kết"
 
-#: ../fslint.glade:1899
+#: ../fslint.glade:1918
 msgid "Suspect"
 msgstr "Nghi"
 
-#: ../fslint.glade:1919
+#: ../fslint.glade:1938
 msgid "Relative"
 msgstr "Tương đối"
 
-#: ../fslint.glade:1939
+#: ../fslint.glade:1958
 msgid "Absolute"
 msgstr "Tuyệt đối"
 
-#: ../fslint.glade:1958
+#: ../fslint.glade:1977
 msgid "/././. ///// /../ etc."
 msgstr "/././. ///// /../ v.v."
 
-#: ../fslint.glade:1960
+#: ../fslint.glade:1979
 msgid "Redundant naming"
 msgstr "Đặt tên thừa"
 
-#: ../fslint.glade:2043
+#: ../fslint.glade:2062
 msgid "Target"
 msgstr "Đích"
 
-#: ../fslint.glade:2078
+#: ../fslint.glade:2097
 msgid "Bad symlinks"
 msgstr "Liên kết tượng trưng sai"
 
-#: ../fslint.glade:2164
+#: ../fslint.glade:2183
 msgid "UID"
 msgstr "UID"
 
-#: ../fslint.glade:2183
+#: ../fslint.glade:2202
 msgid "GID"
 msgstr "GID"
 
-#: ../fslint.glade:2256
+#: ../fslint.glade:2275
 msgid "Bad IDs"
 msgstr "ID sai"
 
-#: ../fslint.glade:2364 ../fslint-gui:500
+#: ../fslint.glade:2383 ../fslint-gui:555
 msgid "Empty directories"
 msgstr "Thư mục trống"
 
-#: ../fslint.glade:2394
+#: ../fslint.glade:2413
 msgid "Search $PATH"
 msgstr "Tìm kiếm qua $PATH"
 
-#: ../fslint.glade:2523
+#: ../fslint.glade:2542
 msgid "Non stripped binaries"
 msgstr "Tập tin nhị phân có bảng ký tự"
 
-#: ../fslint.glade:2559
+#: ../fslint.glade:2578
 msgid "whitespace at end of line"
 msgstr "khoảng trắng ở kết thúc dòng"
 
-#: ../fslint.glade:2584
+#: ../fslint.glade:2603
 msgid "bad indenting for indent width"
 msgstr "sai thụt lề cho độ rộng thụt lề"
 
-#: ../fslint.glade:2746
+#: ../fslint.glade:2767
 msgid "Redundant whitespace"
 msgstr "Khoảng trắng thừa"
 
-#: ../fslint.glade:2832
+#: ../fslint.glade:2853
 msgid "Find"
 msgstr "Tìm"
 
-#: ../fslint.glade:2907
+#: ../fslint.glade:2928
 msgid "Stop"
 msgstr "Dừng"
 
-#: ../fslint.glade:2995
+#: ../fslint.glade:3016
 msgid "Select"
 msgstr "Chọn"
 
-#: ../fslint.glade:3026
+#: ../fslint.glade:3047
 msgid "Save (selected) list to file"
 msgstr "Lưu danh sách (đã chọn) vào tập tin"
 
-#: ../fslint.glade:3071
+#: ../fslint.glade:3092
 msgid "Save"
 msgstr "Lưu"
 
-#: ../fslint.glade:3102 ../fslint.glade:3267
+#: ../fslint.glade:3123 ../fslint.glade:3275
 msgid "selected"
 msgstr "đã chọn"
 
-#: ../fslint.glade:3147
+#: ../fslint.glade:3168
 msgid "Delete"
 msgstr "Xóa"
 
-#: ../fslint.glade:3191
+#: ../fslint.glade:3199
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -300,238 +300,245 @@ msgstr ""
 "Tất cả (trừ cái đã chọn) bằng liên kết cứng\n"
 "(hay liên kết mềm nếu trên hệ thống tập tin khác)"
 
-#: ../fslint.glade:3237
+#: ../fslint.glade:3245
 msgid "Merge"
 msgstr "Trộn"
 
-#: ../fslint.glade:3312
+#: ../fslint.glade:3320
 msgid "Clean"
 msgstr "Gột"
 
-#: ../fslint.glade:3444
+#: ../fslint.glade:3452
 msgid "Select Path"
 msgstr "Chọn đường dẫn"
 
-#: ../fslint-gui:168
+#: ../fslint.glade:3603
+msgid "ask me this in future?"
+msgstr ""
+
+#: ../fslint-gui:167
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Cách sử dụng: %s [TÙY CHỌN] [ĐƯỜNG DẪN]"
 
-#: ../fslint-gui:169
+#: ../fslint-gui:168
 msgid "display version"
 msgstr "hiển thị phiên bản"
 
-#: ../fslint-gui:170
+#: ../fslint-gui:169
 msgid "display help"
 msgstr "hiển thị trợ giúp"
 
-#: ../fslint-gui:358
+#: ../fslint-gui:396
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
 msgstr "%(percent)s đĩa %(disk)s được chiếm, còn có rảnh %(size)sB"
 
-#: ../fslint-gui:454
+#: ../fslint-gui:507
 msgid "Do you want to overwrite?\n"
 msgstr "Bạn có muốn ghi đè không?\n"
 
-#: ../fslint-gui:460
+#: ../fslint-gui:513
 msgid "You can't overwrite "
 msgstr "Không thể ghi đè "
 
-#: ../fslint-gui:493
+#: ../fslint-gui:548
 msgid "Files with the same content"
 msgstr "Tập tin cùng nội dung"
 
-#: ../fslint-gui:494
+#: ../fslint-gui:549
 msgid "Installed packages ordered by disk usage"
 msgstr "Gói đã cài đặt đã sắp xếp theo cách sử dụng đĩa"
 
-#: ../fslint-gui:495
+#: ../fslint-gui:550
 msgid "Problematic filenames"
 msgstr "Tên tập tin mơ hồ"
 
-#: ../fslint-gui:496
+#: ../fslint-gui:551
 msgid "Possibly conflicting commands or filenames"
 msgstr "Lệnh hay tên tập có thể xung đột với nhau"
 
-#: ../fslint-gui:497
+#: ../fslint-gui:552
 msgid "Possibly old temporary files"
 msgstr "Tập tin tạm có thể cũ"
 
-#: ../fslint-gui:498
+#: ../fslint-gui:553
 msgid "Problematic symbolic links"
 msgstr "Liên kết mềm mơ hồ"
 
-#: ../fslint-gui:499
+#: ../fslint-gui:554
 msgid "Files with missing user IDs"
 msgstr "Tập tin còn thiếu ID người dùng"
 
-#: ../fslint-gui:501
+#: ../fslint-gui:556
 msgid "Executables still containing debugging info"
 msgstr "Tập tin có khả năng thực hiện vẫn còn chứa thông tin gỡ lỗi"
 
-#: ../fslint-gui:502
+#: ../fslint-gui:557
 msgid "Erroneous whitespace in a text file"
 msgstr "Sai khoảng trắng trong tập tin văn bản"
 
-#: ../fslint-gui:508
+#: ../fslint-gui:563
 msgid "Invalid path ["
 msgstr "Đường dẫn không hợp lệ ["
 
-#: ../fslint-gui:549
+#: ../fslint-gui:604
 msgid "searching"
 msgstr "đang tìm kiếm"
 
-#: ../fslint-gui:559
+#: ../fslint-gui:614
 msgid "processing..."
 msgstr "đang xử lý..."
 
-#: ../fslint-gui:587
+#: ../fslint-gui:642
 msgid "No search paths specified"
 msgstr "Chưa ghi rõ đường dẫn tìm kiếm"
 
-#: ../fslint-gui:746
-msgid "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "Tiếc là phần mềm FSlint chưa hỗ trợ chức năng này trên hệ thống của bạn."
+#: ../fslint-gui:776
+msgid ""
+"Sorry, FSlint does not support this functionality on your system at present."
+msgstr ""
+"Tiếc là phần mềm FSlint chưa hỗ trợ chức năng này trên hệ thống của bạn."
 
-#: ../fslint-gui:762
+#: ../fslint-gui:792
 msgid " packages, "
 msgstr " gói, "
 
-#: ../fslint-gui:763
+#: ../fslint-gui:793
 #, python-format
 msgid "consuming %sB. "
 msgstr "chiếm %sB. "
 
-#: ../fslint-gui:764
+#: ../fslint-gui:794
 #, python-format
 msgid "Note %s."
 msgstr "Ghi chú %s."
 
-#: ../fslint-gui:782 ../fslint-gui:823 ../fslint-gui:861 ../fslint-gui:923
+#: ../fslint-gui:813 ../fslint-gui:853 ../fslint-gui:891 ../fslint-gui:953
 msgid " files"
 msgstr " tập tin"
 
-#: ../fslint-gui:802
+#: ../fslint-gui:833
 msgid " unstripped binaries"
 msgstr " tập tin nhị phân có bảng ký tự"
 
-#: ../fslint-gui:812
+#: ../fslint-gui:842
 msgid " empty directories"
 msgstr " thư mục trống"
 
-#: ../fslint-gui:844
+#: ../fslint-gui:874
 msgid " links"
 msgstr " liên kết"
 
-#: ../fslint-gui:860 ../fslint-gui:972
+#: ../fslint-gui:890 ../fslint-gui:1006
 msgid " bytes wasted in "
 msgstr " byte bị phí trong "
 
-#: ../fslint-gui:905 ../fslint-gui:973
+#: ../fslint-gui:936 ../fslint-gui:1007
 msgid " files (in "
 msgstr " tập tin (trong "
 
-#: ../fslint-gui:906 ../fslint-gui:974
+#: ../fslint-gui:937 ../fslint-gui:1008
 msgid " groups)"
 msgstr " nhóm)"
 
-#: ../fslint-gui:964
+#: ../fslint-gui:998
 msgid "bytes wasted"
 msgstr "byte bị phí"
 
-#: ../fslint-gui:1039
+#: ../fslint-gui:1081
 msgid "None selected"
 msgstr "Chưa chọn gì"
 
-#: ../fslint-gui:1043
+#: ../fslint-gui:1085
 msgid " this item?\n"
 msgstr " mục này không?\n"
 
-#: ../fslint-gui:1045
+#: ../fslint-gui:1087
 #, python-format
 msgid " these %d items?\n"
 msgstr " những %d mục này không?\n"
 
-#: ../fslint-gui:1160
+#: ../fslint-gui:1219
 msgid "User aborted"
 msgstr "Người dùng đã hủy bỏ"
 
-#: ../fslint-gui:1264
+#: ../fslint-gui:1337
 msgid "Rename:"
 msgstr "Thay tên:"
 
-#: ../fslint-gui:1275 ../fslint-gui:1316
+#: ../fslint-gui:1348 ../fslint-gui:1389
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
 msgstr "Lỗi: [%s] không thể được đại diện trên hệ thống tập tin của bạn"
 
-#: ../fslint-gui:1285
+#: ../fslint-gui:1358
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
-msgstr "Lỗi: không thể thay đổi tên của [%(old_path)s] vì [%(new_path)s] đã tồn tại"
+msgstr ""
+"Lỗi: không thể thay đổi tên của [%(old_path)s] vì [%(new_path)s] đã tồn tại"
 
-#: ../fslint-gui:1305
+#: ../fslint-gui:1378
 msgid "wildcard:"
 msgstr "ký tự đại diện:"
 
-#: ../fslint-gui:1400
+#: ../fslint-gui:1551
 msgid "Sorry, you must be root to delete system packages."
 msgstr "Tiếc là bạn phải là người chủ (root) để xoá gói hệ thống."
 
-#: ../fslint-gui:1403
+#: ../fslint-gui:1556
 msgid "Are you sure you want to delete"
 msgstr "Bạn có chắc muốn xóa những"
 
-#: ../fslint-gui:1416
+#: ../fslint-gui:1573
 msgid "Calculating dependencies..."
 msgstr "Đang tính quan hệ phụ thuộc..."
 
-#: ../fslint-gui:1429
+#: ../fslint-gui:1591
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
 msgstr "%d gói thêm cần phải bị xoá.\n"
 
-#: ../fslint-gui:1430
+#: ../fslint-gui:1592
 msgid "Please review the updated selection."
 msgstr "Hãy xem lại vùng chọn đã cập nhật."
 
-#: ../fslint-gui:1438
+#: ../fslint-gui:1600
 msgid "Removing packages..."
 msgstr "Đang gỡ bỏ gói..."
 
-#: ../fslint-gui:1468
+#: ../fslint-gui:1632
 msgid " items deleted"
 msgstr " mục bị xóa"
 
-#: ../fslint-gui:1547
+#: ../fslint-gui:1645
 msgid "Are you sure you want to merge ALL files?\n"
 msgstr "Bạn có chắc muốn trộn TẤT CẢ tập tin với nhau không?\n"
 
-#: ../fslint-gui:1551
+#: ../fslint-gui:1649
 msgid "(Ignoring those selected)\n"
 msgstr "(Bỏ qua cái đã chọn)\n"
 
-#: ../fslint-gui:1597
+#: ../fslint-gui:1697
 msgid "Which indenting method do you want to convert to?"
 msgstr "Bạn có muốn chuyển đổi sang phương pháp thụt lề nào?"
 
-#: ../fslint-gui:1598
+#: ../fslint-gui:1698
 msgid "Tabs"
 msgstr "Cột Tab"
 
-#: ../fslint-gui:1598
+#: ../fslint-gui:1698
 msgid "Spaces"
 msgstr "Dấu cách"
 
-#: ../fslint-gui:1606
+#: ../fslint-gui:1709
 msgid "Are you sure you want to clean"
 msgstr "Bạn có chắc muốn gột"
 
-#: ../fslint-gui:1648
+#: ../fslint-gui:1753
 msgid " items cleaned ("
 msgstr " mục đã gột ("
 
-#: ../fslint-gui:1649
+#: ../fslint-gui:1754
 msgid " bytes saved)"
 msgstr " byte đã tiết kiệm)"

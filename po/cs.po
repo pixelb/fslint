@@ -1,16 +1,16 @@
-# Dutch translation of fslint.
-# Copyright (C) 2003 Free Software Foundation, Inc.
+# Czech translation for fslint
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the fslint package.
-# Elros Cyriatan <cyriatan@fastmail.fm>, 2003.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-01 16:07+0000\n"
-"PO-Revision-Date: 2008-04-25 09:30+0000\n"
-"Last-Translator: Johan de Jong <johan@johanenaletta.nl>\n"
-"Language-Team: Dutch <vertaling@nl.linux.org>\n"
+"PO-Revision-Date: 2008-04-03 08:35+0000\n"
+"Last-Translator: horada <Unknown>\n"
+"Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +23,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:78
 msgid "_Rename..."
-msgstr "_Hernoemen..."
+msgstr "_Přejmenovat..."
 
 #: ../fslint.glade:101
 msgid "Select using wildcard"
@@ -35,77 +35,76 @@ msgstr ""
 
 #: ../fslint.glade:119
 msgid "within groups"
-msgstr "groepen"
+msgstr ""
 
 #: ../fslint.glade:128
 msgid "Select all but first"
-msgstr ""
+msgstr "Vybrat vše kromě prvního"
 
 #: ../fslint.glade:137
 msgid "Select all but newest"
-msgstr ""
+msgstr "Vybrat vše kromě nejnovějšího"
 
 #: ../fslint.glade:146
 msgid "Select all but oldest"
-msgstr ""
+msgstr "Vybrat vše kromě nejstaršího"
 
 #: ../fslint.glade:159
 msgid "Toggle selection"
-msgstr "Keer selectie om"
+msgstr "Převrátit výběr"
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Unselect all"
-msgstr "Selecteer pad"
+msgstr "Odznač vše"
 
 #: ../fslint.glade:285 ../fslint.glade:538
 msgid "Add"
-msgstr "Toevoegen"
+msgstr "Přidat"
 
 #: ../fslint.glade:361 ../fslint.glade:614
 msgid "Remove"
-msgstr "Verwijderen"
+msgstr "Odebrat"
 
 #: ../fslint.glade:408
 msgid "Directories to search"
-msgstr "Mappen om te zoeken"
+msgstr "Adresáře k prohledání"
 
 #: ../fslint.glade:433
 msgid "recurse?"
-msgstr "recursief?"
+msgstr "rekurzivně?"
 
 #: ../fslint.glade:457
 msgid "Search path"
-msgstr "Zoekpad"
+msgstr "Cesty k hledání"
 
 #: ../fslint.glade:669
 msgid "Paths to exclude"
-msgstr "Paden om uit te sluiten"
+msgstr "Cesty k vynechání"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr "Extra zoekparameters"
+msgstr "Zvláštní parametry hledání"
 
 #: ../fslint.glade:729
 msgid "extra find filtering parameters"
-msgstr "extra zoek-filter parameters"
+msgstr "Zvláštní parametry filtrování"
 
 #: ../fslint.glade:762
 msgid "Advanced search parameters"
-msgstr "Geavanceerde zoekparameters"
+msgstr "Rozšířené parametry hledání"
 
 #: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1249
 #: ../fslint.glade:1558 ../fslint.glade:1770 ../fslint.glade:2024
 #: ../fslint.glade:2145 ../fslint.glade:2317 ../fslint.glade:2450
 #: ../fslint.glade:2675
 msgid "Name"
-msgstr "Naam"
+msgstr "Jméno"
 
 #: ../fslint.glade:866 ../fslint.glade:1268 ../fslint.glade:1577
 #: ../fslint.glade:1789 ../fslint.glade:2043 ../fslint.glade:2164
 #: ../fslint.glade:2336 ../fslint.glade:2469 ../fslint.glade:2694
 msgid "Directory"
-msgstr "Map"
+msgstr "Adresář"
 
 #: ../fslint.glade:885 ../fslint.glade:1827 ../fslint.glade:2240
 #: ../fslint.glade:2355 ../fslint.glade:2507 ../fslint.glade:2732
@@ -114,32 +113,32 @@ msgstr "Datum"
 
 #: ../fslint.glade:920
 msgid "Duplicates"
-msgstr "Dubbelen"
+msgstr "Duplikáty"
 
 #: ../fslint.glade:997 ../fslint.glade:1596 ../fslint.glade:1808
 #: ../fslint.glade:2221 ../fslint.glade:2488 ../fslint.glade:2713
 msgid "Size"
-msgstr "Grootte"
+msgstr "Velikost"
 
 #: ../fslint.glade:1111
 msgid "Installed packages"
-msgstr ""
+msgstr "Nainstalované balíky"
 
 #: ../fslint.glade:1152
 msgid "Sensitivity="
-msgstr "Gevoeligheid="
+msgstr "Citlivost="
 
 #: ../fslint.glade:1196
 msgid "invalid UTF8 mode?"
-msgstr ""
+msgstr "špatný UTF8 mód?"
 
 #: ../fslint.glade:1303
 msgid "Bad names"
-msgstr "Slechte namen"
+msgstr "Špatná jména"
 
 #: ../fslint.glade:1338
 msgid "Search ("
-msgstr "Zoeken ("
+msgstr "Prohledávat v ("
 
 #: ../fslint.glade:1364
 msgid "$PATH"
@@ -147,89 +146,91 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1383
 msgid ") for"
-msgstr ") naar"
+msgstr ""
 
 #: ../fslint.glade:1430 ../fslint-gui:899
 msgid "Conflicting files"
-msgstr "Conflicterende bestanden"
+msgstr "Konfliktní soubory"
 
 #: ../fslint.glade:1438 ../fslint.glade:1501 ../fslint-gui:897
 #: ../fslint-gui:906
 msgid "Aliases"
-msgstr "Aliassen"
+msgstr "Aliasy"
 
 #: ../fslint.glade:1477 ../fslint-gui:912
+#, fuzzy
 msgid "Case conflicts"
-msgstr "Hoofdletterconflicten"
+msgstr "Konflikt velikostí písmen"
 
 #: ../fslint.glade:1485 ../fslint-gui:908
 msgid "Same names"
-msgstr "Zelfde namen"
+msgstr "Stejná jména"
 
 #: ../fslint.glade:1493 ../fslint-gui:910
 msgid "Same names(ignore case)"
-msgstr "Zelfde namen (niet hoofdlettergevoelig)"
+msgstr "Stejná jména (ignoruj velikost písmen)"
 
 #: ../fslint.glade:1631
+#, fuzzy
 msgid "Name clashes"
-msgstr "Naam botsingen"
+msgstr "Střet jmen"
 
 #: ../fslint.glade:1666
 msgid "More restrictive search for core files"
-msgstr "Restrictiever zoeken naar core bestanden"
+msgstr ""
 
 #: ../fslint.glade:1668
 msgid "core file mode?"
-msgstr "core bestandsmodus?"
+msgstr ""
 
 #: ../fslint.glade:1692
+#, fuzzy
 msgid "days"
-msgstr "dagen"
+msgstr "dny/dní"
 
 #: ../fslint.glade:1712
 msgid "minimum age"
-msgstr "minimale leeftijd"
+msgstr "Minimální stáří"
 
 #: ../fslint.glade:1862
 msgid "Temp files"
-msgstr "Tijdelijke bestanden"
+msgstr "Dočasné soubory"
 
 #: ../fslint.glade:1898
 msgid "Dangling"
-msgstr "Bungelen"
+msgstr ""
 
 #: ../fslint.glade:1916
 msgid "Absolute links to paths within or below the link's directory"
 msgstr ""
-"Absolute koppelingen naar paden binnen of onder de map van de koppeling"
 
 #: ../fslint.glade:1918
 msgid "Suspect"
-msgstr "Verdacht"
+msgstr ""
 
 #: ../fslint.glade:1938
 msgid "Relative"
-msgstr "Relatief"
+msgstr "Relativní"
 
 #: ../fslint.glade:1958
 msgid "Absolute"
-msgstr "Absoluut"
+msgstr "Absolutní"
 
 #: ../fslint.glade:1977
 msgid "/././. ///// /../ etc."
-msgstr "/././. ///// /../ enz."
+msgstr "/././. ///// /../ atd."
 
 #: ../fslint.glade:1979
 msgid "Redundant naming"
-msgstr "Overbodige naamgeving"
+msgstr "Nadbytečné pojmenování"
 
 #: ../fslint.glade:2062
 msgid "Target"
-msgstr "Doel"
+msgstr "Cíl"
 
 #: ../fslint.glade:2097
 msgid "Bad symlinks"
-msgstr "Slechte symbolische koppelingen"
+msgstr "Špatné symlinky"
 
 #: ../fslint.glade:2183
 msgid "UID"
@@ -241,23 +242,23 @@ msgstr "GID"
 
 #: ../fslint.glade:2275
 msgid "Bad IDs"
-msgstr "Slechte IDs"
+msgstr "Špatné ID"
 
 #: ../fslint.glade:2383 ../fslint-gui:555
 msgid "Empty directories"
-msgstr "Lege mappen"
+msgstr "Prázdné adresáře"
 
 #: ../fslint.glade:2413
 msgid "Search $PATH"
-msgstr "Zoeken in $PATH"
+msgstr "Prohledávat $PATH"
 
 #: ../fslint.glade:2542
 msgid "Non stripped binaries"
-msgstr "Niet gestripte binaries"
+msgstr ""
 
 #: ../fslint.glade:2578
 msgid "whitespace at end of line"
-msgstr ""
+msgstr "bílé znaky na konci řádku"
 
 #: ../fslint.glade:2603
 msgid "bad indenting for indent width"
@@ -265,56 +266,55 @@ msgstr ""
 
 #: ../fslint.glade:2767
 msgid "Redundant whitespace"
-msgstr "Overbodige lege ruimte"
+msgstr "Přebytečné bílé znaky"
 
 #: ../fslint.glade:2853
 msgid "Find"
-msgstr "Zoeken"
+msgstr "Hledat"
 
 #: ../fslint.glade:2928
 msgid "Stop"
-msgstr "Stoppen"
+msgstr "Stop"
 
 #: ../fslint.glade:3016
-#, fuzzy
 msgid "Select"
-msgstr "geselecteerde"
+msgstr "Vybrat"
 
 #: ../fslint.glade:3047
-#, fuzzy
 msgid "Save (selected) list to file"
-msgstr "lijst naar bestand"
+msgstr "Uložit (vybraný) seznam do souboru"
 
 #: ../fslint.glade:3092
 msgid "Save"
-msgstr "Opslaan"
+msgstr "Uložit"
 
 #: ../fslint.glade:3123 ../fslint.glade:3275
 msgid "selected"
-msgstr "geselecteerde"
+msgstr "zvolené"
 
 #: ../fslint.glade:3168
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "Odstranit"
 
 #: ../fslint.glade:3199
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
-msgstr "Alle (behalve geselecteerde) met harde koppelingen"
+msgstr ""
+"Všechny (kromě vybraných) používající hardlinky\n"
+"(nebo symlinky na rozdílných oddílech)"
 
 #: ../fslint.glade:3245
 msgid "Merge"
-msgstr "Samenvoegen"
+msgstr "Sloučit"
 
 #: ../fslint.glade:3320
 msgid "Clean"
-msgstr "Opschonen"
+msgstr "Vyčistit"
 
 #: ../fslint.glade:3452
 msgid "Select Path"
-msgstr "Selecteer pad"
+msgstr "Vybrat cestu"
 
 #: ../fslint.glade:3603
 msgid "ask me this in future?"
@@ -323,15 +323,15 @@ msgstr ""
 #: ../fslint-gui:167
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "Gebruik: %s [OPTIE] [PADEN]"
+msgstr "Použití: %s [OPTION] [PATHS]"
 
 #: ../fslint-gui:168
 msgid "display version"
-msgstr "versie weergeven"
+msgstr "zobrazit verzi"
 
 #: ../fslint-gui:169
 msgid "display help"
-msgstr "hulp weergeven"
+msgstr "zobrazit nápovědu"
 
 #: ../fslint-gui:396
 #, python-format
@@ -339,16 +339,18 @@ msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
 msgstr ""
 
 #: ../fslint-gui:507
+#, fuzzy
 msgid "Do you want to overwrite?\n"
-msgstr "Wilt u overschrijven?\n"
+msgstr "Chcete (jej) přepsat?\n"
 
 #: ../fslint-gui:513
+#, fuzzy
 msgid "You can't overwrite "
-msgstr "U kunt niet overschrijven "
+msgstr "Nemůžete přepsat "
 
 #: ../fslint-gui:548
 msgid "Files with the same content"
-msgstr ""
+msgstr "Soubory se stejným obsahem"
 
 #: ../fslint-gui:549
 msgid "Installed packages ordered by disk usage"
@@ -356,107 +358,109 @@ msgstr ""
 
 #: ../fslint-gui:550
 msgid "Problematic filenames"
-msgstr ""
+msgstr "Problematická jména souborů"
 
 #: ../fslint-gui:551
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
-msgstr "Conflicterende bestanden"
+msgstr "Možný konflikt příkazu nebo jména souboru"
 
 #: ../fslint-gui:552
+#, fuzzy
 msgid "Possibly old temporary files"
-msgstr ""
+msgstr "Možné staré dočasné soubory"
 
 #: ../fslint-gui:553
 msgid "Problematic symbolic links"
-msgstr ""
+msgstr "Porblematické symbolické linky"
 
 #: ../fslint-gui:554
 msgid "Files with missing user IDs"
-msgstr ""
+msgstr "Soubory bez uživatelského ID (user ID)"
 
 #: ../fslint-gui:556
 msgid "Executables still containing debugging info"
 msgstr ""
 
 #: ../fslint-gui:557
+#, fuzzy
 msgid "Erroneous whitespace in a text file"
-msgstr ""
+msgstr "Klamné bílé znaky v textovém souboru"
 
 #: ../fslint-gui:563
 msgid "Invalid path ["
-msgstr ""
+msgstr "Neplatná cesta ["
 
 #: ../fslint-gui:604
 msgid "searching"
-msgstr ""
+msgstr "prohledávám"
 
 #: ../fslint-gui:614
 msgid "processing..."
-msgstr ""
+msgstr "pracuji..."
 
 #: ../fslint-gui:642
 msgid "No search paths specified"
-msgstr "Geen zoekpaden aangegeven"
+msgstr "Nespecifikována cesta k prohledávání"
 
 #: ../fslint-gui:776
+#, fuzzy
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr ""
+msgstr "Promiňte, FSlint v tutochvíli nepodporuje tuto funkci nebo váš systém."
 
 #: ../fslint-gui:792
 msgid " packages, "
-msgstr ""
+msgstr " balíčky "
 
 #: ../fslint-gui:793
-#, python-format
+#, fuzzy, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "pohlcující %sB. "
 
 #: ../fslint-gui:794
 #, python-format
 msgid "Note %s."
-msgstr ""
+msgstr "Poznámka %s."
 
 #: ../fslint-gui:813 ../fslint-gui:853 ../fslint-gui:891 ../fslint-gui:953
 msgid " files"
-msgstr " bestanden"
+msgstr " soubory"
 
 #: ../fslint-gui:833
 msgid " unstripped binaries"
-msgstr " niet gestripte binaries"
+msgstr ""
 
 #: ../fslint-gui:842
 msgid " empty directories"
-msgstr " lege mappen"
+msgstr " prázdné adresáře"
 
 #: ../fslint-gui:874
 msgid " links"
-msgstr " koppelingen"
+msgstr " linky"
 
 #: ../fslint-gui:890 ../fslint-gui:1006
 msgid " bytes wasted in "
-msgstr " bytes verspild in "
+msgstr ""
 
 #: ../fslint-gui:936 ../fslint-gui:1007
 msgid " files (in "
-msgstr " bestanden (in "
+msgstr " soubory (v "
 
 #: ../fslint-gui:937 ../fslint-gui:1008
 msgid " groups)"
-msgstr " groepen)"
+msgstr " skupiny)"
 
 #: ../fslint-gui:998
 msgid "bytes wasted"
-msgstr "bytes verspild"
+msgstr ""
 
 #: ../fslint-gui:1081
 msgid "None selected"
-msgstr "Geen geselecteerd"
+msgstr "Nic nevybráno"
 
 #: ../fslint-gui:1085
 msgid " this item?\n"
-msgstr ""
+msgstr " tato položka?\n"
 
 #: ../fslint-gui:1087
 #, python-format
@@ -465,11 +469,11 @@ msgstr ""
 
 #: ../fslint-gui:1219
 msgid "User aborted"
-msgstr "Afgebroken door gebruiker"
+msgstr "Přerušeno uživatelem"
 
 #: ../fslint-gui:1337
 msgid "Rename:"
-msgstr "Hernoemen:"
+msgstr "Přejmenovat"
 
 #: ../fslint-gui:1348 ../fslint-gui:1389
 #, python-format
@@ -512,15 +516,15 @@ msgstr ""
 
 #: ../fslint-gui:1632
 msgid " items deleted"
-msgstr " items verwijderd"
+msgstr ""
 
 #: ../fslint-gui:1645
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "Wilt u echt ALLE bestanden samenvoegen?\n"
+msgstr ""
 
 #: ../fslint-gui:1649
 msgid "(Ignoring those selected)\n"
-msgstr "(Geselecteerde worden genegeerd)\n"
+msgstr ""
 
 #: ../fslint-gui:1697
 msgid "Which indenting method do you want to convert to?"
@@ -528,11 +532,11 @@ msgstr ""
 
 #: ../fslint-gui:1698
 msgid "Tabs"
-msgstr ""
+msgstr "Záložky"
 
 #: ../fslint-gui:1698
 msgid "Spaces"
-msgstr ""
+msgstr "Mezery"
 
 #: ../fslint-gui:1709
 msgid "Are you sure you want to clean"
@@ -540,8 +544,8 @@ msgstr ""
 
 #: ../fslint-gui:1753
 msgid " items cleaned ("
-msgstr " items opgeschoond ("
+msgstr ""
 
 #: ../fslint-gui:1754
 msgid " bytes saved)"
-msgstr " bytes opgeslagen)"
+msgstr ""
