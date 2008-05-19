@@ -55,7 +55,7 @@ def write_out_group():
     #        sys.stdout.write("%s %s %s %s\n" % (path, dev, inode, size))
 
 for line in sys.stdin.xreadlines():
-    path, dev, inode, size = line.rstrip().split()
+    path, dev, inode, size = line.rstrip().split(' ')
     if last_size and size == last_size:
         if (dev,inode) != last_inode:
             write_group=1

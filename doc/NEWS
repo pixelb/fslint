@@ -12,6 +12,8 @@
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
 		* Allow cli scripts to run from paths containing whitespace.
 		* Fix erroneous reordering of certain find command parameters.
+		* When finding dupes, handle \f\r\v characters within filenames,
+		  rather than displaying an exception (Ubuntu bug 231235).
 	* Improvements:
 		* Make file deletion much easier by supporting the 'Delete' key,
 		  auto removing groups from display when only 1 item remaining,
