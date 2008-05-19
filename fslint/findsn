@@ -118,6 +118,23 @@ translate()
    esac
 }
 
+auto_ignore_paths()
+{
+   echo "-true"
+   #ignore commonly aliased binaries
+   echo "
+   /usr/bin/ccache
+   /usr/bin/consolehelper
+   /usr/sbin/lvm
+   /sbin/lvm.static
+   /bin/busybox
+   " | sed '/ *#/d; /^ *$/d' | #remove comments and blank lines
+   while read path; do
+       inode=`find "$path" -printf "%i" 2>/dev/null`
+       [ "$inode" ] && echo -n " -and ! -inum $inode"
+   done
+}
+
 case "$mode" in
 
 casePortability)
@@ -135,14 +152,8 @@ matchFilenames)
    sort $sort_ignore_case -k2,2 |
    uniq --all-repeated=$uniqsep -1 $uniq_ignore_case ;;
 path)
-   #Note consolehelper is redhatism so ignore
-   IGNORE_in=`find /usr/bin/consolehelper -printf "%i" 2>/dev/null`
-   if [ -z "$IGNORE_in" ]; then
-      IGNORE_pred="-true"
-   else
-      IGNORE_pred="! -inum $IGNORE_in"
-   fi
-   find "$@" \( -type f -o -type l \) -follow \( $IGNORE_pred \) \
+
+   find "$@" \( -type f -o -type l \) -follow \( `auto_ignore_paths` \) \
         -printf "$FPF\1%i\1%f\0" |
    sort -zu | #merge files (indirectly) specified multiple times
    translate safe |

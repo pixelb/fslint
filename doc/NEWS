@@ -23,6 +23,8 @@
 		  group all selected packages together for easier review.
 		* Indicate using the mouse pointer that the application is busy,
 		  during the possibly long cleaning/deleting/merging processes.
+		* Exclude more commonly aliased binaries when searching
+		  for conflicting program names in the $PATH.
 
 2.24 19/09/07
 	* Translations:
