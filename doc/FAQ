@@ -1,3 +1,11 @@
+Q. What algorithm is used to check for duplicate files?
+A. On a standard install, you can see the script used in
+   /usr/share/fslint/fslint/findup. In summary the algorithm is:
+     1. check sizes are same
+     2. check files are not hardlinked to each other
+     3. check md5sums are the same
+     4. check sha1sums are the same (in case of md5 collisions)
+
 Q. Is there a command line version?
 A. Yes, you can download the tarball and cd to
    the fslint directory, and use it directly from there.
@@ -5,8 +13,7 @@ A. Yes, you can download the tarball and cd to
    so alternatively you can cd or add to $PATH the
    /usr/share/fslint/fslint directory on a standard install.
 
-Q. Can I download the tarball and hack & run the GUI
-   without installing it?
+Q. Can I download the tarball and hack & run the GUI without installing it?
 A. Yes, just run ./fslint-gui from the directory you extract
    and it automatically notices this and uses just the
    files in the extracted directory. Note you will need
@@ -29,6 +36,13 @@ A. Unfortunately Mandriva and SuSE at least use different
    distros, just get the release tar.gz and as in the previous FAQ:
        sudo rpmbuild -ta fslint-x.xx.tar.gz
 
+Q. Why does the GUI default to including my $HOME dir, and how do I change it?
+A. Well more accurately it adds the current working directory by default,
+   so when started from the gnome menu, it will default to $HOME.
+   You can pass (multiple) directories on the command line like:
+     Alt-F2 -> fslint-gui /your/dir
+   Or you could edit the menu entry to hardcode a different start path.
+
 Q. In the GUI how do I exclude dirs (and and sub-dirs) matching a pattern?
 A. In "Advanced Search Parameters"->"Paths to exclude", add
    "*/CVS" to exclude all CVS dirs for example
@@ -39,7 +53,7 @@ A. In "Advanced Search Parameters"->"Extra find parameters", add
 
 Q. From the command line how do I exclude paths matching a pattern?
 A. To exclude directories: findup \( -path "*/.svn" \) -prune -o
-A. To exclude files:       findup \( ! -name "*.py[co]" \)
+   To exclude files:       findup \( ! -name "*.py[co]" \)
 
 Q. How do I navigate the file lists with the keyboard?
 A. FSlint uses a GtkCList in "multiple selection" mode throughout.
