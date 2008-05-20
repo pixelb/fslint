@@ -1,4 +1,4 @@
-2.25 dd/mm/yy
+2.25 dd/mm/yyy
 	* Translations:
 		* Added: Czech, Turkish.
 		* Updated: French, German, Malay.
@@ -7,13 +7,13 @@
 		  This issue was reported by Andrew U. Frank.
 		* Don't abort reporting duplicates if the GUI can't process
 		  a particular file. This issue was reported by Andrew U. Frank.
+		* When finding dupes, handle \f\r\v characters within filenames,
+		  rather than displaying an exception.
 		* Use and document better syntax for excluding paths.
 		* Honour/sanitize user specified wildcards for excluding paths.
 		* Tweak "fix whitespace" script to run on dash (ubuntu).
 		* Allow cli scripts to run from paths containing whitespace.
 		* Fix erroneous reordering of certain find command parameters.
-		* When finding dupes, handle \f\r\v characters within filenames,
-		  rather than displaying an exception (Ubuntu bug 231235).
 	* Improvements:
 		* Make file deletion much easier by supporting the 'Delete' key,
 		  auto removing groups from display when only 1 item remaining,
