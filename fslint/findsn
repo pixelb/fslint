@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # findsn - find duplicate names in the specified tree(s).
-# Copyright © 2000-2007 by Pádraig Brady <P@draigBrady.com>.
+# Copyright © 2000-2008 by Pádraig Brady <P@draigBrady.com>.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -121,13 +121,12 @@ translate()
 auto_ignore_paths()
 {
    echo "-true"
-   #ignore commonly aliased binaries
+   #ignore common $PATH dependent programs
    echo "
    /usr/bin/ccache
    /usr/bin/consolehelper
    /usr/sbin/lvm
    /sbin/lvm.static
-   /bin/busybox
    " | sed '/ *#/d; /^ *$/d' | #remove comments and blank lines
    while read path; do
        inode=`find "$path" -printf "%i" 2>/dev/null`
