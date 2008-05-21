@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-01 16:07+0000\n"
-"PO-Revision-Date: 2008-02-25 20:52+0000\n"
+"PO-Revision-Date: 2008-05-21 20:17+0000\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-05-15 10:20+0000\n"
+"X-Launchpad-Export-Date: 2008-05-21 21:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
@@ -51,7 +51,7 @@ msgstr "En eskisi hariç hepsini seç"
 
 #: ../fslint.glade:159
 msgid "Toggle selection"
-msgstr "Seçileni katla"
+msgstr "Seçimi katla"
 
 #: ../fslint.glade:168
 msgid "Unselect all"
@@ -83,12 +83,12 @@ msgstr "Dışlanacak yollar"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr "Fazladan bulma parametreleri"
+msgstr "Ek bulma parametreleri"
 
 #: ../fslint.glade:729
 #, fuzzy
 msgid "extra find filtering parameters"
-msgstr "fazladan bulma filtreleme parametreleri"
+msgstr "ek arama filtreleme parametreleri"
 
 #: ../fslint.glade:762
 msgid "Advanced search parameters"
@@ -114,7 +114,7 @@ msgstr "Tarih"
 
 #: ../fslint.glade:920
 msgid "Duplicates"
-msgstr "Çiftler"
+msgstr "Kopya dosyalar"
 
 #: ../fslint.glade:997 ../fslint.glade:1596 ../fslint.glade:1808
 #: ../fslint.glade:2221 ../fslint.glade:2488 ../fslint.glade:2713
@@ -127,7 +127,7 @@ msgstr "Kurulu paketler"
 
 #: ../fslint.glade:1152
 msgid "Sensitivity="
-msgstr "Duyarlılık"
+msgstr "Duyarlılık="
 
 #: ../fslint.glade:1196
 msgid "invalid UTF8 mode?"
@@ -176,11 +176,11 @@ msgstr "Ad çakışmaları"
 
 #: ../fslint.glade:1666
 msgid "More restrictive search for core files"
-msgstr ""
+msgstr "Core dosyaları için daha kısıtlayıcı arama"
 
 #: ../fslint.glade:1668
 msgid "core file mode?"
-msgstr ""
+msgstr "core dosyası kipi?"
 
 #: ../fslint.glade:1692
 msgid "days"
@@ -188,11 +188,11 @@ msgstr "günler"
 
 #: ../fslint.glade:1712
 msgid "minimum age"
-msgstr ""
+msgstr "en az yaş"
 
 #: ../fslint.glade:1862
 msgid "Temp files"
-msgstr "Geçisi dosyalar"
+msgstr "Geçici dosyalar"
 
 #: ../fslint.glade:1898
 msgid "Dangling"
@@ -221,7 +221,7 @@ msgstr "/././. ///// /../ vb."
 
 #: ../fslint.glade:1979
 msgid "Redundant naming"
-msgstr ""
+msgstr "Gerekenden fazla adlandırılmış"
 
 #: ../fslint.glade:2062
 msgid "Target"
@@ -253,7 +253,7 @@ msgstr "$PATH'i ara"
 
 #: ../fslint.glade:2542
 msgid "Non stripped binaries"
-msgstr ""
+msgstr "Soyulmamış ikililer"
 
 #: ../fslint.glade:2578
 msgid "whitespace at end of line"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: ../fslint.glade:2767
 msgid "Redundant whitespace"
-msgstr ""
+msgstr "Gerekenden fazla boşluk"
 
 #: ../fslint.glade:2853
 msgid "Find"
@@ -314,7 +314,7 @@ msgstr "Temizle"
 
 #: ../fslint.glade:3452
 msgid "Select Path"
-msgstr "Yolu Seç"
+msgstr "Yol Seç"
 
 #: ../fslint.glade:3603
 msgid "ask me this in future?"
@@ -401,7 +401,7 @@ msgstr "Arama yolu belirtilmedi"
 #: ../fslint-gui:776
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "Üzgünüm, FSlint halen sisteminizde bu özelliği desteklemiyor."
+msgstr "Ne yazık ki, FSlint sisteminizde bu özelliği desteklemiyor."
 
 #: ../fslint-gui:792
 msgid " packages, "
@@ -410,7 +410,7 @@ msgstr " paketler "
 #: ../fslint-gui:793
 #, python-format
 msgid "consuming %sB. "
-msgstr "%sB tüketiyor "
+msgstr "%sB harcıyor "
 
 #: ../fslint-gui:794
 #, python-format
@@ -423,7 +423,7 @@ msgstr " dosyalar"
 
 #: ../fslint-gui:833
 msgid " unstripped binaries"
-msgstr ""
+msgstr " soyulmamış ikililer"
 
 #: ../fslint-gui:842
 msgid " empty directories"
@@ -435,11 +435,11 @@ msgstr " bağlantılar"
 
 #: ../fslint-gui:890 ../fslint-gui:1006
 msgid " bytes wasted in "
-msgstr ""
+msgstr " byte şurada boşa harcandı: "
 
 #: ../fslint-gui:936 ../fslint-gui:1007
 msgid " files (in "
-msgstr ""
+msgstr " dosya (şurada: "
 
 #: ../fslint-gui:937 ../fslint-gui:1008
 msgid " groups)"
@@ -447,7 +447,7 @@ msgstr " grup)"
 
 #: ../fslint-gui:998
 msgid "bytes wasted"
-msgstr ""
+msgstr "byte boşa harcandı"
 
 #: ../fslint-gui:1081
 msgid "None selected"
@@ -455,12 +455,12 @@ msgstr "Hiçbiri seçilmedi"
 
 #: ../fslint-gui:1085
 msgid " this item?\n"
-msgstr " bu öğe?\n"
+msgstr " (bu öğeyi)?\n"
 
 #: ../fslint-gui:1087
 #, python-format
 msgid " these %d items?\n"
-msgstr " bu %d öğe?\n"
+msgstr " (bu %d öğeyi)?\n"
 
 #: ../fslint-gui:1219
 #, fuzzy
@@ -480,6 +480,7 @@ msgstr "Hata: [%s] dosya sisteminizde gösterilemez."
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
 msgstr ""
+"Hata:  [%(old_path)s] yeniden adlandırılamaz çünkü [%(new_path)s] zaten var"
 
 #: ../fslint-gui:1378
 msgid "wildcard:"
@@ -520,7 +521,7 @@ msgstr "TÜM dosyaları birleştirmek istediğinize emin misiniz?\n"
 
 #: ../fslint-gui:1649
 msgid "(Ignoring those selected)\n"
-msgstr ""
+msgstr "(seçili olanlar görmezden geliniyor)\n"
 
 #: ../fslint-gui:1697
 msgid "Which indenting method do you want to convert to?"
