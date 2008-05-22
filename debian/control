@@ -2,9 +2,10 @@ Source: fslint
 Section: admin
 Priority: optional
 Maintainer: Pádraig Brady <P@draigBrady.com>
+Homepage: http://www.pixelbeat.org/fslint/
 Build-Depends: debhelper (>= 4.0.0)
 Build-Depends-Indep: gettext (>= 0.13)
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
 
 Package: fslint
 Architecture: all
@@ -20,5 +21,3 @@ Description: A utility to fix problems with filesystems' data, like duplicate fi
     - Bad symlinks
     - Empty directories
     - Nonstripped binaries
- .
-  Homepage: http://www.pixelbeat.org/fslint/
