@@ -190,7 +190,7 @@ except getopt.error, msg:
 def human_num(num, divisor=1, power=""):
     num=float(num)
     if divisor == 1:
-        return locale.format("%ld",num,1)
+        return locale.format("%.f",num,1)
     elif divisor == 1000:
         powers=[" ","K","M","G","T","P"]
     elif divisor == 1024:
@@ -204,7 +204,7 @@ def human_num(num, divisor=1, power=""):
     if power.strip():
         num = locale.format("%6.1f",num,1)
     else:
-        num = locale.format("%4ld  ",num,1)
+        num = locale.format("%4.f  ",num,1)
     return "%s%s" % (num,power)
 
 class pathInfo:
