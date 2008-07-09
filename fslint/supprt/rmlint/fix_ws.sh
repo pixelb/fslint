@@ -4,7 +4,7 @@ set -e #exit on error
 
 usage() {
     prog=`basename "$0"`
-    echo "Usage: $prog --eol|'' --indent-spaces|--indent-tabs|'' indent_width filename" >&2
+    echo "Usage: $prog --eol|'' --indent-spaces|--indent-tabs|'' indent_width|'' filename" >&2
     exit 1
 }
 
@@ -27,6 +27,7 @@ trap 'rm -f "$TMP"' EXIT
 
 
 if [ "$1" = "--eol" ]; then
+    #Note \t is a GNU extension
     STRIP_EOL_SPACES="sed -e 's/[ 	]*$//'"
 fi
 
@@ -51,5 +52,5 @@ fi
 
 [ "$COMMAND" ] || usage
 
-cat -- "$FILE" | eval $COMMAND > "$TMP"
+cat -- "$FILE" | eval "$COMMAND" > "$TMP"
 $CMP -s "$TMP" "$FILE" || mv -f "$TMP" "$FILE"

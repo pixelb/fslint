@@ -6,6 +6,7 @@
 		  searching for suspect symbolic links.
 		* Work around a python bug triggered when the disk
 		  wastage of a group of duplicate files is > 2GB.
+		* Fix "fix whitespace" script to remove trailing tabs.
 
 2.26 20/05/08
 	* Translations:

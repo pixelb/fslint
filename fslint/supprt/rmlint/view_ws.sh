@@ -16,7 +16,7 @@ fi
 
 if [ "$#" = "1" ]; then
     if [ -d "$1" ]; then
-        gnome-open "$1" #TODO: what's free desktop equiv of this
+        xdg-open "$1"
         exit
     fi
 fi
