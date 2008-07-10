@@ -1,8 +1,9 @@
 fslint (2.27-1) unstable; urgency=low
 
   * Bump to devel version
+  * Remove `echo -e` bashism from ancillary scripts (Closes: #489597)
 
- -- Pádraig Brady <P@draigBrady.com>  Tue, 20 May 2008 10:47:00 +0000
+ -- Pádraig Brady <P@draigBrady.com>  Tue, 10 Jul 2008 23:47:00 +0000
 
 fslint (2.26-2) unstable; urgency=low
 

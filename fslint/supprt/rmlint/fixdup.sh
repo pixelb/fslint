@@ -24,16 +24,16 @@ while read file; do
   elif [ "nextfile" = "$keepfile" ]; then
     keepfile="$file"
     if [ "$dryRun" = "1" ]; then
-        echo -ne "\nkeeping $keepfile\t"
+        printf "\nkeeping $keepfile\t"
         if [ "$link" = "1" ]; then
-            echo -ne "hardlinking: "
+            printf "hardlinking: "
         else
-            echo -ne "deleting: "
+            printf "deleting: "
         fi
     fi
   else
     if [ "$dryRun" = "1" ]; then
-        echo -ne "$file "
+        printf "$file "
     else
         if [ "$link" = "1" ]; then
             ln -f -b --suffix="$suffix" -- "$keepfile" "$file" 2>/dev/null ||

@@ -69,7 +69,7 @@ fi
 cpio --version > /dev/null 2>&1 || \
 { echo "Sorry, cpio is required." >&2; exit 1; }
 
-ESC=`echo -ne "\e["`
+ESC=`printf "\x1b["`
 
 #check we have an adequate mv
 mvStatus=good
