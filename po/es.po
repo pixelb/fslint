@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-01 16:07+0000\n"
-"PO-Revision-Date: 2007-08-31 21:53+0000\n"
-"Last-Translator: Francisco Villalobos Palma <franciscovillalobos@gmail.com>\n"
+"PO-Revision-Date: 2008-06-10 10:37+0000\n"
+"Last-Translator: Gustavo Pistoia <grpistoia@gmail.com>\n"
 "Language-Team: español <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"X-Rosetta-Export-Date: 2007-09-03 23:38:16+0000\n"
+"X-Launchpad-Export-Date: 2008-07-11 11:00+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -315,7 +315,7 @@ msgstr "Seleccionar Ruta"
 
 #: ../fslint.glade:3603
 msgid "ask me this in future?"
-msgstr ""
+msgstr "Preguntar más adelante?"
 
 #: ../fslint-gui:167
 #, python-format

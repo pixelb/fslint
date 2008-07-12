@@ -1,6 +1,6 @@
 2.27 dd/mm/yy
 	* Translations:
-		* Updated: Turkish.
+		* Updated: Turkish, French, German, Spanish, Malay.
 	* Fixes:
 		* Better handle paths with unusual characters when
 		  searching for suspect symbolic links.

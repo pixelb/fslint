@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: Tiago Silva <Unknown>\n"
 "Language-Team: Helder Garcia <hlbog@sounerd.com.br>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2008-05-15 10:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
@@ -52,7 +52,7 @@ msgstr ""
 #: ../fslint.glade:159
 #, fuzzy
 msgid "Toggle selection"
-msgstr "seleção"
+msgstr "seleÃ§Ã£o"
 
 #: ../fslint.glade:168
 #, fuzzy
@@ -69,7 +69,7 @@ msgstr "Remover"
 
 #: ../fslint.glade:408
 msgid "Directories to search"
-msgstr "Diretórios para pesquisar"
+msgstr "DiretÃ³rios para pesquisar"
 
 #: ../fslint.glade:433
 msgid "recurse?"
@@ -85,15 +85,15 @@ msgstr "Caminhos a excluir"
 
 #: ../fslint.glade:704
 msgid "Extra find parameters"
-msgstr "Parâmetros extras para a procura (find)"
+msgstr "ParÃ¢metros extras para a procura (find)"
 
 #: ../fslint.glade:729
 msgid "extra find filtering parameters"
-msgstr "Parâmetros extras de filtragem para a procura (find)"
+msgstr "ParÃ¢metros extras de filtragem para a procura (find)"
 
 #: ../fslint.glade:762
 msgid "Advanced search parameters"
-msgstr "Parâmetros avançados de pesquisa"
+msgstr "ParÃ¢metros avanÃ§ados de pesquisa"
 
 #: ../fslint.glade:847 ../fslint.glade:978 ../fslint.glade:1249
 #: ../fslint.glade:1558 ../fslint.glade:1770 ../fslint.glade:2024
@@ -106,7 +106,7 @@ msgstr "Nome"
 #: ../fslint.glade:1789 ../fslint.glade:2043 ../fslint.glade:2164
 #: ../fslint.glade:2336 ../fslint.glade:2469 ../fslint.glade:2694
 msgid "Directory"
-msgstr "Directório"
+msgstr "DirectÃ³rio"
 
 #: ../fslint.glade:885 ../fslint.glade:1827 ../fslint.glade:2240
 #: ../fslint.glade:2355 ../fslint.glade:2507 ../fslint.glade:2732
@@ -161,7 +161,7 @@ msgstr "Aliases"
 
 #: ../fslint.glade:1477 ../fslint-gui:912
 msgid "Case conflicts"
-msgstr "Conflitos de maiúsculas/minúsculas"
+msgstr "Conflitos de maiÃºsculas/minÃºsculas"
 
 #: ../fslint.glade:1485 ../fslint-gui:908
 msgid "Same names"
@@ -169,7 +169,7 @@ msgstr "Nomes iguais"
 
 #: ../fslint.glade:1493 ../fslint-gui:910
 msgid "Same names(ignore case)"
-msgstr "Nomes iguais (ignora maiúsculas/minúsculas)"
+msgstr "Nomes iguais (ignora maiÃºsculas/minÃºsculas)"
 
 #: ../fslint.glade:1631
 msgid "Name clashes"
@@ -189,11 +189,11 @@ msgstr "dias"
 
 #: ../fslint.glade:1712
 msgid "minimum age"
-msgstr "idade mínima"
+msgstr "idade mÃ­nima"
 
 #: ../fslint.glade:1862
 msgid "Temp files"
-msgstr "Arquivos temporários"
+msgstr "Arquivos temporÃ¡rios"
 
 #: ../fslint.glade:1898
 msgid "Dangling"
@@ -201,7 +201,7 @@ msgstr "Pendentes"
 
 #: ../fslint.glade:1916
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "Links absolutos para caminhos dentro ou abaixo do diretório do link"
+msgstr "Links absolutos para caminhos dentro ou abaixo do diretÃ³rio do link"
 
 #: ../fslint.glade:1918
 msgid "Suspect"
@@ -229,7 +229,7 @@ msgstr "Destino"
 
 #: ../fslint.glade:2097
 msgid "Bad symlinks"
-msgstr "Links simbólicos ruins"
+msgstr "Links simbÃ³licos ruins"
 
 #: ../fslint.glade:2183
 msgid "UID"
@@ -245,7 +245,7 @@ msgstr "IDs ruins"
 
 #: ../fslint.glade:2383 ../fslint-gui:555
 msgid "Empty directories"
-msgstr "Diretórios vazios"
+msgstr "DiretÃ³rios vazios"
 
 #: ../fslint.glade:2413
 msgid "Search $PATH"
@@ -253,7 +253,7 @@ msgstr "$PATH de pesquisa"
 
 #: ../fslint.glade:2542
 msgid "Non stripped binaries"
-msgstr "Binários não reduzidos (stripped)"
+msgstr "BinÃ¡rios nÃ£o reduzidos (stripped)"
 
 #: ../fslint.glade:2578
 msgid "whitespace at end of line"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: ../fslint.glade:2767
 msgid "Redundant whitespace"
-msgstr "Espaço em branco redundante"
+msgstr "EspaÃ§o em branco redundante"
 
 #: ../fslint.glade:2853
 msgid "Find"
@@ -323,11 +323,11 @@ msgstr ""
 #: ../fslint-gui:167
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "Uso: %s [OPÇÃO] [CAMINHOS]"
+msgstr "Uso: %s [OPÃ‡ÃƒO] [CAMINHOS]"
 
 #: ../fslint-gui:168
 msgid "display version"
-msgstr "mostra versão"
+msgstr "mostra versÃ£o"
 
 #: ../fslint-gui:169
 msgid "display help"
@@ -340,11 +340,11 @@ msgstr ""
 
 #: ../fslint-gui:507
 msgid "Do you want to overwrite?\n"
-msgstr "Você deseja sobrescrever?\n"
+msgstr "VocÃª deseja sobrescrever?\n"
 
 #: ../fslint-gui:513
 msgid "You can't overwrite "
-msgstr "Você não pode sobrescrever "
+msgstr "VocÃª nÃ£o pode sobrescrever "
 
 #: ../fslint-gui:548
 msgid "Files with the same content"
@@ -424,11 +424,11 @@ msgstr " arquivos"
 
 #: ../fslint-gui:833
 msgid " unstripped binaries"
-msgstr " binários não reduzidos (stripped)"
+msgstr " binÃ¡rios nÃ£o reduzidos (stripped)"
 
 #: ../fslint-gui:842
 msgid " empty directories"
-msgstr " diretórios vazios"
+msgstr " diretÃ³rios vazios"
 
 #: ../fslint-gui:874
 msgid " links"
@@ -436,7 +436,7 @@ msgstr " links"
 
 #: ../fslint-gui:890 ../fslint-gui:1006
 msgid " bytes wasted in "
-msgstr " bytes desperdiçados em "
+msgstr " bytes desperdiÃ§ados em "
 
 #: ../fslint-gui:936 ../fslint-gui:1007
 msgid " files (in "
@@ -448,7 +448,7 @@ msgstr " grupos)"
 
 #: ../fslint-gui:998
 msgid "bytes wasted"
-msgstr "bytes desperdiçados"
+msgstr "bytes desperdiÃ§ados"
 
 #: ../fslint-gui:1081
 msgid "None selected"
@@ -465,7 +465,7 @@ msgstr " %d itens?\n"
 
 #: ../fslint-gui:1219
 msgid "User aborted"
-msgstr "Abortado pelo usuário"
+msgstr "Abortado pelo usuÃ¡rio"
 
 #: ../fslint-gui:1337
 msgid "Rename:"
@@ -491,7 +491,7 @@ msgstr ""
 
 #: ../fslint-gui:1556
 msgid "Are you sure you want to delete"
-msgstr "Por favor, confirme a remoção deste"
+msgstr "Por favor, confirme a remoÃ§Ã£o deste"
 
 #: ../fslint-gui:1573
 msgid "Calculating dependencies..."
@@ -516,7 +516,7 @@ msgstr " itens removidos"
 
 #: ../fslint-gui:1645
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "Por favor, confirme a combinação (merge) de TODOS os arquivos.\n"
+msgstr "Por favor, confirme a combinaÃ§Ã£o (merge) de TODOS os arquivos.\n"
 
 #: ../fslint-gui:1649
 msgid "(Ignoring those selected)\n"
