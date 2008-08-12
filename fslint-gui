@@ -378,15 +378,21 @@ class subProcess:
 # Determine what type of distro we're on.
 class distroType:
     def __init__(self):
-        self.rpm = self.deb = False
+        types = ("rpm", "dpkg", "pacman")
+        for dist in types:
+            setattr(self, dist, False)
         if os.path.exists("/etc/redhat-release"):
             self.rpm = True
         elif os.path.exists("/etc/debian_version"):
-            self.deb = True
+            self.dpkg = True
         else:
-            self.rpm = (os.system("rpm --version >/dev/null 2>&1") == 0)
-            if not self.rpm:
-                self.deb = (os.system("dpkg --version >/dev/null 2>&1") == 0)
+            for dist in types:
+                cmd = dist + " --version >/dev/null 2>&1"
+                # We check for != 127 rather than == 0 here
+                # because pacman --version returns 2 ?
+                if os.WEXITSTATUS(os.system(cmd)) != 127:
+                    setattr(self, dist, True)
+                    break
 dist_type=distroType()
 
 def human_space_left(where):
@@ -747,10 +753,16 @@ class fslint(GladeWrapper):
             cmd  = r"rpm -e --test " + ' '.join(packages) + r" 2>&1 | "
             cmd += r"sed -n 's/.*is needed by (installed) \(.*\)/\1/p' | "
             cmd += r"LANG=C sort | uniq"
-        elif dist_type.deb:
+        elif dist_type.dpkg:
             cmd  = r"dpkg --purge --dry-run " + ' '.join(packages) + r" 2>&1 | "
             cmd += r"sed -n 's/ \(.*\) depends on.*/\1/p' | "
             cmd += r"LANG=C sort | uniq"
+        elif dist_type.pacman:
+            cmd  = r"LC_ALL=C pacman -Qi " + ' '.join(packages)
+            cmd += r" 2>/dev/null | tr '\n' ' ' | "
+            cmd += r"sed -e 's/Name .* Required By \{1,\}: \{1,\}//' -e "
+            cmd += r"'s/Conflicts With .*//' -e 's/ \{18\}//g' -e "
+            cmd += r"'s/ \{1,\}$/\n/'"
         else:
             raise "unknown distro"
         process = os.popen(cmd)
@@ -765,13 +777,18 @@ class fslint(GladeWrapper):
         self.clist_pkgs_order=[False,False] #unordered, descending
         self.clist_pkgs_user_input=False
         self.pkg_info.get_buffer().set_text("")
-        if dist_type.deb:
+        if dist_type.dpkg:
             #Package names unique on debian
-            cmd=r"dpkg-query -W --showformat='${Package}\t${Installed-Size}"
-            cmd+=r"\t${Status}\n' | LANG=C grep -F 'installed' | cut -f1,2"
+            cmd  = r"dpkg-query -W --showformat='${Package}\t${Installed-Size}"
+            cmd += r"\t${Status}\n' | LANG=C grep -F 'installed' | cut -f1,2"
         elif dist_type.rpm:
             #Must include version names to uniquefy on redhat
-            cmd=r"rpm -q -a --queryformat '%{N}-%{V}-%{R}.%{ARCH}\t%{SIZE}\n'"
+            cmd  = r"rpm -qa --queryformat '%{N}-%{V}-%{R}.%{ARCH}\t%{SIZE}\n'"
+        elif dist_type.pacman:
+            cmd  = r"pacman -Q | sed -n 's/^\([^ ]\{1,\}\) .*/\1/p' | "
+            cmd += r"LC_ALL=C xargs pacman -Qi | sed -n -e "
+            cmd += r"'s/Name *: *\(.*\)/\1\t/p' -e 's/Size *: *\(.*\)/\1|/p' | "
+            cmd += r"tr '\n' ' ' | tr -d ' ' | tr '|' '\n'"
         else:
             return ("", _("Sorry, FSlint does not support this functionality \
 on your system at present."))
@@ -781,7 +798,7 @@ on your system at present."))
         for pkg_info in po:
             pkg_name, pkg_size= pkg_info.split()
             pkg_size = int(pkg_size)
-            if dist_type.deb:
+            if dist_type.dpkg:
                 pkg_size = pkg_size*1024
             pkg_tot += pkg_size
             clist_pkgs.append([pkg_name,human_num(pkg_size,1000).strip(),
@@ -1534,10 +1551,12 @@ on your system at present."))
         pkg=clist.get_row_data(clist.selection[-1])
         self.clist_pkgs_last_selected=pkg #for ordering later
         if dist_type.rpm:
-            cmd = "rpm -q --queryformat '%{DESCRIPTION}' "
-        elif dist_type.deb:
-            cmd = "dpkg-query -W --showformat='${Description}' "
-        cmd += pkg
+            cmd = "rpm -q --queryformat '%{DESCRIPTION}' " + pkg
+        elif dist_type.dpkg:
+            cmd = "dpkg-query -W --showformat='${Description}' " + pkg
+        elif dist_type.pacman:
+            cmd =  "LC_ALL=C pacman -Qi " + pkg
+            cmd += " | sed -n 's/Description *: *//p'"
         pkg_process = subProcess(cmd)
         pkg_process.read()
         lines=pkg_process.outdata
@@ -1601,8 +1620,10 @@ on your system at present."))
             while gtk.events_pending(): gtk.main_iteration(False)
             if dist_type.rpm:
                 cmd="rpm -e "
-            elif dist_type.deb:
+            elif dist_type.dpkg:
                 cmd="dpkg --purge "
+            elif dist_type.pacman:
+                cmd="pacman -R "
             cmd+=' '.join(pkgs_selected) + " >/dev/null 2>&1"
             os.system(cmd)
 

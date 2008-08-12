@@ -10,6 +10,8 @@
 		* Tweak some ancillary scripts to run on dash (ubuntu).
 	* Improvements:
 		* Improve layout of "redundant whitespace" tab options.
+		* Support from Marcus Habermehl for Arch linux (pacman)
+		  in the "Installed Packages" function.
 
 2.26 20/05/08
 	* Translations:
