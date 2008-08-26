@@ -80,7 +80,6 @@ cp -a man/* \
 make -C po DESTDIR=$RPM_BUILD_ROOT LOCALEDIR=%{_datadir}/locale install
 
 desktop-file-install \
-  --vendor author \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications \
   --mode 644 \
   %{name}.desktop
