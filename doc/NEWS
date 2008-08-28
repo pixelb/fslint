@@ -8,9 +8,10 @@
 		  wastage of a group of duplicate files is > 2GB.
 		* Fix "fix whitespace" script to remove trailing tabs.
 		* Tweak some ancillary scripts to run on dash (ubuntu).
-		* Update icon and fix menu file which was broken on mandrake.
+		* Fix the desktop menu file which broke the build on Mandriva.
 	* Improvements:
-		* Improve layout of "redundant whitespace" tab options.
+		* Update icon.
+		* Improve layout of options in "redundant whitespace" tab.
 		* Support from Marcus Habermehl for Arch linux (pacman)
 		  in the "Installed Packages" function.
 
