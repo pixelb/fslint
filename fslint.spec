@@ -4,7 +4,7 @@
 Name:           fslint
 Version:        2.27
 %if %{mandriva}
-Release:        1.mdk
+Release:        2.mdv
 %endif
 %if %{suse}
 Release:        1.suse
