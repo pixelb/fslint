@@ -33,7 +33,7 @@ for line in sys.stdin.xreadlines():
             keepfile = line
             ingroup = 1
             if dryRun:
-                print "\nkeeping", keepfile + "\t",
+                print "\n\nkeeping:    ", keepfile + "\n",
                 if link:
                     print "hardlinking:",
                 else:

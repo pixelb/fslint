@@ -16,6 +16,8 @@
 		* Improve layout of options in "redundant whitespace" tab.
 		* Support from Marcus Habermehl for Arch linux (pacman)
 		  in the "Installed Packages" function.
+		* Patch from David Geller to improve readability of
+		  output from findup in "dry run" mode.
 
 2.26 20/05/08
 	* Translations:

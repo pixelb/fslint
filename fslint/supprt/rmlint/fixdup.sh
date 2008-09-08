@@ -24,7 +24,7 @@ while read file; do
   elif [ "nextfile" = "$keepfile" ]; then
     keepfile="$file"
     if [ "$dryRun" = "1" ]; then
-        printf "\nkeeping $keepfile\t"
+        printf "\n\nkeeping:     $keepfile\n"
         if [ "$link" = "1" ]; then
             printf "hardlinking: "
         else
