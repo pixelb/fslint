@@ -10,6 +10,8 @@
 		* Tweak some ancillary scripts to run on dash (ubuntu).
 		* Fix the desktop menu file which broke the build on Mandriva.
 	* Improvements:
+		* Add support in the GUI for opening files in the
+		  registered default desktop application.
 		* Update icon.
 		* Improve layout of options in "redundant whitespace" tab.
 		* Support from Marcus Habermehl for Arch linux (pacman)

@@ -1190,16 +1190,29 @@ on your system at present."))
             self.groups_menu.hide()
         if event == None: #standard button click
             self.selection_menu_menu.popup(None,None,None,0,0) #at mouse pointer
-        elif type(widget) == gtk.CList and event.button == 3:
-            menu=self.selection_menu_menu
-            if self.mode != self.mode_pkgs:
+        elif type(widget) == gtk.CList and self.mode != self.mode_pkgs:
+            if event.button == 1 and event.type == gtk.gdk._2BUTTON_PRESS:
+                #Notes:
+                # This clause is not related to selection menu, but this
+                # is the button_press handler for all lists so leaving here.
+                # widget.selection can be empty due to doing this in
+                # button press rather than button release I think.
+                # Ignoring widget.selection allows us to ctrl-doubleclick
+                # to open additional items being added to a selection.
+                sel=widget.get_selection_info(int(event.x),int(event.y))
+                if sel:
+                    row,col=sel
+                    if widget.get_selectable(row)==True:
+                        self.on_open_activate(row)
+            elif event.button == 3:
+                menu=self.selection_menu_menu
                 sel=widget.get_selection_info(int(event.x),int(event.y))
                 if sel:
                     row,col=sel
                     selected = widget.selection
                     if len(selected)==1 and row in selected:
                         menu=self.edit_menu_menu
-            menu.popup(None,None,None,event.button,event.time)
+                menu.popup(None,None,None,event.button,event.time)
 
     def on_find_clicked(self, event):
 
@@ -1276,10 +1289,14 @@ on your system at present."))
         if state == int(gtk.gdk.CONTROL_MASK):
             if event.keyval in (ksyms.c, ksyms.C):
                 self.on_copy_activate(event)
-        if state == 0:
+            elif event.keyval in (ksyms.o, ksyms.O):
+                self.on_open_activate()
+        elif state == 0:
             if event.keyval in (ksyms.F2,):
                 self.on_rename_activate(event)
-            if event.keyval in (ksyms.Delete,):
+            elif event.keyval in (ksyms.Return,):
+                self.on_open_activate()
+            elif event.keyval in (ksyms.Delete,):
                 if self.ok_dirs.flags() & gtk.HAS_FOCUS:
                     self.on_removeOkDir_clicked(event)
                 elif self.bad_dirs.flags() & gtk.HAS_FOCUS:
@@ -1321,25 +1338,44 @@ on your system at present."))
                 else:
                     fileSaveAs.writelines(row_data)
 
-    def on_copy_activate(self, event):
+    def get_selected_path(self, row=None):
         clist = self.clists[self.mode]
-        if self.mode==self.mode_pkgs or len(clist.selection)!=1:
-            return
+        if self.mode==self.mode_pkgs:
+            return None
+        if row==None and len(clist.selection)!=1:
+            return None
 
         row_data=clist.get_data("row_data")
-        row=clist.selection[0] #menu item only enabled if 1 item selected
-        utf8_name=clist.get_text(row,0)
-        path_name=row_data[row][:-1]
+        if row==None:
+            row = clist.selection[0] #menu item only enabled if 1 item selected
+        utf8_name=clist.get_text(row,0) #what's being displayed
+        path_name=row_data[row][:-1] #actual full path
 
         dir,name=os.path.split(path_name)
         if name != utf8_name:
             import urllib
-            path="file://"+urllib.pathname2url(path_name)
-        else:
-            path=dir+'/'+utf8_name
+            path_name="file://"+urllib.pathname2url(path_name)
 
-        clipboard=clist.get_clipboard("CLIPBOARD")
-        clipboard.set_text(path, -1)
+        return path_name
+
+    def on_copy_activate(self, event):
+        path = self.get_selected_path()
+        if path:
+            clipboard=self.GtkWindow.get_clipboard("CLIPBOARD")
+            clipboard.set_text(path, -1)
+
+    def on_open_activate(self, row=None):
+        path = self.get_selected_path(row)
+        if path:
+            #Note we can't use subProcess() or os.popen3() to read errors,
+            #as stdout & stderr of the resulting GUI program will be
+            #connected to it's pipes and so we will hang on read().
+            #Note also that xdg-open doesn't identify the desktop platform
+            #correctly when running (FSlint) on a remote X session.
+            if os.system("xdg-open '%s' >/dev/null 2>&1" % path):
+                #could run again with os.popen3() to get actual error
+                #but that's a bit hacky I think?
+                self.ShowErrors(_("Error starting xdg-open") + '\n')
 
     def on_rename_activate(self, event):
         clist = self.clists[self.mode]

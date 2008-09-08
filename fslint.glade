@@ -64,6 +64,15 @@
 		<widget class="GtkMenu" id="edit_menu_menu">
 
 		  <child>
+		    <widget class="GtkImageMenuItem" id="open">
+		      <property name="visible">True</property>
+		      <property name="label">gtk-open</property>
+		      <property name="use_stock">True</property>
+		      <signal name="activate" handler="on_open_activate" last_modification_time="Fri, 05 Sep 2008 07:01:52 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkImageMenuItem" id="copy">
 		      <property name="visible">True</property>
 		      <property name="label">gtk-copy</property>
