@@ -2,7 +2,7 @@
 %define suse %([ -f /etc/SuSE-release ] && echo 1 || echo 0)
 
 Name:           fslint
-Version:        2.29
+Version:        2.28
 %if %{mandriva}
 Release:        1.mdv
 %endif
