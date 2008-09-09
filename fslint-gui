@@ -1203,7 +1203,7 @@ on your system at present."))
                 if sel:
                     row,col=sel
                     if widget.get_selectable(row)==True:
-                        self.on_open_activate(row)
+                        self.on_open_activate(event,row)
             elif event.button == 3:
                 menu=self.selection_menu_menu
                 sel=widget.get_selection_info(int(event.x),int(event.y))
@@ -1290,12 +1290,12 @@ on your system at present."))
             if event.keyval in (ksyms.c, ksyms.C):
                 self.on_copy_activate(event)
             elif event.keyval in (ksyms.o, ksyms.O):
-                self.on_open_activate()
+                self.on_open_activate(event)
         elif state == 0:
             if event.keyval in (ksyms.F2,):
                 self.on_rename_activate(event)
             elif event.keyval in (ksyms.Return,):
-                self.on_open_activate()
+                self.on_open_activate(event)
             elif event.keyval in (ksyms.Delete,):
                 if self.ok_dirs.flags() & gtk.HAS_FOCUS:
                     self.on_removeOkDir_clicked(event)
@@ -1358,13 +1358,13 @@ on your system at present."))
 
         return path_name
 
-    def on_copy_activate(self, event):
+    def on_copy_activate(self, src):
         path = self.get_selected_path()
         if path:
             clipboard=self.GtkWindow.get_clipboard("CLIPBOARD")
             clipboard.set_text(path, -1)
 
-    def on_open_activate(self, row=None):
+    def on_open_activate(self, src, row=None):
         path = self.get_selected_path(row)
         if path:
             #Note we can't use subProcess() or os.popen3() to read errors,
@@ -1377,7 +1377,7 @@ on your system at present."))
                 #but that's a bit hacky I think?
                 self.ShowErrors(_("Error starting xdg-open") + '\n')
 
-    def on_rename_activate(self, event):
+    def on_rename_activate(self, src):
         clist = self.clists[self.mode]
         if self.mode==self.mode_pkgs or len(clist.selection)!=1:
             return
