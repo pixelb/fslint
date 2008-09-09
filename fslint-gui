@@ -179,7 +179,7 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        print "FSlint 2.28"
+        print "FSlint 2.29"
         sys.exit(None)
 except getopt.error, msg:
     print msg
