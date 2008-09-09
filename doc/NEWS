@@ -1,6 +1,7 @@
 2.28 09/09/08
 	* Translations:
-		* Updated: Turkish, French, German, Spanish, Malay.
+		* Updated: Turkish, French, German, Spanish, Malay,
+		  Dutch, Serbian, Chinese.
 	* Fixes:
 		* Better handle paths with unusual characters when
 		  searching for suspect symbolic links.

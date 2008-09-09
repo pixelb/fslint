@@ -315,7 +315,7 @@ msgstr "选择路径"
 
 #: ../fslint.glade:3603
 msgid "ask me this in future?"
-msgstr ""
+msgstr "以后再询问?"
 
 #: ../fslint-gui:167
 #, python-format
@@ -470,12 +470,12 @@ msgstr "重命名:"
 #: ../fslint-gui:1348 ../fslint-gui:1389
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr ""
+msgstr "Error: 无法在文件系统中表示[%s]"
 
 #: ../fslint-gui:1358
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
-msgstr ""
+msgstr "Error: 无法重命名 [%(old_path)s] ，名称 [%(new_path)s] 已经存在"
 
 #: ../fslint-gui:1378
 msgid "wildcard:"
