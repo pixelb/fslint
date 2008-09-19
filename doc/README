@@ -96,8 +96,8 @@ More examples:
 		findup / -size +100k
 	search only my files (that I own and are in my home dir)
 		findsn ~ -user `id -u`
-	search system for duplicate files names belonging to roger
-		findsn / -user `id -u roger`
+	search system for duplicate files names belonging to "root"
+		findsn / -user `id -u root`
 
 Note the fslint tools do a lot of inode access and to speed them
 up you can use the following method to not update access times
