@@ -12,7 +12,7 @@ Release:        1.suse
 %if !%{mandriva} && !%{suse}
 Release:        1
 %endif
-Summary:        FSlint - a utility to find and clean "lint" on a filesystem
+Summary:        File System "lint" discovery and cleaning utility
 
 Group:          Applications/File
 License:        GPL
