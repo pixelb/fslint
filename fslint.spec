@@ -4,13 +4,13 @@
 Name:           fslint
 Version:        2.29
 %if %{mandriva}
-Release:        1.mdv
+Release:        2.mdv
 %endif
 %if %{suse}
-Release:        1.suse
+Release:        2.suse
 %endif
 %if !%{mandriva} && !%{suse}
-Release:        1
+Release:        2
 %endif
 Summary:        File System "lint" discovery and cleaning utility
 
@@ -94,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %doc doc/*
+%exclude %{_datadir}/%{name}/fslint/supprt/rmlint/fixdup.py[oc]
 %{_mandir}/man1/fslint*
 %{_bindir}/fslint-gui
 %{_datadir}/%{name}
