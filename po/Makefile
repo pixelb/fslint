@@ -1,6 +1,8 @@
 DATADIR = /usr/share/
 LOCALEDIR = $(DATADIR)/locale
 DOMAIN = fslint
+INSTALL = $(shell ginstall --help >dev/null 2>&1 && echo ginstall || echo install)
+MSGFMT = $(shell msgfmt --help 2>&1 | grep -- "--check" >/dev/null && echo "msgfmt -c" || echo "msgfmt")
 
 all: mo
 
@@ -26,7 +28,7 @@ update-po: $(DOMAIN).pot
 mo:
 	for po in *.po; do \
 		lingua=`basename $$po .po` ; \
-		msgfmt -c -o $$lingua.mo $$po ; \
+		$(MSGFMT) -o $$lingua.mo $$po ; \
 		mkdir -p locale/$$lingua/LC_MESSAGES/ ; \
 		ln -f $$lingua.mo locale/$$lingua/LC_MESSAGES/$(DOMAIN).mo ; \
 	done
@@ -35,7 +37,7 @@ mo:
 install: mo
 	for mo in *.mo; do \
 		lingua=`basename $$mo .mo`; \
-		install -D --mode=644 $$lingua.mo $(DESTDIR)/$(LOCALEDIR)/$$lingua/LC_MESSAGES/$(DOMAIN).mo ; \
+		$(INSTALL) -D --mode=644 $$lingua.mo $(DESTDIR)/$(LOCALEDIR)/$$lingua/LC_MESSAGES/$(DOMAIN).mo ; \
 	done
 
 clean:
