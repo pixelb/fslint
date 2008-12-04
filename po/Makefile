@@ -26,7 +26,7 @@ update-po: $(DOMAIN).pot
 mo:
 	for po in *.po; do \
 		lingua=`basename $$po .po` ; \
-		msgfmt -cf -o $$lingua.mo $$po ; \
+		msgfmt -c -o $$lingua.mo $$po ; \
 		mkdir -p locale/$$lingua/LC_MESSAGES/ ; \
 		ln -f $$lingua.mo locale/$$lingua/LC_MESSAGES/$(DOMAIN).mo ; \
 	done

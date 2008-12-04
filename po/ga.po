@@ -48,12 +48,10 @@ msgid "Select all but oldest"
 msgstr ""
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Toggle selection"
 msgstr "Roghnaithe"
 
 #: ../fslint.glade:177
-#, fuzzy
 msgid "Unselect all"
 msgstr "Roghnaigh conair"
 
@@ -274,12 +272,10 @@ msgid "Stop"
 msgstr "Stop"
 
 #: ../fslint.glade:3149
-#, fuzzy
 msgid "Select"
 msgstr "Roghnaithe"
 
 #: ../fslint.glade:3180
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "Liosta chun comhad"
 
@@ -296,7 +292,6 @@ msgid "Delete"
 msgstr "Scrios"
 
 #: ../fslint.glade:3332
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -357,7 +352,6 @@ msgid "Problematic filenames"
 msgstr ""
 
 #: ../fslint-gui:557
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Comhadí coimhlint"
 

@@ -49,12 +49,10 @@ msgid "Select all but oldest"
 msgstr "Изабери све осим најстарије"
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Toggle selection"
 msgstr "Обрни избор"
 
 #: ../fslint.glade:177
-#, fuzzy
 msgid "Unselect all"
 msgstr "Поништи сав избор"
 
@@ -279,7 +277,6 @@ msgid "Select"
 msgstr "Изаберите"
 
 #: ../fslint.glade:3180
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "Сачувајте изабрану листу у датотеку"
 
@@ -358,7 +355,6 @@ msgid "Problematic filenames"
 msgstr "Проблематични називи датотека"
 
 #: ../fslint-gui:557
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Могући проблеми између команди или датотека"
 

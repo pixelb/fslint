@@ -54,7 +54,6 @@ msgid "Toggle selection"
 msgstr "Selectie omkeren"
 
 #: ../fslint.glade:177
-#, fuzzy
 msgid "Unselect all"
 msgstr "Alles deselecteren"
 
@@ -276,12 +275,10 @@ msgid "Stop"
 msgstr "Stoppen"
 
 #: ../fslint.glade:3149
-#, fuzzy
 msgid "Select"
 msgstr "Selecteren"
 
 #: ../fslint.glade:3180
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "lijst naar bestand"
 
@@ -298,7 +295,6 @@ msgid "Delete"
 msgstr "Verwijderen"
 
 #: ../fslint.glade:3332
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -359,7 +355,6 @@ msgid "Problematic filenames"
 msgstr "Problematische bestandsnamen"
 
 #: ../fslint-gui:557
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Mogelijk conflicterende opdrachten of bestandsnamen"
 

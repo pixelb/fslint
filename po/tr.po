@@ -86,7 +86,6 @@ msgid "Extra find parameters"
 msgstr "Ek bulma parametreleri"
 
 #: ../fslint.glade:738
-#, fuzzy
 msgid "extra find filtering parameters"
 msgstr "ek arama filtreleme parametreleri"
 
@@ -463,7 +462,6 @@ msgid " these %d items?\n"
 msgstr " (bu %d öğeyi)?\n"
 
 #: ../fslint-gui:1249
-#, fuzzy
 msgid "User aborted"
 msgstr "Kullanıcı vazgeçti"
 

@@ -158,7 +158,6 @@ msgid "Aliases"
 msgstr "Aliasy"
 
 #: ../fslint.glade:1486 ../fslint-gui:929
-#, fuzzy
 msgid "Case conflicts"
 msgstr "Konflikt velikostí písmen"
 
@@ -171,7 +170,6 @@ msgid "Same names(ignore case)"
 msgstr "Stejná jména (ignoruj velikost písmen)"
 
 #: ../fslint.glade:1640
-#, fuzzy
 msgid "Name clashes"
 msgstr "Střet jmen"
 
@@ -184,7 +182,6 @@ msgid "core file mode?"
 msgstr ""
 
 #: ../fslint.glade:1701
-#, fuzzy
 msgid "days"
 msgstr "dny/dní"
 
@@ -339,12 +336,10 @@ msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
 msgstr ""
 
 #: ../fslint-gui:513
-#, fuzzy
 msgid "Do you want to overwrite?\n"
 msgstr "Chcete (jej) přepsat?\n"
 
 #: ../fslint-gui:519
-#, fuzzy
 msgid "You can't overwrite "
 msgstr "Nemůžete přepsat "
 
@@ -365,7 +360,6 @@ msgid "Possibly conflicting commands or filenames"
 msgstr "Možný konflikt příkazu nebo jména souboru"
 
 #: ../fslint-gui:558
-#, fuzzy
 msgid "Possibly old temporary files"
 msgstr "Možné staré dočasné soubory"
 
@@ -382,7 +376,6 @@ msgid "Executables still containing debugging info"
 msgstr ""
 
 #: ../fslint-gui:563
-#, fuzzy
 msgid "Erroneous whitespace in a text file"
 msgstr "Klamné bílé znaky v textovém souboru"
 
@@ -403,7 +396,6 @@ msgid "No search paths specified"
 msgstr "Nespecifikována cesta k prohledávání"
 
 #: ../fslint-gui:793
-#, fuzzy
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr "Promiňte, FSlint v tutochvíli nepodporuje tuto funkci nebo váš systém."
@@ -413,7 +405,6 @@ msgid " packages, "
 msgstr " balíčky "
 
 #: ../fslint-gui:810
-#, fuzzy, python-format
 msgid "consuming %sB. "
 msgstr "pohlcující %sB. "
 

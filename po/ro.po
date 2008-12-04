@@ -49,12 +49,10 @@ msgid "Select all but oldest"
 msgstr ""
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Toggle selection"
 msgstr "selecţie"
 
 #: ../fslint.glade:177
-#, fuzzy
 msgid "Unselect all"
 msgstr "Selecteaza Cale"
 
@@ -275,12 +273,10 @@ msgid "Stop"
 msgstr "Stop"
 
 #: ../fslint.glade:3149
-#, fuzzy
 msgid "Select"
 msgstr "selectat"
 
 #: ../fslint.glade:3180
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "listează în fişier"
 
@@ -297,7 +293,6 @@ msgid "Delete"
 msgstr "Şterge"
 
 #: ../fslint.glade:3332
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -358,7 +353,6 @@ msgid "Problematic filenames"
 msgstr ""
 
 #: ../fslint-gui:557
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Fişiere în conflict"
 

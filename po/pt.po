@@ -50,12 +50,10 @@ msgid "Select all but oldest"
 msgstr ""
 
 #: ../fslint.glade:168
-#, fuzzy
 msgid "Toggle selection"
 msgstr "seleção"
 
 #: ../fslint.glade:177
-#, fuzzy
 msgid "Unselect all"
 msgstr "Selecione caminho"
 
@@ -276,12 +274,10 @@ msgid "Stop"
 msgstr "Parar"
 
 #: ../fslint.glade:3149
-#, fuzzy
 msgid "Select"
 msgstr "selecionados"
 
 #: ../fslint.glade:3180
-#, fuzzy
 msgid "Save (selected) list to file"
 msgstr "lista para arquivo"
 
@@ -298,7 +294,6 @@ msgid "Delete"
 msgstr "Apagar"
 
 #: ../fslint.glade:3332
-#, fuzzy
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
@@ -359,7 +354,6 @@ msgid "Problematic filenames"
 msgstr ""
 
 #: ../fslint-gui:557
-#, fuzzy
 msgid "Possibly conflicting commands or filenames"
 msgstr "Arquivos conflitantes"
 
