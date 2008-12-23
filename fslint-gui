@@ -787,7 +787,8 @@ class fslint(GladeWrapper):
         elif dist_type.pacman:
             cmd  = r"pacman -Q | sed -n 's/^\([^ ]\{1,\}\) .*/\1/p' | "
             cmd += r"LC_ALL=C xargs pacman -Qi | sed -n -e "
-            cmd += r"'s/Name *: *\(.*\)/\1\t/p' -e 's/Size *: *\(.*\)/\1|/p' | "
+            cmd += r"'s/Name *: *\(.*\)/\1\t/p' -e "
+            cmd += r"'s/\(Installed \)\?Size *: *\([^ ]\+\)\( K\)\?/\2|/p' | "
             cmd += r"tr '\n' ' ' | tr -d ' ' | tr '|' '\n'"
         else:
             return ("", _("Sorry, FSlint does not support this functionality \
@@ -797,9 +798,14 @@ on your system at present."))
         row = 0
         for pkg_info in po:
             pkg_name, pkg_size= pkg_info.split()
-            pkg_size = int(pkg_size)
+            pkg_size = int(float(pkg_size))
             if dist_type.dpkg:
                 pkg_size = pkg_size*1024
+            elif dist_type.pacman:
+                frugalware_cmd="pacman-g2 --version >/dev/null 2>&1"
+                if os.WEXITSTATUS(os.system(frugalware_cmd)) == 127:
+                    #Arch linux has trailing 'K' removed above
+                    pkg_size = pkg_size*1024
             pkg_tot += pkg_size
             clist_pkgs.append([pkg_name,human_num(pkg_size,1000).strip(),
                                "%010ld"%pkg_size,"0"])

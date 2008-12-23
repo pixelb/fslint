@@ -1,4 +1,7 @@
 2.29 dd/mm/yy
+	* Fixes:
+		* Patch from Marcus Habermehl to support Arch linux
+		  as well as Frugalware in the "Installed Packages" function.
 
 2.28 09/09/08
 	* Translations:
@@ -394,8 +397,8 @@
 	  all tools had to have the global parameters (-r & -f at present)
 	  specified before any others, and there were various issues when
 	  no parameters were passed. This should all be fixed now.
-	* Removed the bash dependency (declare) from getfpf. Marc A.
-	  Lehmann reported this.
+	* Removed the bash dependency (declare) from getfpf.
+	  Marc A. Lehmann reported this.
 	* Got rid of spurious 0 output by findrs when it had no files to report.
 	* The usual extra comments and code cleanups.
 
