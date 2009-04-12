@@ -138,7 +138,8 @@ fi
 
 check_uniq
 
-if [ "$(find /bin/sh -printf "%D" 2>/dev/null)" = "D" ]; then
+dev_id="$(find /bin/sh -printf '%D' 2>/dev/null)"
+if [ "$dev_id" = "D" ] || [ ! "$dev_id" ]; then
     devFmt="\060" #0
 else
     devFmt=%D #This is new in findutils-4.2 and will help find more duplicates
