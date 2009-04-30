@@ -10,7 +10,16 @@ CHUNK_SIZE=512 #4096 for full file
 
 #TODO: see how kernel readahead affects this
 
-import os,sys,md5
+import os,sys
+
+try:
+    # md5 module is deprecated on python 2.6
+    # so try the newer hashlib first
+    import hashlib
+    md5_new = hashlib.md5
+except ImportError:
+    import md5
+    md5_new = md5.new
 
 def md5sum(filename, CHUNK=CHUNK_SIZE):
     """takes filename, hand back Checksum of it"""
@@ -18,7 +27,7 @@ def md5sum(filename, CHUNK=CHUNK_SIZE):
     try:
         fo = open(filename, 'r', CHUNK)
 
-        sum = md5.new()
+        sum = md5_new()
 
         # To sum the whole file do:
         #chunk = fo.read
