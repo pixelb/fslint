@@ -106,7 +106,7 @@ search_expr="$search_expr|(${ASC_01}.+/$)" ;; #finds ending with /
 	-v|--version)
 		Version ;;
 	*)
-		argsToPassOn="$argsToPassOn '$arg'" ;;
+		argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
 	esac
 done
 

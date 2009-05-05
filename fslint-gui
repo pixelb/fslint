@@ -27,7 +27,7 @@ import locale
 import gtk
 import gtk.glade
 
-import types, os, sys, time, stat, tempfile
+import types, os, sys, pipes, time, stat, tempfile
 
 # Maintain compatibility with Python 2.2 and below,
 # while getting rid of warnings in newer pyGtks.
@@ -649,17 +649,16 @@ class fslint(GladeWrapper):
 
         search_dirs = ""
         for row in range(self.ok_dirs.rows):
-            search_dirs = search_dirs + \
-                          " '" + self.ok_dirs.get_row_data(row) + "'"
+            search_dirs = search_dirs + " " + \
+                          pipes.quote(self.ok_dirs.get_row_data(row))
         exclude_dirs=""
 
         for row in range(self.bad_dirs.rows):
             if exclude_dirs == "":
-                exclude_dirs = '\(' + ' -path "'
+                exclude_dirs = '\(' + ' -path '
             else:
-                exclude_dirs += ' -o -path "'
-            path=self.bad_dirs.get_row_data(row)
-            exclude_dirs += path + '"'
+                exclude_dirs += ' -o -path '
+            exclude_dirs += pipes.quote(self.bad_dirs.get_row_data(row))
         if exclude_dirs != "":
             exclude_dirs += ' \) -prune -o '
 
@@ -1223,8 +1222,9 @@ on your system at present."))
     def on_find_clicked(self, event):
 
         try:
-            self.ClearErrors()
+            status=""
             errors=""
+            self.ClearErrors()
             clist = self.clists[self.mode]
             os.chdir(liblocation+"/fslint/")
             errors = self.buildFindParameters()
@@ -1232,7 +1232,6 @@ on your system at present."))
                 self.ShowErrors(errors)
                 return
             self.status.delete_text(0,-1)
-            status=""
             clist.clear()
             #All GtkClist operations seem to be O(n),
             #so doing the following for example will be O((n/2)*(n+1))
@@ -1375,10 +1374,11 @@ on your system at present."))
         if path:
             #Note we can't use subProcess() or os.popen3() to read errors,
             #as stdout & stderr of the resulting GUI program will be
-            #connected to it's pipes and so we will hang on read().
+            #connected to its pipes and so we will hang on read().
             #Note also that xdg-open doesn't identify the desktop platform
             #correctly when running (FSlint) on a remote X session.
-            if os.system("xdg-open '%s' >/dev/null 2>&1" % path):
+            path = pipes.quote(path)
+            if os.system("xdg-open %s >/dev/null 2>&1" % path):
                 #could run again with os.popen3() to get actual error
                 #but that's a bit hacky I think?
                 self.ShowErrors(_("Error starting xdg-open") + '\n')
@@ -1799,7 +1799,8 @@ on your system at present."))
                 path_to_clean = row_data[row][:-1] #strip '\n'
                 startlen = os.stat(path_to_clean)[stat.ST_SIZE]
 
-                cleanProcess = subProcess(command+" '"+path_to_clean+"'")
+                path_param = pipes.quote(path_to_clean)
+                cleanProcess = subProcess(command + " " + path_param)
                 cleanProcess.read()
                 errors = cleanProcess.errdata
                 del(cleanProcess)

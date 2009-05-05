@@ -100,7 +100,7 @@ do
                 if [ -e "$arg" ] && ! echo "$arg" | grep -qF /; then
                     arg="./$arg" #make sure / before name (see below)
                 fi
-		argsToPassOn="$argsToPassOn '$arg'" ;;
+		argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
 	esac
 done
 

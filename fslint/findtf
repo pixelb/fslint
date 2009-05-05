@@ -50,7 +50,7 @@ do
     -c)
         core_mode="yes" ;;
     *)
-        argsToPassOn="$argsToPassOn '$arg'" ;;
+        argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
     esac
 done
 

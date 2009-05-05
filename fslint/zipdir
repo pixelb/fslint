@@ -58,7 +58,7 @@ do
 	-v|--version)
 		Version ;;
 	*)
-		argsToPassOn="$argsToPassOn $arg" ;;
+		argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
 	esac
 done
 

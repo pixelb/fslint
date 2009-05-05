@@ -93,7 +93,7 @@ else
         -A)
             mode="aliases" ;;
         *)
-            argsToPassOn="$argsToPassOn '$arg'" ;;
+            argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
         esac
     done
 

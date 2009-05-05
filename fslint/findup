@@ -122,7 +122,7 @@ do
     -t)
         t="t" ;;
     *)
-        argsToPassOn="$argsToPassOn '$arg'"
+        argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
     esac
 done
 

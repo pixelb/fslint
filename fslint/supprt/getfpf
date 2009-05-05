@@ -42,9 +42,9 @@ do
       else
          num_files=`expr $num_files + 1`
          if [ -z "$files" ]; then
-            files="'$arg'"
+            files="$(shell_quote "$arg")"
          else
-            files="$files '$arg'"
+            files="$files $(shell_quote "$arg")"
          fi
       fi ;;
    esac

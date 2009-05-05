@@ -5,6 +5,14 @@ set -e
 LF='
 '
 
+# Quote a parameter for safe interpretation by shell
+shell_quote() {
+    # bash has printf %q for this
+    printf '"'
+    echo -n "$*" | sed 's/\([`"$\]\)/\\\1/g'
+    printf '"'
+}
+
 # The following is essentially to speedup sort & grep
 # (which redhat really crippled speedwise around redhat 8/9 for UTF8 locales).
 # Note since glibc 2.3.3 this causes (error) messages from
