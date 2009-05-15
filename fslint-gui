@@ -397,7 +397,7 @@ dist_type=distroType()
 
 def human_space_left(where):
     (device, total, used_b, avail, used_p, mount)=\
-    os.popen("df -h %s | tail -1"%where).read().split()
+    os.popen("df -Ph %s | tail -n1" % where).read().split()
     translation_map={"percent":used_p, "disk":mount, "size":avail}
     return _("%(percent)s of %(disk)s is used leaving %(size)sB available") %\
              translation_map
