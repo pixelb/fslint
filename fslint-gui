@@ -1375,7 +1375,6 @@ on your system at present."))
     def on_open_folder_activate(self, src, row=None):
         self.on_open_activate(src, row, folder=True)
 
-
     def on_open_activate(self, src, row=None, folder=False):
         path = self.get_selected_path(row, folder)
         if path:
