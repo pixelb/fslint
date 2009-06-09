@@ -1343,7 +1343,7 @@ on your system at present."))
                 else:
                     fileSaveAs.writelines(row_data)
 
-    def get_selected_path(self, row=None):
+    def get_selected_path(self, row=None, folder=False):
         clist = self.clists[self.mode]
         if self.mode==self.mode_pkgs:
             return None
@@ -1357,6 +1357,9 @@ on your system at present."))
         path=row_data[row][:-1] #actual full path
         urlencode = (path != disp_path)
 
+        if folder:
+            path=os.path.split(path)[0]
+
         if urlencode:
             import urllib
             path="file://"+urllib.pathname2url(path)
@@ -1369,8 +1372,12 @@ on your system at present."))
             clipboard=self.GtkWindow.get_clipboard("CLIPBOARD")
             clipboard.set_text(path, -1)
 
-    def on_open_activate(self, src, row=None):
-        path = self.get_selected_path(row)
+    def on_open_folder_activate(self, src, row=None):
+        self.on_open_activate(src, row, folder=True)
+
+
+    def on_open_activate(self, src, row=None, folder=False):
+        path = self.get_selected_path(row, folder)
         if path:
             #Note we can't use subProcess() or os.popen3() to read errors,
             #as stdout & stderr of the resulting GUI program will be

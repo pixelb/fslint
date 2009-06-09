@@ -73,6 +73,27 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkImageMenuItem" id="open_folder">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Open _Folder</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_open_folder_activate" last_modification_time="Fri, 05 Jun 2009 07:05:04 GMT"/>
+
+		      <child internal-child="image">
+			<widget class="GtkImage" id="image15">
+			  <property name="visible">True</property>
+			  <property name="stock">gtk-directory</property>
+			  <property name="icon_size">1</property>
+			  <property name="xalign">0.5</property>
+			  <property name="yalign">0.5</property>
+			  <property name="xpad">0</property>
+			  <property name="ypad">0</property>
+			</widget>
+		      </child>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkImageMenuItem" id="copy">
 		      <property name="visible">True</property>
 		      <property name="label">gtk-copy</property>
