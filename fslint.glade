@@ -1727,7 +1727,7 @@
 				  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 				  <property name="snap_to_ticks">False</property>
 				  <property name="wrap">False</property>
-				  <property name="adjustment">0 0 9999 1 7 7</property>
+				  <property name="adjustment">0 0 9999 1 7 0</property>
 				</widget>
 				<packing>
 				  <property name="padding">0</property>
@@ -2698,7 +2698,7 @@
 				  <property name="update_policy">GTK_UPDATE_ALWAYS</property>
 				  <property name="snap_to_ticks">False</property>
 				  <property name="wrap">False</property>
-				  <property name="adjustment">8 2 16 1 4 4</property>
+				  <property name="adjustment">8 2 16 1 4 0</property>
 				</widget>
 				<packing>
 				  <property name="padding">0</property>
