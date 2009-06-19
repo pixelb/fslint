@@ -280,7 +280,7 @@ class GladeWrapper:
 #     process.read() #timeout is optional
 #     handle(process.outdata, process.errdata)
 #     del(process)
-import time, os, select, signal
+import select, signal
 class subProcess:
     """Class representing a child process. It's like popen2.Popen3
        but there are three main differences.
@@ -1482,7 +1482,7 @@ on your system at present."))
             import operator
             if which == "first":
                 if clist.get_selectable(row)==False:
-                   return row+1
+                    return row+1
                 else:
                     return row #for first row in clist_sn
             elif which == "newest":
@@ -1700,7 +1700,7 @@ on your system at present."))
         clist.thaw()
         status = str(numDeleted) + _(" items deleted")
         if self.mode == self.mode_pkgs:
-           status += ". " + human_space_left('/')
+            status += ". " + human_space_left('/')
         self.status.set_text(status)
         self.set_cursor(None)
 
