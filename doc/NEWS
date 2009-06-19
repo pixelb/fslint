@@ -3,6 +3,7 @@
 		* Patch from Marcus Habermehl to support Arch linux
 		  as well as Frugalware in the "Installed Packages" function.
 		* Handle single quotes in specified paths.
+		* Support building Mandriva RPMs again from the tarball.
 	* Improvements:
 		* Add a context menu item to "Open Folder" of selected file.
 
