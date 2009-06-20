@@ -533,6 +533,7 @@ class fslint(GladeWrapper):
         self.dlgPathSel = dlgPathSel(liblocation+"/fslint.glade", "PathSel")
         self.dlgPathSel.init(self)
         self.confirm_delete = True
+        self.confirm_delete_group = True
         self.confirm_clean = True
         #Just need to keep this tuple in sync with tabs
         (self.mode_up, self.mode_pkgs, self.mode_nl, self.mode_sn,
@@ -1510,6 +1511,33 @@ on your system at present."))
                 clist.unselect_row(unselect_row, 0)
         clist.thaw()
 
+    def find_group_with_all_selected(self):
+
+        if self.mode != self.mode_up and self.mode != self.mode_sn:
+            return False
+
+        clist = self.clists[self.mode]
+        selected = clist.selection
+        if not selected:
+            return False
+
+        def group_all_selected(clist, row):
+            if clist.get_selectable(row)==False: #not the case for first sn row
+                row=row+1
+            while clist.get_selectable(row) == True and row < clist.rows:
+                if not row in selected:
+                    return False
+                row=row+1
+            return True
+
+        for row in range(clist.rows):
+            if row==0 or clist.get_selectable(row)==False: #New group
+                if group_all_selected(clist, row):
+                    clist.moveto(row,0,0.0,0.0)
+                    return True
+
+        return False
+
     def on_unselect_all_activate(self, event):
         clist = self.clists[self.mode]
         clist.unselect_all()
@@ -1623,6 +1651,13 @@ on your system at present."))
             self.check_user(_("Are you sure you want to delete"))
             if not response:
                 return
+        if self.confirm_delete_group:
+            if self.find_group_with_all_selected():
+                (response, self.confirm_delete_group) = self.msgbox(
+                  _("Are you sure you want to delete all items in this group"),
+                  ('Yes', 'No'), again=True)
+                if response != "Yes":
+                    return
         self.set_cursor(self.WATCH)
         clist = self.clists[self.mode]
         row_data = clist.get_data("row_data")
