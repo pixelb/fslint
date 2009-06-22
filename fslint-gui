@@ -810,7 +810,7 @@ on your system at present."))
             clist_pkgs.append([pkg_name,human_num(pkg_size,1000).strip(),
                                "%010ld"%pkg_size,"0"])
             clist_pkgs.set_row_data(row, pkg_name)
-            row=row+1
+            row += 1
 
         return (str(row) + _(" packages, ") +
                 _("consuming %sB. ") % human_num(pkg_tot,1000).strip() +
@@ -820,9 +820,9 @@ on your system at present."))
     def findrs(self, clist_rs):
         options=""
         if self.chkWhitespace.get_active():
-            options+="-w "
+            options += "-w "
         if self.chkTabs.get_active():
-            options+="-t%d " % int(self.spinTabs.get_value())
+            options += "-t%d " % int(self.spinTabs.get_value())
         if not options:
             return ("","")
         po, pe = self.get_fslint("./findrs " + options + self.findParams)
@@ -831,7 +831,7 @@ on your system at present."))
             pi = pathInfo(line)
             self.clist_append_path(clist_rs, line,
                                    pi.ls_colour, str(pi.size), pi.ls_date)
-            row=row+1
+            row += 1
 
         return (str(row) + _(" files"), pe)
 
@@ -907,7 +907,7 @@ on your system at present."))
         for line in po:
             pi = pathInfo(line)
             self.clist_append_path(clist_tf, line, '', str(pi.size), pi.ls_date)
-            byteWaste+=pi.du
+            byteWaste += pi.du
             row += 1
 
         return (human_num(byteWaste) + _(" bytes wasted in ") +
@@ -1493,13 +1493,13 @@ on your system at present."))
                 unselect_mtime=2**32
                 comp=operator.lt
             if clist.get_selectable(row)==False: #not the case for first sn row
-                row=row+1
+                row += 1
             while clist.get_selectable(row) == True and row < clist.rows:
                 mtime = clist.get_row_data(row)
                 if comp(mtime,unselect_mtime):
                     unselect_mtime = mtime
                     unselect_row=row
-                row=row+1
+                row += 1
             return unselect_row
 
         clist = self.clists[self.mode]
@@ -1511,7 +1511,7 @@ on your system at present."))
                 clist.unselect_row(unselect_row, 0)
         clist.thaw()
 
-    def find_group_with_all_selected(self):
+    def find_group_with_all_selected(self, skip_groups=0):
 
         if self.mode != self.mode_up and self.mode != self.mode_sn:
             return False
@@ -1523,18 +1523,21 @@ on your system at present."))
 
         def group_all_selected(clist, row):
             if clist.get_selectable(row)==False: #not the case for first sn row
-                row=row+1
+                row += 1
             while clist.get_selectable(row) == True and row < clist.rows:
                 if not row in selected:
                     return False
-                row=row+1
+                row += 1
             return True
 
+        group=1
         for row in range(clist.rows):
             if row==0 or clist.get_selectable(row)==False: #New group
                 if group_all_selected(clist, row):
-                    clist.moveto(row,0,0.0,0.0)
-                    return True
+                    if group > skip_groups:
+                        clist.moveto(row,0,0.0,0.0)
+                        return True
+                    group += 1
 
         return False
 
@@ -1651,13 +1654,16 @@ on your system at present."))
             self.check_user(_("Are you sure you want to delete"))
             if not response:
                 return
-        if self.confirm_delete_group:
-            if self.find_group_with_all_selected():
-                (response, self.confirm_delete_group) = self.msgbox(
-                  _("Are you sure you want to delete all items in this group"),
-                  ('Yes', 'No'), again=True)
-                if response != "Yes":
-                    return
+        skip_groups=0
+        while self.confirm_delete_group and \
+              self.find_group_with_all_selected(skip_groups):
+            (response, self.confirm_delete_group) = self.msgbox(
+              _("Are you sure you want to delete all items in this group"),
+              ('Yes', 'No'), again=True)
+            if response != "Yes":
+                return
+            skip_groups += 1
+
         self.set_cursor(self.WATCH)
         clist = self.clists[self.mode]
         row_data = clist.get_data("row_data")
@@ -1707,7 +1713,7 @@ on your system at present."))
                 cmd="dpkg --purge "
             elif dist_type.pacman:
                 cmd="pacman -R "
-            cmd+=' '.join(pkgs_selected) + " >/dev/null 2>&1"
+            cmd += ' '.join(pkgs_selected) + " >/dev/null 2>&1"
             os.system(cmd)
 
         clist.freeze()
@@ -1750,7 +1756,7 @@ on your system at present."))
 
         paths_to_leave = clist.selection
         if len(paths_to_leave):
-            question+=_("(Ignoring those selected)\n")
+            question += _("(Ignoring those selected)\n")
 
         (response,) = self.msgbox(question, ('Yes', 'No'))
         if response != "Yes":
