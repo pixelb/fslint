@@ -25,13 +25,13 @@ BuildRequires:  gettext >= 0.13, desktop-file-utils
 
 Requires:       python >= 2.0, cpio, findutils
 %if %{mandriva}
-Requires:       pygtk2.0, pygtk2.0-libglade
+Requires:       pygtk2.0 >= 2.4, pygtk2.0-libglade
 %endif
 %if %{suse}
-Requires:       python-gtk >= 2.0
+Requires:       python-gtk >= 2.4
 %endif
 %if !%{mandriva} && !%{suse}
-Requires:       pygtk2, pygtk2-libglade
+Requires:       pygtk2 >= 2.4, pygtk2-libglade
 %endif
 
 %description

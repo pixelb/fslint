@@ -471,21 +471,28 @@ class dlgUserInteraction(GladeWrapper):
             self.again = self.chkAgain.get_active()
         self.GtkWindow.destroy()
 
-class dlgPathSel(GladeWrapper):
+class dlgPath(GladeWrapper):
 
     def init(self, app):
         self.app = app
         self.pwd = self.app.pwd
 
-    def show(self, fileOps=0, filename=None):
-        self.canceled=1
+    def show(self, fileOps=False, filename=""):
+        self.canceled = True
         self.fileOps = fileOps
-        if not filename: filename=self.pwd+'/'
-        self.GtkWindow.set_filename(filename)
         if self.fileOps:
-            self.GtkWindow.show_fileop_buttons()
+            # Change to last folder as more likely to want
+            # to save results there
+            self.GtkWindow.set_action(gtk.FILE_CHOOSER_ACTION_SAVE)
+            self.GtkWindow.set_current_folder(self.pwd)
+            self.GtkWindow.set_current_name(filename)
         else:
-            self.GtkWindow.hide_fileop_buttons()
+            self.GtkWindow.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
+            # set_filename doesn't highlight dir after first call
+            # so using select_filename for consistency. Also I think
+            # select_filename is better than set_current_folder as
+            # it allows one to more easily select items at the same level
+            self.GtkWindow.select_filename(self.pwd)
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show()
         if self.GtkWindow.modal:
@@ -499,14 +506,22 @@ class dlgPathSel(GladeWrapper):
     def quit(self, *args):
         self.GtkWindow.hide()
         if not self.canceled:
-            self.pwd = self.GtkWindow.history_pulldown.get_children()[0].get()
+            if self.fileOps:
+                self.pwd = self.GtkWindow.get_current_folder()
+            else:
+                self.pwd = self.GtkWindow.get_filename()
         if self.GtkWindow.modal:
             gtk.main_quit()
         return True #Don't let window be destroyed
 
-    def on_okdirs_clicked(self, *args):
+    def on_ok_clicked(self, *args):
         if self.fileOps: #creating new item
             file = self.GtkWindow.get_filename()
+            if not file:
+                return True #Don't let window be destroyed
+            if os.path.isdir(file):
+                self.GtkWindow.set_current_folder(file)
+                return True #Don't let window be destroyed
             if os.path.exists(file):
                 if os.path.isfile(file):
                     (response,) = self.app.msgbox(
@@ -518,7 +533,7 @@ class dlgPathSel(GladeWrapper):
                 else:
                     self.app.msgbox(_("You can't overwrite ") + file)
                     return
-        self.canceled=0
+        self.canceled = False
         self.quit()
 
 class fslint(GladeWrapper):
@@ -530,8 +545,8 @@ class fslint(GladeWrapper):
         os.close(0) #don't hang if any sub cmd tries to read from stdin
         self.pwd=os.path.realpath(os.curdir)
         GladeWrapper.__init__(self, Filename, WindowName)
-        self.dlgPathSel = dlgPathSel(liblocation+"/fslint.glade", "PathSel")
-        self.dlgPathSel.init(self)
+        self.dlgPath = dlgPath(liblocation+"/fslint.glade", "PathChoose")
+        self.dlgPath.init(self)
         self.confirm_delete = True
         self.confirm_delete_group = True
         self.confirm_clean = True
@@ -1126,16 +1141,16 @@ on your system at present."))
         gtk.main_quit()
 
     def on_addOkDir_clicked(self, event):
-        self.dlgPathSel.show()
-        if not self.dlgPathSel.canceled:
-            path = self.dlgPathSel.GtkWindow.get_filename()
+        self.dlgPath.show()
+        if not self.dlgPath.canceled:
+            path = self.dlgPath.GtkWindow.get_filename()
             path = os.path.normpath(path)
             self.addDirs(self.ok_dirs, path)
 
     def on_addBadDir_clicked(self, event):
-        self.dlgPathSel.show()
-        if not self.dlgPathSel.canceled:
-            path = self.dlgPathSel.GtkWindow.get_filename()
+        self.dlgPath.show()
+        if not self.dlgPath.canceled:
+            path = self.dlgPath.GtkWindow.get_filename()
             path = os.path.normpath(path)
             #Note find -path doesn't match dirs with trailing /
             #and normpath strips trailing / among other things
@@ -1314,10 +1329,10 @@ on your system at present."))
         clist = self.clists[self.mode]
         if clist.rows == 0:
             return
-        self.dlgPathSel.show(1)
-        if not self.dlgPathSel.canceled:
+        self.dlgPath.show(fileOps=True)
+        if not self.dlgPath.canceled:
             self.ClearErrors()
-            fileSaveAs = self.dlgPathSel.GtkWindow.get_filename()
+            fileSaveAs = self.dlgPath.GtkWindow.get_filename()
             try:
                 fileSaveAs = open(fileSaveAs, 'w')
             except:

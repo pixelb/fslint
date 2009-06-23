@@ -8,6 +8,7 @@
 		* Add a context menu item to "Open Folder" of selected file.
 		* Ask for confirmation, if all copies of a duplicate
 		  are selected for deletion.
+		* Use GtkFileChooser rather than deprecated GtkFileSelection.
 
 2.28 09/09/08
 	* Translations:
