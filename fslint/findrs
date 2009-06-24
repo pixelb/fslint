@@ -19,7 +19,6 @@
 #
 # Could have option also to flag files that have many consequtive blank lines
 #   the corresponding regexp would be? "^[ 	]*${2,}"
-# Note paths with : in names will not be processed correctly
 
 script_dir=`dirname "$0"`              #directory of this script
 script_dir=`readlink -f "$script_dir"` #Make sure absolute path
@@ -91,8 +90,7 @@ fi
 find "$@" -type f -size +0c ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 xargs -r0 file |
-grep ":.* text" |
-cut -f1 -d: -s |
+sed -n 's/\(.*\):[^:]*text.*/\1/p' | #assumes ':' not in desc
 tr '\n' '\0' |
 if [ "$view" = "yes" ]; then
 	xargs -r0 grep -nE "$re" |

@@ -63,8 +63,8 @@ sort -k1,1n | #sort by inodes
 cut -f2- |
 tr '\n' '\0' |
 xargs -r0 file |
-grep -E " executable.+ not stripped" |
-cut -f1 -d: -s |
+# This assumes ':' not in any executable descriptions
+sed -n 's/\(.*\):[^:]*executable.* not stripped*/\1/p' |
 if [ -p /proc/self/fd/1 ]; then
     cat
 else
