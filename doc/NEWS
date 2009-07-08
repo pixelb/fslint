@@ -7,10 +7,11 @@
 		* The redundant whitespace function now doesn't display
 		  errors when processing files with ':' in the path name.
 	* Improvements:
-		* Add a context menu item to "Open Folder" of selected file.
+		* Add a context menu item to "Open Folder" selected file is in.
 		* Ask for confirmation, if all copies of a duplicate
 		  are selected for deletion.
 		* Use GtkFileChooser rather than deprecated GtkFileSelection.
+		* Add Pause/Resume buttons to control long searches.
 
 2.28 09/09/08
 	* Translations:

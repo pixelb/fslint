@@ -361,6 +361,12 @@ class subProcess:
     def kill(self):
         os.kill(-self.pid, signal.SIGTERM) #kill whole group
 
+    def pause(self):
+        os.kill(-self.pid, signal.SIGSTOP) #pause whole group
+
+    def resume(self):
+        os.kill(-self.pid, signal.SIGCONT) #resume whole group
+
     def cleanup(self):
         """Wait for and return the exit status of the child process."""
         self.cleaned=True
@@ -627,14 +633,20 @@ class fslint(GladeWrapper):
         while self.fslintproc.read(timeout=0.1):
             while gtk.events_pending(): gtk.main_iteration(False)
             if self.stopflag:
+                if self.paused:
+                    self.fslintproc.resume()
                 self.fslintproc.kill()
                 break
         else:
             self.fslintproc.outdata=self.fslintproc.outdata.split(delim)[:-1]
             ret = (self.fslintproc.outdata, self.fslintproc.errdata)
-        del(self.fslintproc)
+        #we can't control internal processing at present so hide buttons
+        self.pause.hide()
+        self.resume.hide()
+        self.stop.hide()
         self.status.set_text(_("processing..."))
         while gtk.events_pending(): gtk.main_iteration(False)
+        del(self.fslintproc)
         if self.stopflag:
             raise self.UserAbort
         else:
@@ -1081,14 +1093,18 @@ on your system at present."))
 
     def look_busy(self):
         self.find.hide()
+        self.resume.hide()
         self.stop.show()
+        self.pause.show()
         self.stop.grab_focus()
-        self.stop.grab_add() #Just allow app to stop
+        self.control_buttons.grab_add() #restrict mouse and key presses to here
         self.set_cursor(self.LEFT_PTR_WATCH)
 
     def look_interactive(self):
-        self.stop.grab_remove()
+        self.control_buttons.grab_remove()
         self.stop.hide()
+        self.resume.hide()
+        self.pause.hide()
         self.find.show()
         self.find.grab_focus() #as it already would have been in focus
         self.set_cursor(None)
@@ -1134,6 +1150,8 @@ on your system at present."))
 
     def on_fslint_destroy(self, event):
         try:
+            if self.paused:
+                self.fslintproc.resume()
             self.fslintproc.kill()
             del(self.fslintproc)
         except:
@@ -1259,6 +1277,7 @@ on your system at present."))
                 self.pkg_info.get_buffer().set_text("")
             self.look_busy()
             self.stopflag=0
+            self.paused = False
             while gtk.events_pending(): gtk.main_iteration(False)#update GUI
             clist.freeze()
             tstart=time.time()
@@ -1281,24 +1300,53 @@ on your system at present."))
     def on_stop_clicked(self, event):
         self.stopflag=1
 
-    def on_stop_keypress(self, button, event):
+    def on_pause_clicked(self, event):
+        self.paused = not self.paused
+        if self.paused:
+            self.pause.hide()
+            self.resume.show()
+            self.resume.grab_focus()
+            self.fslintproc.pause()
+            self.status.set_text(_("paused"))
+        else:
+            self.resume.hide()
+            self.pause.show()
+            self.pause.grab_focus()
+            self.fslintproc.resume()
+            #We can only pause external searching
+            self.status.set_text(_("searching")+"...")
+
+    def on_control_buttons_keypress(self, button, event):
         #ingore capslock and numlock
         state = event.state & ~(gtk.gdk.LOCK_MASK | gtk.gdk.MOD2_MASK)
         ksyms=gtk.keysyms
         abort_keys={
                     int(gtk.gdk.CONTROL_MASK):[ksyms.c,ksyms.C],
-                    0                   :[ksyms.space,ksyms.Escape,ksyms.Return]
+                    0                        :[ksyms.Escape]
                    }
         try:
             if event.keyval in abort_keys[state]:
                 self.on_stop_clicked(event)
         except:
             pass
-        return True
+        if event.keyval == ksyms.Tab:
+            # Unfortunately GTK doesn't restrict widgets
+            # to focus on tab to children of the current grab_add widget.
+            # So we do it manually here.
+            if self.stop.is_focus():
+                if self.paused:
+                    self.resume.grab_focus()
+                else:
+                    self.pause.grab_focus()
+            else:
+                self.stop.grab_focus()
+            return True #Don't allow tabbing to other controls
+        else:
+            return False #pass event on to sub button
 
     #Note Ctrl-C as well as doing "copy path" which is handled here,
     #also cancels a find in progress. That doesn't need to be handled here
-    #because the stop button grabs focus during the find operation.
+    #because the control buttons grab focus during the find operation.
     #
     #Note also that, we need a global handler here for all lists
     #as in GTK, keyboard events specifically are sent to the window first,
