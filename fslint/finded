@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# finded - find empty directories
+# finded - find empty directory branches
 # Copyright © 2000-2009 by Pádraig Brady <P@draigBrady.com>.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@ script_dir=`readlink -f "$script_dir"` #Make sure absolute path
 
 Usage() {
 	ProgName=`basename "$0"`
-	echo "find Empty Directories.
+	echo "find Empty Directory branches.
 Usage: $ProgName [[-r] [-f] paths(s) ...]
 
 If no path(s) specified then the currrent directory is assumed."
@@ -43,8 +43,30 @@ done
 . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
 #forcing -f as if specify an empty dir it would not display
 
-find "$@" -empty -type d ! -name "*$LF*" -printf "$FPF\0" |
-sort -zu | #merge dirs (indirectly) specified multiple times
+(
+#get all dirs
+find "$@" -type d ! -name "*$LF*" -printf "$FPF\n" |
+sort -u #merge dirs (indirectly) specified multiple times
+
+#get all dirs containing files.
+#Note / not included for absolute dirs, but we assume / has files
+find "$@" ! -type d ! -name "*$LF*" -printf "%h\n" |
+uniq | #quick merge of dir names for each file
+sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
+#Ensure we exclude parents to specified absolute dirs
+find "$@" -maxdepth 0 ! -name "*$LF*" -printf "%h\n" |
+sed '/^\//!d' | #only process absolute dirs
+sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
+) |
+#get dirs only containing dirs, or nothing at all
+sort | uniq -u |
+
+#reduce to parent (prefixes)
+sed 'p; :s $!N; s/^\(.*\)\n\1\/.*/\1/; t s; D' |
+
+#make further processing immune to blanks
+tr '\n' '\0' |
+
 if [ ! -p /proc/self/fd/1 ]; then
     xargs -r0 ls -b1Ud --
 else

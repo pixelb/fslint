@@ -12,6 +12,8 @@
 		  are selected for deletion.
 		* Use GtkFileChooser rather than deprecated GtkFileSelection.
 		* Add Pause/Resume buttons to control long searches.
+		* In the "empty directories" function, report empty branches
+		  rather than just empty leaf directories.
 
 2.28 09/09/08
 	* Translations:

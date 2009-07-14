@@ -580,7 +580,7 @@ class fslint(GladeWrapper):
             self.mode_tf:_("Possibly old temporary files"),
             self.mode_bl:_("Problematic symbolic links"),
             self.mode_id:_("Files with missing user IDs"),
-            self.mode_ed:_("Empty directories"),
+            self.mode_ed:_("Directory branches with no files"),
             self.mode_ns:_("Executables still containing debugging info"),
             self.mode_rs:_("Erroneous whitespace in a text file")
         }
@@ -1779,13 +1779,24 @@ on your system at present."))
             cmd += ' '.join(pkgs_selected) + " >/dev/null 2>&1"
             os.system(cmd)
 
+        # Depth first traversal.
+        # Any exception aborts.
+        # os.walk is not available in python 2.2. Anyway this is simpler.
+        # We don't follow symlinks. They shouldn't be present in any case.
+        def rm_branch(branch):
+            for name in os.listdir(branch):
+                name = os.path.join(branch, name)
+                if os.path.isdir(name) and not os.path.islink(name):
+                    rm_branch(name)
+            os.rmdir(branch)
+
         clist.freeze()
         for row in paths_to_remove:
             if self.mode != self.mode_pkgs:
                 try:
                     path=row_data[row][:-1] #strip trailing '\n'
                     if os.path.isdir(path):
-                        os.rmdir(path)
+                        rm_branch(path)
                     else:
                         os.unlink(path)
                 except:
