@@ -1,234 +1,209 @@
-# Danish translations for FSlint (da.po)
-# Danske oversættelser for pakke FSlint (da.po).
-# Copyright (C) 2007 Pádraig Brady
-# This file is distributed under the same license as the FSlint package.
-# Joe Hansen <joedalton2@yahoo.dk>, 2006.
-# Martin Willemoes Hansen har udført korrektur på oversættelsen, 2006
+# Finnish translation for fslint
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the fslint package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2008-09-09 12:16+0100\n"
-"PO-Revision-Date: 2009-04-30 16:54+0000\n"
-"Last-Translator: Anders Jenbo <Unknown>\n"
-"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"PO-Revision-Date: 2009-01-25 17:18+0000\n"
+"Last-Translator: kkorhonen <kkorhonen@gmail.com>\n"
+"Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-06-20 19:08:13+0000\n"
+"X-Launchpad-Export-Date: 2009-07-13 00:20+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
-msgstr "FSlint"
+msgstr "Fslint"
 
 #: ../fslint.glade:87
 msgid "_Rename..."
-msgstr "_Omdøb..."
+msgstr "_Nimeä uudelleen..."
 
 #: ../fslint.glade:110
 msgid "Select using wildcard"
-msgstr "Vælg med jokertegn"
+msgstr "Valitse käyttäen asteriskiä"
 
 #: ../fslint.glade:119
 msgid "Unselect using wildcard"
-msgstr "Fravælg med jokertegn"
+msgstr "Poista valinta käyttäen asteriskiä"
 
 #: ../fslint.glade:128
 msgid "within groups"
-msgstr "Indenfor grupper"
+msgstr "ryhmien sisältä"
 
 #: ../fslint.glade:137
 msgid "Select all but first"
-msgstr "Vælg alle undtagen første"
+msgstr "Valitse kaikki paitsi ensimmäinen"
 
 #: ../fslint.glade:146
 msgid "Select all but newest"
-msgstr "Vælg alle undtagen nyeste"
+msgstr "Valitse kaikki paitsi uusin"
 
 #: ../fslint.glade:155
 msgid "Select all but oldest"
-msgstr "Vælg alle undtagen ældste"
-
-#: ../fslint.glade:168
-msgid "Toggle selection"
-msgstr "Til/fra markering"
+msgstr "Valitse kaikki paitsi vanhin"
 
 #: ../fslint.glade:177
 msgid "Unselect all"
-msgstr "Fravælg alle"
+msgstr "Poista kaikki valinnat"
 
 #: ../fslint.glade:294 ../fslint.glade:547
 msgid "Add"
-msgstr "Tilføj"
+msgstr "Lisää"
 
 #: ../fslint.glade:370 ../fslint.glade:623
 msgid "Remove"
-msgstr "Fjern"
+msgstr "Poista"
 
 #: ../fslint.glade:417
 msgid "Directories to search"
-msgstr "Kataloger der søges i"
+msgstr "Hakemistot joista etsitään"
 
 #: ../fslint.glade:442
 msgid "recurse?"
-msgstr "rekursion?"
+msgstr "rekursiivisesti?"
 
 #: ../fslint.glade:466
 msgid "Search path"
-msgstr "Søgesti"
+msgstr "Hakupolku"
 
 #: ../fslint.glade:678
 msgid "Paths to exclude"
-msgstr "Søgestier der udelades"
+msgstr "Pois jätettävät polut"
 
 #: ../fslint.glade:713
 msgid "Extra find parameters"
-msgstr "Yderligere søgeparametre"
+msgstr "Ekstra haku ehdot"
 
 #: ../fslint.glade:738
 msgid "extra find filtering parameters"
-msgstr "Yderligere søge-filtreringsparametre"
+msgstr "ekstra haku suodatin ehdot"
 
 #: ../fslint.glade:771
 msgid "Advanced search parameters"
-msgstr "Avancerede søgeparametre"
+msgstr "Edistyneet haku ehdot"
 
 #: ../fslint.glade:856 ../fslint.glade:987 ../fslint.glade:1258
 #: ../fslint.glade:1567 ../fslint.glade:1779 ../fslint.glade:2033
 #: ../fslint.glade:2154 ../fslint.glade:2326 ../fslint.glade:2459
 #: ../fslint.glade:2808
 msgid "Name"
-msgstr "Navn"
+msgstr "Nimi"
 
 #: ../fslint.glade:875 ../fslint.glade:1277 ../fslint.glade:1586
 #: ../fslint.glade:1798 ../fslint.glade:2052 ../fslint.glade:2173
 #: ../fslint.glade:2345 ../fslint.glade:2478 ../fslint.glade:2827
 msgid "Directory"
-msgstr "Katalog"
+msgstr "Kansio"
 
 #: ../fslint.glade:894 ../fslint.glade:1836 ../fslint.glade:2249
 #: ../fslint.glade:2364 ../fslint.glade:2516 ../fslint.glade:2865
 msgid "Date"
-msgstr "Dato"
+msgstr "Päiväys"
 
 #: ../fslint.glade:929
 msgid "Duplicates"
-msgstr "Gengangere"
+msgstr "Kopiot"
 
 #: ../fslint.glade:1006 ../fslint.glade:1605 ../fslint.glade:1817
 #: ../fslint.glade:2230 ../fslint.glade:2497 ../fslint.glade:2846
 msgid "Size"
-msgstr "Størrelse"
+msgstr "Koko"
 
 #: ../fslint.glade:1120
 msgid "Installed packages"
-msgstr "Installerede pakker"
+msgstr "Asennetut paketit"
 
 #: ../fslint.glade:1161
 msgid "Sensitivity="
-msgstr "Følsomhed="
+msgstr "Herkkyys="
 
 #: ../fslint.glade:1205
 msgid "invalid UTF8 mode?"
-msgstr "ugyldig UTF8-tilstand?"
+msgstr "epäkelpo UTF8 tila?"
 
 #: ../fslint.glade:1312
 msgid "Bad names"
-msgstr "Uegnede navne"
+msgstr "Epäkelvot nimet"
 
 #: ../fslint.glade:1347
 msgid "Search ("
-msgstr "Søg ("
+msgstr "Etsi ("
 
 #: ../fslint.glade:1373
 msgid "$PATH"
 msgstr "$PATH"
 
-#: ../fslint.glade:1392
-msgid ") for"
-msgstr ") for"
-
 #: ../fslint.glade:1439 ../fslint-gui:916
 msgid "Conflicting files"
-msgstr "Filer i konflikt"
+msgstr "Ristiriitaiset tiedostot"
 
 #: ../fslint.glade:1447 ../fslint.glade:1510 ../fslint-gui:914
 #: ../fslint-gui:923
 msgid "Aliases"
-msgstr "Adressebog"
+msgstr "Aliakset"
 
 #: ../fslint.glade:1486 ../fslint-gui:929
 msgid "Case conflicts"
-msgstr "Konflikt små/store bogstaver"
+msgstr "Kirjainkoko ristiriidat"
 
 #: ../fslint.glade:1494 ../fslint-gui:925
 msgid "Same names"
-msgstr "Ens navne"
+msgstr "Samannimiset"
 
 #: ../fslint.glade:1502 ../fslint-gui:927
 msgid "Same names(ignore case)"
-msgstr "Ens navne(ignorer små/store bogstaver"
+msgstr "Samannimiset(kirjainkoolla ei väliä)"
 
 #: ../fslint.glade:1640
 msgid "Name clashes"
-msgstr "Navnesammenfald"
+msgstr "Nimi ristiriidat"
 
 #: ../fslint.glade:1675
 msgid "More restrictive search for core files"
-msgstr "Yderligere restriktiv søgning efter programfiler"
+msgstr "Rajoittavampi haku ydin tiedostoille"
 
 #: ../fslint.glade:1677
 msgid "core file mode?"
-msgstr "programfil-tilstand?"
+msgstr "ydin tiedosto tila?"
 
 #: ../fslint.glade:1701
 msgid "days"
-msgstr "dage"
+msgstr "päiviä"
 
 #: ../fslint.glade:1721
 msgid "minimum age"
-msgstr "minimumsalder"
+msgstr "vähimmäisikä"
 
 #: ../fslint.glade:1871
 msgid "Temp files"
-msgstr "Midlertidige filer"
-
-#: ../fslint.glade:1907
-msgid "Dangling"
-msgstr "Ikke afklaret"
-
-#: ../fslint.glade:1925
-msgid "Absolute links to paths within or below the link's directory"
-msgstr "Henvisning til stier indenfor eller under henvisningens katalog"
-
-#: ../fslint.glade:1927
-msgid "Suspect"
-msgstr "Mistænkelig"
+msgstr "Tilapäistiesostot"
 
 #: ../fslint.glade:1947
 msgid "Relative"
-msgstr "Relativ"
+msgstr "Suhteellinen"
 
 #: ../fslint.glade:1967
 msgid "Absolute"
-msgstr "Absolut"
-
-#: ../fslint.glade:1986
-msgid "/././. ///// /../ etc."
-msgstr "/././. ///// /../ etc."
+msgstr "Absoluuttinen"
 
 #: ../fslint.glade:1988
 msgid "Redundant naming"
-msgstr "Redundant navngivning"
+msgstr "Tarpeeton nimeäminen"
 
 #: ../fslint.glade:2071
 msgid "Target"
-msgstr "Mål"
+msgstr "Kohde"
 
 #: ../fslint.glade:2106
 msgid "Bad symlinks"
-msgstr "Ugyldig symbolsk henvisning"
+msgstr "Epäkelvot symlinkit"
 
 #: ../fslint.glade:2192
 msgid "UID"
@@ -240,312 +215,334 @@ msgstr "GID"
 
 #: ../fslint.glade:2284
 msgid "Bad IDs"
-msgstr "Ugyldige ID'er"
+msgstr "Epäkelvot ID:t"
 
 #: ../fslint.glade:2392 ../fslint-gui:561
 msgid "Empty directories"
-msgstr "Tomme kataloger"
+msgstr "Tyhjät hakemistot"
 
 #: ../fslint.glade:2422
 msgid "Search $PATH"
-msgstr "Søg $PATH"
+msgstr "Etsi $PATH"
 
-# "Programmer med fejlfindingsinformation" is too long
 #: ../fslint.glade:2551
 msgid "Non stripped binaries"
-msgstr "Non stripped binaries"
+msgstr "Non stripped binaarit"
 
 #: ../fslint.glade:2637
 msgid "bad indenting for indent width"
-msgstr "Forkert indryk vedrørende indrykningsbredde"
+msgstr "epäkelvot sisennykset sisennyksen leveyteen"
 
 #: ../fslint.glade:2745
 msgid "whitespace at end of line"
-msgstr "mellemrum ved slutningen"
+msgstr "tyhjätila jonon lopussa"
 
 #: ../fslint.glade:2900
 msgid "Redundant whitespace"
-msgstr "Redundant mellemrum"
+msgstr "Tarpeeton tyhjätila"
 
 #: ../fslint.glade:2986
 msgid "Find"
-msgstr "Find"
+msgstr "Etsi"
 
 #: ../fslint.glade:3061
 msgid "Stop"
-msgstr "Stop"
+msgstr "Pysäytä"
 
 #: ../fslint.glade:3149
 msgid "Select"
-msgstr "Vælg"
+msgstr "Valitse"
 
 #: ../fslint.glade:3180
 msgid "Save (selected) list to file"
-msgstr "Gem (valgte) liste i en fil"
+msgstr "Tallenna (valittu) lista tiedostoon"
 
 #: ../fslint.glade:3225
 msgid "Save"
-msgstr "Gem"
+msgstr "Tallenna"
 
 #: ../fslint.glade:3256 ../fslint.glade:3408
 msgid "selected"
-msgstr "valgt"
+msgstr "valitut"
 
 #: ../fslint.glade:3301
 msgid "Delete"
-msgstr "Slet"
+msgstr "Poista"
 
 #: ../fslint.glade:3332
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
-msgstr ""
-"Alle (undtagen valgte) der bruger fast henvisning\n"
-"(eller symbolsk henvisning hvis på et andet filsystem)"
+msgstr "Kaikki (paitsi valitut) käyttäen hardlinkkejä"
 
 #: ../fslint.glade:3378
 msgid "Merge"
-msgstr "Sammenflet"
+msgstr "Yhdistä"
 
 #: ../fslint.glade:3453
 msgid "Clean"
-msgstr "Rens"
+msgstr "Puhdas"
 
 #: ../fslint.glade:3585
 msgid "Select Path"
-msgstr "Vælg sti"
+msgstr "Valitse polku"
 
 #: ../fslint.glade:3736
 msgid "ask me this in future?"
-msgstr "spørg mig om dette i fremtiden?"
+msgstr "kysy tämä myös jatkossa?"
 
 #: ../fslint-gui:167
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "Brug: %s [OPTION] [PATHS]"
+msgstr "Käytäntö: %s [OPTION] [PATHS]"
 
 #: ../fslint-gui:168
 msgid "display version"
-msgstr "vis version"
+msgstr "näytä versio"
 
 #: ../fslint-gui:169
 msgid "display help"
-msgstr "vis hjælp"
-
-#: ../fslint-gui:402
-#, python-format
-msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr "%(percent)s af %(disk)s er anvendt og %(size)sB er tilgængelig"
+msgstr "näytä ohje"
 
 #: ../fslint-gui:513
 msgid "Do you want to overwrite?\n"
-msgstr "Ønsker du at overskrive?\n"
+msgstr "Haluatko korvata?\n"
 
 #: ../fslint-gui:519
 msgid "You can't overwrite "
-msgstr "Du kan ikke overskrive "
+msgstr "Et voi korvata "
 
 #: ../fslint-gui:554
 msgid "Files with the same content"
-msgstr "Filer med det samme indhold"
+msgstr "Samansisältöiset tiedostot"
 
 #: ../fslint-gui:555
 msgid "Installed packages ordered by disk usage"
-msgstr "Installerede pakker krævet af harddiskforbrug"
+msgstr "Asennetut paketit järjestyksessä levynkäytön mukaan"
 
 #: ../fslint-gui:556
 msgid "Problematic filenames"
-msgstr "Problematiske filnavne"
+msgstr "Ongelmalliset tiedostonimet"
 
 #: ../fslint-gui:557
 msgid "Possibly conflicting commands or filenames"
-msgstr "Mulig konflikt med kommandoer eller filnavne"
+msgstr "Mahdollisesti ristiriitaiset komennot tai tiedostonimet"
 
 #: ../fslint-gui:558
 msgid "Possibly old temporary files"
-msgstr "Muligvis gamle midlertidige filer"
+msgstr "Mahdollisesti vanhat tilapäistiedostot"
 
 #: ../fslint-gui:559
 msgid "Problematic symbolic links"
-msgstr "Problematiske symbolske henvisninger"
+msgstr "Ongelmalliset symboliset linkit"
 
 #: ../fslint-gui:560
 msgid "Files with missing user IDs"
-msgstr "Filer med manglende bruger ID"
+msgstr "Tiedostot joista puuttuu käyttäjän ID"
 
 #: ../fslint-gui:562
 msgid "Executables still containing debugging info"
-msgstr "Programmer der stadig indeholder fejlsøgningsinformation"
+msgstr "Suoritettavat tiedostot sisältävät yhä debug tietoa"
 
 #: ../fslint-gui:563
 msgid "Erroneous whitespace in a text file"
-msgstr "Fejlbehæftet mellemrum i en tekstfil"
+msgstr "Virheellistä tyhjäätilaa teksti tiedostossa"
 
 #: ../fslint-gui:569
 msgid "Invalid path ["
-msgstr "Ugyldig sti ["
+msgstr "Virheellinen polku ["
 
 #: ../fslint-gui:610
 msgid "searching"
-msgstr "søger"
+msgstr "etsitään"
 
 #: ../fslint-gui:620
 msgid "processing..."
-msgstr "bearbejder..."
+msgstr "käsitellään..."
 
 #: ../fslint-gui:648
 msgid "No search paths specified"
-msgstr "Ingen søgesti valgt"
+msgstr "Hakupolku määrittämättä"
 
 #: ../fslint-gui:793
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
-"Beklager, FSlint understøtter ikke denne funktionalitet på dit system for "
-"nuværende."
+"Valitettavasti FSlint ei tue tätä toimintoa järjestelmässäsi toistaiseksi."
 
 #: ../fslint-gui:809
 msgid " packages, "
-msgstr " pakker, "
+msgstr " paketit, "
 
 #: ../fslint-gui:810
 #, python-format
 msgid "consuming %sB. "
-msgstr "Forbruger %sB. "
-
-#: ../fslint-gui:811
-#, python-format
-msgid "Note %s."
-msgstr "Bemærk %s."
+msgstr "käyttäen %sB. "
 
 #: ../fslint-gui:830 ../fslint-gui:870 ../fslint-gui:908 ../fslint-gui:970
 msgid " files"
-msgstr " filer"
-
-#: ../fslint-gui:850
-msgid " unstripped binaries"
-msgstr " ikke fjernet binarier"
+msgstr " tiedostoa"
 
 #: ../fslint-gui:859
 msgid " empty directories"
-msgstr " tomme kataloger"
+msgstr " tyhjiä hakemistoja"
 
 #: ../fslint-gui:891
 msgid " links"
-msgstr " henvisninger"
+msgstr " linkkejä"
 
 #: ../fslint-gui:907 ../fslint-gui:1023
 msgid " bytes wasted in "
-msgstr " byte bortødslet i "
+msgstr " bittiä hukkakäytössä "
 
 #: ../fslint-gui:953 ../fslint-gui:1024
 msgid " files (in "
-msgstr " filer (i "
+msgstr " tiedostoa ( "
 
 #: ../fslint-gui:954 ../fslint-gui:1025
 msgid " groups)"
-msgstr " grupper)"
+msgstr " ryhmässä)"
 
 #: ../fslint-gui:1015
 msgid "bytes wasted"
-msgstr "byte bortødslet"
+msgstr "bittiä hukkakäytössä"
 
 #: ../fslint-gui:1098
 msgid "None selected"
-msgstr "Ingen valg foretaget"
+msgstr "Ei kohteita valittuna"
 
 #: ../fslint-gui:1102
 msgid " this item?\n"
-msgstr " dette punkt?\n"
+msgstr " tämä kohde?\n"
 
 #: ../fslint-gui:1104
 #, python-format
 msgid " these %d items?\n"
-msgstr " disse %d punkter?\n"
+msgstr " nämä %d kohteet?\n"
 
 #: ../fslint-gui:1249
 msgid "User aborted"
-msgstr "Bruger afbrudt"
+msgstr "Käyttäjän keskeytys"
 
 #: ../fslint-gui:1378
 msgid "Error starting xdg-open"
-msgstr "Fejl under opstarten af xdg-open"
+msgstr "Virhe käynnistettäessä xdg-open"
 
 #: ../fslint-gui:1390
 msgid "Rename:"
-msgstr "Omdøb:"
+msgstr "Nimeä uudelleen:"
 
 #: ../fslint-gui:1401 ../fslint-gui:1442
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr "Fejl: [%s] kan ikke være repræsenteret på dit filsystem"
+msgstr "Virhe: [%s] ei voi olla edustettuna tiedostojärjestelmässäsi"
 
 #: ../fslint-gui:1411
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
-msgstr "Fejl: Kan ikke omdøbe [%(old_path)s] da [%(new_path)s] eksisterer"
+msgstr ""
+"Virhe: Ei voi uudelleen nimetä [%(old_path)s] koska [%(new_path)s] on jo "
+"olemassa"
 
 #: ../fslint-gui:1431
 msgid "wildcard:"
-msgstr "Jokertegn:"
+msgstr "asteriski:"
 
 #: ../fslint-gui:1606
 msgid "Sorry, you must be root to delete system packages."
-msgstr "Beklager, du skal være administrator for at slette systempakker."
+msgstr "Sinun tulee olla root poistaaksesi järjestelmä paketteja."
 
 #: ../fslint-gui:1611
 msgid "Are you sure you want to delete"
-msgstr "Er du sikker på at du ønsker at slette"
+msgstr "Oletko varma että haluat poistaa"
 
 #: ../fslint-gui:1628
 msgid "Calculating dependencies..."
-msgstr "Udregner afhængigheder..."
+msgstr "Tarkastetaan riippuvaisuuksia..."
 
 #: ../fslint-gui:1646
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "%d yderligere pakker skal slettes.\n"
+msgstr "%d ylimääräistä pakettia täytyy poistaa.\n"
 
 #: ../fslint-gui:1647
 msgid "Please review the updated selection."
-msgstr "Gennemse venligst det opdaterede valg."
+msgstr "Tarkasta päivitetty valinta."
 
 #: ../fslint-gui:1655
 msgid "Removing packages..."
-msgstr "Fjerner pakker..."
+msgstr "Poistetaan paketteja..."
 
 #: ../fslint-gui:1689
 msgid " items deleted"
-msgstr " punkter slettet"
+msgstr " kohdetta poistettu"
 
 #: ../fslint-gui:1702
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "Er du sikker du ønsker at flette ALLE filer?\n"
+msgstr "Oletko varma että haluat yhdistää KAIKKI tiedostot?\n"
 
 #: ../fslint-gui:1706
 msgid "(Ignoring those selected)\n"
-msgstr "(Ignorerer de valgte)\n"
+msgstr "(jätetään valitut huomiotta)\n"
 
 #: ../fslint-gui:1754
 msgid "Which indenting method do you want to convert to?"
-msgstr "Hvilken indrykningsmetode ønsker du at skifte til?"
+msgstr "Mihin merkintä tapaan haluat muuttaa?"
 
 #: ../fslint-gui:1755
 msgid "Tabs"
-msgstr "Faneblade"
-
-#: ../fslint-gui:1755
-msgid "Spaces"
-msgstr "Mellemrum"
+msgstr "Välilehdet"
 
 #: ../fslint-gui:1766
 msgid "Are you sure you want to clean"
-msgstr "Er du sikker på, at du ønsker at rydde op"
+msgstr "Oletko varma että haluat puhdistaa"
 
 #: ../fslint-gui:1810
 msgid " items cleaned ("
-msgstr " punkter ryddet op ("
+msgstr " kohdetta puhdistettu ("
 
 #: ../fslint-gui:1811
 msgid " bytes saved)"
-msgstr " byte gemt)"
+msgstr " bittiä säästetty)"
+
+#: ../fslint.glade:168
+msgid "Toggle selection"
+msgstr ""
+
+#: ../fslint.glade:1392
+msgid ") for"
+msgstr ""
+
+#: ../fslint.glade:1907
+msgid "Dangling"
+msgstr ""
+
+#: ../fslint.glade:1925
+msgid "Absolute links to paths within or below the link's directory"
+msgstr ""
+
+#: ../fslint.glade:1927
+msgid "Suspect"
+msgstr ""
+
+#: ../fslint.glade:1986
+msgid "/././. ///// /../ etc."
+msgstr ""
+
+#: ../fslint-gui:402
+#, python-format
+msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
+msgstr ""
+
+#: ../fslint-gui:811
+#, python-format
+msgid "Note %s."
+msgstr ""
+
+#: ../fslint-gui:850
+msgid " unstripped binaries"
+msgstr ""
+
+#: ../fslint-gui:1755
+msgid "Spaces"
+msgstr ""

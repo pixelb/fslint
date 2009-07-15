@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-09 12:16+0100\n"
-"PO-Revision-Date: 2007-10-30 15:45+0000\n"
-"Last-Translator: Carlo Brualdi <carlo.brualdi@gmail.com>\n"
+"PO-Revision-Date: 2008-09-12 08:45+0000\n"
+"Last-Translator: Simone Oberti <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-05-15 10:20+0000\n"
+"X-Launchpad-Export-Date: 2009-07-13 00:20+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
@@ -315,7 +315,7 @@ msgstr "Seleziona percorso"
 
 #: ../fslint.glade:3736
 msgid "ask me this in future?"
-msgstr ""
+msgstr "Visualizzare questo messaggio in futuro?"
 
 #: ../fslint-gui:167
 #, python-format
