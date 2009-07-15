@@ -1732,7 +1732,7 @@ on your system at present."))
         while self.confirm_delete_group and \
               self.find_group_with_all_selected(skip_groups):
             (response, self.confirm_delete_group) = self.msgbox(
-              _("Are you sure you want to delete all items in this group"),
+              _("Are you sure you want to delete all items in this group?"),
               ('Yes', 'No'), again=True)
             if response != "Yes":
                 return
