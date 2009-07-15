@@ -2711,11 +2711,11 @@
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkHButtonBox" id="control_buttons">
+		    <widget class="GtkHBox" id="control_buttons">
 		      <property name="visible">True</property>
-		      <property name="layout_style">GTK_BUTTONBOX_START</property>
+		      <property name="homogeneous">False</property>
 		      <property name="spacing">0</property>
-		      <signal name="key_press_event" handler="on_control_buttons_keypress" last_modification_time="Wed, 08 Jul 2009 06:30:33 GMT"/>
+		      <signal name="key_press_event" handler="on_control_buttons_keypress" last_modification_time="Wed, 15 Jul 2009 10:32:48 GMT"/>
 
 		      <child>
 			<widget class="GtkButton" id="find">
@@ -2736,7 +2736,7 @@
 			      <property name="top_padding">0</property>
 			      <property name="bottom_padding">0</property>
 			      <property name="left_padding">0</property>
-			      <property name="right_padding">0</property>
+			      <property name="right_padding">2</property>
 
 			      <child>
 				<widget class="GtkHBox" id="hbox21">
@@ -2786,6 +2786,11 @@
 			    </widget>
 			  </child>
 			</widget>
+			<packing>
+			  <property name="padding">1</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
 		      </child>
 
 		      <child>
@@ -2806,7 +2811,7 @@
 			      <property name="top_padding">0</property>
 			      <property name="bottom_padding">0</property>
 			      <property name="left_padding">0</property>
-			      <property name="right_padding">0</property>
+			      <property name="right_padding">2</property>
 
 			      <child>
 				<widget class="GtkHBox" id="hbox12">
@@ -2856,6 +2861,11 @@
 			    </widget>
 			  </child>
 			</widget>
+			<packing>
+			  <property name="padding">1</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
 		      </child>
 
 		      <child>
@@ -2876,7 +2886,7 @@
 			      <property name="top_padding">0</property>
 			      <property name="bottom_padding">0</property>
 			      <property name="left_padding">0</property>
-			      <property name="right_padding">0</property>
+			      <property name="right_padding">2</property>
 
 			      <child>
 				<widget class="GtkHBox" id="hbox29">
@@ -2926,6 +2936,11 @@
 			    </widget>
 			  </child>
 			</widget>
+			<packing>
+			  <property name="padding">1</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
 		      </child>
 
 		      <child>
@@ -2946,7 +2961,7 @@
 			      <property name="top_padding">0</property>
 			      <property name="bottom_padding">0</property>
 			      <property name="left_padding">0</property>
-			      <property name="right_padding">0</property>
+			      <property name="right_padding">2</property>
 
 			      <child>
 				<widget class="GtkHBox" id="hbox30">
@@ -2996,6 +3011,11 @@
 			    </widget>
 			  </child>
 			</widget>
+			<packing>
+			  <property name="padding">1</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
 		      </child>
 		    </widget>
 		    <packing>

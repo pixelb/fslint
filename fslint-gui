@@ -637,6 +637,8 @@ class fslint(GladeWrapper):
                     self.fslintproc.resume()
                 self.fslintproc.kill()
                 break
+            elif self.pauseflag:
+                self.pause_search()
         else:
             self.fslintproc.outdata=self.fslintproc.outdata.split(delim)[:-1]
             ret = (self.fslintproc.outdata, self.fslintproc.errdata)
@@ -1276,7 +1278,7 @@ on your system at present."))
             if self.mode == self.mode_pkgs:
                 self.pkg_info.get_buffer().set_text("")
             self.look_busy()
-            self.stopflag=0
+            self.stopflag=self.pauseflag=0
             self.paused = False
             while gtk.events_pending(): gtk.main_iteration(False)#update GUI
             clist.freeze()
@@ -1301,6 +1303,12 @@ on your system at present."))
         self.stopflag=1
 
     def on_pause_clicked(self, event):
+        # self.fslintproc may not be created yet,
+        # so set the flag and pause in get_fslint()
+        self.pauseflag=1
+
+    def pause_search(self):
+        self.pauseflag=0
         self.paused = not self.paused
         if self.paused:
             self.pause.hide()
@@ -1315,6 +1323,7 @@ on your system at present."))
             self.fslintproc.resume()
             #We can only pause external searching
             self.status.set_text(_("searching")+"...")
+        while gtk.events_pending(): gtk.main_iteration(False)
 
     def on_control_buttons_keypress(self, button, event):
         #ingore capslock and numlock
@@ -1329,9 +1338,9 @@ on your system at present."))
                 self.on_stop_clicked(event)
         except:
             pass
-        if event.keyval == ksyms.Tab:
+        if event.keyval in (ksyms.Tab, ksyms.Left, ksyms.Right):
             # Unfortunately GTK doesn't restrict widgets
-            # to focus on tab to children of the current grab_add widget.
+            # to focus to children of the current grab_add widget.
             # So we do it manually here.
             if self.stop.is_focus():
                 if self.paused:
@@ -1340,9 +1349,11 @@ on your system at present."))
                     self.pause.grab_focus()
             else:
                 self.stop.grab_focus()
-            return True #Don't allow tabbing to other controls
-        else:
+            return True #Don't allow moving to other controls
+        elif event.keyval in (ksyms.Return, ksyms.space):
             return False #pass event on to sub button
+        else:
+            return True #Don't pass on up/down arrows etc.
 
     #Note Ctrl-C as well as doing "copy path" which is handled here,
     #also cancels a find in progress. That doesn't need to be handled here
