@@ -23,7 +23,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  gettext >= 0.13, desktop-file-utils
 
-Requires:       python >= 2.0, cpio, findutils
+Requires:       python >= 2.3, cpio, findutils
 %if %{mandriva}
 Requires:       pygtk2.0 >= 2.4, pygtk2.0-libglade
 %endif

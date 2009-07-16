@@ -35,6 +35,12 @@ REQUIREMENTS:
 The 1.1 branch requires textutils >= 2.0.21 or coreutils.
 In addition for the gui versions:
 
+For the 2.40 branch (fedora ? or higher)
+    gtk2     >= 2.4 (ftp://ftp.gtk.org/pub/gtk/)
+    python   >= 2.3 (http://www.python.org/download/)
+    libglade >= 2.4 (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
+    pygtk2   >= 2.4 (ftp://ftp.gtk.org/pub/gtk/python/)
+
 For the 2.0 branch (redhat 8.x or higher)
     gtk2     >= 2.0 (ftp://ftp.gtk.org/pub/gtk/)
     python   >= 2.0 (http://www.python.org/download/)
