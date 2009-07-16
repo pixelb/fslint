@@ -1,10 +1,11 @@
 Q. What algorithm is used to check for duplicate files?
 A. On a standard install, you can see the script used in
    /usr/share/fslint/fslint/findup. In summary the algorithm is:
-     1. check sizes are same
-     2. check files are not hardlinked to each other
-     3. check md5sums are the same
-     4. check sha1sums are the same (in case of md5 collisions)
+   1. exclude files with unique lengths
+   2. handle files that are hardlinked to each other
+   3. exclude files with unique md5(first_4k(file))
+   4. exclude files with unique md5(whole file)
+   5. exclude files with unique sha1(whole file) (in case of md5 collisions).
 
 Q. Is there a command line version?
 A. Yes, you can download the tarball and cd to
