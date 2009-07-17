@@ -2,6 +2,7 @@ fslint (2.29-1) unstable; urgency=low
 
   * Bump to devel version
   * Add the debian updated German translation (Closes: 503232)
+  * Add findutils as a dependency (Closes: 511805)
 
  -- pádraig brady <p@draigbrady.com>  tue, 09 sep 2008 10:39:00 +0000
 
