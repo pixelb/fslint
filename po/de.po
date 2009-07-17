@@ -1,16 +1,14 @@
-# German translations for FSlint package.
-# Copyright (C) 2003 Pádraig Brady
-# This file is distributed under the same license as the FSlint package.
-# Michael Armbrecht <marmbrecht@eircom.net>, 2003.
-#
+# German translation file for fslint
+# This file is distributed under the same license as the fslint package.
+# Vinzenz Vietzke <vinz@v1nz.org>, 2008
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-09 12:16+0100\n"
-"PO-Revision-Date: 2008-05-29 10:24+0000\n"
-"Last-Translator: DT <a0015194@unet.univie.ac.at>\n"
-"Language-Team: Michael Armbrecht <marmbrecht@eircom.net>\n"
+"PO-Revision-Date: 2008-06-18 16:05+0200\n"
+"Last-Translator: Vinzenz Vietzke <vinz@v1nz.org>\n"
+"Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,19 +33,19 @@ msgstr "Abwählen mittels Platzhalter"
 
 #: ../fslint.glade:128
 msgid "within groups"
-msgstr "In Gruppen"
+msgstr "in Gruppen"
 
 #: ../fslint.glade:137
 msgid "Select all but first"
-msgstr "Alle außer den ersten Eintrag"
+msgstr "Wähle alle, außer Ersten"
 
 #: ../fslint.glade:146
 msgid "Select all but newest"
-msgstr "Wähle alle, bis auf Neueste"
+msgstr "Wähle alle, außer Neuesten"
 
 #: ../fslint.glade:155
 msgid "Select all but oldest"
-msgstr "Wähle alle, bis auf Älteste"
+msgstr "Wähle alle, außer Ältesten"
 
 #: ../fslint.glade:168
 msgid "Toggle selection"
@@ -55,7 +53,7 @@ msgstr "Auswahl umkehren"
 
 #: ../fslint.glade:177
 msgid "Unselect all"
-msgstr "Keinen auswählen"
+msgstr "Alle abwählen"
 
 #: ../fslint.glade:294 ../fslint.glade:547
 msgid "Add"
@@ -87,7 +85,7 @@ msgstr "Zusätzliche Suchparameter"
 
 #: ../fslint.glade:738
 msgid "extra find filtering parameters"
-msgstr "Zusätzliche Filterparameter"
+msgstr "Zusätzliche Suchfilter-Parameter"
 
 #: ../fslint.glade:771
 msgid "Advanced search parameters"
@@ -130,7 +128,7 @@ msgstr "Empfindlichkeit="
 
 #: ../fslint.glade:1205
 msgid "invalid UTF8 mode?"
-msgstr "Ungültige UTF8-Zeichen?"
+msgstr "Ungültiger UTF8-Modus?"
 
 #: ../fslint.glade:1312
 msgid "Bad names"
@@ -138,11 +136,11 @@ msgstr "Ungültige Namen"
 
 #: ../fslint.glade:1347
 msgid "Search ("
-msgstr "Suche ("
+msgstr "Durchsuche ("
 
 #: ../fslint.glade:1373
 msgid "$PATH"
-msgstr "in $PATH"
+msgstr "$PATH"
 
 #: ../fslint.glade:1392
 msgid ") for"
@@ -150,7 +148,7 @@ msgstr ") nach"
 
 #: ../fslint.glade:1439 ../fslint-gui:916
 msgid "Conflicting files"
-msgstr "Konflikte verursachende Dateien"
+msgstr "Konflikt-verursachende Dateien"
 
 #: ../fslint.glade:1447 ../fslint.glade:1510 ../fslint-gui:914
 #: ../fslint-gui:923
@@ -159,15 +157,15 @@ msgstr "Aliase"
 
 #: ../fslint.glade:1486 ../fslint-gui:929
 msgid "Case conflicts"
-msgstr "Konflikte durch Groß-/Kleinschreibung"
+msgstr "Groß-/Kleinschreibungs-Konflikte"
 
 #: ../fslint.glade:1494 ../fslint-gui:925
 msgid "Same names"
-msgstr "gleichen Namen"
+msgstr "gleiche Namen"
 
 #: ../fslint.glade:1502 ../fslint-gui:927
 msgid "Same names(ignore case)"
-msgstr "gleichen Namen (ungeachtet Groß-/Kleinschreibung)"
+msgstr "gleiche Namen (ungeachtet Groß-/Kleinschreibung)"
 
 #: ../fslint.glade:1640
 msgid "Name clashes"
@@ -195,7 +193,7 @@ msgstr "Temporäre Dateien"
 
 #: ../fslint.glade:1907
 msgid "Dangling"
-msgstr "Offen"
+msgstr "Hängend"
 
 #: ../fslint.glade:1925
 msgid "Absolute links to paths within or below the link's directory"
@@ -221,7 +219,7 @@ msgstr "/././. ///// /../ usw."
 
 #: ../fslint.glade:1988
 msgid "Redundant naming"
-msgstr "Redundante Benamung"
+msgstr "Redundante Namensgebung"
 
 #: ../fslint.glade:2071
 msgid "Target"
@@ -241,7 +239,7 @@ msgstr "GID"
 
 #: ../fslint.glade:2284
 msgid "Bad IDs"
-msgstr "Unbekannte IDs"
+msgstr "Fehlerhafte IDs"
 
 #: ../fslint.glade:2392 ../fslint-gui:561
 msgid "Empty directories"
@@ -253,7 +251,7 @@ msgstr "$PATH durchsuchen"
 
 #: ../fslint.glade:2551
 msgid "Non stripped binaries"
-msgstr "Dateien mit Debugdaten"
+msgstr "Ungestrippte Programme"
 
 #: ../fslint.glade:2637
 msgid "bad indenting for indent width"
@@ -265,7 +263,7 @@ msgstr "Leerzeichen am Ende der Zeile"
 
 #: ../fslint.glade:2900
 msgid "Redundant whitespace"
-msgstr "Überflüssige Leerzeichen"
+msgstr "Redundante Leerzeichen"
 
 #: ../fslint.glade:2986
 msgid "Find"
@@ -277,11 +275,11 @@ msgstr "Stopp"
 
 #: ../fslint.glade:3149
 msgid "Select"
-msgstr "Auswahl treffen"
+msgstr "Auswählen"
 
 #: ../fslint.glade:3180
 msgid "Save (selected) list to file"
-msgstr "Ausgewählte Einträge als Liste speichern"
+msgstr "(Ausgewählte) Einträge als Liste speichern"
 
 #: ../fslint.glade:3225
 msgid "Save"
@@ -289,7 +287,7 @@ msgstr "Speichern"
 
 #: ../fslint.glade:3256 ../fslint.glade:3408
 msgid "selected"
-msgstr "Ausgewählte Einträge"
+msgstr "ausgewählte"
 
 #: ../fslint.glade:3301
 msgid "Delete"
@@ -300,17 +298,16 @@ msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
-"Die anderen Dateien verweisen mit Hardlinks\n"
-"auf die ausgewählten Dateien\n"
-"(bzw. Symlinks auf ein anderes Dateisystem)"
+"Alle (außer den gewählten), die Hardlinks verwenden\n"
+"(bzw. Symlinks, falls auf einem anderen Dateisystem)"
 
 #: ../fslint.glade:3378
 msgid "Merge"
-msgstr "Zusammenlegen"
+msgstr "Zusammenfügen"
 
 #: ../fslint.glade:3453
 msgid "Clean"
-msgstr "Säubern"
+msgstr "Aufräumen"
 
 #: ../fslint.glade:3585
 msgid "Select Path"
@@ -318,7 +315,7 @@ msgstr "Pfad auswählen"
 
 #: ../fslint.glade:3736
 msgid "ask me this in future?"
-msgstr "zukünftig nachfragen ?"
+msgstr "In Zukunft fragen?"
 
 #: ../fslint-gui:167
 #, python-format
@@ -336,7 +333,7 @@ msgstr "Hilfe anzeigen"
 #: ../fslint-gui:402
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr "%(percent)s von %(disk)s belegt, %(size)sB sind noch frei"
+msgstr "%(percent)s von %(disk)s belegt, %(size)s B sind noch frei"
 
 #: ../fslint-gui:513
 msgid "Do you want to overwrite?\n"
@@ -344,7 +341,7 @@ msgstr "Möchten Sie überschreiben?\n"
 
 #: ../fslint-gui:519
 msgid "You can't overwrite "
-msgstr "Sie können nicht überschreiben "
+msgstr "Sie können folgendes nicht überschreiben: "
 
 #: ../fslint-gui:554
 msgid "Files with the same content"
@@ -364,15 +361,15 @@ msgstr "Möglicherweise in Konflikt stehende Kommandos oder Dateinamen"
 
 #: ../fslint-gui:558
 msgid "Possibly old temporary files"
-msgstr "Wahrscheinliche alte temporäre Dateien"
+msgstr "Möglicherweise alte temporäre Dateien"
 
 #: ../fslint-gui:559
 msgid "Problematic symbolic links"
-msgstr "Problematische symbolische Links"
+msgstr "Problematische symbolische Verweise"
 
 #: ../fslint-gui:560
 msgid "Files with missing user IDs"
-msgstr "Dateien ohne User ID"
+msgstr "Dateien mit fehlender User-ID"
 
 #: ../fslint-gui:562
 msgid "Executables still containing debugging info"
@@ -396,13 +393,14 @@ msgstr "verarbeite..."
 
 #: ../fslint-gui:648
 msgid "No search paths specified"
-msgstr "Kein Verzeichnis zum Durchsuchen"
+msgstr "Keine Pfade zum Durchsuchen angegeben"
 
 #: ../fslint-gui:793
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
-"FSlint unterstützt diese Funktion derzeit leider nicht auf Ihrem System."
+"Entschuldigung, FSlint unterstützt diese Funktion derzeit leider nicht auf "
+"Ihrem System."
 
 #: ../fslint-gui:809
 msgid " packages, "
@@ -411,7 +409,7 @@ msgstr " Pakete, "
 #: ../fslint-gui:810
 #, python-format
 msgid "consuming %sB. "
-msgstr "belegen %sB. "
+msgstr "belegen %s B. "
 
 #: ../fslint-gui:811
 #, python-format
@@ -424,7 +422,7 @@ msgstr " Dateien"
 
 #: ../fslint-gui:850
 msgid " unstripped binaries"
-msgstr " Binärdateien mit Debug-Informationen"
+msgstr " ungestrippte Programme"
 
 #: ../fslint-gui:859
 msgid " empty directories"
@@ -436,7 +434,7 @@ msgstr " Verweise"
 
 #: ../fslint-gui:907 ../fslint-gui:1023
 msgid " bytes wasted in "
-msgstr " Bytes in "
+msgstr " Bytes verschwendet in "
 
 #: ../fslint-gui:953 ../fslint-gui:1024
 msgid " files (in "
@@ -444,7 +442,7 @@ msgstr " Dateien (in "
 
 #: ../fslint-gui:954 ../fslint-gui:1025
 msgid " groups)"
-msgstr " Gruppen) verschwendet"
+msgstr " Gruppen)"
 
 #: ../fslint-gui:1015
 msgid "bytes wasted"
@@ -456,12 +454,12 @@ msgstr "Keine ausgewählt"
 
 #: ../fslint-gui:1102
 msgid " this item?\n"
-msgstr " dieses Objekt?\n"
+msgstr " dieses Objekts?\n"
 
 #: ../fslint-gui:1104
 #, python-format
 msgid " these %d items?\n"
-msgstr " diese %d Objekte?\n"
+msgstr " dieser %d Objekte?\n"
 
 #: ../fslint-gui:1249
 msgid "User aborted"
@@ -478,7 +476,7 @@ msgstr "Umbenennen:"
 #: ../fslint-gui:1401 ../fslint-gui:1442
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr "Fehler: [%s] kann auf ihrem Dateisystem nicht dargestellt werden"
+msgstr "Fehler: [%s] kann auf Ihrem Dateisystem nicht dargestellt werden"
 
 #: ../fslint-gui:1411
 #, python-format
@@ -493,11 +491,12 @@ msgstr "Platzhalter:"
 
 #: ../fslint-gui:1606
 msgid "Sorry, you must be root to delete system packages."
-msgstr "Sie benötigen leider Root-Rechte, um System-Pakete zu löschen."
+msgstr "Entschuldigung, Sie benötigen leider Root-Rechte, um System-Pakete zu "
+"löschen."
 
 #: ../fslint-gui:1611
 msgid "Are you sure you want to delete"
-msgstr "Sind sie sicher, dass sie diese löschen möchten"
+msgstr "Sind Sie sicher beim Löschen"
 
 #: ../fslint-gui:1628
 msgid "Calculating dependencies..."
@@ -514,7 +513,7 @@ msgstr "Bitte prüfen Sie die aktualisierte Auswahl."
 
 #: ../fslint-gui:1655
 msgid "Removing packages..."
-msgstr "Lösche Pakete..."
+msgstr "Entferne Pakete..."
 
 #: ../fslint-gui:1689
 msgid " items deleted"
@@ -522,19 +521,19 @@ msgstr " Dateien gelöscht"
 
 #: ../fslint-gui:1702
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "Sind Sie sicher, dass sie ALLE Dateien zusammenlegen möchten?\n"
+msgstr "Sind Sie sicher, dass Sie ALLE Dateien zusammenfügen möchten?\n"
 
 #: ../fslint-gui:1706
 msgid "(Ignoring those selected)\n"
-msgstr "(Ignoriere die ausgewählten)\n"
+msgstr "(Ignoriere die Ausgewählten)\n"
 
 #: ../fslint-gui:1754
 msgid "Which indenting method do you want to convert to?"
-msgstr "Welche Einrückungsart möchten Sie verwenden?"
+msgstr "Zu welcher Einrückungsart möchten umwandeln?"
 
 #: ../fslint-gui:1755
 msgid "Tabs"
-msgstr "Tabulator"
+msgstr "Tabulatoren"
 
 #: ../fslint-gui:1755
 msgid "Spaces"
@@ -542,7 +541,7 @@ msgstr "Leerzeichen"
 
 #: ../fslint-gui:1766
 msgid "Are you sure you want to clean"
-msgstr "Sind Sie sicher, dass sie diese aufräumen möchten"
+msgstr "Sind Sie sicher beim Aufräumen"
 
 #: ../fslint-gui:1810
 msgid " items cleaned ("

@@ -1,7 +1,7 @@
 2.29 dd/mm/yy
 	* Translations:
-		* Added: Greek, Finnish, Hungarian.
-		* Updated: Chinese, Danish, Dutch, Hebrew, Italian, Swedish.
+		* Added: Greek,Finnish,Hungarian.
+		* Updated: Chinese,Danish,Dutch,German,Hebrew,Italian,Swedish.
 	* Fixes:
 		* Patch from Marcus Habermehl to support Arch linux
 		  as well as Frugalware in the "Installed Packages" function.
