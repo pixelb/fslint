@@ -24,7 +24,7 @@ if len(sys.argv) == 2:
         dryRun=1
 
 ingroup = 0
-for line in sys.stdin.xreadlines():
+for line in sys.stdin:
     line = string.strip(line)
     if line == '':
         ingroup = 0
@@ -33,14 +33,14 @@ for line in sys.stdin.xreadlines():
             keepfile = line
             ingroup = 1
             if dryRun:
-                print "\n\nkeeping:    ", keepfile + "\n",
+                sys.stdout.write("\n\nkeeping:     " + keepfile + "\n")
                 if link:
-                    print "hardlinking:",
+                    sys.stdout.write("hardlinking: ")
                 else:
-                    print "deleting:",
+                    sys.stdout.write("deleting: ")
         else:
             if dryRun:
-                print line,
+                sys.stdout.write(line+' ')
             else:
                 dupfile = line
                 dupdir = os.path.dirname(dupfile)
@@ -58,7 +58,7 @@ for line in sys.stdin.xreadlines():
                     else:
                         os.unlink(dupfile)
                 except OSError:
-                    sys.stderr.write(str(sys.exc_value)+'\n')
+                    sys.stderr.write(str(sys.exc_info()[1])+'\n')
                 try:
                     #always try this as POSIX has bad requirement that
                     #rename(file1,file2) where both are links to the same
