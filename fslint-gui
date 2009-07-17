@@ -31,6 +31,9 @@ import types, os, sys, pipes, time, stat, tempfile
 
 time_commands=False #print sub commands timing on status line
 
+def puts(string=""): #print is problematic in python 3
+    sys.stdout.write(string+'\n')
+
 liblocation=os.path.dirname(os.path.abspath(sys.argv[0]))
 locale_base=liblocation+'/po/locale'
 try:
@@ -150,9 +153,9 @@ I18N=i18n() #call first so everything is internationalized
 
 import getopt
 def Usage():
-    print _("Usage: %s [OPTION] [PATHS]") % os.path.split(sys.argv[0])[1]
-    print   "    --version       " + _("display version")
-    print   "    --help          " + _("display help")
+    puts(_("Usage: %s [OPTION] [PATHS]") % os.path.split(sys.argv[0])[1])
+    puts(  "    --version       " + _("display version"))
+    puts(  "    --help          " + _("display help"))
 
 try:
     lOpts, lArgs = getopt.getopt(sys.argv[1:], "", ["help","version"])
@@ -165,11 +168,11 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        print "FSlint 2.29"
+        puts("FSlint 2.29")
         sys.exit(None)
 except getopt.error, msg:
-    print msg
-    print
+    puts(msg)
+    puts()
     Usage()
     sys.exit(2)
 
@@ -182,7 +185,7 @@ def human_num(num, divisor=1, power=""):
     elif divisor == 1024:
         powers=["  ","Ki","Mi","Gi","Ti","Pi"]
     else:
-        raise ValueError, "Invalid divisor"
+        raise ValueError("Invalid divisor")
     if not power: power=powers[0]
     while num >= 1000: #4 digits
         num /= divisor
@@ -200,16 +203,16 @@ class pathInfo:
     def __init__(self, path):
         stat_val = os.lstat(path)
 
-        date = time.ctime(stat_val[stat.ST_MTIME])
+        date = time.ctime(stat_val.st_mtime)
         month_time = date[4:16]
         year = date[-5:]
-        timediff = time.time()-stat_val[stat.ST_MTIME]
+        timediff = time.time()-stat_val.st_mtime
         if timediff > 15552000: #6months
             date = month_time[0:6] + year
         else:
             date = month_time
 
-        mode = stat_val[stat.ST_MODE]
+        mode = stat_val.st_mode
         if stat.S_ISREG(mode):
             colour = '' #default
             if mode & (stat.S_IXGRP|stat.S_IXUSR|stat.S_IXOTH):
@@ -225,12 +228,12 @@ class pathInfo:
 
         self.ls_colour = colour
         self.du = stat_val.st_blocks*512
-        self.size = stat_val[stat.ST_SIZE]
-        self.uid = stat_val[stat.ST_UID]
-        self.gid = stat_val[stat.ST_GID]
+        self.size = stat_val.st_size
+        self.uid = stat_val.st_uid
+        self.gid = stat_val.st_gid
         self.ls_date = date
-        self.mtime = stat_val[stat.ST_MTIME]
-        self.inode = stat_val[stat.ST_INO]
+        self.mtime = stat_val.st_mtime
+        self.inode = stat_val.st_ino
 
 class GladeWrapper:
     """
@@ -309,7 +312,7 @@ class subProcess:
         os.dup2(self.outw,1) #stdout to write side of pipe
         os.dup2(self.errw,2) #stderr to write side of pipe
         #stdout & stderr connected to pipe, so close all other files
-        map(os.close,[self.outr,self.outw,self.errr,self.errw])
+        map(os.close,(self.outr,self.outw,self.errr,self.errw))
         try:
             cmd = ['/bin/sh', '-c', cmd]
             os.execvp(cmd[0], cmd)
@@ -660,7 +663,6 @@ class fslint(GladeWrapper):
             return ""
 
         if self.ok_dirs.rows == 0:
-            #raise _("No search paths specified") #py 2.2.2 can't raise unicode
             return _("No search paths specified")
 
         search_dirs = ""
@@ -712,7 +714,7 @@ class fslint(GladeWrapper):
         cmap_cache=clist.get_data("cmap_cache")
         if cmap_cache == None:
             cmap_cache={'':None}
-        if not cmap_cache.has_key(colour):
+        if colour not in cmap_cache:
             cmap_cache[colour]=cmap.alloc_color(colour)
         clist.set_data("cmap_cache",cmap_cache)
         return cmap_cache[colour]
@@ -761,7 +763,7 @@ class fslint(GladeWrapper):
         if not packages: return
         if level==0: self.checked_pkgs={}
         for package in packages:
-            #print "\t"*level+package
+            #puts("\t"*level+package)
             self.checked_pkgs[package]=''
         if dist_type.rpm:
             cmd  = r"rpm -e --test " + ' '.join(packages) + r" 2>&1 | "
@@ -778,12 +780,12 @@ class fslint(GladeWrapper):
             cmd += r"'s/Conflicts With .*//' -e 's/ \{18\}//g' -e "
             cmd += r"'s/ \{1,\}$/\n/'"
         else:
-            raise "unknown distro"
+            raise RuntimeError("unknown distro")
         process = os.popen(cmd)
         requires = process.read()
         del(process)
         new_packages = [p for p in requires.split()
-                        if not self.checked_pkgs.has_key(p)]
+                        if p not in self.checked_pkgs]
         self.whatRequires(new_packages, level+1)
         if level==0: return self.checked_pkgs.keys()
 
@@ -936,7 +938,7 @@ on your system at present."))
             elif option == _("Conflicting files"):
                 pass #default mode
             else:
-                raise "glade GtkOptionMenu item not found"
+                raise RuntimeError("glade GtkOptionMenu item not found")
         else:
             cmd += self.findParams
             option = self.opt_sn_paths.get_children()[0].get()
@@ -949,7 +951,7 @@ on your system at present."))
             elif option == _("Case conflicts"):
                 cmd += " -c"
             else:
-                raise "glade GtkOptionMenu item not found"
+                raise RuntimeError("glade GtkOptionMenu item not found")
 
         po, pe = self.get_fslint(cmd,'\0')
         po = po[1:]
@@ -1011,12 +1013,12 @@ on your system at present."))
                     pi = pathInfo(line)
                     size, du = (pi.size, pi.du)
                     dups.append((line, pi.ls_date, pi.mtime))
-                    if not inodes.has_key(pi.inode):
+                    if pi.inode not in inodes:
                         inodes[pi.inode] = True
                         numdups += 1
                 except OSError:
                     #file may have been deleted, changed permissions, ...
-                    self.ShowErrors(str(sys.exc_value)+'\n')
+                    self.ShowErrors(str(sys.exc_info()[1])+'\n')
         else:
             if len(inodes)>1:
                 alldups.append(((numdups-1)*du, numdups, size, dups))
@@ -1170,7 +1172,7 @@ on your system at present."))
                         if path and not os.path.exists(path):
                             path = '/'.join(dirs[i:])
                             break
-                if path.find('/') == -1:
+                if '/' not in path:
                     path = "*/" + path #more accurate
             self.addDirs(self.bad_dirs, path)
 
@@ -1489,7 +1491,7 @@ on your system at present."))
                     clist.remove(row)
                     self.clist_remove_handled_groups(clist)
                 except OSError:
-                    self.ShowErrors(str(sys.exc_value)+'\n')
+                    self.ShowErrors(str(sys.exc_info()[1])+'\n')
 
     def on_unselect_using_wildcard_activate(self, event):
         self.select_using_wildcard(False)
@@ -1860,7 +1862,7 @@ on your system at present."))
                         os.rename(tmpfile, dupfile)
                         clist.set_background(row, self.bg_colour)
                     except OSError:
-                        self.ShowErrors(str(sys.exc_value)+'\n')
+                        self.ShowErrors(str(sys.exc_info()[1])+'\n')
                     try:
                         #always try this as POSIX has bad requirement that
                         #rename(file1,file2) where both are links to the same
@@ -1912,25 +1914,25 @@ on your system at present."))
         totalSaved = 0
         row_data=clist.get_data("row_data")
         for row in paths_to_clean:
+            path_to_clean = row_data[row][:-1] #strip '\n'
             try:
-                path_to_clean = row_data[row][:-1] #strip '\n'
-                startlen = os.stat(path_to_clean)[stat.ST_SIZE]
+                startlen = os.stat(path_to_clean).st_size
+            except OSError:
+                self.ShowErrors(str(sys.exc_info()[1])+'\n')
+                continue
 
-                path_param = pipes.quote(path_to_clean)
-                cleanProcess = subProcess(command + " " + path_param)
-                cleanProcess.read()
-                errors = cleanProcess.errdata
-                del(cleanProcess)
-                if len(errors):
-                    raise '', errors[:-1]
-
+            path_param = pipes.quote(path_to_clean)
+            cleanProcess = subProcess(command + " " + path_param)
+            cleanProcess.read()
+            errors = cleanProcess.errdata
+            del(cleanProcess)
+            if len(errors):
+                self.ShowErrors(errors)
+            else:
                 clist.set_background(row, self.bg_colour)
                 clist.unselect_row(row,0)
-                totalSaved += startlen - os.stat(path_to_clean)[stat.ST_SIZE]
+                totalSaved += startlen - os.stat(path_to_clean).st_size
                 numCleaned += 1
-            except:
-                etype, emsg, etb = sys.exc_info()
-                self.ShowErrors(str(emsg)+'\n')
         status =  str(numCleaned) + _(" items cleaned (") + \
                   human_num(totalSaved) + _(" bytes saved)")
         self.status.set_text(status)
