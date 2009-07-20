@@ -10,14 +10,16 @@
 		* The redundant whitespace function now doesn't display
 		  errors when processing files with ':' in the path name.
 	* Improvements:
-		* Add a context menu item to "Open Folder" selected file is in.
+		* Add a context menu item to "Open Folder" that contains
+		  the selected file. Suggestion from Scott Kostyshak.
 		* Ask for confirmation, if all copies of a duplicate
-		  are selected for deletion.
+		  are selected for deletion. Suggestion from Endolith.
+		* Add Pause/Resume buttons to control long searches.
+		  Suggestion from Scott Kostyshak.
+		* In the "empty directories" tab, report empty branches rather
+		  than just empty leaf directories. Suggestion from Endolith.
 		* Use GtkFileChooser rather than deprecated GtkFileSelection.
 		  Note we now require GTK+ >= 2.4 and python >= 2.3.
-		* Add Pause/Resume buttons to control long searches.
-		* In the "empty directories" function, report empty branches
-		  rather than just empty leaf directories.
 
 2.28 09/09/08
 	* Translations:
