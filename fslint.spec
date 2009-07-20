@@ -2,15 +2,15 @@
 %define suse %([ -f /etc/SuSE-release ] && echo 1 || echo 0)
 
 Name:           fslint
-Version:        2.29
+Version:        2.40
 %if %{mandriva}
-Release:        3.mdv
+Release:        1.mdv
 %endif
 %if %{suse}
-Release:        3.suse
+Release:        1.suse
 %endif
 %if !%{mandriva} && !%{suse}
-Release:        3
+Release:        1
 %endif
 Summary:        File System "lint" discovery and cleaning utility
 
@@ -102,6 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jul 21 2009 Pádraig Brady
+- Update GTK+ and Python deps to 2.4 and 2.3 respectively
+
 * Fri Mar 09 2007 Pádraig Brady
 - Put more info in description so the package is
   easier to find in repositories
