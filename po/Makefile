@@ -1,7 +1,7 @@
 DATADIR = /usr/share/
 LOCALEDIR = $(DATADIR)/locale
 DOMAIN = fslint
-INSTALL = $(shell ginstall --help >dev/null 2>&1 && echo ginstall || echo install)
+INSTALL = $(shell ginstall --help >/dev/null 2>&1 && echo ginstall || echo install)
 MSGFMT = $(shell msgfmt --help 2>&1 | grep -- "--check" >/dev/null && echo "msgfmt -c" || echo "msgfmt")
 
 all: mo
