@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2008-04-03 08:35+0000\n"
-"Last-Translator: horada <Unknown>\n"
+"PO-Revision-Date: 2009-07-19 23:49+0000\n"
+"Last-Translator: Roman Horník <roman.hornik@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-05-15 10:20+0000\n"
+"X-Launchpad-Export-Date: 2009-07-27 11:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
@@ -31,15 +31,15 @@ msgstr "_Přejmenovat..."
 
 #: ../fslint.glade:130
 msgid "Select using wildcard"
-msgstr ""
+msgstr "Vybrat za použití divoké karty"
 
 #: ../fslint.glade:139
 msgid "Unselect using wildcard"
-msgstr ""
+msgstr "Odznačit za použití divoké karty"
 
 #: ../fslint.glade:148
 msgid "within groups"
-msgstr ""
+msgstr "ve skupinách"
 
 #: ../fslint.glade:157
 msgid "Select all but first"
@@ -55,11 +55,11 @@ msgstr "Vybrat vše kromě nejstaršího"
 
 #: ../fslint.glade:188
 msgid "Toggle selection"
-msgstr "Převrátit výběr"
+msgstr "Invertovat výběr"
 
 #: ../fslint.glade:197
 msgid "Unselect all"
-msgstr "Odznač vše"
+msgstr "Odznačit vše"
 
 #: ../fslint.glade:314 ../fslint.glade:555
 msgid "Add"
@@ -67,11 +67,11 @@ msgstr "Přidat"
 
 #: ../fslint.glade:386 ../fslint.glade:627
 msgid "Remove"
-msgstr "Odebrat"
+msgstr "Odstranit"
 
 #: ../fslint.glade:429
 msgid "Directories to search"
-msgstr "Adresáře k prohledání"
+msgstr "Adresáře k prohledávání"
 
 #: ../fslint.glade:454
 msgid "recurse?"
@@ -79,7 +79,7 @@ msgstr "rekurzivně?"
 
 #: ../fslint.glade:478
 msgid "Search path"
-msgstr "Cesty k hledání"
+msgstr "Cesta k vyhledávání"
 
 #: ../fslint.glade:678
 msgid "Paths to exclude"
@@ -102,13 +102,13 @@ msgstr "Rozšířené parametry hledání"
 #: ../fslint.glade:2026 ../fslint.glade:2170 ../fslint.glade:2287
 #: ../fslint.glade:2608
 msgid "Name"
-msgstr "Jméno"
+msgstr "Název"
 
 #: ../fslint.glade:859 ../fslint.glade:1221 ../fslint.glade:1510
 #: ../fslint.glade:1702 ../fslint.glade:1936 ../fslint.glade:2041
 #: ../fslint.glade:2185 ../fslint.glade:2302 ../fslint.glade:2623
 msgid "Directory"
-msgstr "Adresář"
+msgstr "Složka"
 
 #: ../fslint.glade:874 ../fslint.glade:1732 ../fslint.glade:2101
 #: ../fslint.glade:2200 ../fslint.glade:2332 ../fslint.glade:2653
@@ -138,7 +138,7 @@ msgstr "špatný UTF8 mód?"
 
 #: ../fslint.glade:1252
 msgid "Bad names"
-msgstr "Špatná jména"
+msgstr "Špatné názvy"
 
 #: ../fslint.glade:1283
 msgid "Search ("
@@ -150,7 +150,7 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1324
 msgid ") for"
-msgstr ""
+msgstr ") na"
 
 #: ../fslint.glade:1367 ../fslint-gui:938
 msgid "Conflicting files"
@@ -167,27 +167,27 @@ msgstr "Konflikt velikostí písmen"
 
 #: ../fslint.glade:1422 ../fslint-gui:947
 msgid "Same names"
-msgstr "Stejná jména"
+msgstr "Stejné názvy"
 
 #: ../fslint.glade:1430 ../fslint-gui:949
 msgid "Same names(ignore case)"
-msgstr "Stejná jména (ignoruj velikost písmen)"
+msgstr "Stejné názvy (ignorovat velikost písmen)"
 
 #: ../fslint.glade:1556
 msgid "Name clashes"
-msgstr "Střet jmen"
+msgstr "Střety názvů"
 
 #: ../fslint.glade:1587
 msgid "More restrictive search for core files"
-msgstr ""
+msgstr "Restriktivnější vyhledávání jaderných souborů"
 
 #: ../fslint.glade:1589
 msgid "core file mode?"
-msgstr ""
+msgstr "ežim jaderných souborů?"
 
 #: ../fslint.glade:1613
 msgid "days"
-msgstr "dny/dní"
+msgstr "dnů"
 
 #: ../fslint.glade:1633
 msgid "minimum age"
@@ -203,11 +203,11 @@ msgstr ""
 
 #: ../fslint.glade:1813
 msgid "Absolute links to paths within or below the link's directory"
-msgstr ""
+msgstr "Absolutní odkazy na cesty uvnitř nebo pod adresářem odkazu"
 
 #: ../fslint.glade:1815
 msgid "Suspect"
-msgstr ""
+msgstr "Podezřelé"
 
 #: ../fslint.glade:1835
 msgid "Relative"
@@ -327,12 +327,12 @@ msgstr "Vybrat cestu"
 
 #: ../fslint.glade:3674
 msgid "ask me this in future?"
-msgstr ""
+msgstr "zeptat se i příště?"
 
 #: ../fslint-gui:156
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "Použití: %s [OPTION] [PATHS]"
+msgstr "Použití: %s [VOLBY] [CESTY]"
 
 #: ../fslint-gui:157
 msgid "display version"
@@ -345,15 +345,15 @@ msgstr "zobrazit nápovědu"
 #: ../fslint-gui:397
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr ""
+msgstr "%(disk)s je zaplněn z %(percent)s, k dispozici je %(size)sB volného místa"
 
 #: ../fslint-gui:523
 msgid "Do you want to overwrite?\n"
-msgstr "Chcete (jej) přepsat?\n"
+msgstr "Přejete si přepsat?\n"
 
 #: ../fslint-gui:529
 msgid "You can't overwrite "
-msgstr "Nemůžete přepsat "
+msgstr "Nelze přepsat "
 
 #: ../fslint-gui:565
 msgid "Files with the same content"
@@ -361,19 +361,19 @@ msgstr "Soubory se stejným obsahem"
 
 #: ../fslint-gui:566
 msgid "Installed packages ordered by disk usage"
-msgstr ""
+msgstr "Nainstalované balíky seřazené podle velikosti na disku"
 
 #: ../fslint-gui:567
 msgid "Problematic filenames"
-msgstr "Problematická jména souborů"
+msgstr "Problematické názvy souborů"
 
 #: ../fslint-gui:568
 msgid "Possibly conflicting commands or filenames"
-msgstr "Možný konflikt příkazu nebo jména souboru"
+msgstr "Možný konflikt příkazu nebo názvu souboru"
 
 #: ../fslint-gui:569
 msgid "Possibly old temporary files"
-msgstr "Možné staré dočasné soubory"
+msgstr "Možná staré dočasné soubory"
 
 #: ../fslint-gui:570
 msgid "Problematic symbolic links"
@@ -381,7 +381,7 @@ msgstr "Porblematické symbolické linky"
 
 #: ../fslint-gui:571
 msgid "Files with missing user IDs"
-msgstr "Soubory bez uživatelského ID (user ID)"
+msgstr "Soubory bez uživatelského ID (UID)"
 
 #: ../fslint-gui:572
 msgid "Directory branches with no files"
@@ -389,11 +389,11 @@ msgstr ""
 
 #: ../fslint-gui:573
 msgid "Executables still containing debugging info"
-msgstr ""
+msgstr "Spustitelné soubory stále obsahují ladící informace"
 
 #: ../fslint-gui:574
 msgid "Erroneous whitespace in a text file"
-msgstr "Klamné bílé znaky v textovém souboru"
+msgstr "Chybné bílé znaky v textovém souboru"
 
 #: ../fslint-gui:580
 msgid "Invalid path ["
@@ -414,7 +414,7 @@ msgstr "Nespecifikována cesta k prohledávání"
 #: ../fslint-gui:810
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "Promiňte, FSlint v tutochvíli nepodporuje tuto funkci nebo váš systém."
+msgstr "Je mi líto, ale FSlint momentálně tuto funkci nepodporuje."
 
 #: ../fslint-gui:831
 msgid " packages, "
@@ -423,7 +423,7 @@ msgstr " balíčky "
 #: ../fslint-gui:832
 #, python-format
 msgid "consuming %sB. "
-msgstr "pohlcující %sB. "
+msgstr "zabírá %sB. "
 
 #: ../fslint-gui:833
 #, python-format
@@ -473,7 +473,7 @@ msgstr " tato položka?\n"
 #: ../fslint-gui:1130
 #, python-format
 msgid " these %d items?\n"
-msgstr ""
+msgstr " tyto %d položky?\n"
 
 #: ../fslint-gui:1278
 msgid "User aborted"
@@ -485,7 +485,7 @@ msgstr ""
 
 #: ../fslint-gui:1452
 msgid "Error starting xdg-open"
-msgstr ""
+msgstr "Chyba při spuštění xdg-open"
 
 #: ../fslint-gui:1464
 msgid "Rename:"
@@ -503,15 +503,15 @@ msgstr ""
 
 #: ../fslint-gui:1505
 msgid "wildcard:"
-msgstr ""
+msgstr "divoká karta:"
 
 #: ../fslint-gui:1710
 msgid "Sorry, you must be root to delete system packages."
-msgstr ""
+msgstr "Je mi líto, ale pro smazání systémových balíků musíte být rootem."
 
 #: ../fslint-gui:1715
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Jste si jisti, že chcete smazat"
 
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
@@ -519,32 +519,32 @@ msgstr ""
 
 #: ../fslint-gui:1742
 msgid "Calculating dependencies..."
-msgstr ""
+msgstr "Počítám závislosti..."
 
 #: ../fslint-gui:1760
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr ""
+msgstr "Je třeba navíc smazat %d balíků.\n"
 
 #: ../fslint-gui:1761
 msgid "Please review the updated selection."
-msgstr ""
+msgstr "Prosím, zkontrolujte aktualizovaný výběr."
 
 #: ../fslint-gui:1769
 msgid "Removing packages..."
-msgstr ""
+msgstr "Odstraňuji balíky..."
 
 #: ../fslint-gui:1814
 msgid " items deleted"
-msgstr ""
+msgstr " položek bylo smazáno"
 
 #: ../fslint-gui:1827
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr ""
+msgstr "Jste si NAPROSTO jisti, že chcete sloučit VŠECHNY soubory?\n"
 
 #: ../fslint-gui:1831
 msgid "(Ignoring those selected)\n"
-msgstr ""
+msgstr "(Ignoruji tyto vybrané)\n"
 
 #: ../fslint-gui:1879
 msgid "Which indenting method do you want to convert to?"
@@ -560,12 +560,12 @@ msgstr "Mezery"
 
 #: ../fslint-gui:1891
 msgid "Are you sure you want to clean"
-msgstr ""
+msgstr "Jste si jisti, že chcete smazat"
 
 #: ../fslint-gui:1936
 msgid " items cleaned ("
-msgstr ""
+msgstr " položek vyčištěno ("
 
 #: ../fslint-gui:1937
 msgid " bytes saved)"
-msgstr ""
+msgstr " bajtů bylo uvolněno)"
