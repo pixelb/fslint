@@ -79,7 +79,7 @@ class i18n:
 
     def _init_preferred_encoding(self):
         #Note that this encoding name is canonlicalised already
-        self.preferred_encoding=locale.getpreferredencoding()
+        self.preferred_encoding=locale.getpreferredencoding(do_setlocale=False)
         #filename encoding can be different from default encoding
         filename_encoding = os.environ.get("G_FILENAME_ENCODING")
         if filename_encoding:

@@ -1,6 +1,9 @@
 2.41 dd/mm/yy
 	* Translations:
 		* Updated: Czech.
+	* Fixes:
+		* Start the GUI even if the user's locale is not supported
+		  by the system. This regression was introduced in 2.40.
 
 2.40 21/07/09
 	* Translations:
