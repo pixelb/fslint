@@ -4,6 +4,8 @@
 	* Fixes:
 		* Start the GUI even if the user's locale is not supported
 		  by the system. This regression was introduced in 2.40.
+		* Don't warn about missing paths when adding wildcard paths
+		  to the exclude list. This regression was introduced in 2.40.
 
 2.40 21/07/09
 	* Translations:

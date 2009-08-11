@@ -504,7 +504,9 @@ class dlgPath(GladeWrapper):
             if self.fileOps:
                 self.pwd = self.GtkWindow.get_current_folder()
             else:
-                self.pwd = self.GtkWindow.get_filename()
+                user_path = self.GtkWindow.get_filename()
+                if os.path.exists(user_path):
+                    self.pwd = user_path
         if self.GtkWindow.modal:
             gtk.main_quit()
         return True #Don't let window be destroyed
