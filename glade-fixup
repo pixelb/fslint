@@ -2,12 +2,14 @@
 
 # Tweak glade files to not give warnings with gtk-2.4
 
-find -name "*.glade" | xargs \
-  sed -i -e '/name="focus_on_map"/d' \
-         -e '/name="ellipsize"/d' \
-         -e '/name="width_chars"/d' \
-         -e '/name="single_line_mode"/d' \
-         -e '/name="urgency_hint"/d' \
-         -e '/name="pack_direction"/d' \
-         -e '/name="child_pack_direction"/d' \
-         -e '/name="angle"/d'
+find -name "*.glade" | xargs sed -i \
+'
+/name="focus_on_map"/d
+/name="ellipsize"/d
+/name="width_chars"/d
+/name="single_line_mode"/d
+/name="urgency_hint"/d
+/name="pack_direction"/d
+/name="child_pack_direction"/d
+/name="angle"/d
+'
