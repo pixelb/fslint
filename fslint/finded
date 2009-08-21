@@ -46,6 +46,7 @@ done
 (
 #get all dirs
 find "$@" -type d ! -name "*$LF*" -printf "$FPF\n" |
+sed 's#/$##' | #strip any trailing /
 sort -u #merge dirs (indirectly) specified multiple times
 
 #get all dirs containing files.
@@ -54,7 +55,10 @@ find "$@" ! -type d ! -name "*$LF*" -printf "%h\n" |
 uniq | #quick merge of dir names for each file
 sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
 #Ensure we exclude parents to specified absolute dirs
-find "$@" -maxdepth 0 ! -name "*$LF*" -printf "%h\n" |
+printf "%s\n" "$@" | sed 's#/$##' | #strip any trailing /
+while read path; do
+find "$path" -maxdepth 0 ! -name "*$LF*" -printf "%h\n"
+done |
 sed '/^\//!d' | #only process absolute dirs
 sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
 ) |
