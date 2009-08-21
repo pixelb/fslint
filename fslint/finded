@@ -57,7 +57,7 @@ sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
 #Ensure we exclude parents to specified absolute dirs
 printf "%s\n" "$@" | sed 's#/$##' | #strip any trailing /
 while read path; do
-find "$path" -maxdepth 0 ! -name "*$LF*" -printf "%h\n"
+  find "$path" -maxdepth 0 ! -name "*$LF*" -printf "%h\n%h\n"
 done |
 sed '/^\//!d' | #only process absolute dirs
 sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes

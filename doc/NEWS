@@ -8,6 +8,8 @@
 		  to the exclude list. This regression was introduced in 2.40.
 		* finded now produces correct results when passed parameters
 		  with a trailing /. This regression was introduced in 2.40.
+		* finded now produces correct results when passed empty branches
+		  as parameters. This regression was introduced in 2.40.
 
 2.40 21/07/09
 	* Translations:
