@@ -43,10 +43,15 @@ done
 . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
 #forcing -f as if specify an empty dir it would not display
 
+#flag trailing / as an error
+if printf "%s\n" "$@" | tr -s '/' | grep -q './$'; then
+    echo "Error: trailing '/' in a parameter is not allowed" >&2
+    exit 1
+fi
+
 (
 #get all dirs
 find "$@" -type d ! -name "*$LF*" -printf "$FPF\n" |
-sed 's#/$##' | #strip any trailing /
 sort -u #merge dirs (indirectly) specified multiple times
 
 #get all dirs containing files.
@@ -55,10 +60,7 @@ find "$@" ! -type d ! -name "*$LF*" -printf "%h\n" |
 uniq | #quick merge of dir names for each file
 sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
 #Ensure we exclude parents to specified absolute dirs
-printf "%s\n" "$@" | sed 's#/$##' | #strip any trailing /
-while read path; do
-  find "$path" -maxdepth 0 ! -name "*$LF*" -printf "%h\n%h\n"
-done |
+find "$@" -maxdepth 0 ! -name "*$LF*" -printf "%h\n%h\n" |
 sed '/^\//!d' | #only process absolute dirs
 sed -n ':s; p; s#/\{0,\}[^/]\{1,\}$##; /./b s' #separate dir nodes
 ) |
