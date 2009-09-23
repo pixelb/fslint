@@ -208,7 +208,10 @@ if [ "$mode" ]; then
     line=''
     declare -i counter #Use bash arithmetic, not expr (for speed)
     counter=0
-    while read file; do
+    while read; do
+        # We note we don't specify "file" to `read`
+        # or else trailing IFS will be stripped
+        file="$REPLY"
         if [ ! "$file" ]; then
             if [ ! -z "$line" ]; then
                 echo "$counter * $line"
@@ -216,7 +219,7 @@ if [ "$mode" ]; then
             counter=0
         else
             if [ $counter -eq 0 ]; then
-                line="`du -B1 "$file"`"
+                line=$(du -B1 "$file")
             else
                 line="$line $file"
             fi
@@ -225,7 +228,7 @@ if [ "$mode" ]; then
     done
 
     if [ ! -z "$line" ]; then
-          echo "$counter * $line"
+        echo "$counter * $line"
     fi
     ) |
     sort -k3,3 -k1,1 -brn

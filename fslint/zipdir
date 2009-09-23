@@ -105,9 +105,9 @@ find $findArgs -type d -size +2b -depth \( -fstype ext2 -o -fstype ext3 \) \
 -xdev \( ! -inum $bin ! -inum $lin ! -inum $din ! -inum $lfin ! -inum $mntin \) \
 -printf "$FPF\n" |
 tr ' \t' '\1\2' | #TODO: should also use sed to escape shell chars
-while read dir
+while read
 do
-	dir=`echo $dir | tr '\1\2' ' \t'`
+	dir=$(echo "$REPLY" | tr '\1\2' ' \t')
 	find "$dir" -maxdepth 0 -printf "%7s -> "
 
 	origsize=`find "$dir" -maxdepth 0 -printf "%s"`

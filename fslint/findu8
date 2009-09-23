@@ -52,7 +52,8 @@ find "$@" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 tr '\n\0' '\1\n' | #convert \n to \1 so grep works
 LANG=C grep -E '[^ -~]' | #filter out purely ASCII names
-while read name; do
+while read; do
+    name="$REPLY"
     echo "$name" | iconv --from=utf8 --to=utf8 >/dev/null 2>&1 || echo "$name"
 done |
 tr '\n\1' '\0\n' | #convert back from \1 to \n
