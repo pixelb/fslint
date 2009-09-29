@@ -20,13 +20,13 @@
 # Could have option also to flag files that have many consequtive blank lines
 #   the corresponding regexp would be? "^[ 	]*${2,}"
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "find Redundant whiteSpace.
 Usage: $ProgName [-w] [-t[#]] [-c] [[-r] [-f] paths(s) ...]
 
@@ -64,7 +64,7 @@ do
 		eol_specified="yes" ;;
 	-t*)
 		#keep only last 2 digits
-		ts=`echo $arg|tr -cd '[:digit:]'|sed 's/^0*//;s/.*\(..\)/\1/'`
+		ts=$(echo $arg|tr -cd '[:digit:]'|sed 's/^0*//;s/.*\(..\)/\1/')
 		[ -z "$ts" ] && ts=8 #very rare to have larger than this
 		at_start='^[ 	]*'
 		tabs="$at_start( 	|	 {$ts,})" ;;

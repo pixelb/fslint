@@ -35,13 +35,13 @@
 # Todo: give option to include directory names & or symbolic links
 # Todo: give option to exclude links that point to same file
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-    ProgName=`basename "$0"`
+    ProgName=$(basename "$0")
     echo "find (files) with duplicate or conflicting names.
 Usage: $ProgName [-A -c -C] [[-r] [-f] paths(s) ...]
 
@@ -72,11 +72,11 @@ fi
 
 if [ $# -eq "0" ]; then #Nothing on cmdline means search $PATH
     mode="path"
-    eval set -- `. "$script_dir"/supprt/getffp`
+    eval set -- $(. "$script_dir"/supprt/getffp)
     FPF="%p"
 elif [ $# -eq "1" ] && [ "$1" = "-A" ]; then
     mode="aliases"
-    eval set -- `. "$script_dir"/supprt/getffp`
+    eval set -- $(. "$script_dir"/supprt/getffp)
     FPF="%p"
 else
     for arg; do
@@ -129,7 +129,7 @@ auto_ignore_paths()
    /sbin/lvm.static
    " | sed '/ *#/d; /^ *$/d' | #remove comments and blank lines
    while read path; do
-       inode=`find "$path" -printf "%i" 2>/dev/null`
+       inode=$(find "$path" -printf "%i" 2>/dev/null)
        [ "$inode" ] && echo -n " -and ! -inum $inode"
    done
 }
@@ -152,7 +152,7 @@ matchFilenames)
    uniq --all-repeated=$uniqsep -1 $uniq_ignore_case ;;
 path)
 
-   find "$@" \( -type f -o -type l \) -follow \( `auto_ignore_paths` \) \
+   find "$@" \( -type f -o -type l \) -follow \( $(auto_ignore_paths) \) \
         -printf "$FPF\1%i\1%f\0" |
    sort -zu | #merge files (indirectly) specified multiple times
    translate safe |

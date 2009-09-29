@@ -20,13 +20,13 @@
 # This is just a simple wrapper for the various commands.
 # This assumes all commands are in same dir.
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "File system lint.
 A collection of utilities to find lint on a filesystem.
 To get more info on each utility run 'util --help'.

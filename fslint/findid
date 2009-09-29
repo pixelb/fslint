@@ -14,13 +14,13 @@
 # See the GNU General Public License for more details,
 # which is available at www.gnu.org
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "find unused or bad file ids
 Usage: $ProgName [[-r] [-f] paths(s) ...]
 
@@ -42,8 +42,8 @@ done
 
 . "$script_dir"/supprt/getfpf "$argsToPassOn"
 
-reUsers="`cut -f3 -d: /etc/passwd | tr '\n' '|'`0"
-reGroups="`cut -f3 -d: /etc/group | tr '\n' '|'`0"
+reUsers="$(cut -f3 -d: /etc/passwd | tr '\n' '|')0"
+reGroups="$(cut -f3 -d: /etc/group | tr '\n' '|')0"
 find "$@" -printf "%U:%G:$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 tr '\n\0' '\1\n' |

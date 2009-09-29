@@ -16,19 +16,19 @@
 
 
 # Notes:
-# Because of limitiation of `file`, files
+# Because of limitiation of $(file), files
 # with : in name will not be processed correctly
-# Also note, don't sort by size before `file`
+# Also note, don't sort by size before $(file)
 # since there will be more seeking over disk and
 # therefore will be much slower.
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "find NonStripped executables.
 Usage: $ProgName [[-r] [-f] paths(s) ...]
 
@@ -38,7 +38,7 @@ If no path(s) specified then the PATH is searched."
 
 if [ $# -eq "0" ] #Nothing on cmdline means search binary directories
 then
-	eval set -- `. "$script_dir"/supprt/getffp`
+	eval set -- $(. "$script_dir"/supprt/getffp)
 	FPF="%p"
 else
 	for arg

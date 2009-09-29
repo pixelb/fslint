@@ -14,13 +14,13 @@
 # See the GNU General Public License for more details,
 # which is available at www.gnu.org
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-    ProgName=`basename "$0"`
+    ProgName=$(basename "$0")
     echo "find Temporary Files.
 Usage: $ProgName [-c] [--age=days] [[-r] [-f] paths(s) ...]
 
@@ -45,7 +45,7 @@ do
     -v|--version)
         Version ;;
     --age=*)
-        days=`echo $arg | cut -b7-`
+        days=$(echo $arg | cut -b7-)
         [ "$days" ] && MIN_AGE=$days ;;
     -c)
         core_mode="yes" ;;

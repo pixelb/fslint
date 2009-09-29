@@ -47,13 +47,13 @@
 # auto tidying of messy links could use tr -s / to squeeze consequtive /'s
 # and sed s//..///d to remove /../
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "find \"Bad\" symbolic Links.
 Usage: $ProgName [-d] [-s] [-l] [-s] [-n] [[-r] [-f] paths(s) ...]
 
@@ -67,7 +67,7 @@ These options are mutually exclusive (i.e. only the last one takes effect).
 If no path(s) specified, then the current directory is assumed.
 
 e.g. find dangling links in "library directories":
-findbl \`getffl\`"
+findbl \$(getffl)"
 	exit
 }
 
@@ -78,7 +78,7 @@ mode="dangling" #default
 # " ...", "..." etc. Hmm the symlinks program probably doesn't
 # handle this correctly either?
 
-ASC_01=`printf "\001"`
+ASC_01=$(printf "\001")
 
 for arg
 do
@@ -112,7 +112,7 @@ done
 
 . "$script_dir"/supprt/getfpf "$argsToPassOn"
 
-EPWD=`pwd | sed 's#/#\\\\/#g'`
+EPWD=$(pwd | sed 's#/#\\/#g')
 
 case "$mode" in
 suspect)

@@ -14,13 +14,13 @@
 # See the GNU General Public License for more details,
 # which is available at www.gnu.org
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "Find possible redundant (Unused) Libraries.
 Usage: $ProgName
 
@@ -54,7 +54,7 @@ done
 # let's remove this file, just in case it's  a symlink pointing to
 # /lib/ld-linux.so.2 or something...
 rm -f "$TMP/all_libs"
-lib_dirs=`. "$script_dir"/supprt/getffl`
+lib_dirs=$(. "$script_dir"/supprt/getffl)
 find $lib_dirs -type f -follow -name '*.so*' -printf '%p\t%i\n' |
 sort -k2,2n |
 uniq -f1 > "$TMP/all_libs"
@@ -62,7 +62,7 @@ uniq -f1 > "$TMP/all_libs"
 # let's remove this file, just in case it's  a symlink pointing to
 # /lib/ld-linux.so.2 or something...
 rm -f "$TMP/all_used_libs"
-find `. "$script_dir"/supprt/getffp` -xdev -type f -perm +111 |
+find $(. "$script_dir"/supprt/getffp) -xdev -type f -perm +111 |
 xargs ldd |
 cut -s -f3 -d' ' |
 grep -F / |

@@ -49,13 +49,13 @@
 #is /. This can make things very awkward, especially for future extensions
 #like streams etc.
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-	ProgName=`basename "$0"`
+	ProgName=$(basename "$0")
 	echo "find Name (directory or file) Lint.
 Usage: $ProgName [-1] [-2] [-3] [-p] [[-r] [-f] paths(s) ...]
 

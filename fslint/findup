@@ -54,13 +54,13 @@
 #   symbolic links are ignored.
 #   path1 & path2 can be files &/or directories
 
-script_dir=`dirname "$0"`              #directory of this script
-script_dir=`readlink -f "$script_dir"` #Make sure absolute path
+script_dir=$(dirname "$0")              #directory of this script
+script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 
 . "$script_dir"/supprt/fslver
 
 Usage() {
-    ProgName=`basename "$0"`
+    ProgName=$(basename "$0")
     echo "find dUPlicate files.
 Usage: $ProgName [[[-t [-m|-d]] | [--summary]] [-r] [-f] paths(s) ...]
 
@@ -88,13 +88,13 @@ search for duplicates in /usr/bin
 search in multiple directories but not their subdirectories
     findup -r /usr/bin /bin /usr/sbin /sbin
 search for duplicates in \$PATH
-    findup \`"$script_dir"/supprt/getffp\`
+    findup \$("$script_dir"/supprt/getffp)
 search system for duplicate files over 100K in size
     findup / -size +100k
 search only my files (that I own and are in my home dir)
-    findup ~ -user \`id -u\`
+    findup ~ -user \$(id -u)
 search system for duplicate files belonging to roger
-    findup / -user \`id -u roger\`"
+    findup / -user \$(id -u roger)"
     exit
 }
 
@@ -209,8 +209,8 @@ if [ "$mode" ]; then
     declare -i counter #Use bash arithmetic, not expr (for speed)
     counter=0
     while read; do
-        # We note we don't specify "file" to `read`
-        # or else trailing IFS will be stripped
+        # note we don't specify "file" to `read`
+        # as otherwise trailing IFS will be stripped
         file="$REPLY"
         if [ ! "$file" ]; then
             if [ ! -z "$line" ]; then

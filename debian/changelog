@@ -1,6 +1,7 @@
 fslint (2.41-1) unstable; urgency=low
 
   * bump to devel version
+  * Use POSIX process substitution shell syntax Closes: 548787)
 
  -- Pádraig Brady <P@draigBrady.com>  tue, 21 jul 2009 01:58:00 +0000
 
