@@ -769,7 +769,8 @@ class fslint(GladeWrapper):
             self.checked_pkgs[package]=''
         if dist_type.rpm:
             cmd  = r"rpm -e --test " + ' '.join(packages) + r" 2>&1 | "
-            cmd += r"sed -n 's/.*is needed by (installed) \(.*\)/\1/p' | "
+            cmd += r"sed -n 's/-[0-9]\{1,\}:/-/; " #strip epoch
+            cmd += r"        s/.*is needed by (installed) \(.*\)/\1/p' | "
             cmd += r"LANG=C sort | uniq"
         elif dist_type.dpkg:
             cmd  = r"dpkg --purge --dry-run " + ' '.join(packages) + r" 2>&1 | "
