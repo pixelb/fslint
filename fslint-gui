@@ -512,10 +512,14 @@ class dlgPath(GladeWrapper):
         return True #Don't let window be destroyed
 
     def on_ok_clicked(self, *args):
+        file = self.GtkWindow.get_filename()
+        if not file:
+            # This can happen for the fileOps case, or otherwise
+            # if one clicks on the "recently used" group and
+            # then clicks Ok without selecting anything.
+            return True #Don't let window be destroyed
+
         if self.fileOps: #creating new item
-            file = self.GtkWindow.get_filename()
-            if not file:
-                return True #Don't let window be destroyed
             if os.path.isdir(file):
                 self.GtkWindow.set_current_folder(file)
                 return True #Don't let window be destroyed
