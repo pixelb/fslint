@@ -893,7 +893,7 @@ on your system at present."))
         for record in po:
             pi = pathInfo(record)
             self.clist_append_path(clist_id, record, pi.ls_colour, str(pi.uid),
-                                   str(pi.gid), str(pi.size), ps.ls_date)
+                                   str(pi.gid), str(pi.size), pi.ls_date)
             row += 1
 
         return (str(row) + _(" files"), pe)

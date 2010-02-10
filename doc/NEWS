@@ -2,6 +2,8 @@
 	* Translations:
 		* Updated: Czech.
 	* Fixes:
+		* The "Bad IDs" function in the GUI would error out if it found
+		  any items.  This regression was introduced in 2.26.
 		* Start the GUI even if the user's locale is not supported
 		  by the system. This regression was introduced in 2.40.
 		* Don't warn about missing paths when adding wildcard paths
