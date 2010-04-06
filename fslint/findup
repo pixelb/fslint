@@ -98,12 +98,20 @@ search system for duplicate files belonging to roger
     exit
 }
 
-unescape_sum() {
-    #md5sum and sha1sum et. al. from coreutils at least
-    #to deal with \n in filenames, convert any \ and \n chars
-    #to \\ and \\n respectively. Currently we ignore files with \n
-    #so just undo this problematic excaping
-    sed '/^\\/s/\\\(.*\)/\1/;T;s/\\\\/\\/g'
+cleanup_sum() {
+
+    sed '
+    # md5sum and sha1sum et. al. from coreutils at least,
+    # to deal with \n in filenames, convert any \ and \n chars
+    # to \\ and \\n respectively. Currently we ignore files with \n
+    # so just undo this problematic escaping
+    /^\\/{s/^\\//; s/\\\\/\\/g};
+
+    # These utils also add a "*" flag character for normal files
+    # on platforms where O_BINARY is significant (like CYGWIN).
+    # We always process in binary mode and so remove that flag here
+    s/^\([^ ]*\) \*/\1  /;
+    '
 }
 
 for arg
@@ -176,7 +184,7 @@ fi |
 
 # This block selects duplicates using md5sum of whole file
 xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
-unescape_sum |             #undo any backslash escaping
+cleanup_sum |             #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w32 | #pick just duplicates
 
@@ -187,7 +195,7 @@ cut -s -d' ' -f3- |        #get filenames
 sort |                     #sort by paths to try to minimise disk seeks
 tr '\n' '\0' |             #delimit names with \0
 xargs -r0 sha1sum -- |     #to be sure to be sure
-unescape_sum |             #undo any backslash escaping
+cleanup_sum |             #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 
