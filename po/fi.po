@@ -144,10 +144,6 @@ msgstr "Epäkelvot nimet"
 msgid "Search ("
 msgstr "Etsi ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "$PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr "): sisältä"

@@ -143,10 +143,6 @@ msgstr "Nume greşite"
 msgid "Search ("
 msgstr "Caută ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "$PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ") pentru"

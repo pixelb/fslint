@@ -143,10 +143,6 @@ msgstr ""
 msgid "Search ("
 msgstr ""
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr ""
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ""

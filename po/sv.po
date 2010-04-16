@@ -145,10 +145,6 @@ msgstr "Felaktiga namn"
 msgid "Search ("
 msgstr "Sök ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "$PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ") för"

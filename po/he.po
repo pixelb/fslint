@@ -144,10 +144,6 @@ msgstr "שמות פגומים"
 msgid "Search ("
 msgstr "חיפוש ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "$PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ") אחר"

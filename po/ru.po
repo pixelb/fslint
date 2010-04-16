@@ -144,10 +144,6 @@ msgstr "Плохие имена"
 msgid "Search ("
 msgstr "Поиск ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "$PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ") для"

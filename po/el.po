@@ -144,10 +144,6 @@ msgstr "Λανθασμένα ονόματα"
 msgid "Search ("
 msgstr "Αναζήτηση ("
 
-#: ../fslint.glade:1305
-msgid "$PATH"
-msgstr "σε $PATH"
-
 #: ../fslint.glade:1324
 msgid ") for"
 msgstr ") για"
