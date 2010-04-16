@@ -10,13 +10,14 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2009-04-30 16:54+0000\n"
+"PO-Revision-Date: 2009-10-07 22:28+0000\n"
 "Last-Translator: Anders Jenbo <Unknown>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-06-20 19:08:13+0000\n"
+"X-Launchpad-Export-Date: 2010-04-15 11:44+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -24,7 +25,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr ""
+msgstr "Åbn _mappe"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
@@ -40,7 +41,7 @@ msgstr "Fravælg med jokertegn"
 
 #: ../fslint.glade:148
 msgid "within groups"
-msgstr "Indenfor grupper"
+msgstr "inden for grupper"
 
 #: ../fslint.glade:157
 msgid "Select all but first"
@@ -92,7 +93,7 @@ msgstr "Yderligere søgeparametre"
 
 #: ../fslint.glade:730
 msgid "extra find filtering parameters"
-msgstr "Yderligere søge-filtreringsparametre"
+msgstr "yderligere søge-filtreringsparametre"
 
 #: ../fslint.glade:763
 msgid "Advanced search parameters"
@@ -172,7 +173,7 @@ msgstr "Ens navne"
 
 #: ../fslint.glade:1430 ../fslint-gui:949
 msgid "Same names(ignore case)"
-msgstr "Ens navne(ignorer små/store bogstaver"
+msgstr "Ens navne(ignorer små/store bogstaver)"
 
 #: ../fslint.glade:1556
 msgid "Name clashes"
@@ -261,7 +262,7 @@ msgstr "Non stripped binaries"
 
 #: ../fslint.glade:2445
 msgid "bad indenting for indent width"
-msgstr "Forkert indryk vedrørende indrykningsbredde"
+msgstr "forkert indryk for indrykningsbredde"
 
 #: ../fslint.glade:2549
 msgid "whitespace at end of line"
@@ -281,11 +282,11 @@ msgstr "Stop"
 
 #: ../fslint.glade:2917
 msgid "Pause"
-msgstr ""
+msgstr "Pause"
 
 #: ../fslint.glade:2992
 msgid "Resume"
-msgstr ""
+msgstr "Genoptag"
 
 #: ../fslint.glade:3081
 msgid "Select"
@@ -387,7 +388,7 @@ msgstr "Filer med manglende bruger ID"
 
 #: ../fslint-gui:572
 msgid "Directory branches with no files"
-msgstr ""
+msgstr "Mapper uden filer"
 
 #: ../fslint-gui:573
 msgid "Executables still containing debugging info"
@@ -427,7 +428,7 @@ msgstr " pakker, "
 #: ../fslint-gui:832
 #, python-format
 msgid "consuming %sB. "
-msgstr "Forbruger %sB. "
+msgstr "forbruger %sB. "
 
 #: ../fslint-gui:833
 #, python-format
@@ -485,7 +486,7 @@ msgstr "Bruger afbrudt"
 
 #: ../fslint-gui:1305
 msgid "paused"
-msgstr ""
+msgstr "standset"
 
 #: ../fslint-gui:1452
 msgid "Error starting xdg-open"
@@ -507,7 +508,7 @@ msgstr "Fejl: Kan ikke omdøbe [%(old_path)s] da [%(new_path)s] eksisterer"
 
 #: ../fslint-gui:1505
 msgid "wildcard:"
-msgstr "Jokertegn:"
+msgstr "jokertegn:"
 
 #: ../fslint-gui:1710
 msgid "Sorry, you must be root to delete system packages."
@@ -519,7 +520,7 @@ msgstr "Er du sikker på at du ønsker at slette"
 
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
-msgstr ""
+msgstr "Er du sikker på du vil slette alle emner i denne gruppe?"
 
 #: ../fslint-gui:1742
 msgid "Calculating dependencies..."

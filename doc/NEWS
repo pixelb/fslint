@@ -1,6 +1,8 @@
 2.41 dd/mm/yy
 	* Translations:
-		* Updated: Czech.
+		* Added: Catalan, Galician.
+		* Updated: Chinese,Czech,Danish,Dutch,Finnish,French,German,
+		  Greek,Hebrew,Hungarian,Italian,Malay,Russian,Spanish,Swedish.
 	* Fixes:
 		* Allow the findup script to run on CYGWIN by handling the
 		  different output format of md5sum et. al. on that platform.

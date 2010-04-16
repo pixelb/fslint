@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2008-09-12 08:45+0000\n"
-"Last-Translator: Simone Oberti <Unknown>\n"
+"PO-Revision-Date: 2010-04-05 11:36+0000\n"
+"Last-Translator: iTuxer <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-13 00:20+0000\n"
+"X-Launchpad-Export-Date: 2010-04-15 11:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
@@ -23,7 +23,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr ""
+msgstr "Apri ca_rtella"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
@@ -130,7 +130,7 @@ msgstr "Pacchetti installati"
 
 #: ../fslint.glade:1113
 msgid "Sensitivity="
-msgstr "Sensibilità="
+msgstr "Sensibilità"
 
 #: ../fslint.glade:1153
 msgid "invalid UTF8 mode?"
@@ -279,11 +279,11 @@ msgstr "Arresta"
 
 #: ../fslint.glade:2917
 msgid "Pause"
-msgstr ""
+msgstr "Pausa"
 
 #: ../fslint.glade:2992
 msgid "Resume"
-msgstr ""
+msgstr "Riprendi"
 
 #: ../fslint.glade:3081
 msgid "Select"
@@ -483,11 +483,11 @@ msgstr "Interruzione dell'utente"
 
 #: ../fslint-gui:1305
 msgid "paused"
-msgstr ""
+msgstr "in pausa"
 
 #: ../fslint-gui:1452
 msgid "Error starting xdg-open"
-msgstr ""
+msgstr "Errore nell'esecuzione di xdg-open"
 
 #: ../fslint-gui:1464
 msgid "Rename:"
@@ -518,7 +518,7 @@ msgstr "Sei sicuro di voler cancellare"
 
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
-msgstr ""
+msgstr "Si è sicuri di voler cancellare tutti gli elementi in questo gruppo?"
 
 #: ../fslint-gui:1742
 msgid "Calculating dependencies..."

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2009-02-24 01:09+0000\n"
-"Last-Translator: Andras Hipsag <Unknown>\n"
+"PO-Revision-Date: 2010-02-27 18:17+0000\n"
+"Last-Translator: Krasznecz Zoltán <zoltan.krasznecz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-07-13 00:20+0000\n"
+"X-Launchpad-Export-Date: 2010-04-15 11:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../fslint.glade:8
@@ -23,11 +23,11 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr ""
+msgstr "Mappa_Megnyitása"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
-msgstr "Á_tnevezés…"
+msgstr "_Átnevezés..."
 
 #: ../fslint.glade:130
 msgid "Select using wildcard"
@@ -150,7 +150,7 @@ msgstr "$PATH"
 
 #: ../fslint.glade:1324
 msgid ") for"
-msgstr ""
+msgstr ") ért"
 
 #: ../fslint.glade:1367 ../fslint-gui:938
 msgid "Conflicting files"
@@ -275,15 +275,15 @@ msgstr "Keresés"
 
 #: ../fslint.glade:2842
 msgid "Stop"
-msgstr ""
+msgstr "Állj"
 
 #: ../fslint.glade:2917
 msgid "Pause"
-msgstr ""
+msgstr "Szünet"
 
 #: ../fslint.glade:2992
 msgid "Resume"
-msgstr ""
+msgstr "Folytatás"
 
 #: ../fslint.glade:3081
 msgid "Select"
@@ -451,7 +451,7 @@ msgstr " byte veszik el a "
 
 #: ../fslint-gui:975 ../fslint-gui:1046
 msgid " files (in "
-msgstr " fájl ("
+msgstr " fájl ( "
 
 #: ../fslint-gui:976 ../fslint-gui:1047
 msgid " groups)"
@@ -480,7 +480,7 @@ msgstr "Felhasználói megszakítás"
 
 #: ../fslint-gui:1305
 msgid "paused"
-msgstr ""
+msgstr "szüneteltetve"
 
 #: ../fslint-gui:1452
 msgid "Error starting xdg-open"
