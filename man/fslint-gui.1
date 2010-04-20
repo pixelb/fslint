@@ -9,10 +9,35 @@ fslint-gui \- A GUI wrapper for the individual fslint command line tools
 fslint is a toolset to find various problems with filesystems,
 including duplicate files and problematic filenames etc.
 .PP
-To access the individual command line tools one can change to, or add
-to $PATH the /usr/share/fslint/fslint directory on a standard install.
-Each of the commands in that directory have a \-\-help option which
-further details their parameters.
+Individual command line tools are available in addition to the GUI
+and to access them, one can change to, or add to $PATH the
+/usr/share/fslint/fslint directory on a standard install.
+Each of these commands in that directory have a \-\-help option which
+further details its parameters.
+
+\fBfindup\fR \- find DUPlicate files
+.P
+\fBfindnl\fR \- find Name Lint (problems with filenames)
+.P
+\fBfindu8\fR \- find filenames with invalid utf8 encoding
+.P
+\fBfindbl\fR \- find Bad Links (various problems with symlinks)
+.P
+\fBfindsn\fR \- find Same Name (problems with clashing names)
+.P
+\fBfinded\fR \- find Empty Directories
+.P
+\fBfindid\fR \- find files with dead user IDs
+.P
+\fBfindns\fR \- find Non Stripped executables
+.P
+\fBfindrs\fR \- find Redundant Whitespace in files
+.P
+\fBfindtf\fR \- find Temporary Files
+.P
+\fBfindul\fR \- find possibly Unused Libraries
+.P
+\fBzipdir\fR \- Reclaim wasted space in ext2 directory entries
 .SH PARAMETERS
 If [PATHS] are specified, they become the default search path,
 otherwise the current directory becomes the default.
