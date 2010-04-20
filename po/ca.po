@@ -247,7 +247,7 @@ msgstr "Directoris buits"
 
 #: ../fslint.glade:2250
 msgid "Search $PATH"
-msgstr "Cerca $RUTA"
+msgstr "Cerca $PATH"
 
 #: ../fslint.glade:2363
 msgid "Non stripped binaries"
