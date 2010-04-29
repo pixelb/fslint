@@ -28,7 +28,7 @@ export LC_COLLATE=C #for even more speed
 export GREP_USE_DFA=1
 
 Version() {
-  echo "FSlint 2.42" && exit
+  echo "FSlint 2.43" && exit
 }
 
 check_uniq() {

@@ -168,7 +168,7 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        puts("FSlint 2.42")
+        puts("FSlint 2.43")
         sys.exit(None)
 except getopt.error, msg:
     puts(msg)
