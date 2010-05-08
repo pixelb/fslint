@@ -1,4 +1,7 @@
 2.43 dd/mm/yy
+	* Fixes:
+		* finded now doesn't report passed non empty directories when
+		  not recursing. This regression was introduced in 2.40.
 
 2.42 29/04/10
 	* Translations:
