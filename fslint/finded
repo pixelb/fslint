@@ -44,7 +44,7 @@ done
 . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
 #forcing -f as if specify an empty dir it would not display
 
-if test "$recurse" = "ffalse"; then
+if test "$recurse" = "false"; then
   find "$@" -empty -type d ! -name "*$LF*" -printf "$FPF\0" |
   sort -zu | #merge dirs (indirectly) specified multiple times
   if [ ! -p /proc/self/fd/1 ]; then
