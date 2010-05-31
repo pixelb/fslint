@@ -46,7 +46,7 @@ will move directories from their current locations (for
 a "small" amount of time). Run only in single user mode
 if you are not sure of the consequences.
 
-If no path(s) specified then the currrent directory is assumed."
+If no path(s) specified then the current directory is assumed."
 	exit
 }
 
