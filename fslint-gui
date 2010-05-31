@@ -803,7 +803,8 @@ class fslint(GladeWrapper):
         if dist_type.dpkg:
             #Package names unique on debian
             cmd  = r"dpkg-query -W --showformat='${Package}\t${Installed-Size}"
-            cmd += r"\t${Status}\n' | LANG=C grep -F 'installed' | cut -f1,2"
+            cmd += r"\t${Status}\n' | LANG=C grep -F 'installed' | cut -f1,2 | "
+            cmd += r"sed 's/[^0-9]$/\t0/'" #packages with missing size = 0
         elif dist_type.rpm:
             #Must include version names to uniquefy on redhat
             cmd  = r"rpm -qa --queryformat '%{N}-%{V}-%{R}.%{ARCH}\t%{SIZE}\n'"
