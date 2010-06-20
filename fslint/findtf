@@ -31,7 +31,7 @@ If --age=days specified then the temporary files must be over that
 number of \"days\" old before being reported.
 For e.g. findtf -c --age=4 only reports core files over 4 days old.
 
-If no path(s) specified then the currrent directory is assumed."
+If no path(s) specified then the current directory is assumed."
     exit
 }
 

@@ -64,7 +64,7 @@ Usage() {
     echo "find dUPlicate files.
 Usage: $ProgName [[[-t [-m|-d]] | [--summary]] [-r] [-f] paths(s) ...]
 
-If no path(s) specified then the currrent directory is assumed.
+If no path(s) specified then the current directory is assumed.
 
 
 When -m is specified any found duplicates will be merged (using hardlinks).

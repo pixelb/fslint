@@ -66,7 +66,7 @@ These options are mutually exclusive (i.e. only the last one takes effect).
 I.E. characters are limited to [A-Za-z0-9_.-] and max name length = 14 and
 max path length = 255.
 
-If no path(s) specified then the currrent directory is assumed."
+If no path(s) specified then the current directory is assumed."
 	exit
 }
 

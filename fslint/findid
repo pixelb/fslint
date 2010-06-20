@@ -24,7 +24,7 @@ Usage() {
 	echo "find unused or bad file ids
 Usage: $ProgName [[-r] [-f] paths(s) ...]
 
-If no path(s) specified then the currrent directory is assumed."
+If no path(s) specified then the current directory is assumed."
 	exit
 }
 

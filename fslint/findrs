@@ -45,7 +45,7 @@ to the file names. Note this will take longer.
 If --view specified then the erroneous whitespace found
 is highlighted using vim.
 
-If no path(s) specified then the currrent directory is assumed."
+If no path(s) specified then the current directory is assumed."
 	exit
 }
 
