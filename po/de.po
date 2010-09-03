@@ -503,7 +503,7 @@ msgstr ""
 
 #: ../fslint-gui:1505
 msgid "wildcard:"
-msgstr "Platzhalter"
+msgstr "Platzhalter:"
 
 #: ../fslint-gui:1710
 msgid "Sorry, you must be root to delete system packages."

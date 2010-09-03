@@ -2,6 +2,8 @@
 	* Fixes:
 		* finded now doesn't report passed non empty directories when
 		  not recursing. This regression was introduced in 2.40.
+		* The wildcard selection dialog is displayed correctly again
+		  in German locales. This regression was introduced in 2.42.
 
 2.42 29/04/10
 	* Translations:

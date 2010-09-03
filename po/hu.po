@@ -498,7 +498,7 @@ msgstr ""
 
 #: ../fslint-gui:1505
 msgid "wildcard:"
-msgstr "helyettesítő karakter"
+msgstr "helyettesítő karakter:"
 
 #: ../fslint-gui:1710
 msgid "Sorry, you must be root to delete system packages."
