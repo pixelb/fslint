@@ -10,7 +10,7 @@ CHUNK_SIZE=512 #4096 for full file
 
 #TODO: see how kernel readahead affects this
 
-import os,sys
+import os,sys,errno
 
 try:
     # md5 module is deprecated on python 2.6
@@ -50,7 +50,7 @@ def md5sum(filename, CHUNK=CHUNK_SIZE):
     except (IOError, OSError), value:
         # One gets the following if you do
         # fo.seek(-CHUNK, 2) above and file is too small
-        if value.errno == 22: #Invalid arg
+        if value.errno == errno.EINVAL:
             return "d41d8cd98f00b204e9800998ecf8427e"
         else:
             raise
