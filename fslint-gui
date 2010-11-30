@@ -193,7 +193,7 @@ def human_num(num, divisor=1, power=""):
     if power.strip():
         num = locale.format("%6.1f",num,1)
     else:
-        num = locale.format("%4.f  ",num,1)
+        num = locale.format("%4.f",num,1)+'  '
     return "%s%s" % (num,power)
 
 class pathInfo:
