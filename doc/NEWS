@@ -4,6 +4,7 @@
 		  not recursing. This regression was introduced in 2.40.
 		* The wildcard selection dialog is displayed correctly again
 		  in German locales. This regression was introduced in 2.42.
+		* File metadata is now maintained when cleaning whitespace.
 
 2.42 29/04/10
 	* Translations:

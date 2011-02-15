@@ -54,5 +54,6 @@ fi
 
 [ "$COMMAND" ] || usage
 
-cat -- "$FILE" | eval "$COMMAND" > "$TMP"
-$CMP -s "$TMP" "$FILE" || mv -f "$TMP" "$FILE"
+eval "$COMMAND" < "$FILE" > "$TMP" ||
+  { echo "Error[$?]: $COMMAND < '$FILE' > '$TMP'" >&2; exit 1; }
+! $CMP -s "$TMP" "$FILE" && cp "$TMP" "$FILE"
