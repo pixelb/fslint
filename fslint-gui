@@ -1563,6 +1563,7 @@ on your system at present."))
                 comp=operator.lt
             if clist.get_selectable(row)==False: #not the case for first sn row
                 row += 1
+            unselect_row = -1 # avoid rh bug 726252 (mtimes for group = -1?)
             while clist.get_selectable(row) == True and row < clist.rows:
                 mtime = clist.get_row_data(row)
                 if comp(mtime,unselect_mtime):
@@ -1577,6 +1578,12 @@ on your system at present."))
         for row in range(clist.rows):
             if row==0 or clist.get_selectable(row)==False: #New group
                 unselect_row = find_row_to_unselect(clist, row, which)
+                if unselect_row == -1:
+                    clist.unselect_all()
+                    clist.thaw()
+                    self.ShowErrors("Error getting age of group containing ["+
+                                    self.get_selected_path(row=row+1)+']\n')
+                    return
                 clist.unselect_row(unselect_row, 0)
         clist.thaw()
 
