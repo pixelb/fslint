@@ -10,7 +10,7 @@
 # filename4
 # ...
 
-import sys, string, os, tempfile
+import sys, string, os, tempfile, errno
 
 link=1
 dryRun=0
@@ -50,7 +50,7 @@ for line in sys.stdin:
                         try:
                             os.link(keepfile,tmpfile)
                         except OSError, value:
-                            if value.errno == 18: #EXDEV
+                            if value.errno == errno.EXDEV
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise
