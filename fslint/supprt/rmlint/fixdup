@@ -50,7 +50,7 @@ for line in sys.stdin:
                         try:
                             os.link(keepfile,tmpfile)
                         except OSError, value:
-                            if value.errno == errno.EXDEV
+                            if value.errno == errno.EXDEV:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise
