@@ -83,6 +83,15 @@ class i18n:
         #filename encoding can be different from default encoding
         filename_encoding = os.environ.get("G_FILENAME_ENCODING")
         if filename_encoding:
+            try:
+                #Try out the encoding to avoid exceptions later.
+                #For example on Suse 11.4 this is actually a list
+                #  @locale,UTF-8,$west_europe_legacy_encoding,CP1252
+                #which we don't support for the moment.
+                "".encode(filename_encoding)
+            except:
+                 filename_encoding = None
+        if filename_encoding:
             filename_encoding=filename_encoding.lower()
             if filename_encoding == "utf8": filename_encoding="utf-8"
             self.filename_encoding=filename_encoding
