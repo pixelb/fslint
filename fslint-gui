@@ -1468,6 +1468,18 @@ on your system at present."))
                 #but that's a bit hacky I think?
                 self.ShowErrors(_("Error starting xdg-open") + '\n')
 
+    # select all other duplicates from selected item folder
+    def on_select_from_that_folder_activate(self, src):
+        clist = self.clists[self.mode]
+        if self.mode==self.mode_pkgs or len(clist.selection)!=1:
+            return
+        row = clist.selection[0] #menu item only enabled if 1 item selected
+        path = clist.get_text(row, 1)
+        select_func=(select and clist.select_row or clist.unselect_row)
+        for row in range(clist.rows):
+            if clist.get_text(row, 1) == path:
+                select_func(row, 0)
+
     def on_rename_activate(self, src):
         clist = self.clists[self.mode]
         if self.mode==self.mode_pkgs or len(clist.selection)!=1:

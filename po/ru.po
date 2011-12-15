@@ -43,7 +43,7 @@ msgstr "в группах"
 
 #: ../fslint.glade:157
 msgid "Select all but first"
-msgstr "Вуделить все кроме первых"
+msgstr "Выделить все кроме первых"
 
 #: ../fslint.glade:166
 msgid "Select all but newest"

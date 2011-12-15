@@ -110,6 +110,15 @@
 		      <accelerator key="F2" modifiers="0" signal="activate"/>
 		    </widget>
 		  </child>
+
+		  <child>
+		    <widget class="GtkMenuItem" id="select_from_same_folder">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Select from same folder</property>
+		      <signal name="activate" handler="on_select_from_that_folder_activate" last_modification_time="Fri, 09 Dec 2011 14:54:12 GMT"/>
+		    </widget>
+		  </child>
+
 		</widget>
 	      </child>
 	    </widget>
