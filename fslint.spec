@@ -82,6 +82,7 @@ make -C po DESTDIR=$RPM_BUILD_ROOT LOCALEDIR=%{_datadir}/locale install
 desktop-file-install \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications \
   --mode 644 \
+  --vendor "pixelbeat" \
   %{name}.desktop
 
 %find_lang %{name}
