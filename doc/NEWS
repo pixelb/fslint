@@ -1,6 +1,9 @@
 2.43 dd/mm/yy
 	* Translations:
 		* Added: Polish.
+		* Updated: Galicianm,Czech,Spanish,France,Romanian,Serbian,
+		  Russian,Swedish,German.
+
 	* Fixes:
 		* finded now doesn't report passed non empty directories when
 		  not recursing. This regression was introduced in 2.40.

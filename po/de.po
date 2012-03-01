@@ -6,14 +6,15 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2009-11-11 20:14+0000\n"
-"Last-Translator: eknus <michael.sunke@gmx.de>\n"
+"PO-Revision-Date: 2011-04-28 20:23+0000\n"
+"Last-Translator: Michael Armbrecht <marmbrecht@eircom.net>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-15 11:44+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-02-29 23:20+0000\n"
+"X-Generator: Launchpad (build 14874)\n"
+
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -21,11 +22,11 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr "Ordner öffnen"
+msgstr "Ordner öffnen (_O)"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
-msgstr "_Umbenennen..."
+msgstr "Umbenennen ... (_R)"
 
 #: ../fslint.glade:130
 msgid "Select using wildcard"
@@ -381,7 +382,7 @@ msgstr "Dateien mit fehlender User-ID"
 
 #: ../fslint-gui:572
 msgid "Directory branches with no files"
-msgstr ""
+msgstr "Unterordner ohne Dateien"
 
 #: ../fslint-gui:573
 msgid "Executables still containing debugging info"
@@ -518,6 +519,7 @@ msgstr "Sind Sie sicher beim Löschen"
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
 msgstr ""
+"Sind sie sicher, dass sie alle Einträge in dieser Gruppe löschen wollen?"
 
 #: ../fslint-gui:1742
 msgid "Calculating dependencies..."

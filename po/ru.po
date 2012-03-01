@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2009-11-13 22:55+0000\n"
-"Last-Translator: Petron <Unknown>\n"
+"PO-Revision-Date: 2011-11-07 09:06+0000\n"
+"Last-Translator: nIxOiD <Unknown>\n"
 "Language-Team: Russian <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-15 11:44+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2012-02-29 23:20+0000\n"
+"X-Generator: Launchpad (build 14874)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -23,11 +23,11 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr "Открыть _каталог"
+msgstr "Открыть _папку"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
-msgstr "Пере_именовать..."
+msgstr "Переи_меновать…"
 
 #: ../fslint.glade:130
 msgid "Select using wildcard"
@@ -63,15 +63,15 @@ msgstr "Снять выделение"
 
 #: ../fslint.glade:314 ../fslint.glade:555
 msgid "Add"
-msgstr "Добавить"
+msgstr "Add"
 
 #: ../fslint.glade:386 ../fslint.glade:627
 msgid "Remove"
-msgstr "Удалить"
+msgstr "УдалтьИз"
 
 #: ../fslint.glade:429
 msgid "Directories to search"
-msgstr "Директории для поиска"
+msgstr "Пути для поиска файлов"
 
 #: ../fslint.glade:454
 msgid "recurse?"
@@ -83,7 +83,7 @@ msgstr "Путь для поиска"
 
 #: ../fslint.glade:678
 msgid "Paths to exclude"
-msgstr "Пути для выполнения"
+msgstr "Исключить пути"
 
 #: ../fslint.glade:709
 msgid "Extra find parameters"
@@ -95,7 +95,7 @@ msgstr "дополнительные параметры фильтрации п�
 
 #: ../fslint.glade:763
 msgid "Advanced search parameters"
-msgstr "Продвинутые параметры поиска"
+msgstr "Расширенные параметры поиска"
 
 #: ../fslint.glade:844 ../fslint.glade:959 ../fslint.glade:1206
 #: ../fslint.glade:1495 ../fslint.glade:1687 ../fslint.glade:1921
@@ -108,7 +108,7 @@ msgstr "Имя"
 #: ../fslint.glade:1702 ../fslint.glade:1936 ../fslint.glade:2041
 #: ../fslint.glade:2185 ../fslint.glade:2302 ../fslint.glade:2623
 msgid "Directory"
-msgstr "Директория"
+msgstr "Папка"
 
 #: ../fslint.glade:874 ../fslint.glade:1732 ../fslint.glade:2101
 #: ../fslint.glade:2200 ../fslint.glade:2332 ../fslint.glade:2653
@@ -138,7 +138,7 @@ msgstr "недопустим режим UTF8"
 
 #: ../fslint.glade:1252
 msgid "Bad names"
-msgstr "Плохие имена"
+msgstr "Несовместимые имена"
 
 #: ../fslint.glade:1283
 msgid "Search ("
@@ -167,7 +167,7 @@ msgstr "Одинаковые имена"
 
 #: ../fslint.glade:1430 ../fslint-gui:949
 msgid "Same names(ignore case)"
-msgstr "Дубликаты (регистр игнорирован)"
+msgstr "Одинаковые имена (без регистра)"
 
 #: ../fslint.glade:1556
 msgid "Name clashes"
@@ -199,19 +199,19 @@ msgstr "Висящие"
 
 #: ../fslint.glade:1813
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "Абсолютные ссылки на несуществующие пути"
+msgstr "Абсолютные ссылки на пути в директории самой ссылки"
 
 #: ../fslint.glade:1815
 msgid "Suspect"
-msgstr "Сомнительный"
+msgstr "Сомнительные"
 
 #: ../fslint.glade:1835
 msgid "Relative"
-msgstr "Относительный"
+msgstr "Относительные"
 
 #: ../fslint.glade:1855
 msgid "Absolute"
-msgstr "Абсолютный"
+msgstr "Абсолютные"
 
 #: ../fslint.glade:1874
 msgid "/././. ///// /../ etc."
@@ -219,7 +219,7 @@ msgstr "Избыточность в именах (/././. ///// /../ и т.д.)"
 
 #: ../fslint.glade:1876
 msgid "Redundant naming"
-msgstr "излишним"
+msgstr "Избыточные"
 
 #: ../fslint.glade:1951
 msgid "Target"
@@ -227,7 +227,7 @@ msgstr "Цель"
 
 #: ../fslint.glade:1982
 msgid "Bad symlinks"
-msgstr "Ошибки символических ссылок"
+msgstr "Плохие ссылки"
 
 #: ../fslint.glade:2056
 msgid "UID"
@@ -251,7 +251,7 @@ msgstr "Поиск $PATH"
 
 #: ../fslint.glade:2363
 msgid "Non stripped binaries"
-msgstr ""
+msgstr "Не урезанные исполняемые"
 
 #: ../fslint.glade:2445
 msgid "bad indenting for indent width"
@@ -267,11 +267,11 @@ msgstr "Лишние пробелы"
 
 #: ../fslint.glade:2767
 msgid "Find"
-msgstr "Поиск"
+msgstr "Найти"
 
 #: ../fslint.glade:2842
 msgid "Stop"
-msgstr "Стоп"
+msgstr "Остановить"
 
 #: ../fslint.glade:2917
 msgid "Pause"
@@ -283,11 +283,11 @@ msgstr "Продолжить"
 
 #: ../fslint.glade:3081
 msgid "Select"
-msgstr "Выбор"
+msgstr "Выделить"
 
 #: ../fslint.glade:3108
 msgid "Save (selected) list to file"
-msgstr "Сохранить выделенный список в файл"
+msgstr "Сохранить список выделенных в файл"
 
 #: ../fslint.glade:3153
 msgid "Save"
@@ -358,7 +358,7 @@ msgstr "Файлы с одинаковым содержимым"
 
 #: ../fslint-gui:566
 msgid "Installed packages ordered by disk usage"
-msgstr "Установленные пакеты и занимаемое место на диске"
+msgstr "Установленные пакеты в порядке занимаемого места на диске"
 
 #: ../fslint-gui:567
 msgid "Problematic filenames"
@@ -366,7 +366,7 @@ msgstr "Проблемные имена"
 
 #: ../fslint-gui:568
 msgid "Possibly conflicting commands or filenames"
-msgstr "Вероятные конфликты команд и имен файлов"
+msgstr "Вероятные конфликты команд или имен файлов"
 
 #: ../fslint-gui:569
 msgid "Possibly old temporary files"
@@ -386,7 +386,7 @@ msgstr "Каталоги без файлов"
 
 #: ../fslint-gui:573
 msgid "Executables still containing debugging info"
-msgstr "Бинарные файлы, содержащие отладочную информацию"
+msgstr "Исполняемые файлы, содержащие отладочную информацию"
 
 #: ../fslint-gui:574
 msgid "Erroneous whitespace in a text file"
@@ -420,7 +420,7 @@ msgstr " пакеты, "
 #: ../fslint-gui:832
 #, python-format
 msgid "consuming %sB. "
-msgstr "всепоглощающий %sB. "
+msgstr "занимающий %sB. "
 
 #: ../fslint-gui:833
 #, python-format
@@ -433,7 +433,7 @@ msgstr " файлы"
 
 #: ../fslint-gui:872
 msgid " unstripped binaries"
-msgstr " бинарные файлы с лишней (отладочной) информацией"
+msgstr " исполняемые файлы с лишней (отладочной) информацией"
 
 #: ../fslint-gui:881
 msgid " empty directories"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: ../fslint-gui:1715
 msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
+msgstr "Вы действительно желаете удалить"
 
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
@@ -524,7 +524,7 @@ msgstr "Вычисление зависимостей..."
 #: ../fslint-gui:1760
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "%d пакеты должны быть удалены.\n"
+msgstr "%d пакетов должно быть удалено.\n"
 
 #: ../fslint-gui:1761
 msgid "Please review the updated selection."
@@ -548,11 +548,11 @@ msgstr "(Игнорировать выделенные)\n"
 
 #: ../fslint-gui:1879
 msgid "Which indenting method do you want to convert to?"
-msgstr "Какой метод конфертирования вы выбераете?"
+msgstr "В какой вид отступа хотите преобразовать?"
 
 #: ../fslint-gui:1880
 msgid "Tabs"
-msgstr "Вкладки"
+msgstr "Табы"
 
 #: ../fslint-gui:1880
 msgid "Spaces"

@@ -9,12 +9,14 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2003-07-07 18:11+0100\n"
-"Last-Translator: Eugen Hoanca <eugenh@urban-grafx.ro>\n"
+"PO-Revision-Date: 2011-04-15 23:43+0000\n"
+"Last-Translator: Daniel Șerbănescu <cyber19rider@gmail.com>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-02-29 23:20+0000\n"
+"X-Generator: Launchpad (build 14874)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -22,11 +24,11 @@ msgstr "FSlint"
 
 #: ../fslint.glade:77
 msgid "Open _Folder"
-msgstr ""
+msgstr "Deschide un _dosar"
 
 #: ../fslint.glade:107
 msgid "_Rename..."
-msgstr ""
+msgstr "_Redenumește..."
 
 #: ../fslint.glade:130
 msgid "Select using wildcard"
@@ -42,15 +44,15 @@ msgstr "grupuri"
 
 #: ../fslint.glade:157
 msgid "Select all but first"
-msgstr ""
+msgstr "Selectează toate în afară de primul"
 
 #: ../fslint.glade:166
 msgid "Select all but newest"
-msgstr ""
+msgstr "Selectează toate în afară de cele noi"
 
 #: ../fslint.glade:175
 msgid "Select all but oldest"
-msgstr ""
+msgstr "Selectează toate în afară de cele vechi"
 
 #: ../fslint.glade:188
 msgid "Toggle selection"
@@ -125,7 +127,7 @@ msgstr "Mărime"
 
 #: ../fslint.glade:1076
 msgid "Installed packages"
-msgstr ""
+msgstr "Pachete instalate"
 
 #: ../fslint.glade:1113
 msgid "Sensitivity="
@@ -133,7 +135,7 @@ msgstr "Senzitivitate="
 
 #: ../fslint.glade:1153
 msgid "invalid UTF8 mode?"
-msgstr ""
+msgstr "mod UTF8 invalid?"
 
 #: ../fslint.glade:1252
 msgid "Bad names"
@@ -258,7 +260,7 @@ msgstr ""
 
 #: ../fslint.glade:2549
 msgid "whitespace at end of line"
-msgstr ""
+msgstr "spațiu la sfârșitul liniei"
 
 #: ../fslint.glade:2684
 msgid "Redundant whitespace"
@@ -274,11 +276,11 @@ msgstr "Stop"
 
 #: ../fslint.glade:2917
 msgid "Pause"
-msgstr ""
+msgstr "Pauză"
 
 #: ../fslint.glade:2992
 msgid "Resume"
-msgstr ""
+msgstr "Reia"
 
 #: ../fslint.glade:3081
 msgid "Select"
@@ -320,7 +322,7 @@ msgstr "Selecteaza Cale"
 
 #: ../fslint.glade:3674
 msgid "ask me this in future?"
-msgstr ""
+msgstr "întreabă în viitor?"
 
 #: ../fslint-gui:156
 #, python-format
@@ -338,7 +340,7 @@ msgstr "afişează ajutorul"
 #: ../fslint-gui:397
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr ""
+msgstr "%(percent)s di %(disk)s este utilizat, lăsând %(size)sB disponibili"
 
 #: ../fslint-gui:523
 msgid "Do you want to overwrite?\n"
@@ -350,15 +352,15 @@ msgstr "Nu puteţi să scrieţi peste "
 
 #: ../fslint-gui:565
 msgid "Files with the same content"
-msgstr ""
+msgstr "Fișiere cu același conținut"
 
 #: ../fslint-gui:566
 msgid "Installed packages ordered by disk usage"
-msgstr ""
+msgstr "Pachete instalate ordonate după utilizarea discului"
 
 #: ../fslint-gui:567
 msgid "Problematic filenames"
-msgstr ""
+msgstr "Nume de fișiere problematice"
 
 #: ../fslint-gui:568
 msgid "Possibly conflicting commands or filenames"
@@ -366,19 +368,19 @@ msgstr "Fişiere în conflict"
 
 #: ../fslint-gui:569
 msgid "Possibly old temporary files"
-msgstr ""
+msgstr "Fișiere posibil temporare vechi"
 
 #: ../fslint-gui:570
 msgid "Problematic symbolic links"
-msgstr ""
+msgstr "Legături simbolice problematice"
 
 #: ../fslint-gui:571
 msgid "Files with missing user IDs"
-msgstr ""
+msgstr "Fișiere cu ID-urile utilizatorului lipsă"
 
 #: ../fslint-gui:572
 msgid "Directory branches with no files"
-msgstr ""
+msgstr "Ramuri de dosare cu niciun fișier"
 
 #: ../fslint-gui:573
 msgid "Executables still containing debugging info"
@@ -394,11 +396,11 @@ msgstr ""
 
 #: ../fslint-gui:621 ../fslint-gui:1312
 msgid "searching"
-msgstr ""
+msgstr "se caută"
 
 #: ../fslint-gui:638
 msgid "processing..."
-msgstr ""
+msgstr "se procesează..."
 
 #: ../fslint-gui:666
 msgid "No search paths specified"
@@ -408,15 +410,17 @@ msgstr "Fără directoare de căutare"
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
+"Ne pare rău, FSlint nu suportă această funcționalitate pentru sistemul "
+"dumneavoastă în acest"
 
 #: ../fslint-gui:831
 msgid " packages, "
-msgstr ""
+msgstr " pachete, "
 
 #: ../fslint-gui:832
 #, python-format
 msgid "consuming %sB. "
-msgstr ""
+msgstr "ce ocupă %sB. "
 
 #: ../fslint-gui:833
 #, python-format
@@ -461,12 +465,12 @@ msgstr "Fără selecţie"
 
 #: ../fslint-gui:1128
 msgid " this item?\n"
-msgstr ""
+msgstr " acest element?\n"
 
 #: ../fslint-gui:1130
 #, python-format
 msgid " these %d items?\n"
-msgstr ""
+msgstr " aceste %d elemente?\n"
 
 #: ../fslint-gui:1278
 msgid "User aborted"
@@ -474,15 +478,15 @@ msgstr "Intrerupt de utilizator"
 
 #: ../fslint-gui:1305
 msgid "paused"
-msgstr ""
+msgstr "întrerupt"
 
 #: ../fslint-gui:1452
 msgid "Error starting xdg-open"
-msgstr ""
+msgstr "Eroare la pornirea xdg-open"
 
 #: ../fslint-gui:1464
 msgid "Rename:"
-msgstr ""
+msgstr "Redenumește:"
 
 #: ../fslint-gui:1475 ../fslint-gui:1516
 #, python-format
@@ -501,18 +505,19 @@ msgstr ""
 #: ../fslint-gui:1710
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
+"Ne pare rău, trebuie să fiți administrator pentru a șterge pachete de sistem."
 
 #: ../fslint-gui:1715
 msgid "Are you sure you want to delete"
-msgstr ""
+msgstr "Sigur doriți să ștergeți"
 
 #: ../fslint-gui:1722
 msgid "Are you sure you want to delete all items in this group?"
-msgstr ""
+msgstr "Sigur doriți să ștergeți toate elementele din acest grup?"
 
 #: ../fslint-gui:1742
 msgid "Calculating dependencies..."
-msgstr ""
+msgstr "Se calculează dependențele..."
 
 #: ../fslint-gui:1760
 #, python-format
@@ -545,15 +550,15 @@ msgstr ""
 
 #: ../fslint-gui:1880
 msgid "Tabs"
-msgstr ""
+msgstr "Taburi"
 
 #: ../fslint-gui:1880
 msgid "Spaces"
-msgstr ""
+msgstr "Spații"
 
 #: ../fslint-gui:1891
 msgid "Are you sure you want to clean"
-msgstr ""
+msgstr "Sigur doriți să curățați"
 
 #: ../fslint-gui:1936
 msgid " items cleaned ("
