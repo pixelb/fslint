@@ -10,6 +10,7 @@
 		* The wildcard selection dialog is displayed correctly again
 		  in German locales. This regression was introduced in 2.42.
 		* File metadata is now maintained when cleaning whitespace.
+		* findup -d now supports file names with trailing whitespace.
 	* Improvements:
 		* Add support for selecting all files from a the same folder
 		  as another file.
