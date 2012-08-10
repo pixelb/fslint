@@ -406,6 +406,10 @@ def human_space_left(where):
     return _("%(percent)s of %(disk)s is used leaving %(size)sB available") %\
              translation_map
 
+# Avoid using clist.get_selectable() with is O(n)
+def get_selectable(row, row_data):
+    return row_data[row][0] != '#'
+
 class dlgUserInteraction(GladeWrapper):
     """
     Note input buttons tuple text should not be translated
@@ -759,18 +763,16 @@ class fslint(GladeWrapper):
         rows_left = range(rowver)
         rows_left.reverse()
         for row in rows_left:
-            if clist.get_selectable(row) == False:
-                if (row == clist.rows-1) or (clist.get_selectable(row+1) ==
-                    False):
+            if not get_selectable(row, row_data):
+                if row == clist.rows-1 or not get_selectable(row+1, row_data):
                     clist.remove(row)
                     row_data.pop(row)
             else: #remove single item groups
-                if (row == clist.rows-1) and (clist.get_selectable(row-1) ==
-                    False):
+                if row == clist.rows-1 and not get_selectable(row-1, row_data):
                     clist.remove(row)
                     row_data.pop(row)
-                elif (clist.get_selectable(row-1) == False) and \
-                     (clist.get_selectable(row+1) == False):
+                elif (get_selectable(row-1, row_data) or
+                      get_selectable(row+1, row_data)):
                     clist.remove(row)
                     row_data.pop(row)
 
@@ -1415,7 +1417,7 @@ on your system at present."))
                 row_data=clist.get_data("row_data")
                 if len(rows_to_save):
                     for row in range(clist.rows):
-                        if clist.get_selectable(row):
+                        if get_selectable(row, row_data):
                             if row not in rows_to_save: continue
                         else: continue #don't save group headers
                         fileSaveAs.write(row_data[row])
@@ -1572,20 +1574,20 @@ on your system at present."))
         def find_row_to_unselect(clist, row, which):
             import operator
             if which == "first":
-                if clist.get_selectable(row)==False:
-                    return row+1
-                else:
+                if row==0 and get_selectable(row, row_data):
                     return row #for first row in clist_sn
+                else:
+                    return row+1
             elif which == "newest":
                 unselect_mtime=-1
                 comp=operator.gt
             elif which == "oldest":
                 unselect_mtime=2**32
                 comp=operator.lt
-            if clist.get_selectable(row)==False: #not the case for first sn row
-                row += 1
+            if row!=0 or not get_selectable(row, row_data):
+                row += 1 #for all except first row in clist_sn
             unselect_row = -1 # avoid rh bug 726252 (mtimes for group = -1?)
-            while clist.get_selectable(row) == True and row < clist.rows:
+            while get_selectable(row, row_data) and row < clist.rows:
                 mtime = clist.get_row_data(row)
                 if comp(mtime,unselect_mtime):
                     unselect_mtime = mtime
@@ -1594,10 +1596,11 @@ on your system at present."))
             return unselect_row
 
         clist = self.clists[self.mode]
+        row_data = clist.get_data("row_data")
         clist.freeze()
         clist.select_all()
         for row in range(clist.rows):
-            if row==0 or clist.get_selectable(row)==False: #New group
+            if row==0 or not get_selectable(row, row_data): #New group
                 unselect_row = find_row_to_unselect(clist, row, which)
                 if unselect_row == -1:
                     clist.unselect_all()
@@ -1618,10 +1621,12 @@ on your system at present."))
         if not selected:
             return False
 
+        row_data = clist.get_data("row_data")
+
         def group_all_selected(clist, row):
-            if clist.get_selectable(row)==False: #not the case for first sn row
+            if row!=0 or not get_selectable(row, row_data): #for first sn row
                 row += 1
-            while clist.get_selectable(row) == True and row < clist.rows:
+            while get_selectable(row, row_data) and row < clist.rows:
                 if not row in selected:
                     return False
                 row += 1
@@ -1629,7 +1634,7 @@ on your system at present."))
 
         group=1
         for row in range(clist.rows):
-            if row==0 or clist.get_selectable(row)==False: #New group
+            if row==0 or not get_selectable(row, row_data): #New group
                 if group_all_selected(clist, row):
                     if group > skip_groups:
                         clist.moveto(row,0,0.0,0.0)
@@ -1876,7 +1881,7 @@ on your system at present."))
         for row in range(clist.rows):
             if row in paths_to_leave:
                 continue
-            if clist.get_selectable(row) == False: #new group
+            if not get_selectable(row, row_data): #new group
                 newGroup = True
             else:
                 path = row_data[row][:-1] #strip '\n'
