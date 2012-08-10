@@ -771,7 +771,7 @@ class fslint(GladeWrapper):
                 if row == clist.rows-1 and not get_selectable(row-1, row_data):
                     clist.remove(row)
                     row_data.pop(row)
-                elif (get_selectable(row-1, row_data) or
+                elif not (get_selectable(row-1, row_data) or
                       get_selectable(row+1, row_data)):
                     clist.remove(row)
                     row_data.pop(row)
