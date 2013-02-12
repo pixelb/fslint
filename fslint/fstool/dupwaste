@@ -2,8 +2,14 @@
 
 # This script shows the total space wasted by duplicate files
 # as reported by findup (pipe `findup --summary`to this).
+#
+# This script can take in two arguments.
+# --help prints the command usage.
+# --human calculates the output size in KB, MB, GB, or TB.
 
 import sys
+import getopt
+import locale
 
 def sizes():
     for line in sys.stdin:
@@ -14,4 +20,54 @@ def sizes():
         size *= num
         yield size
 
-print "Total wasted space: %d bytes" % sum(sizes())
+def human_num(num, divisor=1, power=""):
+    num=float(num)
+    if divisor == 1:
+        return locale.format("%.f",num,1)
+    elif divisor == 1000:
+        powers=[" ","K","M","G","T","P"]
+    elif divisor == 1024:
+        powers=["  ","Ki","Mi","Gi","Ti","Pi"]
+    else:
+        raise ValueError("Invalid divisor")
+    if not power: power=powers[0]
+    while num >= 1000: #4 digits
+        num /= divisor
+        power=powers[powers.index(power)+1]
+    if power.strip():
+        num = locale.format("%6.1f",num,1)
+    else:
+        num = locale.format("%4.f",num,1)+'  '
+    return "%s%s" % (num,power)
+
+def Usage():
+    print "Print the total wasted space given output from `findup --summary`"
+    print
+    print "--human  print the total in human readable form."
+    print "--help   print this information."
+
+
+# The start of the program
+# Catching arguments in the order of importance
+#
+# The help should be the first and only argument parsed and run even if
+# the user wants to pass in multiple options. As long as one of these strings
+# are passed in, the help function runs.
+#
+# Using the same function as found in fslint-gui just to maintain code
+# similarity throughout the project as best I can.
+try:
+    lOpts, lArgs = getopt.getopt(sys.argv[1:], "", ["help","human"])
+    if ("--help","") in lOpts:
+        Usage()
+        sys.exit(None)
+    # See the resize function for more details about the output.
+    elif ("--human","") in lOpts:
+        print "Total wasted space: %sB" % human_num(sum(sizes()), divisor=1024)
+    # No options get the default bytes.
+    else:
+        print "Total wasted space: %d bytes" % sum(sizes())
+except getopt.error, msg:
+    print msg
+    Usage()
+    sys.exit(1)
