@@ -32,7 +32,7 @@ import types, os, sys, pipes, time, stat, tempfile, errno
 time_commands=False #print sub commands timing on status line
 
 def puts(string=""): #print is problematic in python 3
-    sys.stdout.write(string+'\n')
+    sys.stdout.write(str(string)+'\n')
 
 liblocation=os.path.dirname(os.path.abspath(sys.argv[0]))
 locale_base=liblocation+'/po/locale'
