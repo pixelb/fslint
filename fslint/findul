@@ -62,7 +62,7 @@ uniq -f1 > "$TMP/all_libs"
 # let's remove this file, just in case it's  a symlink pointing to
 # /lib/ld-linux.so.2 or something...
 rm -f "$TMP/all_used_libs"
-find $(. "$script_dir"/supprt/getffp) -xdev -type f -perm +111 |
+find $(. "$script_dir"/supprt/getffp) -xdev -type f -perm /111 |
 xargs ldd |
 cut -s -f3 -d' ' |
 grep -F / |

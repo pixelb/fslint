@@ -55,7 +55,7 @@ else
 	. "$script_dir"/supprt/getfpf "$argsToPassOn"
 fi
 
-find "$@" -type f -perm +111 ! -name "*$LF*" -printf "%i\t$FPF\n" |
+find "$@" -type f -perm /111 ! -name "*$LF*" -printf "%i\t$FPF\n" |
 sort -u |          #merge files (indirectly) specified multiple times
 #sorting by inodes runs in 17s for my 2250 binaries
 #compared to 20s without
