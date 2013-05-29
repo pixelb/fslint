@@ -11,9 +11,9 @@
 		* File metadata is now maintained when cleaning whitespace.
 		* findup -d now supports file names with trailing whitespace.
 		* Changed the complexity of deleting files from O((n/2)*(n+1))
-                  to O(n), n being the number of items in the GtkCList, not
-                  the number of items being deleted.
-                * findns and findul now work with findutils >= 4.5.11
+		  to O(n), n being the number of items in the GtkCList, not
+		  the number of items being deleted.
+		* findns and findul now work with findutils >= 4.5.11
 	* Improvements:
 		* Add support for selecting all files from a the same folder
 		  as another file.
