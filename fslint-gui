@@ -177,7 +177,7 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        puts("FSlint 2.43")
+        puts("FSlint 2.44")
         sys.exit(None)
 except getopt.error, msg:
     puts(msg)
@@ -510,6 +510,7 @@ class dlgPath(GladeWrapper):
             # so using select_filename for consistency. Also I think
             # select_filename is better than set_current_folder as
             # it allows one to more easily select items at the same level
+            print self.pwd
             self.GtkWindow.select_filename(self.pwd)
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show()
@@ -936,6 +937,7 @@ on your system at present."))
         row = 0
         for line in po:
             link, target = line.split(" -> ", 2)
+            print target, ord(target)
             self.clist_append_path(clist_bl, link, '', target)
             row += 1
 
