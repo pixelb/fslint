@@ -8,7 +8,7 @@
 
 """
  FSlint - A utility to find File System lint.
- Copyright © 2000-2010 by Pádraig Brady <P@draigBrady.com>.
+ Copyright © 2000-2014 by Pádraig Brady <P@draigBrady.com>.
 
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -177,7 +177,7 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        puts("FSlint 2.44")
+        puts("FSlint 2.45")
         sys.exit(None)
 except getopt.error, msg:
     puts(msg)
