@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=FSlint
-Comment=File System Lint
+Comment=File System Lint detector and cleaner
 Exec=fslint-gui
 Terminal=false
 Type=Application
 Icon=fslint_icon
-Categories=System;Filesystem;GTK;
+Categories=System;Filesystem;GTK;Utility;
+X-Ubuntu-Gettext-Domain=fslint
