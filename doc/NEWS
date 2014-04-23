@@ -1,4 +1,7 @@
 2.45 dd/mm/yy
+	* Fixes:
+		* Selecting within and removal of GUI groups works again.
+		  This regression was introduced in 2.44.
 
 2.44 13/01/14
 	* Translations:
