@@ -2,6 +2,8 @@
 	* Fixes:
 		* Selecting within and removal of GUI groups works again.
 		  This regression was introduced in 2.44.
+		* "Bad symlinks" functionality works in the GUI again.
+		  This regression was introduced in 2.44.
 
 2.44 13/01/14
 	* Translations:
