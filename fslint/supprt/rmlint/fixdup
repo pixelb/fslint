@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+
 # This is called by findup automatically don't call explicitly
 # unless you really know what you're doing.
 #
