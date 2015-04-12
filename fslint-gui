@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # vim:fileencoding=utf-8
+
 # Note both python and vim understand the above encoding declaration
 
 # Note using env above will cause the system to register
