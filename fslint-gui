@@ -707,12 +707,15 @@ class fslint(GladeWrapper):
             search_dirs += " " + pipes.quote(self.ok_dirs.get_row_data(row))
 
         exclude_dirs=""
-        for row in range(self.bad_dirs.rows):
-            if exclude_dirs == "":
-                exclude_dirs = '\(' + ' -path '
-            else:
-                exclude_dirs += ' -o -path '
-            exclude_dirs += pipes.quote(self.bad_dirs.get_row_data(row))
+        # One can't remove directories listed as empty if
+        # they have .git/ dirs etc. so ignore the exluded paths here
+        if self.mode != self.mode_ed:
+            for row in range(self.bad_dirs.rows):
+                if exclude_dirs == "":
+                    exclude_dirs = '\(' + ' -path '
+                else:
+                    exclude_dirs += ' -o -path '
+                exclude_dirs += pipes.quote(self.bad_dirs.get_row_data(row))
         if exclude_dirs != "":
             exclude_dirs += ' \) -prune -o '
 

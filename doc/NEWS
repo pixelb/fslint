@@ -8,6 +8,8 @@
 		  whose names end in 2 digits.
 		* Empty directories now only lists actual empty dirs
 		  even if extra find parameters are specified.
+		* Empty directories now ignore specified exluded paths, as
+		  they can impact whether an "empty" directory can be removed.
 
 2.44 13/01/14
 	* Translations:
