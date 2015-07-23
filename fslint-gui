@@ -725,6 +725,17 @@ class fslint(GladeWrapper):
             recurseParam=" "
 
         self.findParams = search_dirs + " -f " + recurseParam + exclude_dirs
+
+        if self.mode == self.mode_up:
+            min_size = self.min_size.get_text()
+            if min_size == '0' or min_size == '':
+                min_size=''
+            elif min_size[-1].isdigit():
+                min_size=str(int(min_size)-1)
+                min_size += 'c'
+            if min_size:
+                self.findParams += '-size +' + min_size
+
         self.findParams += self.extra_find_params.get_text()
 
         return ""

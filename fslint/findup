@@ -50,9 +50,8 @@
 #   undefined operation for dir/file names containing \1
 #   sparse files are not treated differently.
 #   Don't specify params to find that affect output etc. (e.g -printf etc.)
-#   zero length files are ignored.
 #   symbolic links are ignored.
-#   path1 & path2 can be files &/or directories
+#   path1 & path2 can be files and/or directories
 
 script_dir=$(dirname "$0")              #directory of this script
 script_dir=$(readlink -f "$script_dir") #Make sure absolute path
@@ -89,6 +88,8 @@ search in multiple directories but not their subdirectories
     findup -r /usr/bin /bin /usr/sbin /sbin
 search for duplicates in \$PATH
     findup \$("$script_dir"/supprt/getffp)
+exclude zero length files from the search
+    findup / -size +0c
 search system for duplicate files over 100K in size
     findup / -size +100k
 search only my files (that I own and are in my home dir)
@@ -153,8 +154,8 @@ else
     devFmt=%D #This is new in findutils-4.2 and will help find more duplicates
 fi
 
-                                              #print name, dev, inode & size.
-find "$@" -size +0c -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
+                                    #print name, dev, inode & size.
+find "$@" -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
 sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes

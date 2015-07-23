@@ -10,6 +10,9 @@
 		  even if extra find parameters are specified.
 		* Empty directories now ignore specified exluded paths, as
 		  they can impact whether an "empty" directory can be removed.
+	* Improvements:
+		* findup now includes zero length files by default.  This can
+		  be changed with -size +0c, or the new GUI min size option.
 
 2.44 13/01/14
 	* Translations:
