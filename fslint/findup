@@ -50,9 +50,9 @@
 #   undefined operation for dir/file names containing \1
 #   sparse files are not treated differently.
 #   Don't specify params to find that affect output etc. (e.g -printf etc.)
-#   zero length files are ignored.
+#   zero length files are not ignored.
 #   symbolic links are ignored.
-#   path1 & path2 can be files &/or directories
+#   path1 & path2 can be files and/or directories
 
 script_dir=$(dirname "$0")              #directory of this script
 script_dir=$(readlink -f "$script_dir") #Make sure absolute path
@@ -154,7 +154,7 @@ else
 fi
 
                                               #print name, dev, inode & size.
-find "$@" -size +0c -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
+find "$@" -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
 sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes
