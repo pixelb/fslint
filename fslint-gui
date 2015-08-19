@@ -424,7 +424,7 @@ def human_space_left(where):
     return _("%(percent)s of %(disk)s is used leaving %(size)sB available") %\
              translation_map
 
-# Avoid using clist.get_selectable() with is O(n)
+# Avoid using clist.get_selectable() which is O(n)
 def get_selectable(row, row_data):
     return row_data[row][0] != '#'
 
@@ -1309,7 +1309,7 @@ on your system at present."))
             clist.clear()
             #All GtkClist operations seem to be O(n),
             #so doing the following for example will be O((n/2)*(n+1))
-            #    for row in range(clist.rows):
+            #    for row in xrange(clist.rows):
             #        path = clist.get_row_data(row)
             #Therefore we use a python list to store row data.
             clist.set_data("row_data",[])
@@ -1438,7 +1438,7 @@ on your system at present."))
                 return
             rows_to_save = clist.selection
             if self.mode == self.mode_pkgs:
-                for row in range(clist.rows):
+                for row in xrange(clist.rows):
                     if len(rows_to_save):
                         if row not in rows_to_save: continue
                     rowtext = ''
@@ -1448,7 +1448,7 @@ on your system at present."))
             else:
                 row_data=clist.get_data("row_data")
                 if len(rows_to_save):
-                    for row in range(clist.rows):
+                    for row in xrange(clist.rows):
                         if get_selectable(row, row_data):
                             if row not in rows_to_save: continue
                         else: continue #don't save group headers
@@ -1508,10 +1508,11 @@ on your system at present."))
         if self.mode==self.mode_pkgs or len(clist.selection)!=1:
             return
         row = clist.selection[0] #menu item only enabled if 1 item selected
-        path = clist.get_text(row, 1)
+        row_data = clist.get_data("row_data")
+        path = os.path.split(row_data[row])[0]
         select_func=clist.select_row
-        for row in range(clist.rows):
-            if clist.get_text(row, 1) == path:
+        for row in xrange(clist.rows):
+            if os.path.split(row_data[row])[0] == path:
                 select_func(row, 0)
 
     def on_rename_activate(self, src):
@@ -1590,7 +1591,7 @@ on your system at present."))
             row_data = clist.get_data("row_data")
             get_text = lambda row: row_data[row]
         import fnmatch
-        for row in range(clist.rows):
+        for row in xrange(clist.rows):
             if fnmatch.fnmatch(get_text(row), wildcard):
                 select_func(row, 0)
 
@@ -1631,7 +1632,7 @@ on your system at present."))
         row_data = clist.get_data("row_data")
         clist.freeze()
         clist.select_all()
-        for row in range(clist.rows):
+        for row in xrange(clist.rows):
             if row==0 or not get_selectable(row, row_data): #New group
                 unselect_row = find_row_to_unselect(clist, row, which)
                 if unselect_row == -1:
@@ -1665,7 +1666,7 @@ on your system at present."))
             return True
 
         group=1
-        for row in range(clist.rows):
+        for row in xrange(clist.rows):
             if row==0 or not get_selectable(row, row_data): #New group
                 if group_all_selected(clist, row):
                     if group > skip_groups:
@@ -1698,7 +1699,7 @@ on your system at present."))
 
     def clist_pkgs_sort_by_selection(self, clist):
         selection = clist.selection
-        for row in range(clist.rows):
+        for row in xrange(clist.rows):
             if row in selection:
                 clist.set_text(row,3,"1")
             else:
@@ -1821,7 +1822,7 @@ on your system at present."))
                     if package not in pkgs_selected:
                         num_new_pkgs += 1
                         #Note clist.find_row_from_data() only compares pointers
-                        for row in range(clist.rows):
+                        for row in xrange(clist.rows):
                             if package == clist.get_row_data(row):
                                 clist.select_row(row,0)
 
@@ -1910,7 +1911,7 @@ on your system at present."))
         self.set_cursor(self.WATCH)
         newGroup = False
         row_data=clist.get_data("row_data")
-        for row in range(clist.rows):
+        for row in xrange(clist.rows):
             if row in paths_to_leave:
                 continue
             if not get_selectable(row, row_data): #new group

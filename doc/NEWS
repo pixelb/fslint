@@ -13,6 +13,7 @@
 	* Improvements:
 		* findup now includes zero length files by default.  This can
 		  be changed with -size +0c, or the new GUI min size option.
+		* "Select from same folder" is no less CPU and RAM intensive.
 
 2.44 13/01/14
 	* Translations:
