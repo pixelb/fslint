@@ -9,7 +9,7 @@ LF='
 shell_quote() {
     # bash has printf %q for this
     printf '"'
-    echo -n "$*" | sed 's/\([`"$\]\)/\\\1/g'
+    echo -n "$*" | sed 's/\([`"$\]\)/\\\1/g;'"s/'/'\\\\''/g"
     printf '"'
 }
 
