@@ -400,7 +400,7 @@ class subProcess:
 # Determine what type of distro we're on.
 class distroType:
     def __init__(self):
-        types = ("rpm", "dpkg", "pacman")
+        types = ("pacman", "dpkg", "rpm")
         for dist in types:
             setattr(self, dist, False)
         if os.path.exists("/etc/redhat-release"):
@@ -410,9 +410,7 @@ class distroType:
         else:
             for dist in types:
                 cmd = dist + " --version >/dev/null 2>&1"
-                # We check for != 127 rather than == 0 here
-                # because pacman --version returns 2 ?
-                if os.WEXITSTATUS(os.system(cmd)) != 127:
+                if os.WEXITSTATUS(os.system(cmd)) == 0:
                     setattr(self, dist, True)
                     break
 dist_type=distroType()
@@ -852,11 +850,11 @@ class fslint(GladeWrapper):
             #Must include version names to uniquefy on redhat
             cmd  = r"rpm -qa --queryformat '%{N}-%{V}-%{R}.%{ARCH}\t%{SIZE}\n'"
         elif dist_type.pacman:
-            cmd  = r"pacman -Q | sed -n 's/^\([^ ]\{1,\}\) .*/\1/p' | "
-            cmd += r"LC_ALL=C xargs pacman -Qi | sed -n -e "
+            cmd = r"LANG=en_US.UTF-8 pycman-query -i | sed -n -e "
             cmd += r"'s/Name *: *\(.*\)/\1\t/p' -e "
             cmd += r"'s/\(Installed \)\?Size *: *\([^ ]\+\)\( K\)\?/\2|/p' | "
             cmd += r"tr '\n' ' ' | tr -d ' ' | tr '|' '\n'"
+
         else:
             return ("", _("Sorry, FSlint does not support this functionality \
 on your system at present."))
