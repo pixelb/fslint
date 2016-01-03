@@ -15,7 +15,7 @@
 	* Improvements:
 		* findup now includes zero length files by default.  This can
 		  be changed with -size +0c, or the new GUI min size option.
-		* "Select from same folder" is no less CPU and RAM intensive.
+		* "Select from same folder" is now less CPU and RAM intensive.
 
 2.44 13/01/14
 	* Translations:
@@ -34,7 +34,7 @@
 		  the number of items being deleted.
 		* findns and findul now work with findutils >= 4.5.11
 	* Improvements:
-		* Add support for selecting all files from a the same folder
+		* Add support for selecting all files from the same folder
 		  as another file.
 
 2.42 29/04/10
