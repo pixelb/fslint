@@ -1043,7 +1043,7 @@ on your system at present."))
         return (str(row) + _(" files"), pe)
 
     def findup(self, clist_dups):
-        po, pe = self.get_fslint("./findup " + self.findParams)
+        po, pe = self.get_fslint("./findup --gui" + self.findParams)
 
         numdups = 0
         du = size = 0

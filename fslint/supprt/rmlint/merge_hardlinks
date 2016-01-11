@@ -19,6 +19,7 @@
 # Note this would save disk access as well as CPU
 # for files that are too large for cache.
 
+import os
 import sys
 
 #class counter:
@@ -54,21 +55,45 @@ def write_out_group():
     #    else:
     #        sys.stdout.write("%s %s %s %s\n" % (path, dev, inode, size))
 
-for line in sys.stdin.xreadlines():
-    path, dev, inode, size = line.rstrip().split(' ')
-    if last_size and size == last_size:
-        if (dev,inode) != last_inode:
-            write_group=1
-        group_to_check.append(line)
-        #group_to_check.append((path,dev,inode,size))
-        #group_inodes_count.add(inode)
+if len(sys.argv) == 2 and sys.argv[1] == '--non-gui':
+    dups = []
+    inodes = {}
+    #inodes required to correctly report disk usage of
+    #duplicate files with seperate inode groups.
+    for line in sys.stdin.xreadlines():
+        path = line[:-1]
+        if path == '':
+            if len(inodes)>1:
+                sys.stdout.writelines(dups)
+            dups = [line]
+            inodes = {}
+        else:
+            try:
+                inode = os.stat(path).st_ino
+                dups.append(line)
+                inodes[inode] = True
+            except EnvironmentError:
+                #file may have been deleted, changed permissions, ...
+                sys.stderr.write(str(sys.exc_info()[1])+'\n')
     else:
+        if len(inodes)>1:
+            sys.stdout.writelines(dups)
+else: # Initial merging done for both gui and non gui
+    for line in sys.stdin.xreadlines():
+        path, dev, inode, size = line.rstrip().split(' ')
+        if last_size and size == last_size:
+            if (dev,inode) != last_inode:
+                write_group=1
+            group_to_check.append(line)
+            #group_to_check.append((path,dev,inode,size))
+            #group_inodes_count.add(inode)
+        else:
+            if write_group: write_out_group()
+            #group_to_check=[(path,dev,inode,size)]
+            #group_inodes_count.add(inode)
+            group_to_check=[line]
+            last_inode = (dev,inode)
+            last_size = size
+            write_group = 0
+    else: #output last group if required
         if write_group: write_out_group()
-        #group_to_check=[(path,dev,inode,size)]
-        #group_inodes_count.add(inode)
-        group_to_check=[line]
-        last_inode = (dev,inode)
-        last_size = size
-        write_group = 0
-else: #output last group if required
-    if write_group: write_out_group()

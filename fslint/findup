@@ -124,6 +124,10 @@ do
         Version ;;
     --summary)
         mode="summary" ;;
+    --gui)
+        # Undocumented option to avoid extra
+        # hardlink merging already done in GUI
+        gui=1 ;;
     -m)
         mode="merge" ;;
     -d)
@@ -218,7 +222,7 @@ if [ "$mode" ]; then
     declare -i counter #Use bash arithmetic, not expr (for speed)
     counter=0
     while read; do
-        # note we don't specify "file" to `read`
+        # note we dont specify "file" to `read`
         # as otherwise trailing IFS will be stripped
         file="$REPLY"
         if [ ! "$file" ]; then
@@ -243,5 +247,11 @@ if [ "$mode" ]; then
     sort -k3,3 -k1,1 -brn
   fi
 else
-  cat
+  if [ "$gui" ]; then
+    # GUI merges as already doing stat() and similar
+    # processing for accurate disk usage reporting
+    cat
+  else
+    "$script_dir"/supprt/rmlint/merge_hardlinks --non-gui
+  fi
 fi
