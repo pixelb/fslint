@@ -206,7 +206,14 @@ uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
 
 cut -d' ' -f3- |           #get filenames (and leave separating lines)
 
-if [ "$mode" ]; then
+if [ "$gui" ]; then
+  # GUI already does similar processing for accurate disk usage reporting
+  cat
+elif [ "$mode" ]; then
+
+  # exclude already fully hardlinked duplicate groups
+  "$script_dir"/supprt/rmlint/merge_hardlinks --non-gui |
+
   if [ ! $mode = "summary" ]; then # external call to python as this is faster
     if "$script_dir"/supprt/rmlint/fixdup </dev/null 2>/dev/null; then
         "$script_dir"/supprt/rmlint/fixdup $t$mode
@@ -247,11 +254,6 @@ if [ "$mode" ]; then
     sort -k3,3 -k1,1 -brn
   fi
 else
-  if [ "$gui" ]; then
-    # GUI merges as already doing stat() and similar
-    # processing for accurate disk usage reporting
-    cat
-  else
-    "$script_dir"/supprt/rmlint/merge_hardlinks --non-gui
-  fi
+  # exclude already fully hardlinked duplicate groups
+  "$script_dir"/supprt/rmlint/merge_hardlinks --non-gui
 fi

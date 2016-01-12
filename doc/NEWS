@@ -15,7 +15,7 @@
 	* Improvements:
 		* findup now includes zero length files by default.  This can
 		  be changed with -size +0c, or the new GUI min size option.
-		* findup no longer reports already merge duplicates, when there
+		* findup no longer reports/remerges duplicates when there
 		  are other files being checked that are the same size.
 		  (The GUI already had such logic in place).
 		* "Select from same folder" is now less CPU and RAM intensive.
