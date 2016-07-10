@@ -734,7 +734,7 @@ class fslint(GladeWrapper):
                 min_size=str(int(min_size)-1)
                 min_size += 'c'
             if min_size:
-                self.findParams += '-size +' + min_size
+                self.findParams += '-size +' + min_size + ' '
 
         self.findParams += self.extra_find_params.get_text()
 
