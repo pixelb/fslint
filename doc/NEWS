@@ -12,6 +12,8 @@
 		  they can impact whether an "empty" directory can be removed.
 		* Single quotes in extra find params are now quoted,
 		  and no longer generate a syntax error.
+		* Multiple adjacent spaces in command line params are preserved
+		  and no longer generate file not found errors.
 	* Improvements:
 		* findup now includes zero length files by default.  This can
 		  be changed with -size +0c, or the new GUI min size option.
