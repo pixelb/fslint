@@ -13,6 +13,7 @@
 
 import sys, string, os, tempfile, errno
 
+symlink=0
 link=1
 dryRun=0
 if len(sys.argv) == 2:
@@ -22,6 +23,11 @@ if len(sys.argv) == 2:
         link=0
         dryRun=1
     elif sys.argv[1] == "tmerge":
+        dryRun=1
+    elif sys.argv[1] == "symlink":
+        symlink=1
+    elif sys.argv[1] == "tsymlink":
+        symlink=1
         dryRun=1
 
 ingroup = 0
@@ -35,7 +41,9 @@ for line in sys.stdin:
             ingroup = 1
             if dryRun:
                 sys.stdout.write("\n\nkeeping:     " + keepfile + "\n")
-                if link:
+                if symlink:
+                    sys.stdout.write("symlinking: ")
+                elif link:
                     sys.stdout.write("hardlinking: ")
                 else:
                     sys.stdout.write("deleting: ")
@@ -49,9 +57,12 @@ for line in sys.stdin:
                 try:
                     if link:
                         try:
-                            os.link(keepfile,tmpfile)
+                            if symlink:
+                                os.symlink(os.path.realpath(keepfile),tmpfile)
+                            else:
+                                os.link(keepfile,tmpfile)
                         except OSError, value:
-                            if value.errno == errno.EXDEV:
+                            if value.errno == errno.EXDEV and not symlink:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise

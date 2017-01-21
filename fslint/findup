@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # findup - find duplicate files
-# Copyright © 2000-2009 by Pádraig Brady <P@draigBrady.com>.
+# Copyright © 2000-2017 by Pádraig Brady <P@draigBrady.com>.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -67,6 +67,7 @@ If no path(s) specified then the current directory is assumed.
 
 
 When -m is specified any found duplicates will be merged (using hardlinks).
+When -s is specified any found duplicates will be replaced (using symlinks).
 When -d is specified any found duplicates will be deleted (leaving just 1).
 When -t is specfied, only report what -m or -d would do.
 
@@ -132,6 +133,8 @@ do
         mode="merge" ;;
     -d)
         mode="del" ;;
+    -s)
+        mode="symlink" ;;
     -t)
         t="t" ;;
     *)

@@ -20,6 +20,7 @@
 		* findup no longer reports/remerges duplicates when there
 		  are other files being checked that are the same size.
 		  (The GUI already had such logic in place).
+		* findup supports symlinking duplicates as well as hardlinking.
 		* "Select from same folder" is now less CPU and RAM intensive.
 
 2.44 13/01/14

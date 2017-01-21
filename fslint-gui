@@ -1255,8 +1255,10 @@ on your system at present."))
         self.status.set_text(self.mode_descs[self.mode])
         if self.mode == self.mode_up:
             self.autoMerge.show()
+            self.autoSymlink.show()
         else:
             self.autoMerge.hide()
+            self.autoSymlink.hide()
         if self.mode == self.mode_ns or self.mode == self.mode_rs: #bl in future
             self.autoClean.show()
         else:
@@ -1891,14 +1893,23 @@ on your system at present."))
         self.status.set_text(status)
         self.set_cursor(None)
 
+    def on_autoSymlink_clicked(self, event):
+        self.on_autoMerge(symlink=True)
+
     def on_autoMerge_clicked(self, event):
+        self.on_autoMerge(symlink=False)
+
+    def on_autoMerge(self, symlink):
         self.ClearErrors()
         self.status.delete_text(0,-1)
         clist = self.clists[self.mode]
         if clist.rows < 3:
             return
 
-        question=_("Are you sure you want to merge ALL files?\n")
+        if symlink:
+            question=_("Are you sure you want to symlink ALL files?\n")
+        else:
+            question=_("Are you sure you want to merge ALL files?\n")
 
         paths_to_leave = clist.selection
         if len(paths_to_leave):
@@ -1927,9 +1938,12 @@ on your system at present."))
                     tmpfile = tempfile.mktemp(dir=dupdir)
                     try:
                         try:
-                            os.link(keepfile,tmpfile)
+                            if symlink:
+                                os.symlink(os.path.realpath(keepfile),tmpfile)
+                            else:
+                                os.link(keepfile,tmpfile)
                         except OSError, value:
-                            if value.errno == errno.EXDEV:
+                            if value.errno == errno.EXDEV and not symlink:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 raise
