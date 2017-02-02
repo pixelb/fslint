@@ -1,3 +1,9 @@
+fslint (2.47-1) unstable; urgency=low
+
+  * bump to devel version
+
+ -- Pádraig Brady <P@draigBrady.com>  wed, 01 feb 2017 22:32:00 +0000
+
 fslint (2.46-1) unstable; urgency=low
 
   * bump to release version
