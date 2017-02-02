@@ -22,6 +22,8 @@
 		  (The GUI already had such logic in place).
 		* findup supports symlinking duplicates as well as hardlinking.
 		* "Select from same folder" is now less CPU and RAM intensive.
+		* A renamed duplicate file no longer auto removes another
+		  item in the group from display, to allow deleting it etc.
 
 2.44 13/01/14
 	* Translations:

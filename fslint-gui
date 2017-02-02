@@ -1555,7 +1555,10 @@ on your system at present."))
                     os.rename(path_name, new_encoded_path)
                     row_data.pop(row)
                     clist.remove(row)
-                    self.clist_remove_handled_groups(clist)
+                    if self.mode!=self.mode_up:
+                        # We may want to delete the other item
+                        # in a group of two
+                        self.clist_remove_handled_groups(clist)
                 except OSError:
                     self.ShowErrors(str(sys.exc_info()[1])+'\n')
 
