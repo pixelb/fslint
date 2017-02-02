@@ -407,12 +407,12 @@ class distroType:
             self.rpm = True
         elif os.path.exists("/etc/debian_version"):
             self.dpkg = True
+        elif os.path.exists("/etc/arch-release"):
+            self.pacman = True
         else:
             for dist in types:
                 cmd = dist + " --version >/dev/null 2>&1"
-                # We check for != 127 rather than == 0 here
-                # because pacman --version returns 2 ?
-                if os.WEXITSTATUS(os.system(cmd)) != 127:
+                if os.WEXITSTATUS(os.system(cmd)) == 0:
                     setattr(self, dist, True)
                     break
 dist_type=distroType()
@@ -854,9 +854,8 @@ class fslint(GladeWrapper):
         elif dist_type.pacman:
             cmd  = r"pacman -Q | sed -n 's/^\([^ ]\{1,\}\) .*/\1/p' | "
             cmd += r"LC_ALL=C xargs pacman -Qi | sed -n -e "
-            cmd += r"'s/Name *: *\(.*\)/\1\t/p' -e "
-            cmd += r"'s/\(Installed \)\?Size *: *\([^ ]\+\)\( K\)\?/\2|/p' | "
-            cmd += r"tr '\n' ' ' | tr -d ' ' | tr '|' '\n'"
+            cmd += r"'s/Installed Size : \([^ ]*\) \([^ ]*\)B/\1\2/p' | "
+            cmd += r"numfmt --from=auto"
         else:
             return ("", _("Sorry, FSlint does not support this functionality \
 on your system at present."))
@@ -868,11 +867,6 @@ on your system at present."))
             pkg_size = int(float(pkg_size))
             if dist_type.dpkg:
                 pkg_size *= 1024
-            elif dist_type.pacman:
-                frugalware_cmd="pacman-g2 --version >/dev/null 2>&1"
-                if os.WEXITSTATUS(os.system(frugalware_cmd)) == 127:
-                    #Arch linux has trailing 'K' removed above
-                    pkg_size *= 1024
             pkg_tot += pkg_size
             clist_pkgs.append([pkg_name,human_num(pkg_size,1000).strip(),
                                "%010ld"%pkg_size,"0"])

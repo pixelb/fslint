@@ -14,6 +14,7 @@
 		  and no longer generate a syntax error.
 		* Multiple adjacent spaces in command line params are preserved
 		  and no longer generate file not found errors.
+		* Listing packages is supported for modern archlinux systems.
 	* Improvements:
 		* findup now includes zero length files by default.  This can
 		  be changed with -size +0c, or the new GUI min size option.
