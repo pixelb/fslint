@@ -971,7 +971,7 @@ on your system at present."))
             byteWaste += pi.du
             row += 1
 
-        return (human_num(byteWaste) + _(" bytes wasted in ") +
+        return (human_num(byteWaste,1000).strip() + 'B' + _(" wasted in ") +
                 str(row) + _(" files"), pe)
 
     def findsn(self, clist_sn):
@@ -1087,7 +1087,7 @@ on your system at present."))
                 clist_dups.set_row_data(row,file[2]) #mtime
                 row += 1
 
-        return (human_num(byteWaste) + _(" bytes wasted in ") +
+        return (human_num(byteWaste,1000).strip() + 'B' + _(" wasted in ") +
                 str(numWaste) + _(" files (in ") + str(len(alldups)) +
                 _(" groups)"), pe)
 
@@ -2019,7 +2019,7 @@ on your system at present."))
                 totalSaved += startlen - os.stat(path_to_clean).st_size
                 numCleaned += 1
         status =  str(numCleaned) + _(" items cleaned (") + \
-                  human_num(totalSaved) + _(" bytes saved)")
+                  human_num(totalSaved,1000).strip() + 'B' + _(" saved)")
         self.status.set_text(status)
         self.set_cursor(None)
 

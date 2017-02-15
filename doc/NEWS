@@ -1,4 +1,6 @@
 2.47 dd/mm/yy
+	* Improvements:
+		* Size totals in the GUI are now displayed in KB, MB, GB units.
 
 2.46 01/02/17
 	* Fixes:
