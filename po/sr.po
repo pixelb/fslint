@@ -1,572 +1,598 @@
-# Serbian translation of `fslint'.
+# Serbian translation of fslint.
 # Copyright (C) 2004 Free Software Foundation, Inc.
-# This file is distributed under the same license as the `fslint' package.
+# This file is distributed under the same license as the fslint package.
 # Aleksandar Jelenak <jelenak@netlinkplus.net>, 2004.
+# Vladimir Oka <Unknown>, 2010.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-17 22:22+0100\n"
-"PO-Revision-Date: 2010-11-10 20:40+0000\n"
-"Last-Translator: Vladimir Oka <Unknown>\n"
-"Language-Team: Serbian <gnu@prevod.org>\n"
+"POT-Creation-Date: 2017-02-15 18:08-0800\n"
+"PO-Revision-Date: 2016-01-25 18:15+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-02-29 23:20+0000\n"
-"X-Generator: Launchpad (build 14874)\n"
+"X-Launchpad-Export-Date: 2017-02-16 01:48+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
-msgstr "FSlint"
+msgstr "Фслинт"
 
-#: ../fslint.glade:77
+#: ../fslint.glade:81
 msgid "Open _Folder"
-msgstr "Отвори _Директоријум"
+msgstr "Отвори _фасциклу"
 
-#: ../fslint.glade:107
+#: ../fslint.glade:111
 msgid "_Rename..."
-msgstr "П_реименуј..."
+msgstr "_Преименуј..."
 
-#: ../fslint.glade:130
+#: ../fslint.glade:121
+msgid "Select all in this directory"
+msgstr ""
+
+#: ../fslint.glade:143
 msgid "Select using wildcard"
 msgstr "Изабери уз помоћ знакова замене"
 
-#: ../fslint.glade:139
+#: ../fslint.glade:152
 msgid "Unselect using wildcard"
 msgstr "Поништи изабрано уз помоћ знакова замене"
 
-#: ../fslint.glade:148
+#: ../fslint.glade:161
 msgid "within groups"
-msgstr "Унутар групе"
+msgstr "унутар група"
 
-#: ../fslint.glade:157
+#: ../fslint.glade:170
 msgid "Select all but first"
 msgstr "Изабери све осим прве"
 
-#: ../fslint.glade:166
+#: ../fslint.glade:179
 msgid "Select all but newest"
 msgstr "Изабери све осим најновије"
 
-#: ../fslint.glade:175
+#: ../fslint.glade:188
 msgid "Select all but oldest"
 msgstr "Изабери све осим најстарије"
 
-#: ../fslint.glade:188
+#: ../fslint.glade:201
 msgid "Toggle selection"
-msgstr "Обрни избор"
+msgstr "Окини избор"
 
-#: ../fslint.glade:197
+#: ../fslint.glade:210
 msgid "Unselect all"
-msgstr "Поништи сав избор"
+msgstr "Поништи избор"
 
-#: ../fslint.glade:314 ../fslint.glade:555
+#: ../fslint.glade:327 ../fslint.glade:580
 msgid "Add"
 msgstr "Додај"
 
-#: ../fslint.glade:386 ../fslint.glade:627
+#: ../fslint.glade:403 ../fslint.glade:656
 msgid "Remove"
 msgstr "Уклони"
 
-#: ../fslint.glade:429
+#: ../fslint.glade:450
 msgid "Directories to search"
 msgstr "Директоријуми за претраживање"
 
-#: ../fslint.glade:454
+#: ../fslint.glade:475
 msgid "recurse?"
-msgstr "рекурзивно?"
+msgstr "дубински?"
 
-#: ../fslint.glade:478
+#: ../fslint.glade:499
 msgid "Search path"
 msgstr "Путања претраге"
 
-#: ../fslint.glade:678
+#: ../fslint.glade:711
 msgid "Paths to exclude"
-msgstr "Изостављене путање"
+msgstr "Путање за изостављање"
 
-#: ../fslint.glade:709
+#: ../fslint.glade:746
 msgid "Extra find parameters"
-msgstr "додатни параметри трагања"
+msgstr "додатни параметри претраге"
 
-#: ../fslint.glade:730
+#: ../fslint.glade:771
 msgid "extra find filtering parameters"
-msgstr "додатни параметри филтера пронађених"
+msgstr "додатни параметри филтера претраге"
 
-#: ../fslint.glade:763
+#: ../fslint.glade:804
 msgid "Advanced search parameters"
 msgstr "Напредни параметри претраге"
 
-#: ../fslint.glade:844 ../fslint.glade:959 ../fslint.glade:1206
-#: ../fslint.glade:1495 ../fslint.glade:1687 ../fslint.glade:1921
-#: ../fslint.glade:2026 ../fslint.glade:2170 ../fslint.glade:2287
-#: ../fslint.glade:2608
-msgid "Name"
-msgstr "Име"
+#: ../fslint.glade:876
+msgid "Minimum file size:"
+msgstr ""
 
-#: ../fslint.glade:859 ../fslint.glade:1221 ../fslint.glade:1510
-#: ../fslint.glade:1702 ../fslint.glade:1936 ../fslint.glade:2041
-#: ../fslint.glade:2185 ../fslint.glade:2302 ../fslint.glade:2623
+#: ../fslint.glade:901
+msgid "Using find -size syntax"
+msgstr ""
+
+#: ../fslint.glade:947 ../fslint.glade:1078 ../fslint.glade:1349
+#: ../fslint.glade:1658 ../fslint.glade:1870 ../fslint.glade:2124
+#: ../fslint.glade:2245 ../fslint.glade:2417 ../fslint.glade:2550
+#: ../fslint.glade:2899
+msgid "Name"
+msgstr "Назив"
+
+#: ../fslint.glade:966 ../fslint.glade:1368 ../fslint.glade:1677
+#: ../fslint.glade:1889 ../fslint.glade:2143 ../fslint.glade:2264
+#: ../fslint.glade:2436 ../fslint.glade:2569 ../fslint.glade:2918
 msgid "Directory"
 msgstr "Директоријум"
 
-#: ../fslint.glade:874 ../fslint.glade:1732 ../fslint.glade:2101
-#: ../fslint.glade:2200 ../fslint.glade:2332 ../fslint.glade:2653
+#: ../fslint.glade:985 ../fslint.glade:1927 ../fslint.glade:2340
+#: ../fslint.glade:2455 ../fslint.glade:2607 ../fslint.glade:2956
 msgid "Date"
 msgstr "Датум"
 
-#: ../fslint.glade:905
+#: ../fslint.glade:1020
 msgid "Duplicates"
 msgstr "Дупликати"
 
-#: ../fslint.glade:974 ../fslint.glade:1525 ../fslint.glade:1717
-#: ../fslint.glade:2086 ../fslint.glade:2317 ../fslint.glade:2638
+#: ../fslint.glade:1097 ../fslint.glade:1696 ../fslint.glade:1908
+#: ../fslint.glade:2321 ../fslint.glade:2588 ../fslint.glade:2937
 msgid "Size"
 msgstr "Величина"
 
-#: ../fslint.glade:1076
+#: ../fslint.glade:1211
 msgid "Installed packages"
 msgstr "Инсталирани пакети"
 
-#: ../fslint.glade:1113
+#: ../fslint.glade:1252
 msgid "Sensitivity="
 msgstr "Осетљивост="
 
-#: ../fslint.glade:1153
+#: ../fslint.glade:1296
 msgid "invalid UTF8 mode?"
-msgstr "Неисправан UTF8 мод?"
+msgstr "Неисправан УТФ-8 режим?"
 
-#: ../fslint.glade:1252
+#: ../fslint.glade:1403
 msgid "Bad names"
-msgstr "Лоша имена"
+msgstr "Лоши називи"
 
-#: ../fslint.glade:1283
+#: ../fslint.glade:1438
 msgid "Search ("
-msgstr "Претрага ("
+msgstr "Погледај у ("
 
-#: ../fslint.glade:1324
+#: ../fslint.glade:1483
 msgid ") for"
-msgstr ") за"
+msgstr ") има ли"
 
-#: ../fslint.glade:1367 ../fslint-gui:938
+#: ../fslint.glade:1530 ../fslint-gui:983
 msgid "Conflicting files"
-msgstr "Противне датотеке"
+msgstr "датотека у сукобу"
 
-#: ../fslint.glade:1375 ../fslint.glade:1438 ../fslint-gui:936
-#: ../fslint-gui:945
+#: ../fslint.glade:1538 ../fslint.glade:1601 ../fslint-gui:981
+#: ../fslint-gui:990
 msgid "Aliases"
-msgstr "Алијас"
+msgstr "сличних назива"
 
-#: ../fslint.glade:1414 ../fslint-gui:951
+#: ../fslint.glade:1577 ../fslint-gui:996
 msgid "Case conflicts"
-msgstr "Сукоби"
+msgstr "Сукоби величине слова"
 
-#: ../fslint.glade:1422 ../fslint-gui:947
+#: ../fslint.glade:1585 ../fslint-gui:992
 msgid "Same names"
-msgstr "Иста имена"
+msgstr "Исти називи"
 
-#: ../fslint.glade:1430 ../fslint-gui:949
+#: ../fslint.glade:1593 ../fslint-gui:994
 msgid "Same names(ignore case)"
-msgstr "Иста имена (занемари величину слова)"
+msgstr "Исти називи (занемари величину слова)"
 
-#: ../fslint.glade:1556
+#: ../fslint.glade:1731
 msgid "Name clashes"
-msgstr "Сукоби имена"
+msgstr "Неслагања назива"
 
-#: ../fslint.glade:1587
+#: ../fslint.glade:1766
 msgid "More restrictive search for core files"
-msgstr "Ограниченија претрага за датотекама сржи"
+msgstr "Обавите ограниченију претрагу за кључним датотекама"
 
-#: ../fslint.glade:1589
+#: ../fslint.glade:1768
 msgid "core file mode?"
-msgstr "режим датотеке сржи?"
+msgstr "режим кључне датотеке?"
 
-#: ../fslint.glade:1613
+#: ../fslint.glade:1792
 msgid "days"
 msgstr "дана"
 
-#: ../fslint.glade:1633
+#: ../fslint.glade:1812
 msgid "minimum age"
-msgstr "минимум старости"
+msgstr "најмање старости"
 
-#: ../fslint.glade:1763
+#: ../fslint.glade:1962
 msgid "Temp files"
-msgstr "Привр. датотеке"
+msgstr "Привремене датотеке"
 
-#: ../fslint.glade:1795
+#: ../fslint.glade:1998
 msgid "Dangling"
-msgstr "Патрљак"
+msgstr "Сувишне"
 
-#: ../fslint.glade:1813
+#: ../fslint.glade:2016
 msgid "Absolute links to paths within or below the link's directory"
-msgstr "Апсолутне везе ка путањама у или испод везниковог директоријума"
+msgstr "Апсолутне везе ка путањама у или испод директоријума везе"
 
-#: ../fslint.glade:1815
+#: ../fslint.glade:2018
 msgid "Suspect"
-msgstr "Сумњив"
+msgstr "Сумњиве"
 
-#: ../fslint.glade:1835
+#: ../fslint.glade:2038
 msgid "Relative"
-msgstr "Релативни"
+msgstr "Релативне"
 
-#: ../fslint.glade:1855
+#: ../fslint.glade:2058
 msgid "Absolute"
-msgstr "Апсолутни"
+msgstr "Апсолутне"
 
-#: ../fslint.glade:1874
+#: ../fslint.glade:2077
 msgid "/././. ///// /../ etc."
-msgstr "/././. ///// /../ итд."
+msgstr "„/././. ///// /../“ итд."
 
-#: ../fslint.glade:1876
+#: ../fslint.glade:2079
 msgid "Redundant naming"
-msgstr "Излишни називи"
+msgstr "Излишних назива"
 
-#: ../fslint.glade:1951
+#: ../fslint.glade:2162
 msgid "Target"
 msgstr "Циљ"
 
-#: ../fslint.glade:1982
+#: ../fslint.glade:2197
 msgid "Bad symlinks"
-msgstr "Лоше симвезе"
+msgstr "Лоше симболичке везе"
 
-#: ../fslint.glade:2056
+#: ../fslint.glade:2283
 msgid "UID"
-msgstr "UID"
+msgstr "ЈИБ"
 
-#: ../fslint.glade:2071
+#: ../fslint.glade:2302
 msgid "GID"
-msgstr "GID"
+msgstr "ГИБ"
 
-#: ../fslint.glade:2132
+#: ../fslint.glade:2375
 msgid "Bad IDs"
-msgstr "Лоши ID-ови"
+msgstr "Лоши ИБ-ови"
 
-#: ../fslint.glade:2224
+#: ../fslint.glade:2483
 msgid "Empty directories"
 msgstr "Празни директоријуми"
 
-#: ../fslint.glade:2250
+#: ../fslint.glade:2513
 msgid "Search $PATH"
-msgstr "Претражуј $PATH"
+msgstr "Потражи у $ПУТАЊИ"
 
-#: ../fslint.glade:2363
+#: ../fslint.glade:2642
 msgid "Non stripped binaries"
 msgstr "Неогољене бинарне датотеке"
 
-#: ../fslint.glade:2445
+#: ../fslint.glade:2728
 msgid "bad indenting for indent width"
 msgstr "лоша ширина увлачења"
 
-#: ../fslint.glade:2549
+#: ../fslint.glade:2836
 msgid "whitespace at end of line"
-msgstr "размак на крају линије"
+msgstr "празнина на крају реда"
 
-#: ../fslint.glade:2684
+#: ../fslint.glade:2991
 msgid "Redundant whitespace"
-msgstr "Излишне белине"
+msgstr "Излишне празнине"
 
-#: ../fslint.glade:2767
+#: ../fslint.glade:3078
 msgid "Find"
 msgstr "Нађи"
 
-#: ../fslint.glade:2842
+#: ../fslint.glade:3157
 msgid "Stop"
 msgstr "Стани"
 
-#: ../fslint.glade:2917
+#: ../fslint.glade:3236
 msgid "Pause"
-msgstr "Паузирај"
+msgstr "Застани"
 
-#: ../fslint.glade:2992
+#: ../fslint.glade:3315
 msgid "Resume"
 msgstr "Настави"
 
-#: ../fslint.glade:3081
+#: ../fslint.glade:3408
 msgid "Select"
-msgstr "Изаберите"
+msgstr "Изабери"
 
-#: ../fslint.glade:3108
+#: ../fslint.glade:3439
 msgid "Save (selected) list to file"
-msgstr "Сачувајте изабрану листу у датотеку"
+msgstr "Сачувајте (изабрани) списак у датотеку"
 
-#: ../fslint.glade:3153
+#: ../fslint.glade:3484
 msgid "Save"
 msgstr "Сачувај"
 
-#: ../fslint.glade:3180 ../fslint.glade:3324
+#: ../fslint.glade:3515 ../fslint.glade:3667
 msgid "selected"
-msgstr "изабрани"
+msgstr "изабрано"
 
-#: ../fslint.glade:3225
+#: ../fslint.glade:3560
 msgid "Delete"
 msgstr "Избриши"
 
-#: ../fslint.glade:3252
+#: ../fslint.glade:3591
 msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
-"Сви (осим изабраних) користећи чврсте везе\n"
+"Све (осим изабраних) користећи чврсте везе\n"
 "(или симболичне везе ако су на другом систему датотека)"
 
-#: ../fslint.glade:3298
+#: ../fslint.glade:3637
 msgid "Merge"
 msgstr "Споји"
 
-#: ../fslint.glade:3369
+#: ../fslint.glade:3712
 msgid "Clean"
-msgstr "Чисто"
+msgstr "Очисти"
 
-#: ../fslint.glade:3502
+#: ../fslint.glade:3743
+msgid "All (except selected) using symbolic links"
+msgstr ""
+
+#: ../fslint.glade:3788
+msgid "Symlink"
+msgstr ""
+
+#: ../fslint.glade:3925
 msgid "Select Path"
-msgstr "Изабери путању"
+msgstr "Изаберите путању"
 
-#: ../fslint.glade:3674
+#: ../fslint.glade:4106
 msgid "ask me this in future?"
 msgstr "питај ме ово убудуће?"
 
-#: ../fslint-gui:156
+#: ../fslint-gui:173
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
 msgstr "Употреба: %s [ОПЦИЈА] [ПУТАЊЕ]"
 
-#: ../fslint-gui:157
+#: ../fslint-gui:174
 msgid "display version"
-msgstr "прикажи верзију"
+msgstr "приказује издање"
 
-#: ../fslint-gui:158
+#: ../fslint-gui:175
 msgid "display help"
-msgstr "прикажи објашњење"
+msgstr "приказује помоћ"
 
-#: ../fslint-gui:397
+#: ../fslint-gui:424
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr "%(percent)s од %(disk)s се користи, преостаје %(size)sB достуних"
+msgstr "%(percent)s од %(disk)s се користи, преостаје %(size)sB"
 
-#: ../fslint-gui:523
+#: ../fslint-gui:560
 msgid "Do you want to overwrite?\n"
-msgstr "Да ли желиш да пребришеш?\n"
-
-#: ../fslint-gui:529
-msgid "You can't overwrite "
-msgstr "Не можеш да пребришеш "
-
-#: ../fslint-gui:565
-msgid "Files with the same content"
-msgstr "Датотеке са истим садржајем"
+msgstr "Да ли желите да препишете?\n"
 
 #: ../fslint-gui:566
+msgid "You can't overwrite "
+msgstr "Не можете писати преко "
+
+#: ../fslint-gui:602
+msgid "Files with the same content"
+msgstr "Пронађите датотеке са истим садржајем"
+
+#: ../fslint-gui:603
 msgid "Installed packages ordered by disk usage"
-msgstr "Инсталирани пакети поређани по коришћењу простора"
+msgstr "Пронађите инсталиране пакети поређане према заузећу простора"
 
-#: ../fslint-gui:567
+#: ../fslint-gui:604
 msgid "Problematic filenames"
-msgstr "Проблематични називи датотека"
+msgstr "Пронађите датотеке са проблематичним називима"
 
-#: ../fslint-gui:568
+#: ../fslint-gui:605
 msgid "Possibly conflicting commands or filenames"
-msgstr "Могући проблеми између команди или датотека"
+msgstr "Пронађите могуће сукобе наредби или назива датотека"
 
-#: ../fslint-gui:569
+#: ../fslint-gui:606
 msgid "Possibly old temporary files"
-msgstr "Вероватно старе привремене датотеке"
+msgstr "Пронађите привремене датотеке које су вероватно старе"
 
-#: ../fslint-gui:570
+#: ../fslint-gui:607
 msgid "Problematic symbolic links"
-msgstr "Проблематичне симболичне везе"
+msgstr "Пронађите проблематичне симболичне везе"
 
-#: ../fslint-gui:571
+#: ../fslint-gui:608
 msgid "Files with missing user IDs"
-msgstr "Датотеке којима недостаје ID корисника"
+msgstr "Пронађите датотеке којима недостаје ИБ корисника"
 
-#: ../fslint-gui:572
+#: ../fslint-gui:609
 msgid "Directory branches with no files"
-msgstr "Гране директоријума без датотека"
+msgstr "Пронађите гране директоријума без датотека"
 
-#: ../fslint-gui:573
+#: ../fslint-gui:610
 msgid "Executables still containing debugging info"
-msgstr "Извршне датотеке још увек садрже дебагерске информације"
+msgstr "Пронађите извршне датотеке које још увек садрже податке прочишћавања"
 
-#: ../fslint-gui:574
+#: ../fslint-gui:611
 msgid "Erroneous whitespace in a text file"
-msgstr "Огромни празан простор у текстуалној датотеци"
+msgstr "Пронађите погрешне празнине у текстуалној датотеци"
 
-#: ../fslint-gui:580
+#: ../fslint-gui:617
 msgid "Invalid path ["
 msgstr "Неисправна путања ["
 
-#: ../fslint-gui:621 ../fslint-gui:1312
+#: ../fslint-gui:658 ../fslint-gui:1359
 msgid "searching"
 msgstr "претражујем"
 
-#: ../fslint-gui:638
+#: ../fslint-gui:675
 msgid "processing..."
 msgstr "анализирам..."
 
-#: ../fslint-gui:666
+#: ../fslint-gui:703
 msgid "No search paths specified"
-msgstr "Нису задати путеви претраге"
+msgstr "Нису задате путање претраге"
 
-#: ../fslint-gui:810
+#: ../fslint-gui:860
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
 msgstr ""
-"Извините, али FSlint не подржава тренутно ову функционалност на вашем "
-"систему."
+"Извините, али Фслинт тренутно не подржава ову функцију на вашем систему."
 
-#: ../fslint-gui:831
+#: ../fslint-gui:876
 msgid " packages, "
 msgstr " пакета, "
 
-#: ../fslint-gui:832
+#: ../fslint-gui:877
 #, python-format
 msgid "consuming %sB. "
 msgstr "троши %sB. "
 
-#: ../fslint-gui:833
+#: ../fslint-gui:878
 #, python-format
 msgid "Note %s."
-msgstr "Примедба %s."
+msgstr "Напомена „%s“."
 
-#: ../fslint-gui:852 ../fslint-gui:892 ../fslint-gui:930 ../fslint-gui:992
+#: ../fslint-gui:897 ../fslint-gui:937 ../fslint-gui:975 ../fslint-gui:1037
 msgid " files"
 msgstr " датотека"
 
-#: ../fslint-gui:872
+#: ../fslint-gui:917
 msgid " unstripped binaries"
-msgstr " неогољених бинарних датотеке"
+msgstr " неогољених бинарних датотека"
 
-#: ../fslint-gui:881
+#: ../fslint-gui:926
 msgid " empty directories"
-msgstr " празних директоријума"
+msgstr " празан директоријум"
 
-#: ../fslint-gui:913
+#: ../fslint-gui:958
 msgid " links"
 msgstr " веза"
 
-#: ../fslint-gui:929 ../fslint-gui:1045
-msgid " bytes wasted in "
-msgstr " бајтова протраћено у "
+#: ../fslint-gui:974 ../fslint-gui:1090
+msgid " wasted in "
+msgstr " потрошено у "
 
-#: ../fslint-gui:975 ../fslint-gui:1046
+#: ../fslint-gui:1020 ../fslint-gui:1091
 msgid " files (in "
 msgstr " датотека (у "
 
-#: ../fslint-gui:976 ../fslint-gui:1047
+#: ../fslint-gui:1021 ../fslint-gui:1092
 msgid " groups)"
-msgstr " група)"
+msgstr " групе)"
 
-#: ../fslint-gui:1037
+#: ../fslint-gui:1082
 msgid "bytes wasted"
-msgstr "бајтова протраћено"
+msgstr "бајтова потрошено"
 
-#: ../fslint-gui:1124
+#: ../fslint-gui:1169
 msgid "None selected"
-msgstr "Ништа изабрано"
+msgstr "Нисте изабрали ништа"
 
-#: ../fslint-gui:1128
+#: ../fslint-gui:1173
 msgid " this item?\n"
-msgstr " ову ставке?\n"
+msgstr " ову ставку?\n"
 
-#: ../fslint-gui:1130
+#: ../fslint-gui:1175
 #, python-format
 msgid " these %d items?\n"
 msgstr " ове %d ставке?\n"
 
-#: ../fslint-gui:1278
+#: ../fslint-gui:1325
 msgid "User aborted"
-msgstr "Прекинуо корисник"
+msgstr "Корисник је прекинуо"
 
-#: ../fslint-gui:1305
+#: ../fslint-gui:1352
 msgid "paused"
 msgstr "паузирано"
 
-#: ../fslint-gui:1452
+#: ../fslint-gui:1499
 msgid "Error starting xdg-open"
-msgstr "Грешка при покретању xdg-open"
+msgstr "Грешка покретања „xdg-open“-а"
 
-#: ../fslint-gui:1464
+#: ../fslint-gui:1524
 msgid "Rename:"
-msgstr "Преименујте:"
+msgstr "Преименуј:"
 
-#: ../fslint-gui:1475 ../fslint-gui:1516
+#: ../fslint-gui:1535 ../fslint-gui:1579
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr "Грешка: [%s] не може бити престављено на Вашем систему датотека"
+msgstr "Грешка: [%s] не може бити представљено на вашем систему датотека"
 
-#: ../fslint-gui:1485
+#: ../fslint-gui:1545
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
 msgstr ""
-"Грешка: не могу да преименујем [%(old_path)s] као [%(new_path)s] пошто "
-"датотека већ постоји"
+"Грешка: не могу да преименујем [%(old_path)s] јер већ постоји [%(new_path)s]"
 
-#: ../fslint-gui:1505
+#: ../fslint-gui:1568
 msgid "wildcard:"
-msgstr "Упит са знаковима замене:"
+msgstr "знакови замене:"
 
-#: ../fslint-gui:1710
+#: ../fslint-gui:1783
 msgid "Sorry, you must be root to delete system packages."
 msgstr ""
-"Морате бити улоговани са привилегијама администратора, да би сте могли да "
-"уклоните системске пакете."
+"Извините, морате бити администратор да бисте могли да уклоните системске "
+"пакете."
 
-#: ../fslint-gui:1715
+#: ../fslint-gui:1788
 msgid "Are you sure you want to delete"
-msgstr "Да ли заиста желиш да избришеш"
+msgstr "Да ли заиста желите да их избришете"
 
-#: ../fslint-gui:1722
+#: ../fslint-gui:1795
 msgid "Are you sure you want to delete all items in this group?"
-msgstr "Да ли сте сигурни да желите да избришете све ставке у овој групи?"
+msgstr "Да ли сигурно желите да избришете све ставке у овој групи?"
 
-#: ../fslint-gui:1742
+#: ../fslint-gui:1815
 msgid "Calculating dependencies..."
-msgstr "Анализитам међузависности..."
+msgstr "Израчунавам међузависности..."
 
-#: ../fslint-gui:1760
+#: ../fslint-gui:1833
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "%d додатних пакета мора бити обрисано.\n"
+msgstr "%d додатна пакета морају бити обрисана.\n"
 
-#: ../fslint-gui:1761
+#: ../fslint-gui:1834
 msgid "Please review the updated selection."
-msgstr "Молим да пргледате ажурирани избор."
+msgstr "Прегледајте освежени избор."
 
-#: ../fslint-gui:1769
+#: ../fslint-gui:1842
 msgid "Removing packages..."
 msgstr "Уклањам пакете..."
 
-#: ../fslint-gui:1814
+#: ../fslint-gui:1887
 msgid " items deleted"
-msgstr " ставки избрисано"
+msgstr " ставке су избрисане"
 
-#: ../fslint-gui:1827
+#: ../fslint-gui:1907
+msgid "Are you sure you want to symlink ALL files?\n"
+msgstr ""
+
+#: ../fslint-gui:1909
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "Да ли заиста желиш да спојиш СВЕ датотеке?\n"
+msgstr "Да ли заиста желите да спојите СВЕ датотеке?\n"
 
-#: ../fslint-gui:1831
+#: ../fslint-gui:1913
 msgid "(Ignoring those selected)\n"
-msgstr "(Занемарујући одабране)\n"
+msgstr "(Занемарујући те изабране)\n"
 
-#: ../fslint-gui:1879
+#: ../fslint-gui:1964
 msgid "Which indenting method do you want to convert to?"
-msgstr "У који метод увлачења желите да конверзију?"
+msgstr "У који метод увлачења желите да претворите?"
 
-#: ../fslint-gui:1880
+#: ../fslint-gui:1965
 msgid "Tabs"
 msgstr "Језичци"
 
-#: ../fslint-gui:1880
+#: ../fslint-gui:1965
 msgid "Spaces"
 msgstr "Размаци"
 
-#: ../fslint-gui:1891
+#: ../fslint-gui:1976
 msgid "Are you sure you want to clean"
-msgstr "Да ли заиста желиш да очистиш"
+msgstr "Да ли заиста желите да очистите"
 
-#: ../fslint-gui:1936
+#: ../fslint-gui:2021
 msgid " items cleaned ("
-msgstr " ставки очишћено ("
+msgstr " ставке су очишћене ("
 
-#: ../fslint-gui:1937
-msgid " bytes saved)"
-msgstr " бајтова сачувано)"
+#: ../fslint-gui:2022
+msgid " saved)"
+msgstr " су сачувана)"
