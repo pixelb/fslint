@@ -12,6 +12,12 @@ CHUNK_SIZE=512 #4096 for full file
 
 import os,sys,errno
 
+import locale
+try:
+    locale.setlocale(locale.LC_ALL,'')
+except:
+    pass
+
 try:
     # md5 module is deprecated on python 2.6
     # so try the newer hashlib first
