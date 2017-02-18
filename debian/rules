@@ -36,8 +36,8 @@ install:
 	# Note dh_installdirs will create dirs listed in fslint.dirs
 	# Note dh_install will install files listed in fslint.install
 	install -Dpm 755 fslint-gui ${bindir}/fslint-gui
-	perl -pi -e 's|^liblocation=.*|liblocation="${_datadir}/${name}" #deb edit|' ${bindir}/fslint-gui
-	perl -pi -e 's|^locale_base=.*|locale_base=None #deb edit|' ${bindir}/fslint-gui
+	sed -i -e 's|^liblocation=.*|liblocation="${_datadir}/${name}" #deb edit|' ${bindir}/fslint-gui
+	sed -i -e 's|^locale_base=.*|locale_base=None #deb edit|' ${bindir}/fslint-gui
 
 	install -dm 755 ${datadir}/${name}/fslint/fstool
 	install -dm 755 ${datadir}/${name}/fslint/supprt

@@ -43,8 +43,8 @@ It includes a GTK+ GUI as well as a command line interface.
 
 %prep
 %setup -q -n %{name}-%{version}
-%{__perl} -pi -e 's|^liblocation=.*$|liblocation="%{_datadir}/%{name}" #RPM edit|' fslint-gui
-%{__perl} -pi -e 's|^locale_base=.*$|locale_base=None #RPM edit|' fslint-gui
+sed -i -e 's|^liblocation=.*$|liblocation="%{_datadir}/%{name}" #RPM edit|' \
+       -e 's|^locale_base=.*$|locale_base=None #RPM edit|' fslint-gui
 
 
 %build
