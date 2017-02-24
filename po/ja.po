@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-15 18:08-0800\n"
-"PO-Revision-Date: 2017-02-15 05:43+0000\n"
+"POT-Creation-Date: 2017-02-23 20:41-0800\n"
+"PO-Revision-Date: 2017-02-24 04:08+0000\n"
 "Last-Translator: Shinichirou YAMADA <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-16 01:48+0000\n"
+"X-Launchpad-Export-Date: 2017-02-24 04:20+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: ../fslint.glade:8
@@ -367,7 +367,7 @@ msgstr "%(disk)s の %(percent)s が使用中 %(size)sB が利用可能"
 
 #: ../fslint-gui:560
 msgid "Do you want to overwrite?\n"
-msgstr "上書きしますか？\n"
+msgstr "本当に上書きしてもよろしいですか？\n"
 
 #: ../fslint-gui:566
 msgid "You can't overwrite "
@@ -407,7 +407,7 @@ msgstr "ファイルが入っていないフォルダー"
 
 #: ../fslint-gui:610
 msgid "Executables still containing debugging info"
-msgstr "デバッグ情報を含む実行可能ファイル"
+msgstr "デバッグ情報を含む実行ファイル"
 
 #: ../fslint-gui:611
 msgid "Erroneous whitespace in a text file"
@@ -467,7 +467,7 @@ msgstr " 個のリンク"
 
 #: ../fslint-gui:974 ../fslint-gui:1090
 msgid " wasted in "
-msgstr " の浪費 "
+msgstr " 浪费在 "
 
 #: ../fslint-gui:1020 ../fslint-gui:1091
 msgid " files (in "
@@ -532,11 +532,11 @@ msgstr ""
 
 #: ../fslint-gui:1788
 msgid "Are you sure you want to delete"
-msgstr "削除してもよろしいですか？"
+msgstr "本当に削除してもよろしいですか？"
 
 #: ../fslint-gui:1795
 msgid "Are you sure you want to delete all items in this group?"
-msgstr "このグループのすべてのアイテムを削除してもよろしいですか？"
+msgstr "本当にこのグループのすべてのアイテムを削除してもよろしいですか？"
 
 #: ../fslint-gui:1815
 msgid "Calculating dependencies..."
@@ -565,7 +565,7 @@ msgstr ""
 
 #: ../fslint-gui:1909
 msgid "Are you sure you want to merge ALL files?\n"
-msgstr "すべてのファイルをマージしてもよろしいですか？\n"
+msgstr "本当にすべてのファイルをマージしてもよろしいですか？\n"
 
 #: ../fslint-gui:1913
 msgid "(Ignoring those selected)\n"
@@ -573,7 +573,7 @@ msgstr "(選択されたファイルは無視します)\n"
 
 #: ../fslint-gui:1964
 msgid "Which indenting method do you want to convert to?"
-msgstr "どのインデント方法を変換しますか？"
+msgstr "どちらのインデント方法に変換しますか？"
 
 #: ../fslint-gui:1965
 msgid "Tabs"
@@ -585,7 +585,7 @@ msgstr "スペース"
 
 #: ../fslint-gui:1976
 msgid "Are you sure you want to clean"
-msgstr "クリーンしてもよろしいですか？"
+msgstr "本当にクリーンしてもよろしいですか？"
 
 #: ../fslint-gui:2021
 msgid " items cleaned ("
