@@ -65,7 +65,8 @@ else
 fi
 
 if [ "$core_mode" = "yes" ]; then
-    find "$@" -type f -name "*core*" $FIND_AGE ! -name "*$LF*" -printf "%p\n" |
+    find -H "$@" -type f -name "*core*" $FIND_AGE ! -name "*$LF*" \
+      -printf "%p\n" |
     grep -E "/core$|\.core$|/core\.[0-9]+$" |
     xargs -r file |
     grep -F "core file " |
@@ -96,6 +97,6 @@ do
 done
 Names="\( $Names \)"
 
-eval find '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\0'" |
+eval find -H '"$@"' -type f $Names $FIND_AGE -printf "$FPF'\0'" |
 sort -zu | #merge files (indirectly) specified multiple times
 tr '\0' '\n'

@@ -48,7 +48,7 @@ done
 
 . "$script_dir"/supprt/getfpf "$argsToPassOn"
 
-find "$@" -printf "$FPF\0" |
+find -H "$@" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 tr '\n\0' '\1\n' | #convert \n to \1 so grep works
 LANG=C grep -E '[^ -~]' | #filter out purely ASCII names

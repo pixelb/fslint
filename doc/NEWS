@@ -1,6 +1,7 @@
 2.47 dd/mm/yy
 	* Improvements:
 		* Size totals in the GUI are now displayed in KB, MB, GB units.
+		* Specified symlinks to dirs (like /bin) are processed as dirs.
 
 2.46 01/02/17
 	* Fixes:

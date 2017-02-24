@@ -87,7 +87,7 @@ fi
 
 . "$script_dir"/supprt/getfpf "$argsToPassOn"
 
-find "$@" -type f -size +0c ! -name "*$LF*" -printf "$FPF\0" |
+find -H "$@" -type f -size +0c ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 xargs -r0 file |
 sed -n 's/\(.*\):[^:]*text.*/\1/p' | #assumes ':' not in desc

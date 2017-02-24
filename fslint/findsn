@@ -53,7 +53,7 @@ If no path(s) specified then the \$PATH is searched.
 
 If only path(s) specified then they are checked for duplicate named
 files. You can qualify this with -C to ignore case in this search.
-Qualifying with -c is more restictive as only files (or directories)
+Qualifying with -c is more restrictive as only files (or directories)
 in the same directory whose names differ only in case are reported.
 I.E. -c will flag files & directories that will conflict if transfered
 to a case insensitive file system. Note if -c or -C specified and
@@ -137,7 +137,7 @@ auto_ignore_paths()
 case "$mode" in
 
 casePortability)
-   find "$@" \( -type d -o -type f \) -printf "%f\1$FPF\1%h\0" |
+   find -H "$@" \( -type d -o -type f \) -printf "%f\1$FPF\1%h\0" |
    sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort -b -k3,3 -k1,1f | #group paths (case sens), then names (case insens)
@@ -145,7 +145,7 @@ casePortability)
    uniq -i --all-repeated=$uniqsep |
    cut -f2 -d' ' ;;
 matchFilenames)
-   find "$@" -type f -printf "$FPF\1%f\0" |
+   find -H "$@" -type f -printf "$FPF\1%f\0" |
    sort -zu | #merge files (indirectly) specified multiple times
    translate safe |
    sort $sort_ignore_case -k2,2 |

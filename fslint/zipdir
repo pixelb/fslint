@@ -89,19 +89,19 @@ set -f #no globbing
 
 #Sanity checks in case user specifies any of these
 #can't process /bin as mv & rmdir here
-bin=`find /bin -maxdepth 0 -printf "%i"`
+bin=`find -H /bin -maxdepth 0 -printf "%i"`
 #can't process /lib as mv & rmdir need libc here
-lin=`find /lib -maxdepth 0 -printf "%i"`
+lin=`find -H /lib -maxdepth 0 -printf "%i"`
 #can't process /dev as it'll break :-)
-din=`find /dev -maxdepth 0 -printf "%i"`
+din=`find -H /dev -maxdepth 0 -printf "%i"`
 #not sure about this, better leave alone
-lfin=`find /lost+found -maxdepth 0 -printf "%i"`
+lfin=`find -H /lost+found -maxdepth 0 -printf "%i"`
 #inode of all mount points is 1, and obviously can't move mount points
 mntin="1"
 
 export totalSavedBytes=0
 
-find $findArgs -type d -size +2b -depth \( -fstype ext2 -o -fstype ext3 \) \
+find -H $findArgs -type d -size +2b -depth \( -fstype ext2 -o -fstype ext3 \) \
 -xdev \( ! -inum $bin ! -inum $lin ! -inum $din ! -inum $lfin ! -inum $mntin \) \
 -printf "$FPF\n" |
 tr ' \t' '\1\2' | #TODO: should also use sed to escape shell chars

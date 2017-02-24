@@ -44,7 +44,7 @@ done
 
 reUsers="$(cut -f3 -d: /etc/passwd | tr '\n' '|')0"
 reGroups="$(cut -f3 -d: /etc/group | tr '\n' '|')0"
-find "$@" -printf "%U:%G:$FPF\0" |
+find -H "$@" -printf "%U:%G:$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
 tr '\n\0' '\1\n' |
 grep -Ev "^($reUsers):($reGroups):" |

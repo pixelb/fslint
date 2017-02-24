@@ -162,7 +162,7 @@ else
 fi
 
                                     #print name, dev, inode & size.
-find "$@" -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
+find -H "$@" -type f ! -name "*$LF*" -printf "$FPF\0$devFmt\0%i\0%s\n" |
 sort -u |            #merge files (indirectly) specified multiple times
 tr ' \t\0' '\0\1 ' | #remove spaces, tabs in file names
 sort -k4,4nr -k2,2n -k3,3 $merge_early |#group [and merge] size,dev & inodes

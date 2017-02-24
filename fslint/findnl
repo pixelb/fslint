@@ -149,7 +149,7 @@ eval characters=\$characters$level
 #forcing -f as expressions assume / before name
 #Note could run through basename after if required?
 
-find "$@" -printf "$FPF\0" |
+find -H "$@" -printf "$FPF\0" |
 sort -zu |         #merge files (indirectly) specified multiple times
 tr '\n\0' '\1\n' | #convert \n to \1 so grep works
 grep -E "$expressions|(.*/[^/]*[^]$characters-]+[^/]*$)" | #note ] 1st & - last
