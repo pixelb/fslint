@@ -61,7 +61,7 @@ for line in sys.stdin:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 os.link(keepfile,tmpfile)
-                        except OSError, value:
+                        except EnvironmentError as value:
                             if value.errno == errno.EXDEV and not symlink:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:

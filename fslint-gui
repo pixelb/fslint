@@ -187,7 +187,7 @@ try:
     if ("--version","") in lOpts:
         puts("FSlint 2.47")
         sys.exit(None)
-except getopt.error, msg:
+except getopt.error as msg:
     puts(msg)
     puts()
     Usage()
@@ -1939,7 +1939,7 @@ on your system at present."))
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:
                                 os.link(keepfile,tmpfile)
-                        except OSError, value:
+                        except OSError as value:
                             if value.errno == errno.EXDEV and not symlink:
                                 os.symlink(os.path.realpath(keepfile),tmpfile)
                             else:

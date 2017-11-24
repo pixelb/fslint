@@ -67,7 +67,7 @@ try:
     # No options get the default bytes.
     else:
         print "Total wasted space: %d bytes" % sum(sizes())
-except getopt.error, msg:
+except getopt.error as msg:
     print msg
     Usage()
     sys.exit(1)

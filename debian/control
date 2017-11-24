@@ -9,7 +9,7 @@ Standards-Version: 3.8.0
 
 Package: fslint
 Architecture: all
-Depends: python (>= 2.3), python-gtk2 (>= 2.4), python-glade2, findutils (>=4.1.1)
+Depends: python (>= 2.6), python-gtk2 (>= 2.4), python-glade2, findutils (>=4.1.1)
 Description: A utility to fix problems with filesystems' data, like duplicate files
  FSlint is a toolkit to clean filesystem lint. It includes a GTK+ GUI
  as well as a command line interface and can be used to reclaim disk space.

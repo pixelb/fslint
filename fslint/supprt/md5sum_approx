@@ -53,7 +53,7 @@ def md5sum(filename, CHUNK=CHUNK_SIZE):
         del fo
 
         return sum.hexdigest()
-    except (IOError, OSError), value:
+    except EnvironmentError as value:
         # One gets the following if you do
         # fo.seek(-CHUNK, 2) above and file is too small
         if value.errno == errno.EINVAL:
@@ -64,7 +64,7 @@ def md5sum(filename, CHUNK=CHUNK_SIZE):
 def printsum(filename):
     try:
         sys.stdout.write("%s  %s\n" % (md5sum(filename),filename))
-    except (IOError, OSError), value:
+    except EnvironmentError as value:
         sys.stderr.write("md5sum: %s: %s\n" % (filename, value.strerror))
 
 map(printsum, sys.argv[1:])
