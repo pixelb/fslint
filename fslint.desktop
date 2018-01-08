@@ -7,3 +7,4 @@ Type=Application
 Icon=fslint_icon
 Categories=System;Filesystem;GTK;Utility;
 X-Ubuntu-Gettext-Domain=fslint
+Keywords=duplicate;redundant;file;
