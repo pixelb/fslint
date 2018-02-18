@@ -871,6 +871,7 @@
 			  <child>
 			    <widget class="GtkRadioButton" id="opt_duplicate_algorithm_md5_1M">
 			      <property name="visible">True</property>
+			      <property name="tooltip" translatable="yes">Compare files using only md5 hash of the first 1M of file.&#xA;Use with caution - results may contain false positive matches.</property>
 			      <property name="can_focus">True</property>
 			      <property name="label" translatable="yes">Unsafe: md5 first 1M</property>
 			      <property name="use_underline">True</property>
