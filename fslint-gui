@@ -724,14 +724,7 @@ class fslint(GladeWrapper):
         else:
             recurseParam=" "
 
-        if self.opt_duplicate_algorithm_only_md5.get_active():
-            algorithmParam = " --verify-only-md5 "
-        elif self.opt_duplicate_algorithm_md5_1M.get_active():
-            algorithmParam = " --verify-only-md5-of-first-1M "
-        else:
-            algorithmParam = " "
-
-        self.findParams = search_dirs + " -f " + recurseParam + algorithmParam + exclude_dirs
+        self.findParams = search_dirs + " -f " + recurseParam + exclude_dirs
 
         if self.mode == self.mode_up:
             min_size = self.min_size.get_text()
@@ -742,6 +735,10 @@ class fslint(GladeWrapper):
                 min_size += 'c'
             if min_size:
                 self.findParams += '-size +' + min_size + ' '
+            if self.opt_duplicate_algorithm_only_md5.get_active():
+                self.findParams += " --verify-only-md5 "
+            elif self.opt_duplicate_algorithm_md5_1M.get_active():
+                self.findParams += " --verify-only-md5-of-first-1M "
 
         self.findParams += self.extra_find_params.get_text()
 
