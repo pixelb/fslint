@@ -616,7 +616,8 @@ class fslint(GladeWrapper):
             else:
                 self.ShowErrors(_("Invalid path [") + path + "]")
         for bad_dir in ['/lost+found','/dev','/proc','/sys','/tmp',
-                        '*/.svn','*/CVS', '*/.git', '*/.hg', '*/.bzr']:
+                        '*/.svn','*/CVS', '*/.git', '*/.hg', '*/.bzr',
+                        '*/node_modules']:
             self.addDirs(self.bad_dirs, bad_dir)
         self._alloc_mouse_cursors()
         self.mode=0
