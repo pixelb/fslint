@@ -1,4 +1,7 @@
 2.47 dd/mm/yy
+	* Fixes:
+		* Specified directories containing single quotes are again
+		  supported. This regression was introduced in 2.46.
 	* Improvements:
 		* Size totals in the GUI are now displayed in KB, MB, GB units.
 		* Specified symlinks to dirs (like /bin) are processed as dirs.

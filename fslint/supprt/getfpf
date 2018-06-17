@@ -38,7 +38,7 @@ do
       onfindswitches=true ;;
    *)
       if [ "$onfindswitches" = "true" ]; then
-         switches="$switches '$arg'"
+         switches="$switches $(shell_quote "$arg")"
       else
          num_files=`expr $num_files + 1`
          if [ -z "$files" ]; then
