@@ -1,6 +1,9 @@
 #!/usr/bin/env python2
+# encoding: utf8
+
 import sys, os, subprocess
 import sqlite3
+
 
 HASH_CMD = None
 DEBUG = False
@@ -40,26 +43,53 @@ if __name__ == "__main__":
         cursor = db.cursor()
 
 
-    for file_path in files_list:
-        cursor.execute('''SELECT * FROM files WHERE path=?''', (file_path,))
-        file_record = cursor.fetchone()
-        if file_record is not None and len(file_record) > 0:
-            if str(os.path.getctime(file_path)) == file_record[2] and str(os.path.getmtime(file_path)) == file_record[3]:
-                if DEBUG: print("Found")
-                files_hashes[file_path] = file_record[4]
-            else:
-                if DEBUG: print("Update")
+    #Existing Files
+    if len(files_list) > 0:
+        cursor.execute('''SELECT * FROM files WHERE path IN ({seq})'''.format(seq=','.join(['?']*len(files_list))), ([str(f) for f in files_list]))
+        commit_count = 0
+        for file_record in cursor.fetchall():
+            file_path = str(file_record[1])
+            try:
+                if str(os.path.getctime(file_path)) == file_record[2] and str(os.path.getmtime(file_path)) == file_record[3]:
+                    if DEBUG: print("Found")
+                    files_hashes[file_path] = file_record[4]
+                    files_list.remove(file_path)
+                else:
+                    if DEBUG: print("Update")
+                    hash = hash_file(file_path)
+                    cursor.execute('''UPDATE files SET ctime=?, mtime=?, hash=? WHERE path=?''',
+                                   (str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash, file_path))
+                    commit_count += 1
+                    files_hashes[file_path] = hash
+
+                if commit_count == 1000:
+                    commit_count = 0
+                    db.commit()
+
+            # except UnicodeDecodeError as ude:
+            except Exception as e:
                 hash = hash_file(file_path)
-                cursor.execute('''UPDATE files SET ctime=?, mtime=?, hash=? WHERE path=?''',
-                               (str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash, file_path))
-                db.commit()
                 files_hashes[file_path] = hash
-        else:
+
+
+    #New files
+    for file_path in files_list:
+        file_path = str(file_path)
+        try:
             if DEBUG: print("Insert")
             hash = hash_file(file_path)
             cursor.execute('''INSERT INTO files (path, ctime, mtime, hash) VALUES (?,?,?,?)''',
-                           (str(file_path), str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash))
-            db.commit()
+                         (str(file_path), str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash))
+            commit_count += 1
+            files_hashes[file_path] = hash
+
+            if commit_count == 1000:
+                commit_count = 0
+                db.commit()
+
+        #except UnicodeDecodeError as ude:
+        except Exception as e:
+            hash = hash_file(file_path)
             files_hashes[file_path] = hash
 
     db.commit()
@@ -67,6 +97,6 @@ if __name__ == "__main__":
 
 
     for file_hash in files_hashes:
-        sys.stdout.write("%s  %s\n" % (files_hashes[file_hash], file_hash))
+        sys.stdout.write("%s  %s\n" % (files_hashes[file_hash], str(file_hash)))
 
 
