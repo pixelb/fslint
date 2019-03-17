@@ -49,8 +49,10 @@ A. In "Advanced Search Parameters"->"Paths to exclude", add
    "*/CVS" to exclude all CVS dirs for example
 
 Q. In the GUI how do I exclude files matching a pattern?
-A. In "Advanced Search Parameters"->"Extra find parameters", add
-   "\( ! -name COPYING* -a ! -name LICENSE \)" to exclude licence files for e.g.
+A. In "Advanced Search Parameters"->"Extra find parameters", add:
+     \( ! -name COPYING* -a ! -name LICENSE \)
+   to exclude licence files, for example. See `man find` (section 'EXPRESSION')
+   for more guidance on the proper format for queries.
 
 Q. From the command line how do I exclude paths matching a pattern?
 A. To exclude directories: findup \( -path "*/.svn" \) -prune -o
