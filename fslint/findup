@@ -202,7 +202,8 @@ uniq --all-repeated=$sep_mode -w32 | #pick just duplicates
 cut -s -d' ' -f3- |        #get filenames
 sort |                     #sort by paths to try to minimise disk seeks
 tr '\n' '\0' |             #delimit names with \0
-xargs -r0 "$script_dir"/supprt/database "$script_dir"/../databases/sha1sum.sqlite sha1sum  |     #to be sure to be sure
+# Disabled to do the last test before show the results
+#xargs -r0 "$script_dir"/supprt/database "$script_dir"/../databases/sha1sum.sqlite sha1sum  |     #to be sure to be sure
 cleanup_sum |              #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
