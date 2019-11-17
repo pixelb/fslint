@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-15 18:08-0800\n"
-"PO-Revision-Date: 2011-03-29 21:36+0000\n"
-"Last-Translator: Fabio Oleari <Unknown>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2019-11-17 13:36+0000\n"
+"Last-Translator: Albano Battistella <Unknown>\n"
+"Language-Team: Italian <albano_battistella@hotmail.com>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr "FSlint"
 
 #: ../fslint.glade:81
 msgid "Open _Folder"
-msgstr "Apri ca_rtella"
+msgstr "Apri Ca_rtella"
 
 #: ../fslint.glade:111
 msgid "_Rename..."
@@ -32,7 +32,7 @@ msgstr "_Rinomina..."
 
 #: ../fslint.glade:121
 msgid "Select all in this directory"
-msgstr ""
+msgstr "Seleziona tutto in questa directory"
 
 #: ../fslint.glade:143
 msgid "Select using wildcard"
@@ -44,7 +44,7 @@ msgstr "Deseleziona usando wildcard"
 
 #: ../fslint.glade:161
 msgid "within groups"
-msgstr "con i gruppi"
+msgstr "All'interno dei gruppi"
 
 #: ../fslint.glade:170
 msgid "Select all but first"
@@ -104,11 +104,11 @@ msgstr "Parametri di ricerca avanzati"
 
 #: ../fslint.glade:876
 msgid "Minimum file size:"
-msgstr ""
+msgstr "Dimensione minima del file:"
 
 #: ../fslint.glade:901
 msgid "Using find -size syntax"
-msgstr ""
+msgstr "Utilizzando trovain base alla sintassi della dimensione"
 
 #: ../fslint.glade:947 ../fslint.glade:1078 ../fslint.glade:1349
 #: ../fslint.glade:1658 ../fslint.glade:1870 ../fslint.glade:2124
@@ -143,7 +143,7 @@ msgstr "Pacchetti installati"
 
 #: ../fslint.glade:1252
 msgid "Sensitivity="
-msgstr "Sensibilità"
+msgstr "Sensibilità="
 
 #: ../fslint.glade:1296
 msgid "invalid UTF8 mode?"
@@ -159,7 +159,7 @@ msgstr "Cerca ("
 
 #: ../fslint.glade:1483
 msgid ") for"
-msgstr ") di"
+msgstr ") per"
 
 #: ../fslint.glade:1530 ../fslint-gui:983
 msgid "Conflicting files"
@@ -332,11 +332,11 @@ msgstr "Pulisci"
 
 #: ../fslint.glade:3743
 msgid "All (except selected) using symbolic links"
-msgstr ""
+msgstr "Tutti (tranne quelli selezionati) utilizzando collegamenti simbolici"
 
 #: ../fslint.glade:3788
 msgid "Symlink"
-msgstr ""
+msgstr "Link simbolici"
 
 #: ../fslint.glade:3925
 msgid "Select Path"
@@ -560,7 +560,7 @@ msgstr " elementi cancellati"
 
 #: ../fslint-gui:1907
 msgid "Are you sure you want to symlink ALL files?\n"
-msgstr ""
+msgstr "Sei sicuro di voler collegare simbolicamente TUTTI i file?\n"
 
 #: ../fslint-gui:1909
 msgid "Are you sure you want to merge ALL files?\n"
