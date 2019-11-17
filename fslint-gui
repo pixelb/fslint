@@ -1038,8 +1038,6 @@ on your system at present."))
         return (str(row) + _(" files"), pe)
 
     def findup(self, clist_dups):
-        import time
-        start_time = time.time()
         po, pe = self.get_fslint("./findup --gui" + self.findParams)
 
         numdups = 0
@@ -1090,10 +1088,9 @@ on your system at present."))
                 clist_dups.set_row_data(row,file[2]) #mtime
                 row += 1
 
-        execTime = str(time.time() - start_time)
         return (human_num(byteWaste,1000).strip() + 'B' + _(" wasted in ") +
                 str(numWaste) + _(" files (in ") + str(len(alldups)) +
-                _(" groups).") + " Execution time: " + execTime + " sec.", pe)
+                _(" groups)"), pe)
 
     find_dispatch = (findup,findpkgs,findnl,findsn,findtf,
                      findbl,findid,finded,findns,findrs) #order NB
