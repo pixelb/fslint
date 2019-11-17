@@ -7,6 +7,7 @@ import sqlite3
 
 HASH_CMD = None
 DEBUG = False
+COMMIT_COUNT = 100
 
 def hash_file(path):
     cmd_output = subprocess.check_output([HASH_CMD, path.encode('utf-8')]) #.decode("utf-8")
@@ -62,7 +63,7 @@ if __name__ == "__main__":
                 commit_count += 1
                 files_hashes[file_path] = hash
 
-            if commit_count == 1000:
+            if commit_count == COMMIT_COUNT:
                 commit_count = 0
                 db.commit()
 
@@ -82,7 +83,7 @@ if __name__ == "__main__":
             commit_count += 1
             files_hashes[file_path] = hash
 
-            if commit_count == 1000:
+            if commit_count == COMMIT_COUNT:
                 commit_count = 0
                 db.commit()
 
