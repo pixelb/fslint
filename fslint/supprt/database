@@ -6,7 +6,7 @@ import sqlite3
 
 
 HASH_CMD = None
-DEBUG = False
+DEBUG = True
 COMMIT_COUNT = 100
 
 def hash_file(path):
@@ -18,10 +18,14 @@ def hash_file(path):
 def _get_path_files(files_list):
     paths_list = list()
     for file in files_list:
-        dirname = os.path.dirname(os.path.abspath(file))
-        if dirname not in paths_list:
-            paths_list.append(dirname)
+        dirname = "%s/"%(os.path.dirname(os.path.abspath(file)))
+        if len(paths_list) < 1: paths_list.append(dirname)
+        for p in paths_list:
+            if p not in dirname:
+                paths_list.append(dirname)
+                print("append")
 
+    if DEBUG: print("Folders: ", ", ".join(paths_list))
     return paths_list
 
 
@@ -55,8 +59,8 @@ if __name__ == "__main__":
 
     #Existing Files
     filesdb = dict()
-    if DEBUG: print('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s/%%" % (f) for f in paths_list]))
-    cursor.execute('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s/%%" % (f) for f in paths_list]))
+    if DEBUG: print('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
+    cursor.execute('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
     for f in cursor.fetchall():
         filesdb[f[1]] = {'id': f[0], 'name': f[1], 'ctime': f[2], 'mtime': f[3], 'hash': f[4]}
 
