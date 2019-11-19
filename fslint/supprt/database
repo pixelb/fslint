@@ -15,7 +15,14 @@ def hash_file(path):
     return hash
 
 
+def _get_path_files(files_list):
+    paths_list = list()
+    for file in files_list:
+        dirname = os.path.dirname(os.path.abspath(file))
+        if dirname not in paths_list:
+            paths_list.append(dirname)
 
+    return paths_list
 
 
 
@@ -28,7 +35,8 @@ if __name__ == "__main__":
     db_path = sys.argv[1]
     HASH_CMD = sys.argv[2]
     files_list = [f.decode("utf-8") for f in sys.argv[3:]]
-    files_hashes = dict()
+    paths_list = _get_path_files(files_list)
+
 
     if not os.path.exists(db_path):
         directory = os.path.dirname(db_path)
@@ -46,51 +54,50 @@ if __name__ == "__main__":
 
 
     #Existing Files
-    cursor.execute('''SELECT * FROM files WHERE path IN ({seq})'''.format(seq=','.join(['?']*len(files_list))), ([f for f in files_list]))
+    filesdb = dict()
+    if DEBUG: print('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s/%%" % (f) for f in paths_list]))
+    cursor.execute('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s/%%" % (f) for f in paths_list]))
+    for f in cursor.fetchall():
+        filesdb[f[1]] = {'id': f[0], 'name': f[1], 'ctime': f[2], 'mtime': f[3], 'hash': f[4]}
+
+    files_hashes = dict()
     commit_count = 0
-    for file_record in cursor.fetchall():
-        file_path = str(file_record[1])
-        try:
-            if str(os.path.getctime(file_path)) == file_record[2] and str(os.path.getmtime(file_path)) == file_record[3]:
-                if DEBUG: print("Found")
-                files_hashes[file_path] = file_record[4]
-                files_list.remove(file_path)
-            else:
-                if DEBUG: print("Update")
-                hash = hash_file(file_path)
-                cursor.execute('''UPDATE files SET ctime=?, mtime=?, hash=? WHERE path=?''',
-                               (str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash, file_path))
+    for file in files_list:
+        if file in filesdb.keys():
+            filedb = filesdb[file]
+            try:
+                if str(os.path.getctime(file)) == filedb['ctime'] and str(os.path.getmtime(file)) == filedb['mtime']:
+                    if DEBUG: print("Found %s" % (file))
+                    files_hashes[file] = filedb['hash']
+                else:
+                    if DEBUG: print("Update %s" % (file))
+                    hash = hash_file(file)
+                    cursor.execute('''UPDATE files SET ctime=?, mtime=?, hash=? WHERE path=?''',
+                                   (str(os.path.getctime(file)), str(os.path.getmtime(file)), hash, file))
+                    commit_count += 1
+                    files_hashes[file] = hash
+
+            except Exception as e:
+                hash = hash_file(file)
+                files_hashes[file] = hash
+
+        else:
+            #New files
+            try:
+                if DEBUG: print("Insert %s" % (file))
+                hash = hash_file(file)
+                cursor.execute('''INSERT INTO files (path, ctime, mtime, hash) VALUES (?,?,?,?)''',
+                             (str(file), str(os.path.getctime(file)), str(os.path.getmtime(file)), hash))
                 commit_count += 1
-                files_hashes[file_path] = hash
+                files_hashes[file] = hash
 
-            if commit_count == COMMIT_COUNT:
+            except Exception as e:
+                hash = hash_file(file)
+                files_hashes[file] = hash
+
+            if commit_count >= COMMIT_COUNT:
                 commit_count = 0
                 db.commit()
-
-        # except UnicodeDecodeError as ude:
-        except Exception as e:
-            hash = hash_file(file_path)
-            files_hashes[file_path] = hash
-
-
-    #New files
-    for file_path in files_list:
-        try:
-            if DEBUG: print("Insert")
-            hash = hash_file(file_path)
-            cursor.execute('''INSERT INTO files (path, ctime, mtime, hash) VALUES (?,?,?,?)''',
-                         (str(file_path), str(os.path.getctime(file_path)), str(os.path.getmtime(file_path)), hash))
-            commit_count += 1
-            files_hashes[file_path] = hash
-
-            if commit_count == COMMIT_COUNT:
-                commit_count = 0
-                db.commit()
-
-        #except UnicodeDecodeError as ude:
-        except Exception as e:
-            hash = hash_file(file_path)
-            files_hashes[file_path] = hash
 
     db.commit()
     db.close()
