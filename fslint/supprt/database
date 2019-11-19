@@ -6,7 +6,7 @@ import sqlite3
 
 
 HASH_CMD = None
-DEBUG = True
+DEBUG = False
 COMMIT_COUNT = 100
 
 def hash_file(path):
