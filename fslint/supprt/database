@@ -39,7 +39,6 @@ if __name__ == "__main__":
     db_path = sys.argv[1]
     HASH_CMD = sys.argv[2]
     files_list = [f.decode("utf-8") for f in sys.argv[3:]]
-    paths_list = _get_path_files(files_list)
 
 
     if not os.path.exists(db_path):
@@ -58,9 +57,12 @@ if __name__ == "__main__":
 
 
     #Existing Files
+    # @TODO Optimize downloading only relevant folders from database
+    #paths_list = _get_path_files(files_list)
+    #if DEBUG: print('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
+    #cursor.execute('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
+    cursor.execute('''SELECT * FROM files ;''')
     filesdb = dict()
-    if DEBUG: print('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
-    cursor.execute('''SELECT * FROM files WHERE path LIKE {seq}'''.format(seq=' OR '.join(['?']*len(paths_list))), ([ "%s%%" % (f) for f in paths_list]))
     for f in cursor.fetchall():
         filesdb[f[1]] = {'id': f[0], 'name': f[1], 'ctime': f[2], 'mtime': f[3], 'hash': f[4]}
 
