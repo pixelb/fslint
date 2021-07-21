@@ -575,6 +575,7 @@ class fslint(GladeWrapper):
 
     def __init__(self, Filename, WindowName):
         os.close(0) #don't hang if any sub cmd tries to read from stdin
+        os.open("/dev/null", os.O_RDONLY)
         self.pwd=os.path.realpath(os.curdir)
         GladeWrapper.__init__(self, Filename, WindowName)
         self.dlgPath = dlgPath(liblocation+"/fslint.glade", "PathChoose")
