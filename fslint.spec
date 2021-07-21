@@ -1,5 +1,5 @@
 %define mandriva %([ -f /etc/mandrake-release ] && echo 1 || echo 0)
-%define suse %([ -f /etc/SuSE-release ] && echo 1 || echo 0)
+%define suse %([ -f /etc/SuSE-release ] && echo 1 || grep -q "^ID_LIKE.*\\<suse\\>" /etc/os-release && echo 1 || echo 0)
 
 Name:           fslint
 Version:        2.47
