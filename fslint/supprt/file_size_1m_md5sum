@@ -1,0 +1,12 @@
+#!/bin/bash
+# prints
+# - file size zero-padded to 15 digits
+# - 32 hex digits of md5sum of first 1M of file
+# - 2 spaces
+# - file name
+
+for fname in "$@"; do
+    fileHash=`head -c1048576 "$fname" |md5sum |cut -d' ' -f1`
+    fileSize=`stat -c %s "$fname"`
+    echo "`printf "%015d" "$fileSize"`$fileHash  $fname"
+done

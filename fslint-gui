@@ -737,6 +737,10 @@ class fslint(GladeWrapper):
                 min_size += 'c'
             if min_size:
                 self.findParams += '-size +' + min_size + ' '
+            if self.opt_duplicate_algorithm_only_md5.get_active():
+                self.findParams += " --verify-only-md5 "
+            elif self.opt_duplicate_algorithm_md5_1M.get_active():
+                self.findParams += " --verify-only-md5-of-first-1M "
 
         self.findParams += self.extra_find_params.get_text()
 

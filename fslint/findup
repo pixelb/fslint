@@ -116,6 +116,9 @@ cleanup_sum() {
     '
 }
 
+# values: md5_sha1, md5, md5_1M
+duplicate_algorithm="md5_sha1"
+
 for arg
 do
     case "$arg" in
@@ -129,6 +132,10 @@ do
         # Undocumented option to avoid extra
         # hardlink merging already done in GUI
         gui=1 ;;
+    --verify-only-md5)
+        duplicate_algorithm="md5" ;;
+    --verify-only-md5-of-first-1M)
+        duplicate_algorithm="md5_1M" ;;
     -m)
         mode="merge" ;;
     -d)
@@ -190,23 +197,35 @@ else
     cat
 fi |
 
-# This block selects duplicates using md5sum of whole file
-xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
-cleanup_sum |              #undo any backslash escaping
-sort |                     #group duplicate files together
-uniq --all-repeated=$sep_mode -w32 | #pick just duplicates
+# contents comparision according to $duplicate_algorithm
+if [ $duplicate_algorithm = "md5_1M" ]; then
+    xargs -r0 "$script_dir"/supprt/file_size_1m_md5sum |
+    cleanup_sum |              #undo any backslash escaping
+    sort |                     #group duplicate files together
+    uniq --all-repeated=$sep_mode -w47  #pick just duplicates - 15digits size + 32 hex digits of md5
+else
+    # This block selects duplicates using md5sum of whole file
+    xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
+    cleanup_sum |              #undo any backslash escaping
+    sort |                     #group duplicate files together
+    uniq --all-repeated=$sep_mode -w32  #pick just duplicates
+fi |
 
-# The following optional block, checks duplicates again using sha1
-# Note for data sets that don't totally fit in cache this will
-# probably read duplicate files off the disk again.
-cut -s -d' ' -f3- |        #get filenames
-sort |                     #sort by paths to try to minimise disk seeks
-tr '\n' '\0' |             #delimit names with \0
-xargs -r0 sha1sum -- |     #to be sure to be sure
-cleanup_sum |              #undo any backslash escaping
-sort |                     #group duplicate files together
-uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
-
+# extra sha1 pass
+if [ $duplicate_algorithm = "md5_sha1" ]; then
+    # The following optional block, checks duplicates again using sha1
+    # Note for data sets that don't totally fit in cache this will
+    # probably read duplicate files off the disk again.
+    cut -s -d' ' -f3- |        #get filenames
+    sort |                     #sort by paths to try to minimise disk seeks
+    tr '\n' '\0' |             #delimit names with \0
+    xargs -r0 sha1sum -- |     #to be sure to be sure
+    cleanup_sum |              #undo any backslash escaping
+    sort |                     #group duplicate files together
+    uniq --all-repeated=$sep_mode -w40  #pick just duplicates
+else
+    cat
+fi |
 cut -d' ' -f3- |           #get filenames (and leave separating lines)
 
 if [ "$gui" ]; then
