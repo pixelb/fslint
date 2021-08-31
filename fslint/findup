@@ -55,6 +55,11 @@
 
 script_dir=$(dirname "$0")              #directory of this script
 script_dir=$(readlink -f "$script_dir") #Make sure absolute path
+database_dir="$HOME/.fslint/databases" # Databases directory
+
+if [ ! -d $database_dir ]; then
+  mkdir -p $database_dir 2> /dev/null
+fi
 
 . "$script_dir"/supprt/fslver
 
@@ -180,7 +185,8 @@ tr '\0\1\n' ' \t\0' |#reset any space & tabs etc and delimit names with \0
 # even more so if they are large. This usually adds a small amount of
 # runtime, however it can save a large amount of time in certain situations.
 if "$script_dir"/supprt/md5sum_approx </dev/null 2>/dev/null; then
-    xargs -r0 "$script_dir"/supprt/md5sum_approx |
+    #xargs -r0 "$script_dir"/supprt/md5sum_approx |
+    xargs -r0 "$script_dir"/supprt/database "$database_dir"/md5sum512.sqlite "$script_dir"/supprt/md5sum_approx |
     sort |                     #group duplicate files together
     uniq --all-repeated -w32 | #pick just duplicates
     cut -d' ' -f3- |           #get filenames
@@ -191,7 +197,8 @@ else
 fi |
 
 # This block selects duplicates using md5sum of whole file
-xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
+#xargs -r0 md5sum -- |      #calculate md5sums for possible duplicates
+xargs -r0 "$script_dir"/supprt/database "$database_dir"/md5sum.sqlite md5sum  |      #calculate md5sums for possible duplicates
 cleanup_sum |              #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w32 | #pick just duplicates
@@ -203,6 +210,8 @@ cut -s -d' ' -f3- |        #get filenames
 sort |                     #sort by paths to try to minimise disk seeks
 tr '\n' '\0' |             #delimit names with \0
 xargs -r0 sha1sum -- |     #to be sure to be sure
+# Disabled to do the last test before show the results
+#xargs -r0 "$script_dir"/supprt/database "$database_dir"/sha1sum.sqlite sha1sum  |     #to be sure to be sure
 cleanup_sum |              #undo any backslash escaping
 sort |                     #group duplicate files together
 uniq --all-repeated=$sep_mode -w40 | #pick just duplicates
