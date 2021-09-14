@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=FSlint
 Comment=File System Lint detector and cleaner
+Comment[tr]= Dosya Sistemi Fazlalık algılayıcı ve temizleyici
 Exec=fslint-gui
 Terminal=false
 Type=Application
 Icon=fslint_icon
 Categories=System;Filesystem;GTK;Utility;
 X-Ubuntu-Gettext-Domain=fslint
-Keywords=duplicate;redundant;file;

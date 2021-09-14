@@ -1,22 +1,24 @@
-# Turkish translation for fslint
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
-# This file is distributed under the same license as the fslint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: fslint\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-15 18:08-0800\n"
-"PO-Revision-Date: 2008-05-21 20:17+0000\n"
-"Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
+"PO-Revision-Date: 2019-01-15 00:27+Istanbul\n"
+"Last-Translator: Yaşar Çiv <yasarciv67@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-05-21 21:12+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Language: tr_TR\n"
+"X-Source-Language: C\n"
 
 #: ../fslint.glade:8
 msgid "FSlint"
@@ -24,27 +26,27 @@ msgstr "FSlint"
 
 #: ../fslint.glade:81
 msgid "Open _Folder"
-msgstr ""
+msgstr "_Klasör Aç"
 
 #: ../fslint.glade:111
 msgid "_Rename..."
-msgstr "Yeniden adlandı_r"
+msgstr "Yeniden Adlandı_r..."
 
 #: ../fslint.glade:121
 msgid "Select all in this directory"
-msgstr ""
+msgstr "Bu dizindekilerin tümünü seç"
 
 #: ../fslint.glade:143
 msgid "Select using wildcard"
-msgstr "Joker karakterler kullanarak seç"
+msgstr "Joker kullanarak seç"
 
 #: ../fslint.glade:152
 msgid "Unselect using wildcard"
-msgstr "Joker karakter kullanarak seçimi kaldır"
+msgstr "Joker kullanarak seçimi kaldır"
 
 #: ../fslint.glade:161
 msgid "within groups"
-msgstr "gruplar içinde"
+msgstr "grup kapsamında"
 
 #: ../fslint.glade:170
 msgid "Select all but first"
@@ -52,15 +54,15 @@ msgstr "İlki hariç tümünü seç"
 
 #: ../fslint.glade:179
 msgid "Select all but newest"
-msgstr "En yenisi hariç tümünü seç"
+msgstr "Yeniler hariç tümünü seç"
 
 #: ../fslint.glade:188
 msgid "Select all but oldest"
-msgstr "En eskisi hariç hepsini seç"
+msgstr "Eskiler hariç tümünü seç"
 
 #: ../fslint.glade:201
 msgid "Toggle selection"
-msgstr "Seçimi katla"
+msgstr "Seçimi değiştir"
 
 #: ../fslint.glade:210
 msgid "Unselect all"
@@ -80,7 +82,7 @@ msgstr "Aranacak dizinler"
 
 #: ../fslint.glade:475
 msgid "recurse?"
-msgstr ""
+msgstr "özyinelemeli?"
 
 #: ../fslint.glade:499
 msgid "Search path"
@@ -92,23 +94,23 @@ msgstr "Dışlanacak yollar"
 
 #: ../fslint.glade:746
 msgid "Extra find parameters"
-msgstr "Ek bulma parametreleri"
+msgstr "Ek arama değişkenleri"
 
 #: ../fslint.glade:771
 msgid "extra find filtering parameters"
-msgstr "ek arama filtreleme parametreleri"
+msgstr "Ek bulma süzme değişkenleri"
 
 #: ../fslint.glade:804
 msgid "Advanced search parameters"
-msgstr "Gelişmiş arama parametreleri"
+msgstr "Gelişmiş arama değişkenleri"
 
 #: ../fslint.glade:876
 msgid "Minimum file size:"
-msgstr ""
+msgstr "En az dosya boyutu:"
 
 #: ../fslint.glade:901
 msgid "Using find -size syntax"
-msgstr ""
+msgstr "Bulma boyutu sözdizimini kullanma"
 
 #: ../fslint.glade:947 ../fslint.glade:1078 ../fslint.glade:1349
 #: ../fslint.glade:1658 ../fslint.glade:1870 ../fslint.glade:2124
@@ -130,7 +132,7 @@ msgstr "Tarih"
 
 #: ../fslint.glade:1020
 msgid "Duplicates"
-msgstr "Kopya dosyalar"
+msgstr "Kopyalar"
 
 #: ../fslint.glade:1097 ../fslint.glade:1696 ../fslint.glade:1908
 #: ../fslint.glade:2321 ../fslint.glade:2588 ../fslint.glade:2937
@@ -159,7 +161,7 @@ msgstr "Ara ("
 
 #: ../fslint.glade:1483
 msgid ") for"
-msgstr ""
+msgstr ") için"
 
 #: ../fslint.glade:1530 ../fslint-gui:983
 msgid "Conflicting files"
@@ -172,7 +174,7 @@ msgstr "Takma adlar"
 
 #: ../fslint.glade:1577 ../fslint-gui:996
 msgid "Case conflicts"
-msgstr ""
+msgstr "Durum çakışmaları"
 
 #: ../fslint.glade:1585 ../fslint-gui:992
 msgid "Same names"
@@ -180,7 +182,7 @@ msgstr "Aynı adlar"
 
 #: ../fslint.glade:1593 ../fslint-gui:994
 msgid "Same names(ignore case)"
-msgstr ""
+msgstr "Aynı adlar(durumu yoksay)"
 
 #: ../fslint.glade:1731
 msgid "Name clashes"
@@ -188,11 +190,11 @@ msgstr "Ad çakışmaları"
 
 #: ../fslint.glade:1766
 msgid "More restrictive search for core files"
-msgstr "Core dosyaları için daha kısıtlayıcı arama"
+msgstr "Çekirdek dosyaları için daha kısıtlayıcı arama"
 
 #: ../fslint.glade:1768
 msgid "core file mode?"
-msgstr "core dosyası kipi?"
+msgstr "çekirdek dosya kipi?"
 
 #: ../fslint.glade:1792
 msgid "days"
@@ -208,12 +210,11 @@ msgstr "Geçici dosyalar"
 
 #: ../fslint.glade:1998
 msgid "Dangling"
-msgstr ""
+msgstr "Sarkan"
 
 #: ../fslint.glade:2016
 msgid "Absolute links to paths within or below the link's directory"
-msgstr ""
-"Bağlantının dizininin içindeki ya da altındaki yollara mutlak bağlantılar"
+msgstr "Bağ dizininin içindeki veya altındaki yollara kesin bağlantılar"
 
 #: ../fslint.glade:2018
 msgid "Suspect"
@@ -221,11 +222,11 @@ msgstr "Şüpheli"
 
 #: ../fslint.glade:2038
 msgid "Relative"
-msgstr "Göreli"
+msgstr "Göreceli"
 
 #: ../fslint.glade:2058
 msgid "Absolute"
-msgstr "Mutlak"
+msgstr "Kesin"
 
 #: ../fslint.glade:2077
 msgid "/././. ///// /../ etc."
@@ -233,7 +234,7 @@ msgstr "/././. ///// /../ vb."
 
 #: ../fslint.glade:2079
 msgid "Redundant naming"
-msgstr "Gerekenden fazla adlandırılmış"
+msgstr "Gereksiz adlandırma"
 
 #: ../fslint.glade:2162
 msgid "Target"
@@ -241,7 +242,7 @@ msgstr "Hedef"
 
 #: ../fslint.glade:2197
 msgid "Bad symlinks"
-msgstr "Bozuk sembolik bağlantılar"
+msgstr "Bozuk sembolik bağlar"
 
 #: ../fslint.glade:2283
 msgid "UID"
@@ -253,7 +254,7 @@ msgstr "GID"
 
 #: ../fslint.glade:2375
 msgid "Bad IDs"
-msgstr "Bozuk ID'ler"
+msgstr "Bozuk kimlikler"
 
 #: ../fslint.glade:2483
 msgid "Empty directories"
@@ -261,23 +262,23 @@ msgstr "Boş dizinler"
 
 #: ../fslint.glade:2513
 msgid "Search $PATH"
-msgstr "$PATH'i ara"
+msgstr "Yolu ara"
 
 #: ../fslint.glade:2642
 msgid "Non stripped binaries"
-msgstr "Soyulmamış ikililer"
+msgstr "Soyulmamış ikili dosyalar"
 
 #: ../fslint.glade:2728
 msgid "bad indenting for indent width"
-msgstr ""
+msgstr "girintili genişlik için hatalı girinti"
 
 #: ../fslint.glade:2836
 msgid "whitespace at end of line"
-msgstr "satır sonunda boşluk"
+msgstr "Satırın sonundaki boşluk"
 
 #: ../fslint.glade:2991
 msgid "Redundant whitespace"
-msgstr "Gerekenden fazla boşluk"
+msgstr "Gereksiz boşluk"
 
 #: ../fslint.glade:3078
 msgid "Find"
@@ -289,11 +290,11 @@ msgstr "Dur"
 
 #: ../fslint.glade:3236
 msgid "Pause"
-msgstr ""
+msgstr "Duraklat"
 
 #: ../fslint.glade:3315
 msgid "Resume"
-msgstr ""
+msgstr "Devam et"
 
 #: ../fslint.glade:3408
 msgid "Select"
@@ -301,7 +302,7 @@ msgstr "Seç"
 
 #: ../fslint.glade:3439
 msgid "Save (selected) list to file"
-msgstr "(Seçili) listeyi dosyaya kaydet"
+msgstr "Listeyi dosyaya kaydet (seçili)"
 
 #: ../fslint.glade:3484
 msgid "Save"
@@ -320,9 +321,8 @@ msgid ""
 "All (except selected) using hardlinks\n"
 "(or symlinks if on a different filesystem)"
 msgstr ""
-"Tümünü (seçililer hariç) hardlinkler kullanarak\n"
-"(ya da farklı dosyasistemindeyse sembolink\n"
-" bağlantı kullanarak)"
+"Tümü (seçili hariç) sabit bağlar kullanarak\n"
+"(veya farklı bir dosya sistemindeyse sembolik bağlar)"
 
 #: ../fslint.glade:3637
 msgid "Merge"
@@ -334,41 +334,42 @@ msgstr "Temizle"
 
 #: ../fslint.glade:3743
 msgid "All (except selected) using symbolic links"
-msgstr ""
+msgstr "Sembolik bağları kullanan tümü (seçili hariç)"
 
 #: ../fslint.glade:3788
 msgid "Symlink"
-msgstr ""
+msgstr "Sembolik bağ"
 
 #: ../fslint.glade:3925
 msgid "Select Path"
-msgstr "Yol Seç"
+msgstr "Yolu Seç"
 
 #: ../fslint.glade:4106
 msgid "ask me this in future?"
-msgstr ""
+msgstr "daha sonra tekrar sorulsun mu?"
 
 #: ../fslint-gui:173
 #, python-format
 msgid "Usage: %s [OPTION] [PATHS]"
-msgstr "Kullanım: %s [SEÇENEK] [DİZİNLER]"
+msgstr "Kullanım: %s [SEÇENEK] [YOLLAR]"
 
 #: ../fslint-gui:174
 msgid "display version"
-msgstr "versiyonu görüntüle"
+msgstr "sürümü görüntüle"
 
 #: ../fslint-gui:175
 msgid "display help"
 msgstr "yardımı görüntüle"
 
+# programda bakmak gerekiyor
 #: ../fslint-gui:424
 #, python-format
 msgid "%(percent)s of %(disk)s is used leaving %(size)sB available"
-msgstr ""
+msgstr "%(size)sB bırakarak %(percent) %(disk) kullanıldı"
 
 #: ../fslint-gui:560
 msgid "Do you want to overwrite?\n"
-msgstr "Üzerine yazmak istiyor musunuz?\n"
+msgstr "Üzerine yazmak ister misiniz?\n"
 
 #: ../fslint-gui:566
 msgid "You can't overwrite "
@@ -376,11 +377,11 @@ msgstr "Üzerine yazamazsınız "
 
 #: ../fslint-gui:602
 msgid "Files with the same content"
-msgstr "Aynı içerikli dosyalar"
+msgstr "Aynı içeriğe sahip dosyalar"
 
 #: ../fslint-gui:603
 msgid "Installed packages ordered by disk usage"
-msgstr "Disk kullanımına göre sıralanmış kurulu paketler"
+msgstr "Disk kullanımı sırasına göre kurulu paketler"
 
 #: ../fslint-gui:604
 msgid "Problematic filenames"
@@ -388,7 +389,7 @@ msgstr "Sorunlu dosya adları"
 
 #: ../fslint-gui:605
 msgid "Possibly conflicting commands or filenames"
-msgstr "Muhtemelen çakışan komut ya da dosya adları"
+msgstr "Muhtemelen çakışan komutlar veya dosya adları"
 
 #: ../fslint-gui:606
 msgid "Possibly old temporary files"
@@ -396,31 +397,31 @@ msgstr "Muhtemelen eski geçici dosyalar"
 
 #: ../fslint-gui:607
 msgid "Problematic symbolic links"
-msgstr "Sorunlu sembolink linkler"
+msgstr "Sorunlu sembolik bağlar"
 
 #: ../fslint-gui:608
 msgid "Files with missing user IDs"
-msgstr "Kayıp kullanıcı kimliğine sahip dosyalar"
+msgstr "Kullanıcı kimliği eksik olan dosyalar"
 
 #: ../fslint-gui:609
 msgid "Directory branches with no files"
-msgstr ""
+msgstr "Dosya içermeyen dizin dalları"
 
 #: ../fslint-gui:610
 msgid "Executables still containing debugging info"
-msgstr "Hala hata ayıklama bilgisi içeren yürütülebilirler"
+msgstr "Hala hata ayıklama bilgisi içeren yürütülebilir dosyalar"
 
 #: ../fslint-gui:611
 msgid "Erroneous whitespace in a text file"
-msgstr "Metin dosyasında hatalı boşluk"
+msgstr "Bir metin dosyasında hatalı boşluk"
 
 #: ../fslint-gui:617
 msgid "Invalid path ["
-msgstr "Hatalı yol ["
+msgstr "Geçersiz yol ["
 
 #: ../fslint-gui:658 ../fslint-gui:1359
 msgid "searching"
-msgstr ""
+msgstr "aranıyor"
 
 #: ../fslint-gui:675
 msgid "processing..."
@@ -433,16 +434,16 @@ msgstr "Arama yolu belirtilmedi"
 #: ../fslint-gui:860
 msgid ""
 "Sorry, FSlint does not support this functionality on your system at present."
-msgstr "Ne yazık ki, FSlint sisteminizde bu özelliği desteklemiyor."
+msgstr "Ne yazık ki, FSlint şu anda sisteminizde bu işlevi desteklemiyor."
 
 #: ../fslint-gui:876
 msgid " packages, "
-msgstr " paketler "
+msgstr " paketler, "
 
 #: ../fslint-gui:877
 #, python-format
 msgid "consuming %sB. "
-msgstr "%sB harcıyor "
+msgstr "%sB tüketen. "
 
 #: ../fslint-gui:878
 #, python-format
@@ -451,11 +452,11 @@ msgstr "Not %s."
 
 #: ../fslint-gui:897 ../fslint-gui:937 ../fslint-gui:975 ../fslint-gui:1037
 msgid " files"
-msgstr " dosyalar"
+msgstr " dosya"
 
 #: ../fslint-gui:917
 msgid " unstripped binaries"
-msgstr " soyulmamış ikililer"
+msgstr " soyulmamış ikili dosyalar"
 
 #: ../fslint-gui:926
 msgid " empty directories"
@@ -463,23 +464,23 @@ msgstr " boş dizinler"
 
 #: ../fslint-gui:958
 msgid " links"
-msgstr " bağlantılar"
+msgstr " bağlar"
 
 #: ../fslint-gui:974 ../fslint-gui:1090
 msgid " wasted in "
-msgstr " şurada boşa harcandı: "
+msgstr " harcanmış "
 
 #: ../fslint-gui:1020 ../fslint-gui:1091
 msgid " files (in "
-msgstr " dosya (şurada: "
+msgstr " dosya ( "
 
 #: ../fslint-gui:1021 ../fslint-gui:1092
 msgid " groups)"
-msgstr " grup)"
+msgstr " grup içinde)"
 
 #: ../fslint-gui:1082
 msgid "bytes wasted"
-msgstr "byte boşa harcandı"
+msgstr "bayt boşa harcanmış"
 
 #: ../fslint-gui:1169
 msgid "None selected"
@@ -487,12 +488,12 @@ msgstr "Hiçbiri seçilmedi"
 
 #: ../fslint-gui:1173
 msgid " this item?\n"
-msgstr " (bu öğeyi)?\n"
+msgstr " bu öğe?\n"
 
 #: ../fslint-gui:1175
 #, python-format
 msgid " these %d items?\n"
-msgstr " (bu %d öğeyi)?\n"
+msgstr " bu %d öğeyi?\n"
 
 #: ../fslint-gui:1325
 msgid "User aborted"
@@ -500,11 +501,11 @@ msgstr "Kullanıcı vazgeçti"
 
 #: ../fslint-gui:1352
 msgid "paused"
-msgstr ""
+msgstr "duraklatıldı"
 
 #: ../fslint-gui:1499
 msgid "Error starting xdg-open"
-msgstr ""
+msgstr "Xdg-open başlatılırken hata oluştu"
 
 #: ../fslint-gui:1524
 msgid "Rename:"
@@ -513,21 +514,20 @@ msgstr "Yeniden adlandır:"
 #: ../fslint-gui:1535 ../fslint-gui:1579
 #, python-format
 msgid "Error: [%s] can not be represented on your file system"
-msgstr "Hata: [%s] dosya sisteminizde gösterilemez."
+msgstr "Hata: [%s] dosya sisteminizde temsil edilemez"
 
 #: ../fslint-gui:1545
 #, python-format
 msgid "Error: Can't rename [%(old_path)s] as [%(new_path)s] exists"
-msgstr ""
-"Hata:  [%(old_path)s] yeniden adlandırılamaz çünkü [%(new_path)s] zaten var"
+msgstr "Hata: [%(old_path)] [%(new_path) olduğu gibi yeniden adlandırılamıyor"
 
 #: ../fslint-gui:1568
 msgid "wildcard:"
-msgstr "joker karakter:"
+msgstr "joker:"
 
 #: ../fslint-gui:1783
 msgid "Sorry, you must be root to delete system packages."
-msgstr "Üzgünüm, sistem paketlerini kaldırmak için root olmalısınız."
+msgstr "Üzgünüz, sistem paketlerini silmek için yetkili olmanız gerekir."
 
 #: ../fslint-gui:1788
 msgid "Are you sure you want to delete"
@@ -535,7 +535,7 @@ msgstr "Silmek istediğinize emin misiniz"
 
 #: ../fslint-gui:1795
 msgid "Are you sure you want to delete all items in this group?"
-msgstr ""
+msgstr "Bu gruptaki tüm öğeleri silmek istediğinize emin misiniz?"
 
 #: ../fslint-gui:1815
 msgid "Calculating dependencies..."
@@ -544,15 +544,15 @@ msgstr "Bağımlılıklar hesaplanıyor..."
 #: ../fslint-gui:1833
 #, python-format
 msgid "%d extra packages need to be deleted.\n"
-msgstr "%d fazladan paketin silinmesi gerekli.\n"
+msgstr "%d fazladan paketin silinmesi gerekiyor.\n"
 
 #: ../fslint-gui:1834
 msgid "Please review the updated selection."
-msgstr "Lütfen güncellenmiş seçimi gözden geçirin"
+msgstr "Lütfen güncellenmiş seçimi gözden geçirin."
 
 #: ../fslint-gui:1842
 msgid "Removing packages..."
-msgstr "Paketler kaldırılıyor"
+msgstr "Paketler kaldırılıyor..."
 
 #: ../fslint-gui:1887
 msgid " items deleted"
@@ -560,7 +560,7 @@ msgstr " öğe silindi"
 
 #: ../fslint-gui:1907
 msgid "Are you sure you want to symlink ALL files?\n"
-msgstr ""
+msgstr "TÜM dosyalara sembolik bağ koymak istediğinize emin miziniz?\n"
 
 #: ../fslint-gui:1909
 msgid "Are you sure you want to merge ALL files?\n"
@@ -568,11 +568,11 @@ msgstr "TÜM dosyaları birleştirmek istediğinize emin misiniz?\n"
 
 #: ../fslint-gui:1913
 msgid "(Ignoring those selected)\n"
-msgstr "(seçili olanlar görmezden geliniyor)\n"
+msgstr "(Bu seçilenler dikkate alınmıyor)\n"
 
 #: ../fslint-gui:1964
 msgid "Which indenting method do you want to convert to?"
-msgstr "Hangi girintileme yöntemine dönüştürmek istiyorsunuz?"
+msgstr "Hangi girinti yöntemine dönüştürmek istiyorsunuz?"
 
 #: ../fslint-gui:1965
 msgid "Tabs"
@@ -580,11 +580,11 @@ msgstr "Sekmeler"
 
 #: ../fslint-gui:1965
 msgid "Spaces"
-msgstr "Boşluklar"
+msgstr "Aralıklar"
 
 #: ../fslint-gui:1976
 msgid "Are you sure you want to clean"
-msgstr "Temizlemek istediğinize emin misiniz?"
+msgstr "Temizlemek istediğinizden emin misiniz"
 
 #: ../fslint-gui:2021
 msgid " items cleaned ("
@@ -592,4 +592,4 @@ msgstr " öğe temizlendi ("
 
 #: ../fslint-gui:2022
 msgid " saved)"
-msgstr " boşaltıldı)"
+msgstr " kaydedildi)"
