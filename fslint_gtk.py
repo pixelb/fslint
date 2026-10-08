@@ -20,10 +20,10 @@ def style_notebook_tabs(*notebooks):
             border: none;
         }
         notebook.outlined-tabs > header.left {
-            padding: 6px 0 6px 6px;
+            padding: 0 0 0 6px;
         }
         notebook.outlined-tabs > header.top {
-            padding: 6px 6px 0;
+            padding: 6px 0 0;
         }
         notebook.outlined-tabs > header.left > tabs {
             border-right: 1px solid alpha(@theme_fg_color, 0.30);
