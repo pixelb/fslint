@@ -1,3 +1,10 @@
+3.0 (development)
+	* Python 3 and GTK 3.24 replace Python 2, PyGTK, and libglade.
+	* GtkBuilder interface and Cambalache project replace Glade files.
+	* Result lists use GtkTreeView with separate raw filename metadata.
+	* Invalid filename bytes survive subprocess output and result exports.
+	* Fix raw filename handling in whitespace and invalid-UTF-8 scanners.
+
 2.47 dd/mm/yy
 	* Fixes:
 		* Specified directories containing single quotes are again

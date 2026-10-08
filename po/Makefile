@@ -7,8 +7,8 @@ MSGFMT = $(shell msgfmt --help 2>&1 | grep -- "--check" >/dev/null && echo "msgf
 all: mo
 
 #create pot file
-$(DOMAIN).pot: ../fslint.glade ../fslint-gui
-	xgettext          -d$(DOMAIN) -LGlade  ../fslint.glade -o $(DOMAIN).pot
+$(DOMAIN).pot: ../fslint.ui ../fslint-gui
+	xgettext          -d$(DOMAIN) -LGlade  ../fslint.ui -o $(DOMAIN).pot
 	xgettext -k_ -kN_ -d$(DOMAIN) -LPython ../fslint-gui   -o $(DOMAIN).pot -j
 
 #update all po fles

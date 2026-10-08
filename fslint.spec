@@ -2,7 +2,7 @@
 %define suse %([ -f /etc/SuSE-release ] && echo 1 || grep -q "^ID_LIKE.*\\<suse\\>" /etc/os-release && echo 1 || echo 0)
 
 Name:           fslint
-Version:        2.47
+Version:        3.0
 %if %{mandriva}
 Release:        1.mdv
 %endif
@@ -23,15 +23,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  gettext >= 0.13, desktop-file-utils
 
-Requires:       python >= 2.3, cpio, findutils
-%if %{mandriva}
-Requires:       pygtk2.0 >= 2.4, pygtk2.0-libglade
-%endif
+Requires:       python3 >= 3.9, cpio, findutils
+Requires:       python3-gobject
 %if %{suse}
-Requires:       python-gtk >= 2.4
-%endif
-%if !%{mandriva} && !%{suse}
-Requires:       pygtk2 >= 2.4, pygtk2-libglade
+Requires:       typelib-1_0-Gtk-3_0
+%else
+Requires:       gtk3 >= 3.24
 %endif
 
 %description
@@ -57,7 +54,7 @@ install -Dpm 755 fslint-gui $RPM_BUILD_ROOT%{_bindir}/fslint-gui
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/%{name}/%{name}/{fstool,supprt}
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/%{name}/%{name}/supprt/rmlint
 install -dm 755 $RPM_BUILD_ROOT%{_mandir}/man1
-install -pm 644 fslint.glade fslint_icon.png \
+install -pm 644 fslint.ui fslint_gtk.py fslint_icon.png \
   $RPM_BUILD_ROOT%{_datadir}/%{name}
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/pixmaps
 ln -s ../%{name}/fslint_icon.png $RPM_BUILD_ROOT%{_datadir}/pixmaps
@@ -103,6 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Oct 08 2026 Pádraig Brady <P@draigBrady.com> - 3.0-1
+- Update GTK+ and Python deps to 3.24 and 3.9 respectively
+
 * Tue Jul 21 2009 Pádraig Brady
 - Update GTK+ and Python deps to 2.4 and 2.3 respectively
 

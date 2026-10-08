@@ -1,3 +1,11 @@
+fslint (3.0-1) UNRELEASED; urgency=medium
+
+  * Port the GUI and dupwaste to Python 3.
+  * Replace PyGTK/libglade with GTK 3 introspection and GtkBuilder.
+  * Add a Cambalache project and migration regression checks.
+
+ -- Pádraig Brady <P@draigBrady.com>  Thu, 08 Oct 2026 15:00:00 +0100
+
 fslint (2.47-1) unstable; urgency=low
 
   * bump to devel version

@@ -31,7 +31,7 @@ A. It's python so nothing needs to be built on the target.
 
 Q. The released RPM doesn't install on mandriva or SuSE?
 A. Unfortunately Mandriva and SuSE at least use different
-   pygtk package names to fedora/redhat.
+   PyGObject package names to fedora/redhat.
    FSlint does support automatically building the correct package
    on the mandriva and suse platforms. To build a package for these
    distros, just get the release tar.gz and as in the previous FAQ:

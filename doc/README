@@ -32,29 +32,52 @@ Please see the FAQ for details on building installation packages.
 
 REQUIREMENTS:
 
-The 1.1 branch requires textutils >= 2.0.21 or coreutils.
-In addition for the gui versions:
+FSlint 3 requires Python 3.9 or newer, PyGObject, and GTK 3.24.
+The command-line scanners require GNU coreutils, findutils, and the
+usual shell tools. Individual scanners also use file, grep, and other
+utilities appropriate to their task.
 
-For the 2.40 branch (fedora core 2 or higher)
-    gtk2     >= 2.4 (ftp://ftp.gtk.org/pub/gtk/)
-    python   >= 2.6 (http://www.python.org/download/)
-    libglade >= 2.4 (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
-    pygtk2   >= 2.4 (ftp://ftp.gtk.org/pub/gtk/python/)
+On Fedora, install python3-gobject and gtk3. On Debian/Ubuntu, install
+python3-gi and gir1.2-gtk-3.0. GTK 4 may be installed alongside GTK 3,
+but this version explicitly loads the GTK 3 introspection namespace.
+No Python 2, PyGTK, or libglade dependencies remain.
 
-For the 2.0 branch (redhat 8.x or higher)
-    gtk2     >= 2.0 (ftp://ftp.gtk.org/pub/gtk/)
-    python   >= 2.0 (http://www.python.org/download/)
-    libglade >= 2.0 (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
-    pygtk2   >= 2.0 (ftp://ftp.gtk.org/pub/gtk/python/)
-    Note the required pygtk2-libglade rpm is also made from pygtk2 source
+DEVELOPMENT:
 
-For the 1.2 branch (redhat 7.x or higher)
-    gtk      >= 1.2 (ftp://ftp.gtk.org/pub/gtk/)
-    python   >= 1.5 (http://www.python.org/download/)
-    libglade >= 0.x (http://ftp.gnome.org/pub/GNOME/sources/libglade/)
-    pygtk    >= 1.2 (ftp://ftp.gtk.org/pub/gtk/python/)
+Run ./fslint-gui [PATHS] directly from the checkout.
 
-Note installation order is important if installing from source.
+The interface is fslint.ui, a standard GTK 3 GtkBuilder definition.
+Open fslint.cmb in Cambalache 0.99 or newer, or create a GTK 3 project
+and import fslint.ui in an older Cambalache release. Save UI changes
+from Cambalache to fslint.ui; the runtime loads that file, not the
+project file. Validate changes with:
+
+    gtk-builder-tool validate fslint.ui
+
+The .cmb project and .ui file have been round-tripped through
+Cambalache 0.99.8. The result views are ordinary GtkTreeView widgets;
+fslint_gtk.py supplies their runtime models and file metadata. Keep
+the model column attributes in sync if you change the view columns.
+New widget signals need matching handlers in fslint-gui.
+
+This migration targets GTK 3 to retain the existing workflows.
+A future GTK 4 port requires changes to menus, synchronous dialogs,
+event handling, and result views; GTK 4 alone is not sufficient to
+run this release.
+
+Run migration regression checks with:
+
+    python3 -m unittest discover -s tests -v
+
+GUI tests need an available display and otherwise skip. For a headless
+machine with Xvfb installed, use:
+
+    xvfb-run -a python3 -m unittest discover -s tests -v
+
+Tests use temporary directories for scans and file actions. Package
+listing is read-only; the tests do not uninstall packages. Existing
+scanner restrictions, including newline exclusions in some modes,
+remain in effect.
 
 DESCRIPTION:
 

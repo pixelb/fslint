@@ -42,7 +42,7 @@ install:
 	install -dm 755 ${datadir}/${name}/fslint/fstool
 	install -dm 755 ${datadir}/${name}/fslint/supprt
 	install -dm 755 ${datadir}/${name}/fslint/supprt/rmlint
-	install -pm 644 fslint.glade fslint_icon.png ${datadir}/${name}
+	install -pm 644 fslint.ui fslint_gtk.py fslint_icon.png ${datadir}/${name}
 	install -dm 755 ${datadir}/pixmaps
 	ln -s ../${name}/fslint_icon.png ${datadir}/pixmaps
 	install -pm 755 fslint/find* fslint/fslint fslint/zipdir ${datadir}/${name}/fslint
