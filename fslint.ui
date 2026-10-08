@@ -262,6 +262,10 @@
                 <child>
                   <object class="GtkBox" id="hbox2">
                     <property name="homogeneous">False</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-end">8</property>
+                    <property name="margin-start">8</property>
+                    <property name="margin-top">8</property>
                     <property name="orientation">horizontal</property>
                     <property name="spacing">0</property>
                     <property name="visible">True</property>
@@ -514,6 +518,10 @@
                 <child>
                   <object class="GtkBox" id="hbox3_2">
                     <property name="homogeneous">False</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-end">8</property>
+                    <property name="margin-start">8</property>
+                    <property name="margin-top">8</property>
                     <property name="orientation">horizontal</property>
                     <property name="spacing">0</property>
                     <property name="visible">True</property>
@@ -838,6 +846,10 @@
                     <child>
                       <object class="GtkBox" id="vbox1_2">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -1004,6 +1016,10 @@
                     <child>
                       <object class="GtkBox" id="hbox22">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">horizontal</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -1182,6 +1198,10 @@
                     <child>
                       <object class="GtkBox" id="vbox4">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -1362,6 +1382,10 @@
                     <child>
                       <object class="GtkBox" id="vbox5">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -1624,6 +1648,10 @@
                     <child>
                       <object class="GtkBox" id="vbox7">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -1839,6 +1867,10 @@
                     <child>
                       <object class="GtkBox" id="vbox8">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -2058,6 +2090,10 @@
                     <child>
                       <object class="GtkBox" id="vbox2_2">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -2219,6 +2255,10 @@
                     <child>
                       <object class="GtkScrolledWindow" id="scrolledwindow10">
                         <property name="hscrollbar-policy">automatic</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="shadow-type">none</property>
                         <property name="visible">True</property>
                         <property name="vscrollbar-policy">automatic</property>
@@ -2316,6 +2356,10 @@
                     <child>
                       <object class="GtkBox" id="vbox9">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>
@@ -2461,6 +2505,10 @@
                     <child>
                       <object class="GtkBox" id="vbox10">
                         <property name="homogeneous">False</property>
+                        <property name="margin-bottom">8</property>
+                        <property name="margin-end">8</property>
+                        <property name="margin-start">8</property>
+                        <property name="margin-top">8</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">0</property>
                         <property name="visible">True</property>

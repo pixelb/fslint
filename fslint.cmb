@@ -2,5 +2,5 @@
 <!DOCTYPE cambalache-project SYSTEM "cambalache-project.dtd">
 <!-- Created with Cambalache 0.99.8 -->
 <cambalache-project version="0.99.0" target_tk="gtk+-3.0">
-  <ui filename="fslint.ui" sha256="00223be1965020e62efc24e0488498a1192b611e9f85fa0d4e71704177d3626f"/>
+  <ui filename="fslint.ui" sha256="38cefa76d868c0a457041fd31eddebb85d1596e8885da91f1429d58cd64e07f8"/>
 </cambalache-project>

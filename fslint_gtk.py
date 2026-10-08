@@ -9,48 +9,76 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GObject
 
 
-def style_function_tabs(notebook):
-    """Give the function notebook outlined tabs that join the active page."""
-    notebook.get_style_context().add_class('function-tabs')
+def style_notebook_tabs(*notebooks):
+    """Outline the tabs and join the selected tab to its content panel."""
+    for notebook in notebooks:
+        notebook.get_style_context().add_class('outlined-tabs')
     provider = Gtk.CssProvider()
     provider.load_from_data(b"""
-        notebook.function-tabs > header.left {
+        notebook.outlined-tabs > header {
             background-color: shade(@theme_bg_color, 0.94);
             border: none;
+        }
+        notebook.outlined-tabs > header.left {
             padding: 6px 0 6px 6px;
         }
-        notebook.function-tabs > header.left > tabs {
+        notebook.outlined-tabs > header.top {
+            padding: 6px 6px 0;
+        }
+        notebook.outlined-tabs > header.left > tabs {
             border-right: 1px solid alpha(@theme_fg_color, 0.30);
         }
-        notebook.function-tabs > header.left > tabs > tab {
+        notebook.outlined-tabs > header.top > tabs {
+            border-bottom: 1px solid alpha(@theme_fg_color, 0.30);
+        }
+        notebook.outlined-tabs > header > tabs > tab {
             background-color: shade(@theme_bg_color, 0.90);
             border: 1px solid alpha(@theme_fg_color, 0.30);
-            border-right: none;
-            border-radius: 5px 0 0 5px;
             box-shadow: none;
-            margin: 2px 0;
             padding: 7px 12px;
             min-height: 0;
             min-width: 0;
         }
-        notebook.function-tabs > header.left > tabs > tab:hover {
+        notebook.outlined-tabs > header.left > tabs > tab {
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            margin: 2px 0;
+        }
+        notebook.outlined-tabs > header.top > tabs > tab {
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin: 0 2px;
+        }
+        notebook.outlined-tabs > header > tabs > tab:hover {
             background-color: shade(@theme_bg_color, 1.08);
         }
-        notebook.function-tabs > header.left > tabs > tab:checked {
+        notebook.outlined-tabs > header > tabs > tab:checked {
             background-color: @theme_bg_color;
             color: @theme_fg_color;
             font-weight: bold;
+        }
+        notebook.outlined-tabs > header.left > tabs > tab:checked {
             margin-right: -1px;
             padding-right: 13px;
             box-shadow: inset 3px 0 @theme_selected_bg_color;
         }
-        notebook.function-tabs > stack {
+        notebook.outlined-tabs > header.top > tabs > tab:checked {
+            margin-bottom: -1px;
+            padding-bottom: 8px;
+            box-shadow: inset 0 3px @theme_selected_bg_color;
+        }
+        notebook.outlined-tabs > stack {
             background-color: @theme_bg_color;
             border: 1px solid alpha(@theme_fg_color, 0.30);
+        }
+        notebook.outlined-tabs > header.left + stack {
             border-left: none;
         }
+        notebook.outlined-tabs > header.top + stack {
+            border-top: none;
+        }
     """)
-    Gtk.StyleContext.add_provider_for_screen(notebook.get_screen(), provider,
+    Gtk.StyleContext.add_provider_for_screen(notebooks[0].get_screen(), provider,
                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
     return provider
 
