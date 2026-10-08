@@ -28,14 +28,11 @@ import os, sys, shlex, time, stat, tempfile, errno
 import gettext
 import locale
 
-try:
-    import gtk
-except RuntimeError:
-    etype, emsg, etb = sys.exc_info()
-    sys.stderr.write(str(emsg)+'\n')
-    sys.exit(1)
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk as gtk, Gdk, GLib
 
-import gtk.glade
+# Distribution packages install the GUI helpers beside the UI definition.
 
 time_commands=False #print sub commands timing on status line
 
@@ -57,6 +54,9 @@ try:
 except:
     pass
 
+sys.path.insert(0, liblocation)
+from fslint_gtk import ResultList
+
 class i18n:
 
     def __init__(self):
@@ -65,9 +65,8 @@ class i18n:
         self._init_preferred_encoding()
 
     def _init_translations(self):
-        #gtk2 only understands utf-8 so convert to unicode
-        #which will be automatically converted to utf-8 by pygtk
-        gettext.install("fslint", locale_base, )
+        # GTK receives Python Unicode text through GObject introspection.
+        gettext.install("fslint", locale_base)
         global N_ #translate string but not at point of definition
         def N_(string): return string
         gettext.bindtextdomain("fslint",locale_base)
@@ -206,32 +205,39 @@ class pathInfo:
         self.mtime = stat_val.st_mtime
         self.inode = stat_val.st_ino
 
-class GladeWrapper:
-    """
-    Superclass for glade based applications. Just derive from this
-    and your subclass should create methods whose names correspond to
-    the signal handlers defined in the glade file. Any other attributes
-    in your class will be safely ignored.
-
-    This class will give you the ability to do:
-        subclass_instance.GtkWindow.method(...)
-        subclass_instance.widget_name...
-    """
+class BuilderWrapper:
+    """Load standard GtkBuilder widgets and connect this window's handlers."""
     def __init__(self, Filename, WindowName):
-        #load glade file.
-        self.widgets = gtk.glade.XML(Filename, WindowName, gettext.textdomain())
-        self.GtkWindow = getattr(self, WindowName)
-
-        instance_attributes = {}
+        self.widgets = gtk.Builder()
+        self.widgets.set_translation_domain("fslint")
+        import xml.etree.ElementTree as ET
+        root = ET.parse(Filename).getroot()
+        dependencies = [obj.get("id") for obj in root.findall("object")
+                        if obj.get("class") not in
+                        ("GtkWindow", "GtkDialog", "GtkFileChooserDialog")]
+        self.widgets.add_objects_from_file(Filename, dependencies + [WindowName])
+        self.GtkWindow = self.widgets.get_object(WindowName)
+        self.tables = {}
+        for widget in self.widgets.get_objects():
+            if isinstance(widget, gtk.TreeView):
+                self.tables[widget] = ResultList(widget)
+        handlers = {}
         for attribute in dir(self.__class__):
-            instance_attributes[attribute] = getattr(self, attribute)
-        self.widgets.signal_autoconnect(instance_attributes)
+            handler = getattr(self, attribute)
+            if callable(handler):
+                def wrap(widget, *args, handler=handler):
+                    if isinstance(widget, gtk.TreeSelection):
+                        widget = widget.get_tree_view()
+                    return handler(self.tables.get(widget, widget), *args)
+                handlers[attribute] = wrap
+        self.widgets.connect_signals(handlers)
 
-    def __getattr__(self, attribute): #Called when no attribute in __dict__
-        widget = self.widgets.get_widget(attribute)
+    def __getattr__(self, attribute):
+        widget = self.widgets.get_object(attribute)
         if widget is None:
             raise AttributeError("Widget [" + attribute + "] not found")
-        self.__dict__[attribute] = widget #add reference to cache
+        widget = self.tables.get(widget, widget)
+        self.__dict__[attribute] = widget
         return widget
 
 # SubProcess Example:
@@ -385,7 +391,7 @@ def human_space_left(where):
 def get_selectable(row, row_data):
     return row_data[row][0] != '#'
 
-class dlgUserInteraction(GladeWrapper):
+class dlgUserInteraction(BuilderWrapper):
     """
     Note input buttons tuple text should not be translated
     so that the stock buttons are used if possible. But the
@@ -403,11 +409,11 @@ class dlgUserInteraction(GladeWrapper):
                 button = gtk.Button(stock=stock_text)
             except:
                 button = gtk.Button(label=_(text))
-            button.set_data("text", text)
+            button.response_text = text
             button.connect("clicked", self.button_clicked)
-            self.GtkWindow.action_area.pack_start(button)
+            self.GtkWindow.get_action_area().pack_start(button, False, False, 0)
             button.show()
-            button.set_flags(gtk.CAN_DEFAULT)
+            button.set_can_default(True)
             button.grab_default() #last button is default
         self.app = app
         self.lblmsg.set_text(message)
@@ -427,14 +433,14 @@ class dlgUserInteraction(GladeWrapper):
                 self.chkAgain.set_active(again_val)
             #Dialog seems to give focus to first available widget,
             #So undo the focus on the check box
-            self.GtkWindow.action_area.get_children()[-1].grab_focus()
+            self.GtkWindow.get_action_area().get_children()[-1].grab_focus()
             self.chkAgain.show()
 
 
     def show(self):
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show() #Note dialog is initially hidden in glade file
-        if self.GtkWindow.modal:
+        if self.GtkWindow.get_modal():
             gtk.main() #synchronous call from parent
         #else: not supported
 
@@ -443,18 +449,18 @@ class dlgUserInteraction(GladeWrapper):
     #################
 
     def quit(self, *args):
-        if self.GtkWindow.modal:
+        if self.GtkWindow.get_modal():
             gtk.main_quit()
 
     def button_clicked(self, button):
-        self.response = button.get_data("text")
-        if self.entry.flags() & gtk.VISIBLE:
+        self.response = button.response_text
+        if self.entry.get_visible():
             self.input = self.entry.get_text()
-        if self.chkAgain.flags() & gtk.VISIBLE:
+        if self.chkAgain.get_visible():
             self.again = self.chkAgain.get_active()
         self.GtkWindow.destroy()
 
-class dlgPath(GladeWrapper):
+class dlgPath(BuilderWrapper):
 
     def init(self, app):
         self.app = app
@@ -466,11 +472,11 @@ class dlgPath(GladeWrapper):
         if self.fileOps:
             # Change to last folder as more likely to want
             # to save results there
-            self.GtkWindow.set_action(gtk.FILE_CHOOSER_ACTION_SAVE)
+            self.GtkWindow.set_action(gtk.FileChooserAction.SAVE)
             self.GtkWindow.set_current_folder(self.pwd)
             self.GtkWindow.set_current_name(filename)
         else:
-            self.GtkWindow.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
+            self.GtkWindow.set_action(gtk.FileChooserAction.SELECT_FOLDER)
             # set_filename doesn't highlight dir after first call
             # so using select_filename for consistency. Also I think
             # select_filename is better than set_current_folder as
@@ -478,7 +484,7 @@ class dlgPath(GladeWrapper):
             self.GtkWindow.select_filename(self.pwd)
         self.GtkWindow.set_transient_for(self.app.GtkWindow)#center on main win
         self.GtkWindow.show()
-        if self.GtkWindow.modal:
+        if self.GtkWindow.get_modal():
             gtk.main() #synchronous call from parent
         #else: not supported
 
@@ -495,7 +501,7 @@ class dlgPath(GladeWrapper):
                 user_path = self.GtkWindow.get_filename()
                 if os.path.exists(user_path):
                     self.pwd = user_path
-        if self.GtkWindow.modal:
+        if self.GtkWindow.get_modal():
             gtk.main_quit()
         return True #Don't let window be destroyed
 
@@ -525,7 +531,7 @@ class dlgPath(GladeWrapper):
         self.canceled = False
         self.quit()
 
-class fslint(GladeWrapper):
+class fslint(BuilderWrapper):
 
     class UserAbort(Exception):
         pass
@@ -534,9 +540,11 @@ class fslint(GladeWrapper):
         os.close(0) #don't hang if any sub cmd tries to read from stdin
         os.open("/dev/null", os.O_RDONLY)
         self.pwd=os.path.realpath(os.curdir)
-        GladeWrapper.__init__(self, Filename, WindowName)
-        self.dlgPath = dlgPath(liblocation+"/fslint.glade", "PathChoose")
+        BuilderWrapper.__init__(self, Filename, WindowName)
+        self.dlgPath = dlgPath(liblocation+"/fslint.ui", "PathChoose")
         self.dlgPath.init(self)
+        self.clist_pkgs_order = [False, False]
+        self.clist_pkgs_user_input = False
         self.confirm_delete = True
         self.confirm_delete_group = True
         self.confirm_clean = True
@@ -580,43 +588,21 @@ class fslint(GladeWrapper):
         self._alloc_mouse_cursors()
         self.mode=0
         self.status.set_text(self.mode_descs[self.mode])
-        self.bg_colour=self.vpanes.get_style().bg[gtk.STATE_NORMAL]
-        #make readonly GtkEntry and GtkTextView widgets obviously so,
-        #by making them the same colour as the surrounding panes
-        self.errors.modify_base(gtk.STATE_NORMAL,self.bg_colour)
-        self.status.modify_base(gtk.STATE_NORMAL,self.bg_colour)
-        self.pkg_info.modify_base(gtk.STATE_NORMAL,self.bg_colour)
-        #Other GUI stuff that ideally [lib]glade should support
+        self.bg_colour = "#eeeeee"
         self.clist_pkgs.set_column_visibility(2,0)
         self.clist_pkgs.set_column_visibility(3,0)
-        self.clist_ns.set_column_justification(2,gtk.JUSTIFY_RIGHT)
+        self.clist_ns.set_column_justification(2,gtk.Justification.RIGHT)
 
     def _alloc_mouse_cursors(self):
-        #The following is the cursor used by mozilla and themed by X/distros
-        left_ptr_watch = \
-        "\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00\x00\x00\x0c\x00\x00\x00"\
-        "\x1c\x00\x00\x00\x3c\x00\x00\x00\x7c\x00\x00\x00\xfc\x00\x00\x00"\
-        "\xfc\x01\x00\x00\xfc\x3b\x00\x00\x7c\x38\x00\x00\x6c\x54\x00\x00"\
-        "\xc4\xdc\x00\x00\xc0\x44\x00\x00\x80\x39\x00\x00\x80\x39"+"\x00"*66
-        try:
-            pix = gtk.gdk.bitmap_create_from_data(None, left_ptr_watch, 32, 32)
-            color = gtk.gdk.Color()
-            self.LEFT_PTR_WATCH=gtk.gdk.Cursor(pix, pix, color, color, 2, 2)
-            #Note mask is ignored when doing the hash
-        except TypeError:
-            #http://bugzilla.gnome.org/show_bug.cgi?id=103616 #older pygtks
-            #http://bugzilla.gnome.org/show_bug.cgi?id=318874 #pygtk-2.8.[12]
-            #Note pygtk-2.8.1 was released with ubuntu breezy :(
-            self.LEFT_PTR_WATCH=None #default cursor
-        self.SB_V_DOUBLE_ARROW=gtk.gdk.Cursor(gtk.gdk.SB_V_DOUBLE_ARROW)
-        self.XTERM=gtk.gdk.Cursor(gtk.gdk.XTERM) #I beam
-        self.WATCH=gtk.gdk.Cursor(gtk.gdk.WATCH) #hourglass
+        display = Gdk.Display.get_default()
+        self.LEFT_PTR_WATCH = Gdk.Cursor.new_from_name(display, "progress")
+        self.WATCH = Gdk.Cursor.new_from_name(display, "wait")
 
     def get_fslint(self, command, delim='\n'):
         self.fslintproc = subProcess(command)
         self.status.set_text(_("searching")+"...")
         while self.fslintproc.read(timeout=0.1):
-            while gtk.events_pending(): gtk.main_iteration(False)
+            while gtk.events_pending(): gtk.main_iteration_do(False)
             if self.stopflag:
                 if self.paused:
                     self.fslintproc.resume()
@@ -632,7 +618,7 @@ class fslint(GladeWrapper):
         self.resume.hide()
         self.stop.hide()
         self.status.set_text(_("processing..."))
-        while gtk.events_pending(): gtk.main_iteration(False)
+        while gtk.events_pending(): gtk.main_iteration_do(False)
         del(self.fslintproc)
         if self.stopflag:
             raise self.UserAbort
@@ -671,12 +657,12 @@ class fslint(GladeWrapper):
         if self.mode != self.mode_ed:
             for row in range(self.bad_dirs.rows):
                 if exclude_dirs == "":
-                    exclude_dirs = '\(' + ' -path '
+                    exclude_dirs = r'\(' + ' -path '
                 else:
                     exclude_dirs += ' -o -path '
                 exclude_dirs += shlex.quote(self.bad_dirs.get_row_data(row))
         if exclude_dirs != "":
-            exclude_dirs += ' \) -prune -o '
+            exclude_dirs += r' \) -prune -o '
 
         if not self.recurseDirs.get_active():
             recurseParam=" -r "
@@ -717,21 +703,8 @@ class fslint(GladeWrapper):
                 dirlist.remove(row)
             dirlist.select_row(dirlist.focus_row,0)
 
-    def clist_alloc_colour(self, clist, colour):
-        """cache colour allocation for clist
-           as colour will probably be used multiple times"""
-        cmap = clist.get_colormap()
-        cmap_cache=clist.get_data("cmap_cache")
-        if cmap_cache == None:
-            cmap_cache={'':None}
-        if colour not in cmap_cache:
-            cmap_cache[colour]=cmap.alloc_color(colour)
-        clist.set_data("cmap_cache",cmap_cache)
-        return cmap_cache[colour]
-
     def clist_append_path(self, clist, path, colour, *rest):
         """append path to clist, handling utf8 and colour issues"""
-        colour = self.clist_alloc_colour(clist, colour)
         utf8_path=I18N.displayable_utf8(path,path=True)
         (dir,file)=os.path.split(utf8_path)
         clist.append((file,dir)+rest)
@@ -936,7 +909,7 @@ on your system at present."))
     def findsn(self, clist_sn):
         cmd = "./findsn "
         if self.chk_sn_path.get_active():
-            option = self.opt_sn_path.get_children()[0].get()
+            option = self.opt_sn_path.get_active_text()
             if option == _("Aliases"):
                 cmd += " -A"
             elif option == _("Conflicting files"):
@@ -945,7 +918,7 @@ on your system at present."))
                 raise RuntimeError("glade GtkOptionMenu item not found")
         else:
             cmd += self.findParams
-            option = self.opt_sn_paths.get_children()[0].get()
+            option = self.opt_sn_paths.get_active_text()
             if option == _("Aliases"):
                 cmd += " -A"
             elif option == _("Same names"):
@@ -984,7 +957,7 @@ on your system at present."))
             po, pe = self.get_fslint("./findu8 " + self.findParams, '\0')
         else:
             sensitivity = ('1','2','3','p')[
-            int(self.hscale_findnl_level.get_adjustment().value)-1]
+            int(self.hscale_findnl_level.get_adjustment().get_value())-1]
             po, pe = self.get_fslint("./findnl " + self.findParams + " -" +
                                     sensitivity, '\0')
 
@@ -1053,36 +1026,12 @@ on your system at present."))
     find_dispatch = (findup,findpkgs,findnl,findsn,findtf,
                      findbl,findid,finded,findns,findrs) #order NB
 
-    def set_cursor(self, requested_cursor):
-        #TODO: horizontal arrows for GtkClist column resize handles not set
-        cursor=requested_cursor
-        if not self.GtkWindow.window: return #window closed
-        self.GtkWindow.window.set_cursor(cursor)
-        if requested_cursor==None: cursor=self.XTERM #I beam
-        for gtkentry in (self.status, self.extra_find_params):
-            if not gtkentry.window: continue #not realised yet
-            gtkentry.window.set_cursor(cursor)
-            gtkentry.window.get_children()[0].set_cursor(cursor)
-        for gtkspinbutton in (self.spin_tf_core, self.spinTabs):
-            if not gtkspinbutton.window: continue #not realised yet
-            gtkspinbutton.window.set_cursor(cursor)
-            gtkspinbutton.window.get_children()[0].set_cursor(cursor)
-        for gtktextview in (self.errors,):
-            if not gtktextview.window: continue #not realised yet
-            gtktextview.window.set_cursor(cursor)
-            gtktextview.get_window(gtk.TEXT_WINDOW_TEXT).set_cursor(cursor)
-        if requested_cursor==None: cursor=self.SB_V_DOUBLE_ARROW
-        for gtkpaned in (self.vpanes,):
-            if not gtkpaned.window: continue #not realised yet
-            try:
-                handle_size=gtkpaned.style_get_property("handle-size")#pygtk-2.4
-            except:
-                break
-            for window in gtkpaned.window.get_children():
-                width,height=window.get_size()
-                if width==handle_size or height==handle_size:
-                    window.set_cursor(cursor)
-        while gtk.events_pending(): gtk.main_iteration(False)
+    def set_cursor(self, cursor):
+        window = self.GtkWindow.get_window()
+        if window:
+            window.set_cursor(cursor)
+        while gtk.events_pending():
+            gtk.main_iteration_do(False)
 
     def look_busy(self):
         self.find.hide()
@@ -1104,7 +1053,7 @@ on your system at present."))
 
     def msgbox(self, message, buttons=('Ok',), entry_default=None,
                again=False, again_val=True):
-        msgbox=dlgUserInteraction(liblocation+"/fslint.glade","UserInteraction")
+        msgbox=dlgUserInteraction(liblocation+"/fslint.ui","UserInteraction")
         msgbox.init(self, message, buttons, entry_default, again, again_val)
         msgbox.show()
         response = (msgbox.response,)
@@ -1149,7 +1098,15 @@ on your system at present."))
             del(self.fslintproc)
         except:
             pass #fslint wasn't searching
-        gtk.main_quit()
+        if gtk.main_level():
+            gtk.main_quit()
+
+    def on_about1_activate(self, widget):
+        gtk.show_about_dialog(self.GtkWindow, program_name="FSlint",
+                              version="3.0",
+                              comments=_("A utility to find File System lint."),
+                              website="https://www.pixelbeat.org/fslint/",
+                              license_type=gtk.License.GPL_2_0)
 
     def on_addOkDir_clicked(self, event):
         self.dlgPath.show()
@@ -1223,9 +1180,9 @@ on your system at present."))
         else:
             self.groups_menu.hide()
         if event == None: #standard button click
-            self.selection_menu_menu.popup(None,None,None,0,0) #at mouse pointer
-        elif type(widget) == gtk.CList and self.mode != self.mode_pkgs:
-            if event.button == 1 and event.type == gtk.gdk._2BUTTON_PRESS:
+            self.selection_menu_menu.popup_at_pointer(None) #at mouse pointer
+        elif isinstance(widget, ResultList) and self.mode != self.mode_pkgs:
+            if event.button == 1 and event.type == Gdk.EventType.DOUBLE_BUTTON_PRESS:
                 #Notes:
                 # This clause is not related to selection menu, but this
                 # is the button_press handler for all lists so leaving here.
@@ -1246,7 +1203,7 @@ on your system at present."))
                     selected = widget.selection
                     if len(selected)==1 and row in selected:
                         menu=self.edit_menu_menu
-                menu.popup(None,None,None,event.button,event.time)
+                menu.popup_at_pointer(event)
 
     def on_find_clicked(self, event):
 
@@ -1273,7 +1230,7 @@ on your system at present."))
             self.look_busy()
             self.stopflag=self.pauseflag=False
             self.paused = False
-            while gtk.events_pending(): gtk.main_iteration(False)#update GUI
+            while gtk.events_pending(): gtk.main_iteration_do(False)#update GUI
             clist.freeze()
             tstart=time.time()
             status, errors=self.__class__.find_dispatch[self.mode](self, clist)
@@ -1316,22 +1273,22 @@ on your system at present."))
             self.fslintproc.resume()
             #We can only pause external searching
             self.status.set_text(_("searching")+"...")
-        while gtk.events_pending(): gtk.main_iteration(False)
+        while gtk.events_pending(): gtk.main_iteration_do(False)
 
     def on_control_buttons_keypress(self, button, event):
         #ingore capslock and numlock
-        state = event.state & ~(gtk.gdk.LOCK_MASK | gtk.gdk.MOD2_MASK)
-        ksyms=gtk.keysyms
+        state = event.state & ~(Gdk.ModifierType.LOCK_MASK | Gdk.ModifierType.MOD2_MASK)
+        ksyms=Gdk
         abort_keys={
-                    int(gtk.gdk.CONTROL_MASK):[ksyms.c,ksyms.C],
-                    0                        :[ksyms.Escape]
+                    int(Gdk.ModifierType.CONTROL_MASK):[ksyms.KEY_c,ksyms.KEY_C],
+                    0                        :[ksyms.KEY_Escape]
                    }
         try:
             if event.keyval in abort_keys[state]:
                 self.on_stop_clicked(event)
         except:
             pass
-        if event.keyval in (ksyms.Tab, ksyms.Left, ksyms.Right):
+        if event.keyval in (ksyms.KEY_Tab, ksyms.KEY_Left, ksyms.KEY_Right):
             # Unfortunately GTK doesn't restrict widgets
             # to focus to children of the current grab_add widget.
             # So we do it manually here.
@@ -1343,7 +1300,7 @@ on your system at present."))
             else:
                 self.stop.grab_focus()
             return True #Don't allow moving to other controls
-        elif event.keyval in (ksyms.Return, ksyms.space):
+        elif event.keyval in (ksyms.KEY_Return, ksyms.KEY_space):
             return False #pass event on to sub button
         else:
             return True #Don't pass on up/down arrows etc.
@@ -1357,24 +1314,24 @@ on your system at present."))
     #rather than the widget. The alternative is to add handlers to all lists.
     def on_fslint_keypress(self, button, event):
         #ingore capslock and numlock
-        state = event.state & ~(gtk.gdk.LOCK_MASK | gtk.gdk.MOD2_MASK)
-        ksyms=gtk.keysyms
-        if state == int(gtk.gdk.CONTROL_MASK):
-            if event.keyval in (ksyms.c, ksyms.C):
+        state = event.state & ~(Gdk.ModifierType.LOCK_MASK | Gdk.ModifierType.MOD2_MASK)
+        ksyms=Gdk
+        if state == int(Gdk.ModifierType.CONTROL_MASK):
+            if event.keyval in (ksyms.KEY_c, ksyms.KEY_C):
                 self.on_copy_activate(event)
-            elif event.keyval in (ksyms.o, ksyms.O):
+            elif event.keyval in (ksyms.KEY_o, ksyms.KEY_O):
                 self.on_open_activate(event)
         elif state == 0:
-            if event.keyval in (ksyms.F2,):
+            if event.keyval in (ksyms.KEY_F2,):
                 self.on_rename_activate(event)
-            elif event.keyval in (ksyms.Return,):
+            elif event.keyval in (ksyms.KEY_Return,):
                 self.on_open_activate(event)
-            elif event.keyval in (ksyms.Delete,):
-                if self.ok_dirs.flags() & gtk.HAS_FOCUS:
+            elif event.keyval in (ksyms.KEY_Delete,):
+                if self.ok_dirs.has_focus():
                     self.on_removeOkDir_clicked(event)
-                elif self.bad_dirs.flags() & gtk.HAS_FOCUS:
+                elif self.bad_dirs.has_focus():
                     self.on_removeBadDir_clicked(event)
-                elif self.clists[self.mode].flags() & gtk.HAS_FOCUS:
+                elif self.clists[self.mode].has_focus():
                     self.on_delSelected_clicked(event)
 
     def on_saveAs_clicked(self, event):
@@ -1437,7 +1394,7 @@ on your system at present."))
     def on_copy_activate(self, src):
         path = self.get_selected_path()
         if path:
-            clipboard=self.GtkWindow.get_clipboard("CLIPBOARD")
+            clipboard=gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
             clipboard.set_text(path, -1)
 
     def on_open_folder_activate(self, src, row=None):
@@ -1662,17 +1619,21 @@ on your system at present."))
                 clist.set_text(row,3,"1")
             else:
                 clist.set_text(row,3,"0")
-        clist.set_sort_type(gtk.SORT_DESCENDING)
+        clist.set_sort_type(gtk.SortType.DESCENDING)
         clist.set_sort_column(3)
         clist.sort()
         clist.moveto(0,0,0.0,0.0)
 
+    def on_pkg_column_clicked(self, column):
+        self.on_clist_pkgs_click_column(self.clist_pkgs,
+                                       self.clist_pkgs.view.get_columns().index(column))
+
     def on_clist_pkgs_click_column(self, clist, col):
         self.clist_pkgs_order[col] = not self.clist_pkgs_order[col]
         if self.clist_pkgs_order[col]:
-            clist.set_sort_type(gtk.SORT_ASCENDING)
+            clist.set_sort_type(gtk.SortType.ASCENDING)
         else:
-            clist.set_sort_type(gtk.SORT_DESCENDING)
+            clist.set_sort_type(gtk.SortType.DESCENDING)
         try:
             #focus_row is not updated after ordering, so can't use
             #last_selected=clist.get_row_data(clist.focus_row)
@@ -1772,7 +1733,7 @@ on your system at present."))
                 pkgs_selected.append(package)
             #determine if we need to select more packages
             self.status.set_text(_("Calculating dependencies..."))
-            while gtk.events_pending(): gtk.main_iteration(False)
+            while gtk.events_pending(): gtk.main_iteration_do(False)
             all_deps=self.whatRequires(pkgs_selected)
             if len(all_deps) > len(pkgs_selected):
                 num_new_pkgs = 0
@@ -1799,7 +1760,7 @@ on your system at present."))
                 return
 
             self.status.set_text(_("Removing packages..."))
-            while gtk.events_pending(): gtk.main_iteration(False)
+            while gtk.events_pending(): gtk.main_iteration_do(False)
             if dist_type.rpm:
                 cmd="rpm -e "
             elif dist_type.dpkg:
@@ -1982,6 +1943,13 @@ on your system at present."))
         self.status.set_text(status)
         self.set_cursor(None)
 
-FSlint=fslint(liblocation+"/fslint.glade", "fslint")
+def main():
+    if not gtk.init_check()[0]:
+        sys.stderr.write("FSlint requires a graphical display.\n")
+        return 1
+    application = fslint(liblocation+"/fslint.ui", "fslint")
+    gtk.main()
+    return 0
 
-gtk.main ()
+if __name__ == "__main__":
+    sys.exit(main())
