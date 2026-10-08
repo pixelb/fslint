@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # vim:fileencoding=utf-8
 
 # Note both python and vim understand the above encoding declaration
@@ -23,7 +23,7 @@
  which is available at www.gnu.org
 """
 
-import types, os, sys, pipes, time, stat, tempfile, errno
+import os, sys, shlex, time, stat, tempfile, errno
 
 import gettext
 import locale
@@ -67,7 +67,7 @@ class i18n:
     def _init_translations(self):
         #gtk2 only understands utf-8 so convert to unicode
         #which will be automatically converted to utf-8 by pygtk
-        gettext.install("fslint", locale_base, unicode=1)
+        gettext.install("fslint", locale_base, )
         global N_ #translate string but not at point of definition
         def N_(string): return string
         gettext.bindtextdomain("fslint",locale_base)
@@ -106,64 +106,18 @@ class i18n:
         else:
             self.filename_encoding=self.preferred_encoding
 
-    class unicode_displayable(unicode):
-        """translate non displayable chars to an appropriate representation"""
-        translate_table=range(0x2400,0x2420) #control chars
-        #Since python 2.2 this will be a new style class as
-        #we are subclassing the builtin (immutable) unicode type.
-        #Therefore we can make a factory function with the following.
-        def __new__(cls,string,exclude):
-            if exclude:
-                curr_table=cls.translate_table[:] #copy
-                for char in exclude:
-                    try:
-                        curr_table[ord(char)]=ord(char)
-                    except:
-                        pass #won't be converted anyway
-            else:
-                curr_table=cls.translate_table
-            translated_string=unicode(string).translate(curr_table)
-            return unicode.__new__(cls, translated_string)
-
-    def displayable_utf8(self,orig,exclude="",path=False):
-        """Convert to utf8, and also convert chars that are not
-        easily displayable (control chars currently).
-        If orig is not a valid utf8 string,
-        then try to convert to utf8 using preferred encoding while
-        also replacing undisplayable or invalid characters.
-        Exclude contains control chars you don't want to translate."""
-        if type(orig) == types.UnicodeType:
-            uc=orig
-        else:
-            try:
-                uc=unicode(orig,"utf-8")
-            except:
-                try:
-                    # Note I don't use "replace" here as that
-                    # replaces multiple bytes with a FFFD in utf8 locales
-                    # This is silly as then you know it's not utf8 so
-                    # one should try each character.
-                    if path:
-                        uc=unicode(orig,self.filename_encoding)
-                    else:
-                        uc=unicode(orig,self.preferred_encoding)
-                except:
-                    uc=unicode(orig,"ascii","replace")
-                    # Note I don't like the "replacement char" representation
-                    # on fedora core 3 at least (bitstream-vera doesn't have it,
-                    # and the nimbus fallback looks like a comma).
-                    # It's even worse on redhat 9 where there is no
-                    # representation at all. Note FreeSans does have a nice
-                    # question mark representation, and dejavu also since 1.12.
-                    # Alternatively I could: uc=unicode(orig,"latin-1") as that
-                    # has a representation for each byte, but it's not general.
-        uc=self.unicode_displayable(uc, exclude)
-        return uc.encode("utf-8")
+    def displayable_utf8(self, orig, exclude="", path=False):
+        """Return GTK text while preserving raw filesystem names elsewhere."""
+        if isinstance(orig, bytes):
+            orig = os.fsdecode(orig)
+        # Surrogateescaped bytes cannot be passed through GObject as UTF-8.
+        text = str(orig).encode("utf-8", "replace").decode("utf-8")
+        table = {i: 0x2400 + i for i in range(32) if chr(i) not in exclude}
+        return text.translate(table)
 
     def g_filename_from_utf8(self, string):
-        if self.filename_encoding != "utf-8":
-            uc=unicode(string,"utf-8")
-            string=uc.encode(self.filename_encoding) #can raise exception
+        # Python uses the filesystem encoding and surrogateescape for paths.
+        os.fsencode(string)  # Validate before attempting a rename.
         return string
 
 I18N=i18n() #call first so everything is internationalized
@@ -196,7 +150,7 @@ except getopt.error as msg:
 def human_num(num, divisor=1, power=""):
     num=float(num)
     if divisor == 1:
-        return locale.format("%.f",num,1)
+        return locale.format_string("%.f",num,1)
     elif divisor == 1000:
         powers=[" ","K","M","G","T","P"]
     elif divisor == 1024:
@@ -208,9 +162,9 @@ def human_num(num, divisor=1, power=""):
         num /= divisor
         power=powers[powers.index(power)+1]
     if power.strip():
-        num = locale.format("%6.1f",num,1)
+        num = locale.format_string("%6.1f",num,1)
     else:
-        num = locale.format("%4.f",num,1)+'  '
+        num = locale.format_string("%4.f",num,1)+'  '
     return "%s%s" % (num,power)
 
 class pathInfo:
@@ -319,7 +273,7 @@ class subProcess:
         # that it would block waiting for a full BUFSIZ unless we explicitly
         # set the files non blocking, and there would be extra uneeded
         # overhead like EOL conversion. So I think it's handier to use os.read()
-        self.outdata = self.errdata = ''
+        self.outdata = self.errdata = b''
         self._outeof = self._erreof = 0
 
     def _child(self, cmd):
@@ -337,7 +291,8 @@ class subProcess:
         os.dup2(self.outw,1) #stdout to write side of pipe
         os.dup2(self.errw,2) #stderr to write side of pipe
         #stdout & stderr connected to pipe, so close all other files
-        map(os.close,(self.outr,self.outw,self.errr,self.errw))
+        for fd in (self.outr, self.outw, self.errr, self.errw):
+            os.close(fd)
         try:
             cmd = ['/bin/sh', '-c', cmd]
             os.execvp(cmd[0], cmd)
@@ -358,15 +313,17 @@ class subProcess:
             else:
                 if self.outr in ready[0]:
                     outchunk = os.read(self.outr,self.BUFSIZ)
-                    if outchunk == '':
+                    if outchunk == b'':
                         self._outeof = 1
                     self.outdata += outchunk
                 if self.errr in ready[0]:
                     errchunk = os.read(self.errr,self.BUFSIZ)
-                    if errchunk == '':
+                    if errchunk == b'':
                         self._erreof = 1
                     self.errdata += errchunk
                 if self._outeof and self._erreof:
+                    self.outdata = os.fsdecode(self.outdata)
+                    self.errdata = os.fsdecode(self.errdata)
                     return 0
                 elif timeout:
                     if (time.time()-currtime) > timeout:
@@ -465,7 +422,7 @@ class dlgUserInteraction(GladeWrapper):
             self.entry.hide()
         if again:
             self.again=again_val
-            if type(again) == types.StringType:
+            if type(again) == str:
                 self.chkAgain.set_label(again)
                 self.chkAgain.set_active(again_val)
             #Dialog seems to give focus to first available widget,
@@ -706,7 +663,7 @@ class fslint(GladeWrapper):
 
         search_dirs = ""
         for row in range(self.ok_dirs.rows):
-            search_dirs += " " + pipes.quote(self.ok_dirs.get_row_data(row))
+            search_dirs += " " + shlex.quote(self.ok_dirs.get_row_data(row))
 
         exclude_dirs=""
         # One can't remove directories listed as empty if
@@ -717,7 +674,7 @@ class fslint(GladeWrapper):
                     exclude_dirs = '\(' + ' -path '
                 else:
                     exclude_dirs += ' -o -path '
-                exclude_dirs += pipes.quote(self.bad_dirs.get_row_data(row))
+                exclude_dirs += shlex.quote(self.bad_dirs.get_row_data(row))
         if exclude_dirs != "":
             exclude_dirs += ' \) -prune -o '
 
@@ -794,7 +751,7 @@ class fslint(GladeWrapper):
     def clist_remove_handled_groups(self, clist):
         row_data = clist.get_data("row_data")
         rowver=clist.rows
-        rows_left = range(rowver)
+        rows_left = list(range(rowver))
         rows_left.reverse()
         for row in rows_left:
             if not get_selectable(row, row_data):
@@ -1307,7 +1264,7 @@ on your system at present."))
             clist.clear()
             #All GtkClist operations seem to be O(n),
             #so doing the following for example will be O((n/2)*(n+1))
-            #    for row in xrange(clist.rows):
+            #    for row in range(clist.rows):
             #        path = clist.get_row_data(row)
             #Therefore we use a python list to store row data.
             clist.set_data("row_data",[])
@@ -1429,14 +1386,14 @@ on your system at present."))
             self.ClearErrors()
             fileSaveAs = self.dlgPath.GtkWindow.get_filename()
             try:
-                fileSaveAs = open(fileSaveAs, 'w')
+                fileSaveAs = open(fileSaveAs, 'w', encoding='utf-8', errors='surrogateescape')
             except:
                 etype, emsg, etb = sys.exc_info()
                 self.ShowErrors(str(emsg)+'\n')
                 return
             rows_to_save = clist.selection
             if self.mode == self.mode_pkgs:
-                for row in xrange(clist.rows):
+                for row in range(clist.rows):
                     if len(rows_to_save):
                         if row not in rows_to_save: continue
                     rowtext = ''
@@ -1446,7 +1403,7 @@ on your system at present."))
             else:
                 row_data=clist.get_data("row_data")
                 if len(rows_to_save):
-                    for row in xrange(clist.rows):
+                    for row in range(clist.rows):
                         if get_selectable(row, row_data):
                             if row not in rows_to_save: continue
                         else: continue #don't save group headers
@@ -1472,8 +1429,8 @@ on your system at present."))
             path=os.path.split(path)[0]
 
         if urlencode:
-            import urllib
-            path="file://"+urllib.pathname2url(path)
+            from urllib.parse import quote_from_bytes
+            path="file://"+quote_from_bytes(os.fsencode(path))
 
         return path
 
@@ -1494,7 +1451,7 @@ on your system at present."))
             #connected to its pipes and so we will hang on read().
             #Note also that xdg-open doesn't identify the desktop platform
             #correctly when running (FSlint) on a remote X session.
-            path = pipes.quote(path)
+            path = shlex.quote(path)
             if os.system("xdg-open %s >/dev/null 2>&1" % path):
                 #could run again with os.popen3() to get actual error
                 #but that's a bit hacky I think?
@@ -1509,7 +1466,7 @@ on your system at present."))
         row_data = clist.get_data("row_data")
         path = os.path.split(row_data[row])[0]
         select_func=clist.select_row
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if os.path.split(row_data[row])[0] == path:
                 select_func(row, 0)
 
@@ -1583,16 +1540,16 @@ on your system at present."))
                 return
         else:
             #Convert to unicode to match unicode string below
-            wildcard=unicode(wildcard, "utf-8")
+            wildcard=str(wildcard)
         select_func=(select and clist.select_row or clist.unselect_row)
         if '/' not in wildcard or self.mode == self.mode_pkgs:
             #Convert to unicode so ? in glob matching works correctly
-            get_text = lambda row: unicode(clist.get_text(row,0),"utf-8")
+            get_text = lambda row: clist.get_text(row,0)
         else: #Note fnmatch ignores trailing \n
             row_data = clist.get_data("row_data")
             get_text = lambda row: row_data[row]
         import fnmatch
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if fnmatch.fnmatch(get_text(row), wildcard):
                 select_func(row, 0)
 
@@ -1633,7 +1590,7 @@ on your system at present."))
         row_data = clist.get_data("row_data")
         clist.freeze()
         clist.select_all()
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if row==0 or not get_selectable(row, row_data): #New group
                 unselect_row = find_row_to_unselect(clist, row, which)
                 if unselect_row == -1:
@@ -1667,7 +1624,7 @@ on your system at present."))
             return True
 
         group=1
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if row==0 or not get_selectable(row, row_data): #New group
                 if group_all_selected(clist, row):
                     if group > skip_groups:
@@ -1700,7 +1657,7 @@ on your system at present."))
 
     def clist_pkgs_sort_by_selection(self, clist):
         selection = clist.selection
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if row in selection:
                 clist.set_text(row,3,"1")
             else:
@@ -1823,7 +1780,7 @@ on your system at present."))
                     if package not in pkgs_selected:
                         num_new_pkgs += 1
                         #Note clist.find_row_from_data() only compares pointers
-                        for row in xrange(clist.rows):
+                        for row in range(clist.rows):
                             if package == clist.get_row_data(row):
                                 clist.select_row(row,0)
 
@@ -1921,7 +1878,7 @@ on your system at present."))
         self.set_cursor(self.WATCH)
         newGroup = False
         row_data=clist.get_data("row_data")
-        for row in xrange(clist.rows):
+        for row in range(clist.rows):
             if row in paths_to_leave:
                 continue
             if not get_selectable(row, row_data): #new group
@@ -2008,7 +1965,7 @@ on your system at present."))
                 self.ShowErrors(str(sys.exc_info()[1])+'\n')
                 continue
 
-            path_param = pipes.quote(path_to_clean)
+            path_param = shlex.quote(path_to_clean)
             cleanProcess = subProcess(command + " " + path_param)
             cleanProcess.read()
             errors = cleanProcess.errdata

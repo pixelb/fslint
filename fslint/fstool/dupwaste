@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # This script shows the total space wasted by duplicate files
 # as reported by findup (pipe `findup --summary`to this).
@@ -23,7 +23,7 @@ def sizes():
 def human_num(num, divisor=1, power=""):
     num=float(num)
     if divisor == 1:
-        return locale.format("%.f",num,1)
+        return locale.format_string("%.f",num,1)
     elif divisor == 1000:
         powers=[" ","K","M","G","T","P"]
     elif divisor == 1024:
@@ -35,16 +35,16 @@ def human_num(num, divisor=1, power=""):
         num /= divisor
         power=powers[powers.index(power)+1]
     if power.strip():
-        num = locale.format("%6.1f",num,1)
+        num = locale.format_string("%6.1f",num,1)
     else:
-        num = locale.format("%4.f",num,1)+'  '
+        num = locale.format_string("%4.f",num,1)+'  '
     return "%s%s" % (num,power)
 
 def Usage():
-    print "Print the total wasted space given output from `findup --summary`"
-    print
-    print "--human  print the total in human readable form."
-    print "--help   print this information."
+    print("Print the total wasted space given output from `findup --summary`")
+    print()
+    print("--human  print the total in human readable form.")
+    print("--help   print this information.")
 
 
 # The start of the program
@@ -63,11 +63,11 @@ try:
         sys.exit(None)
     # See the resize function for more details about the output.
     elif ("--human","") in lOpts:
-        print "Total wasted space: %sB" % human_num(sum(sizes()), divisor=1024)
+        print("Total wasted space: %sB" % human_num(sum(sizes()), divisor=1024))
     # No options get the default bytes.
     else:
-        print "Total wasted space: %d bytes" % sum(sizes())
+        print("Total wasted space: %d bytes" % sum(sizes()))
 except getopt.error as msg:
-    print msg
+    print(msg)
     Usage()
     sys.exit(1)
