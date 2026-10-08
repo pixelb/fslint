@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # md5sum CHUNK_SIZE bytes of file
 
@@ -18,22 +18,15 @@ try:
 except:
     pass
 
-try:
-    # md5 module is deprecated on python 2.6
-    # so try the newer hashlib first
-    import hashlib
-    md5_new = hashlib.md5
-except ImportError:
-    import md5
-    md5_new = md5.new
+import hashlib
 
 def md5sum(filename, CHUNK=CHUNK_SIZE):
     """takes filename, hand back Checksum of it"""
 
     try:
-        fo = open(filename, 'r', CHUNK)
+        fo = open(filename, 'rb', CHUNK)
 
-        sum = md5_new()
+        sum = hashlib.md5(usedforsecurity=False)
 
         # To sum the whole file do:
         #chunk = fo.read
@@ -67,4 +60,5 @@ def printsum(filename):
     except EnvironmentError as value:
         sys.stderr.write("md5sum: %s: %s\n" % (filename, value.strerror))
 
-map(printsum, sys.argv[1:])
+for filename in sys.argv[1:]:
+    printsum(filename)

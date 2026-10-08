@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 # This is a support script for the findup utility which:
 
@@ -60,7 +60,7 @@ if len(sys.argv) == 2 and sys.argv[1] == '--non-gui':
     inodes = {}
     #inodes required to correctly report disk usage of
     #duplicate files with seperate inode groups.
-    for line in sys.stdin.xreadlines():
+    for line in sys.stdin:
         path = line[:-1]
         if path == '':
             if len(inodes)>1:
@@ -79,7 +79,7 @@ if len(sys.argv) == 2 and sys.argv[1] == '--non-gui':
         if len(inodes)>1:
             sys.stdout.writelines(dups)
 else: # Initial merging done for both gui and non gui
-    for line in sys.stdin.xreadlines():
+    for line in sys.stdin:
         path, dev, inode, size = line.rstrip().split(' ')
         if last_size and size == last_size:
             if (dev,inode) != last_inode:
