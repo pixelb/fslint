@@ -55,7 +55,7 @@ except:
     pass
 
 sys.path.insert(0, liblocation)
-from fslint_gtk import ResultList
+from fslint_gtk import ResultList, style_function_tabs
 
 class i18n:
 
@@ -497,6 +497,7 @@ class fslint(BuilderWrapper):
     def __init__(self, Filename, WindowName):
         self.pwd=os.path.realpath(os.curdir)
         BuilderWrapper.__init__(self, Filename, WindowName)
+        self.tab_style = style_function_tabs(self.fslint_functions)
         self.dlgPath = dlgPath(liblocation+"/fslint.ui", "PathChoose")
         self.dlgPath.init(self)
         self.clist_pkgs_order = [False, False]
