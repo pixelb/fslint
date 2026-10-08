@@ -3,10 +3,100 @@
 The GtkBuilder file contains ordinary widgets so it can be edited in
 Cambalache. This controller keeps file metadata separate from display text.
 """
+import os
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, GObject, Gio, GLib
+
+
+class DesktopAppearance:
+    """Follow the desktop color scheme without modifying desktop settings."""
+    def __init__(self):
+        self.settings = Gtk.Settings.get_default()
+        self.proxy = None
+        self.desktop = None
+        self.cancellable = Gio.Cancellable()
+        self._proxy_handler = self._desktop_handler = None
+        self._initial_dark = self.settings.get_property('gtk-application-prefer-dark-theme')
+        # An explicit GTK_THEME is a user override, including during debugging.
+        if os.environ.get('GTK_THEME'):
+            return
+        # GNOME fallback also provides the preference before the portal replies.
+        if 'GNOME' in os.environ.get('XDG_CURRENT_DESKTOP', '').upper().split(':'):
+            source = Gio.SettingsSchemaSource.get_default()
+            schema = source.lookup('org.gnome.desktop.interface', True) if source else None
+            if schema and schema.has_key('color-scheme'):
+                self.desktop = Gio.Settings.new_full(schema, None, None)
+                self._desktop_handler = self.desktop.connect('changed::color-scheme',
+                                                             self._desktop_changed)
+                self._desktop_changed(self.desktop, 'color-scheme')
+        Gio.DBusProxy.new_for_bus(
+            Gio.BusType.SESSION,
+            Gio.DBusProxyFlags.DO_NOT_AUTO_START | Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES,
+            None, 'org.freedesktop.portal.Desktop', '/org/freedesktop/portal/desktop',
+            'org.freedesktop.portal.Settings', self.cancellable, self._proxy_ready)
+
+    def _desktop_changed(self, settings, key):
+        scheme = {'prefer-dark': 1, 'prefer-light': 2}.get(settings.get_string(key), 0)
+        self._apply(scheme)
+
+    def _proxy_ready(self, source, result):
+        try:
+            proxy = Gio.DBusProxy.new_for_bus_finish(result)
+        except GLib.Error:
+            return
+        if self.cancellable.is_cancelled() or not proxy.get_name_owner():
+            return
+        self.proxy = proxy
+        self._proxy_handler = proxy.connect('g-signal', self._setting_changed)
+        self._read(False)
+
+    def _read(self, legacy):
+        self.proxy.call('Read' if legacy else 'ReadOne',
+                        GLib.Variant('(ss)', ('org.freedesktop.appearance', 'color-scheme')),
+                        Gio.DBusCallFlags.NONE, 2000, self.cancellable,
+                        self._read_ready, legacy)
+
+    def _read_ready(self, proxy, result, legacy):
+        try:
+            scheme = proxy.call_finish(result).unpack()[0]
+        except GLib.Error:
+            if not legacy and not self.cancellable.is_cancelled():
+                self._read(True)  # Older portals do not implement ReadOne.
+            return
+        if not self.cancellable.is_cancelled():
+            self._apply(scheme)
+
+    def _setting_changed(self, proxy, sender, signal, parameters):
+        if signal == 'SettingChanged':
+            namespace, key, value = parameters.unpack()
+            if namespace == 'org.freedesktop.appearance' and key == 'color-scheme':
+                self._apply(value)
+
+    def _apply(self, scheme):
+        theme = self.settings.get_property('gtk-theme-name')
+        # Adwaita-dark selects a fixed variant, overriding prefer-dark=False.
+        # Use the base theme so GTK can choose its light or dark variant.
+        adwaita = theme in ('Adwaita', 'Adwaita-dark')
+        if scheme not in (1, 2):
+            dark = False if adwaita else self._initial_dark
+        else:
+            dark = scheme == 1
+        self.settings.freeze_notify()
+        if adwaita:
+            self.settings.set_property('gtk-theme-name', 'Adwaita')
+        self.settings.set_property('gtk-application-prefer-dark-theme', dark)
+        self.settings.thaw_notify()
+
+    def close(self):
+        self.cancellable.cancel()
+        if self._proxy_handler is not None:
+            self.proxy.disconnect(self._proxy_handler)
+            self._proxy_handler = None
+        if self._desktop_handler is not None:
+            self.desktop.disconnect(self._desktop_handler)
+            self._desktop_handler = None
 
 
 def style_notebook_tabs(*notebooks):

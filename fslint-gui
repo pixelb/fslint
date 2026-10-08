@@ -55,7 +55,7 @@ except:
     pass
 
 sys.path.insert(0, liblocation)
-from fslint_gtk import ResultList, style_notebook_tabs
+from fslint_gtk import DesktopAppearance, ResultList, style_notebook_tabs
 
 class i18n:
 
@@ -496,6 +496,7 @@ class fslint(BuilderWrapper):
 
     def __init__(self, Filename, WindowName):
         self.pwd=os.path.realpath(os.curdir)
+        self.appearance = DesktopAppearance()
         BuilderWrapper.__init__(self, Filename, WindowName)
         self.tab_style = style_notebook_tabs(self.fslint_functions, self.notebook2)
         self.dlgPath = dlgPath(liblocation+"/fslint.ui", "PathChoose")
@@ -550,6 +551,18 @@ class fslint(BuilderWrapper):
         self.clist_pkgs.set_column_visibility(2,0)
         self.clist_pkgs.set_column_visibility(3,0)
         self.clist_ns.set_column_justification(2,gtk.Justification.RIGHT)
+        self.GtkWindow.connect("style-updated", self.on_style_updated)
+
+    def on_style_updated(self, widget):
+        found, background = widget.get_style_context().lookup_color("theme_bg_color")
+        color = background.to_string() if found else None
+        previous = self.bg_colour
+        self.bg_colour = color
+        if previous is not None and previous != color:
+            for table in self.clists.values():
+                for row in table.model:
+                    if row[table.columns + 3] == previous:
+                        row[table.columns + 3] = color
 
     def _alloc_mouse_cursors(self):
         display = Gdk.Display.get_default()
@@ -1048,6 +1061,7 @@ on your system at present."))
     #################
 
     def on_fslint_destroy(self, event):
+        self.appearance.close()
         try:
             if self.paused:
                 self.fslintproc.resume()

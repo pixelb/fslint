@@ -10,9 +10,11 @@ import sys
 import tempfile
 import unittest
 import warnings
+from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+import fslint_gtk
 old_argv = sys.argv
 sys.argv = [str(ROOT / 'fslint-gui')]
 GUI = runpy.run_path(str(ROOT / 'fslint-gui'), run_name='fslint_tests')
@@ -129,6 +131,55 @@ class PythonMigrationTests(unittest.TestCase):
             self.assertEqual(result.stdout, b'')
 
 
+class AppearanceTests(unittest.TestCase):
+    def follower(self, theme='Adwaita-dark', dark=False):
+        values = {'gtk-theme-name': theme, 'gtk-application-prefer-dark-theme': dark}
+        settings = Mock()
+        settings.get_property.side_effect = values.__getitem__
+        settings.set_property.side_effect = values.__setitem__
+        follower = fslint_gtk.DesktopAppearance.__new__(fslint_gtk.DesktopAppearance)
+        follower.settings = settings
+        follower._initial_dark = dark
+        return follower, values
+
+    def test_portal_light_dark_and_default(self):
+        follower, values = self.follower()
+        for scheme, dark in [(2, False), (1, True), (0, False), (42, False)]:
+            follower._setting_changed(None, None, 'SettingChanged',
+                fslint_gtk.GLib.Variant('(ssv)', ('org.freedesktop.appearance',
+                                                'color-scheme',
+                                                fslint_gtk.GLib.Variant('u', scheme))))
+            self.assertEqual(values['gtk-theme-name'], 'Adwaita')
+            self.assertEqual(values['gtk-application-prefer-dark-theme'], dark)
+
+    def test_no_preference_preserves_custom_theme(self):
+        follower, values = self.follower('CustomTheme', True)
+        follower._apply(2)
+        self.assertFalse(values['gtk-application-prefer-dark-theme'])
+        follower._apply(0)
+        self.assertTrue(values['gtk-application-prefer-dark-theme'])
+        self.assertEqual(values['gtk-theme-name'], 'CustomTheme')
+
+    def test_explicit_gtk_theme_override(self):
+        settings = Mock()
+        with patch.dict(os.environ, {'GTK_THEME': 'Adwaita:dark'}), \
+             patch.object(fslint_gtk.Gtk.Settings, 'get_default', return_value=settings), \
+             patch.object(fslint_gtk.Gio.DBusProxy, 'new_for_bus') as connect:
+            follower = fslint_gtk.DesktopAppearance()
+            settings.set_property.assert_not_called()
+            connect.assert_not_called()
+            follower.close()
+
+    def test_old_portal_read_fallback(self):
+        follower, values = self.follower()
+        follower.cancellable = fslint_gtk.Gio.Cancellable()
+        follower._read = Mock()
+        proxy = Mock()
+        proxy.call_finish.side_effect = fslint_gtk.GLib.Error('ReadOne is unavailable')
+        follower._read_ready(proxy, None, False)
+        follower._read.assert_called_once_with(True)
+
+
 @unittest.skipUnless(HAS_DISPLAY, 'GTK 3 needs a graphical display')
 class GtkMigrationTests(unittest.TestCase):
     def setUp(self):
@@ -224,6 +275,36 @@ class GtkMigrationTests(unittest.TestCase):
         chooser.GtkWindow.get_filename = lambda: str(output)
         self.app.on_saveAs_clicked(None)
         self.assertEqual(output.read_bytes(), path + b'\n')
+
+    def test_live_appearance_refreshes_group_headers(self):
+        for name in ('first', 'second'):
+            (self.directory/name).write_text('identical\n')
+        table = self.scan(0)
+        follower = self.app.appearance
+        # Simulate portal events locally; never change the user's desktop settings.
+        follower.close()
+        settings = follower.settings
+        theme = settings.get_property('gtk-theme-name')
+        dark = settings.get_property('gtk-application-prefer-dark-theme')
+        try:
+            colors = []
+            for scheme in (2, 1):
+                follower._setting_changed(None, None, 'SettingChanged',
+                    fslint_gtk.GLib.Variant('(ssv)', ('org.freedesktop.appearance',
+                                                    'color-scheme',
+                                                    fslint_gtk.GLib.Variant('u', scheme))))
+                loop = GUI['GLib'].MainLoop()
+                GUI['GLib'].timeout_add(100, lambda: (loop.quit(), False)[1])
+                loop.run()
+                self.assertEqual(settings.get_property('gtk-application-prefer-dark-theme'),
+                                 scheme == 1)
+                color = self.app.bg_colour
+                self.assertEqual(table.model[0][table.columns + 3], color)
+                colors.append(color)
+            self.assertNotEqual(*colors)
+        finally:
+            settings.set_property('gtk-theme-name', theme)
+            settings.set_property('gtk-application-prefer-dark-theme', dark)
 
     def test_rename_delete_and_merge_temporary_files(self):
         for name in ('first', 'second', 'third'):

@@ -42,6 +42,12 @@ python3-gi and gir1.2-gtk-3.0. GTK 4 may be installed alongside GTK 3,
 but this version explicitly loads the GTK 3 introspection namespace.
 No Python 2, PyGTK, or libglade dependencies remain.
 
+The GUI follows the desktop light/dark preference through the XDG
+Settings portal, with GNOME settings as a fallback. Adwaita switches
+variants automatically, including while the window is open. Custom
+GTK themes retain their theme name. An explicit GTK_THEME environment
+variable overrides automatic appearance selection.
+
 DEVELOPMENT:
 
 Run ./fslint-gui [PATHS] directly from the checkout.
