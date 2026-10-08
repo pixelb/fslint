@@ -138,7 +138,7 @@ try:
         sys.exit(None)
 
     if ("--version","") in lOpts:
-        puts("FSlint 2.47")
+        puts("FSlint 3.0")
         sys.exit(None)
 except getopt.error as msg:
     puts(msg)
@@ -246,11 +246,11 @@ class BuilderWrapper:
 #     process.read() #timeout is optional
 #     handle(process.outdata, process.errdata)
 #     del(process)
-import select, signal
+import select, signal, subprocess
 class subProcess:
     """Class representing a child process. It's like popen2.Popen3
        but there are three main differences.
-       1. This makes the new child process group leader (using setpgrp())
+       1. The child starts a separate session and process group
           so that all children can be killed.
        2. The output function (read) is optionally non blocking returning in
           specified timeout if nothing is read, or as close to specified
@@ -265,51 +265,23 @@ class subProcess:
         specifies the size of the I/O buffers from the child process."""
         self.cleaned=False
         self.BUFSIZ=bufsize
-        self.outr, self.outw = os.pipe()
-        self.errr, self.errw = os.pipe()
-        self.pid = os.fork()
-        if self.pid == 0:
-            self._child(cmd)
-        os.close(self.outw) #parent doesn't write so close
-        os.close(self.errw)
-        # Note we could use self.stdout=fdopen(self.outr) here
-        # to get a higher level file object like popen2.Popen3 uses.
-        # This would have the advantages of auto handling the BUFSIZ
-        # and closing the files when deleted. However it would mean
-        # that it would block waiting for a full BUFSIZ unless we explicitly
-        # set the files non blocking, and there would be extra uneeded
-        # overhead like EOL conversion. So I think it's handier to use os.read()
+        self.process = subprocess.Popen(cmd, shell=True, start_new_session=True,
+                                        stdin=subprocess.DEVNULL,
+                                        stdout=subprocess.PIPE,
+                                        stderr=subprocess.PIPE)
+        self.pid = self.process.pid
+        self.outr = self.process.stdout.fileno()
+        self.errr = self.process.stderr.fileno()
         self.outdata = self.errdata = b''
         self._outeof = self._erreof = 0
-
-    def _child(self, cmd):
-        # Note exec doesn't reset SIG_IGN -> SIG_DFL
-        # and python sets SIGPIPE etc. to SIG_IGN, so reset:
-        # http://bugs.python.org/issue1652
-        signals = ('SIGPIPE', 'SIGXFZ', 'SIGXFSZ')
-        for sig in signals:
-            if hasattr(signal, sig):
-                signal.signal(getattr(signal, sig), signal.SIG_DFL)
-
-        # Note sh below doesn't setup a seperate group (job control)
-        # for non interactive shells (hmm maybe -m option does?)
-        os.setpgrp() #seperate group so we can kill it
-        os.dup2(self.outw,1) #stdout to write side of pipe
-        os.dup2(self.errw,2) #stderr to write side of pipe
-        #stdout & stderr connected to pipe, so close all other files
-        for fd in (self.outr, self.outw, self.errr, self.errw):
-            os.close(fd)
-        try:
-            cmd = ['/bin/sh', '-c', cmd]
-            os.execvp(cmd[0], cmd)
-        finally: #exit child on error
-            os._exit(1)
 
     def read(self, timeout=None):
         """return 0 when finished
            else return 1 every timeout seconds
            data will be in outdata and errdata"""
-        currtime=time.time()
+        if self._outeof and self._erreof:
+            return 0
+        currtime=time.monotonic()
         while 1:
             tocheck=[self.outr]*(not self._outeof)+ \
                     [self.errr]*(not self._erreof)
@@ -332,7 +304,7 @@ class subProcess:
                     self.errdata = os.fsdecode(self.errdata)
                     return 0
                 elif timeout:
-                    if (time.time()-currtime) > timeout:
+                    if (time.monotonic()-currtime) > timeout:
                         return 1 #may be more data but time to go
 
     def kill(self):
@@ -346,18 +318,15 @@ class subProcess:
 
     def cleanup(self):
         """Wait for and return the exit status of the child process."""
-        self.cleaned=True
-        os.close(self.outr)
-        os.close(self.errr)
-        pid, sts = os.waitpid(self.pid, 0)
-        if pid == self.pid:
-            self.sts = sts
-        else:
-            self.sts = None
+        if not self.cleaned:
+            self.process.stdout.close()
+            self.process.stderr.close()
+            self.sts = self.process.wait()
+            self.cleaned = True
         return self.sts
 
     def __del__(self):
-        if not self.cleaned:
+        if hasattr(self, "process") and not self.cleaned:
             self.cleanup()
 
 # Determine what type of distro we're on.
@@ -381,8 +350,8 @@ class distroType:
 dist_type=distroType()
 
 def human_space_left(where):
-    (device, total, used_b, avail, used_p, mount)=\
-    os.popen("df -Ph %s | tail -n1" % where).read().split()
+    with os.popen("df -Ph %s | tail -n1" % shlex.quote(where)) as process:
+        (device, total, used_b, avail, used_p, mount) = process.read().rstrip("\n").split(None, 5)
     translation_map={"percent":used_p, "disk":mount, "size":avail}
     return _("%(percent)s of %(disk)s is used leaving %(size)sB available") %\
              translation_map
@@ -392,26 +361,15 @@ def get_selectable(row, row_data):
     return row_data[row][0] != '#'
 
 class dlgUserInteraction(BuilderWrapper):
-    """
-    Note input buttons tuple text should not be translated
-    so that the stock buttons are used if possible. But the
-    translations should be available, so use N_ for input
-    buttons tuple text. Note the returned response is not
-    translated either. Note also, that if you know a stock
-    button is already available, then there's no point in
-    translating the passed in string.
-    """
+    """Dialog labels are translated; response identifiers remain untranslated."""
     def init(self, app, message, buttons, entry_default,
              again=False, again_val=True):
-        for text in buttons:
-            try:
-                stock_text=getattr(gtk,"STOCK_"+text.upper())
-                button = gtk.Button(stock=stock_text)
-            except:
-                button = gtk.Button(label=_(text))
+        self.buttons = []
+        for response_id, text in enumerate(buttons, 1):
+            button = self.GtkWindow.add_button(_(text), response_id)
+            self.buttons.append(button)
             button.response_text = text
             button.connect("clicked", self.button_clicked)
-            self.GtkWindow.get_action_area().pack_start(button, False, False, 0)
             button.show()
             button.set_can_default(True)
             button.grab_default() #last button is default
@@ -433,7 +391,7 @@ class dlgUserInteraction(BuilderWrapper):
                 self.chkAgain.set_active(again_val)
             #Dialog seems to give focus to first available widget,
             #So undo the focus on the check box
-            self.GtkWindow.get_action_area().get_children()[-1].grab_focus()
+            self.buttons[-1].grab_focus()
             self.chkAgain.show()
 
 
@@ -537,8 +495,6 @@ class fslint(BuilderWrapper):
         pass
 
     def __init__(self, Filename, WindowName):
-        os.close(0) #don't hang if any sub cmd tries to read from stdin
-        os.open("/dev/null", os.O_RDONLY)
         self.pwd=os.path.realpath(os.curdir)
         BuilderWrapper.__init__(self, Filename, WindowName)
         self.dlgPath = dlgPath(liblocation+"/fslint.ui", "PathChoose")
@@ -588,7 +544,8 @@ class fslint(BuilderWrapper):
         self._alloc_mouse_cursors()
         self.mode=0
         self.status.set_text(self.mode_descs[self.mode])
-        self.bg_colour = "#eeeeee"
+        found, background = self.GtkWindow.get_style_context().lookup_color("theme_bg_color")
+        self.bg_colour = background.to_string() if found else None
         self.clist_pkgs.set_column_visibility(2,0)
         self.clist_pkgs.set_column_visibility(3,0)
         self.clist_ns.set_column_justification(2,gtk.Justification.RIGHT)
@@ -763,9 +720,8 @@ class fslint(BuilderWrapper):
             cmd += r"'s/ \{1,\}$/\n/'"
         else:
             raise RuntimeError("unknown distro")
-        process = os.popen(cmd)
-        requires = process.read()
-        del(process)
+        with os.popen(cmd) as process:
+            requires = process.read()
         new_packages = [p for p in requires.split()
                         if p not in self.checked_pkgs]
         self.whatRequires(new_packages, level+1)
@@ -915,7 +871,7 @@ on your system at present."))
             elif option == _("Conflicting files"):
                 pass #default mode
             else:
-                raise RuntimeError("glade GtkOptionMenu item not found")
+                raise RuntimeError("GtkComboBoxText item not found")
         else:
             cmd += self.findParams
             option = self.opt_sn_paths.get_active_text()
@@ -928,7 +884,7 @@ on your system at present."))
             elif option == _("Case conflicts"):
                 cmd += " -c"
             else:
-                raise RuntimeError("glade GtkOptionMenu item not found")
+                raise RuntimeError("GtkComboBoxText item not found")
 
         po, pe = self.get_fslint(cmd,'\0')
         po = po[1:]
@@ -1216,6 +1172,7 @@ on your system at present."))
             errors = self.buildFindParameters()
             if errors:
                 self.ShowErrors(errors)
+                os.chdir(self.pwd)
                 return
             self.status.delete_text(0,-1)
             clist.clear()
@@ -1348,25 +1305,26 @@ on your system at present."))
                 etype, emsg, etb = sys.exc_info()
                 self.ShowErrors(str(emsg)+'\n')
                 return
-            rows_to_save = clist.selection
-            if self.mode == self.mode_pkgs:
-                for row in range(clist.rows):
-                    if len(rows_to_save):
-                        if row not in rows_to_save: continue
-                    rowtext = ''
-                    for col in (0,2): #ignore "human number" col
-                        rowtext += clist.get_text(row,col) +'\t'
-                    fileSaveAs.write(rowtext[:-1]+'\n')
-            else:
-                row_data=clist.get_data("row_data")
-                if len(rows_to_save):
+            with fileSaveAs:
+                rows_to_save = clist.selection
+                if self.mode == self.mode_pkgs:
                     for row in range(clist.rows):
-                        if get_selectable(row, row_data):
+                        if len(rows_to_save):
                             if row not in rows_to_save: continue
-                        else: continue #don't save group headers
-                        fileSaveAs.write(row_data[row])
+                        rowtext = ''
+                        for col in (0,2): #ignore "human number" col
+                            rowtext += clist.get_text(row,col) +'\t'
+                        fileSaveAs.write(rowtext[:-1]+'\n')
                 else:
-                    fileSaveAs.writelines(row_data)
+                    row_data=clist.get_data("row_data")
+                    if len(rows_to_save):
+                        for row in range(clist.rows):
+                            if get_selectable(row, row_data):
+                                if row not in rows_to_save: continue
+                            else: continue #don't save group headers
+                            fileSaveAs.write(row_data[row])
+                    else:
+                        fileSaveAs.writelines(row_data)
 
     def get_selected_path(self, row=None, folder=False):
         clist = self.clists[self.mode]
@@ -1651,8 +1609,6 @@ on your system at present."))
         #row_data.sort(key = lambda x:x[col],
         #              reverse = not self.clist_pkgs_order[col])
         if last_selected:
-            #Warning! As of pygtk2-2.4.0 at least
-            #find_row_from_data only compares pointers, not strings!
             last_selected_row=clist.find_row_from_data(last_selected)
             clist.moveto(last_selected_row,0,0.5,0.0)
             #clist.set_focus_row(last_selected_row)

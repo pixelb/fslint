@@ -89,7 +89,7 @@ fi
 
 find -H "$@" -type f -size +0c ! -name "*$LF*" -printf "$FPF\0" |
 sort -zu | #merge files (indirectly) specified multiple times
-xargs -r0 file |
+xargs -r0 file -r -- |
 sed -n 's/\(.*\):[^:]*text.*/\1/p' | #assumes ':' not in desc
 tr '\n' '\0' |
 if [ "$view" = "yes" ]; then
