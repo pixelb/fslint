@@ -4,6 +4,7 @@
 	* Result lists use GtkTreeView with separate raw filename metadata.
 	* Invalid filename bytes survive subprocess output and result exports.
 	* Fix raw filename handling in whitespace and invalid-UTF-8 scanners.
+        * Excluded paths are supported when searching name clashes in $PATH.
 
 2.47 dd/mm/yy
 	* Fixes:

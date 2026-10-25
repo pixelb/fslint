@@ -76,6 +76,25 @@ class PythonMigrationTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(result.stdout)
 
+    def test_path_name_scan_passes_exclusions_to_tool(self):
+        app = Mock(mode=1, mode_sn=1, mode_ns=2, mode_pkgs=3,
+                   mode_ed=4, mode_up=5)
+        app.chk_sn_path.get_active.return_value = True
+        app.ok_dirs.rows = 0
+        app.bad_dirs.rows = 1
+        app.bad_dirs.get_row_data.return_value = "/excluded dir/it's bin"
+        app.recurseDirs.get_active.return_value = True
+        app.extra_find_params.get_text.return_value = ''
+        app.get_fslint.return_value = ([], '')
+        self.assertEqual(GUI['fslint'].buildFindParameters(app), '')
+        for option in ('Aliases', 'Conflicting files'):
+            app.opt_sn_path.get_active_text.return_value = GUI['gettext'].gettext(option)
+            GUI['fslint'].findsn(app, Mock())
+            command = shlex.split(app.get_fslint.call_args.args[0])
+            self.assertEqual(command[:8], ['./findsn', '-f', '(', '-path',
+                             "/excluded dir/it's bin", ')', '-prune', '-o'])
+            self.assertEqual(command[8:], ['-A'] if option == 'Aliases' else [])
+
     def test_dupwaste(self):
         result = subprocess.run([str(ROOT/'fslint/fstool/dupwaste')],
                                 input='3 x 100 bytes\n2 x 50 bytes\n',

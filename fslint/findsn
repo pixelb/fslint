@@ -43,7 +43,7 @@ script_dir=$(readlink -f "$script_dir") #Make sure absolute path
 Usage() {
     ProgName=$(basename "$0")
     echo "find (files) with duplicate or conflicting names.
-Usage: $ProgName [-A -c -C] [[-r] [-f] paths(s) ...]
+Usage: $ProgName [-A -c -C] [[-r] [-f] paths(s) ...] [find expression]
 
 If no arguments are supplied the \$PATH is searched for any redundant
 or conflicting files.
@@ -57,7 +57,10 @@ Qualifying with -c is more restrictive as only files (or directories)
 in the same directory whose names differ only in case are reported.
 I.E. -c will flag files & directories that will conflict if transfered
 to a case insensitive file system. Note if -c or -C specified and
-no path(s) specifed the current directory is assumed."
+no path(s) specifed the current directory is assumed.
+
+Find expressions also apply when searching \$PATH. For example, exclude
+/usr/local/bin with: $ProgName \\( -path /usr/local/bin \\) -prune -o"
 
     exit
 }
@@ -70,38 +73,45 @@ if [ -p /proc/self/fd/1 ]; then
     topipe=yes
 fi
 
-if [ $# -eq "0" ]; then #Nothing on cmdline means search $PATH
-    mode="path"
-    eval set -- $(. "$script_dir"/supprt/getffp)
-    FPF="%p"
-elif [ $# -eq "1" ] && [ "$1" = "-A" ]; then
-    mode="aliases"
-    eval set -- $(. "$script_dir"/supprt/getffp)
-    FPF="%p"
-else
-    for arg; do
-        case "$arg" in
-        -h|--help|-help)
-            Usage ;;
-        -v|--version)
-            Version ;;
-        -C)
-            uniq_ignore_case="-i"
-            sort_ignore_case="-f" ;;
-        -c)
-            mode="casePortability" ;;
-        -A)
-            mode="aliases" ;;
-        *)
-            argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
-        esac
-    done
+for arg; do
+    case "$arg" in
+    -h|--help|-help)
+        Usage ;;
+    -v|--version)
+        Version ;;
+    -C)
+        uniq_ignore_case="-i"
+        sort_ignore_case="-f" ;;
+    -c)
+        mode="casePortability" ;;
+    -A)
+        mode="aliases" ;;
+    *)
+        argsToPassOn="$argsToPassOn $(shell_quote "$arg")" ;;
+    esac
+done
 
-    if [ $topipe = yes ]; then
-        . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
-    else
-        . "$script_dir"/supprt/getfpf "$argsToPassOn"
-    fi
+if [ $topipe = yes ]; then
+    . "$script_dir"/supprt/getfpf -f "$argsToPassOn"
+else
+    . "$script_dir"/supprt/getfpf "$argsToPassOn"
+fi
+
+# Find expressions (including exclusions) don't select a search root.
+# Keep the default PATH search unless case matching was requested.
+if [ "$num_files" -eq 0 ] && [ "$mode" != casePortability ] &&
+   [ -z "$uniq_ignore_case" ]; then
+    [ "$mode" = aliases ] || mode="path"
+    eval "path_args=($( . "$script_dir"/supprt/getffp))"
+    # getffp appends / to follow directory symlinks. These modes already
+    # use -follow; remove it so -path /some/bin also matches the root.
+    for i in "${!path_args[@]}"; do
+        if [ "${path_args[$i]}" != / ]; then
+            path_args[$i]=${path_args[$i]%/}
+        fi
+    done
+    set -- "${path_args[@]}" "$@"
+    FPF="%p"
 fi
 
 check_uniq

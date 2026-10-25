@@ -606,21 +606,20 @@ class fslint(BuilderWrapper):
         self.errors.get_buffer().set_text("")
 
     def buildFindParameters(self):
-        if self.mode == self.mode_sn:
-            if self.chk_sn_path.get_active():
-                return ""
-        elif self.mode == self.mode_ns:
+        search_path = self.mode == self.mode_sn and self.chk_sn_path.get_active()
+        if self.mode == self.mode_ns:
             if self.chk_ns_path.get_active():
                 return ""
         elif self.mode == self.mode_pkgs:
             return ""
 
-        if self.ok_dirs.rows == 0:
+        if not search_path and self.ok_dirs.rows == 0:
             return _("No search paths specified")
 
         search_dirs = ""
-        for row in range(self.ok_dirs.rows):
-            search_dirs += " " + shlex.quote(self.ok_dirs.get_row_data(row))
+        if not search_path:
+            for row in range(self.ok_dirs.rows):
+                search_dirs += " " + shlex.quote(self.ok_dirs.get_row_data(row))
 
         exclude_dirs=""
         # One can't remove directories listed as empty if
@@ -877,7 +876,7 @@ on your system at present."))
                 str(row) + _(" files"), pe)
 
     def findsn(self, clist_sn):
-        cmd = "./findsn "
+        cmd = "./findsn " + self.findParams
         if self.chk_sn_path.get_active():
             option = self.opt_sn_path.get_active_text()
             if option == _("Aliases"):
@@ -887,7 +886,6 @@ on your system at present."))
             else:
                 raise RuntimeError("GtkComboBoxText item not found")
         else:
-            cmd += self.findParams
             option = self.opt_sn_paths.get_active_text()
             if option == _("Aliases"):
                 cmd += " -A"
